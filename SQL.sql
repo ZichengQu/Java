@@ -1,185 +1,185 @@
 --SQL.day.02
---åˆ›å»ºè¡¨
+--´´½¨±í
 CREATE TABLE users(
-      id number(10) primary key,--ä¸»é”®
-      name varchar2(20) unique,--å”¯ä¸€æ ‡è¯†
+      id number(10) primary key,--Ö÷¼ü
+      name varchar2(20) unique,--Î¨Ò»±êÊ¶
       salary number(10,2),
       create_time date default sysdate
 );
 
---æŸ¥çœ‹è¡¨ç»“æ„(åœ¨command windowé‡Œç”¨ï¼ŒSQL windowä¸èƒ½ä½¿ç”¨ï¼‰
-desc è¡¨å
+--²é¿´±í½á¹¹(ÔÚcommand windowÀïÓÃ£¬SQL window²»ÄÜÊ¹ÓÃ£©
+desc ±íÃû
 
---ä¿®æ”¹è¡¨å
+--ĞŞ¸Ä±íÃû
 RENAME users to userplus
 
---å‘è¡¨ä¸­æ·»åŠ å­—æ®µ
+--Ïò±íÖĞÌí¼Ó×Ö¶Î
 ALTER TABLE userplus ADD(school varchar2(20))
 ALTER TABLE userplus ADD(job varchar2(10))
 
---åˆ é™¤è¡¨ä¸­å·²æœ‰å­—æ®µ
+--É¾³ı±íÖĞÒÑÓĞ×Ö¶Î
 ALTER TABLE userplus DROP(school)
 
---ä¿®æ”¹è¡¨ä¸­å·²æœ‰å­—æ®µçš„æ ¼å¼
+--ĞŞ¸Ä±íÖĞÒÑÓĞ×Ö¶ÎµÄ¸ñÊ½
 ALTER TABLE userplus MODIFY(salary number(10))
 ALTER TABLE userplus MODIFY(username varchar2(20) unique)
 
---ä¿®æ”¹è¡¨ä¸­å­—æ®µåç§°
+--ĞŞ¸Ä±íÖĞ×Ö¶ÎÃû³Æ
 ALTER TABLE userplus RENAME column name to username
 
---å‘è¡¨ä¸­æ·»åŠ æ•°æ®
-      --å…¨å­—æ®µæ’å…¥æ•°æ®
-INSERT INTO userplus VALUES(1, 'å¼ ä¸‰', 8000,sysdate, 'ç¨‹åºå‘˜');
-INSERT INTO userplus VALUES(2, 'å¼ ä¸‰', 8000,default, 'ç¨‹åºå‘˜');--å› ä¸ºè¡¨ä¸­æœ‰default sysdateï¼Œæ‰€ä»¥è¿™é‡Œå¯ä»¥ç›´æ¥å†™default
-INSERT INTO userplus VALUES(3, 'å¼ ä¸‰', 8000,to_date('2018-12-01','YYYY-MM-DD'), 'ç¨‹åºå‘˜');
-       --éƒ¨åˆ†å­—æ®µæ’å…¥
-INSERT INTO userplus(id, username, job) VALUES(4,'ç‹äº”','äº§å“ç»ç†');
-INSERT INTO userplus(id, username, job, salary) VALUES(5,'ç‹äº”','äº§å“ç»ç†'ï¼Œ5000)
+--Ïò±íÖĞÌí¼ÓÊı¾İ
+      --È«×Ö¶Î²åÈëÊı¾İ
+INSERT INTO userplus VALUES(1, 'ÕÅÈı', 8000,sysdate, '³ÌĞòÔ±');
+INSERT INTO userplus VALUES(2, 'ÕÅÈı', 8000,default, '³ÌĞòÔ±');--ÒòÎª±íÖĞÓĞdefault sysdate£¬ËùÒÔÕâÀï¿ÉÒÔÖ±½ÓĞ´default
+INSERT INTO userplus VALUES(3, 'ÕÅÈı', 8000,to_date('2018-12-01','YYYY-MM-DD'), '³ÌĞòÔ±');
+       --²¿·Ö×Ö¶Î²åÈë
+INSERT INTO userplus(id, username, job) VALUES(4,'ÍõÎå','²úÆ·¾­Àí');
+INSERT INTO userplus(id, username, job, salary) VALUES(5,'ÍõÎå','²úÆ·¾­Àí'£¬5000)
 
---æ›´æ–°è¡¨ä¸­å·²æœ‰æ•°æ®
-UPDATE userplus SET salary=salary*10, job='æ€»ç»ç†' WHERE id=1;
+--¸üĞÂ±íÖĞÒÑÓĞÊı¾İ
+UPDATE userplus SET salary=salary*10, job='×Ü¾­Àí' WHERE id=1;
 
---åˆ é™¤è¡¨ä¸­æ•°æ®
+--É¾³ı±íÖĞÊı¾İ
 DELETE FROM userplus WHERE salary>5000;
 
---æäº¤äº‹åŠ¡
+--Ìá½»ÊÂÎñ
 commit;
 
---å›æ»š
+--»Ø¹ö
 rollback;
 
---æŸ¥è¯¢è¡¨ä¸­æ‰€æœ‰æ•°æ®
+--²éÑ¯±íÖĞËùÓĞÊı¾İ
 SELECT * FROM userplus;
 
---æŸ¥è¯¢éƒ¨åˆ†æ•°æ®ä¿¡æ¯
+--²éÑ¯²¿·ÖÊı¾İĞÅÏ¢
 SELECT job, salary FROM userplus;
-SELECT * FROM userplus WHERE job <> 'æ¶æ„å¸ˆ';
-SELECT salary*12 "å¹´è–ª" FROM userplus WHERE username='ç‹äº”';--åˆ«å
-SELECT salary*12 AS "å¹´è–ª" FROM userplus WHERE username='ç‹äº”';--åˆ«å
+SELECT * FROM userplus WHERE job <> '¼Ü¹¹Ê¦';
+SELECT salary*12 "ÄêĞ½" FROM userplus WHERE username='ÍõÎå';--±ğÃû
+SELECT salary*12 AS "ÄêĞ½" FROM userplus WHERE username='ÍõÎå';--±ğÃû
 
---10.(1)å­—ç¬¦ä¸²å‡½æ•°
-       --è¿æ¥å­—ç¬¦ä¸²
+--10.(1)×Ö·û´®º¯Êı
+       --Á¬½Ó×Ö·û´®
 SELECT CONCAT(ename, sal) from EMP;
 SELECT CONCAT(CONCAT(ename, ': ') ,sal)from EMP;
-SELECT ename||': '||sal as "å§“åï¼šå·¥èµ„" from EMP;
-       --æ˜¾ç¤ºå­—ç¬¦ä¸²é•¿åº¦
+SELECT ename||': '||sal as "ĞÕÃû£º¹¤×Ê" from EMP;
+       --ÏÔÊ¾×Ö·û´®³¤¶È
 SELECT LENGTH(ename) from EMP;
-       --è½¬å¤§å†™
+       --×ª´óĞ´
 SELECT UPPER(ename) from EMP;
-       --å»é™¤å­—ç¬¦ä¸²å‰åæŒ‡å®šå†…å®¹
+       --È¥³ı×Ö·û´®Ç°ºóÖ¸¶¨ÄÚÈİ
 SELECT TRIM('E' from 'EEHELLO WORLDEEE') from dual;
-SELECT ename, trim('A' FROM ename) from emp; --å»é™¤å‘˜å·¥åå­—å‰åçš„æ‰€æœ‰'A'
-SELECT LTRIM('EEHELLO WORLDEEE', 'E') from dual;--å»é™¤EEHELLOçš„å‰é¢çš„E
-SELECT ename, ltrim(ename,'A') from emp;--å»é™¤å‘˜å·¥åå­—å‰é¢çš„æ‰€æœ‰'A'
-       --è¡¥ä½å‡½æ•°
+SELECT ename, trim('A' FROM ename) from emp; --È¥³ıÔ±¹¤Ãû×ÖÇ°ºóµÄËùÓĞ'A'
+SELECT LTRIM('EEHELLO WORLDEEE', 'E') from dual;--È¥³ıEEHELLOµÄÇ°ÃæµÄE
+SELECT ename, ltrim(ename,'A') from emp;--È¥³ıÔ±¹¤Ãû×ÖÇ°ÃæµÄËùÓĞ'A'
+       --²¹Î»º¯Êı
 select * from emp
 select ename, LPAD(sal, 6, 0) AS salary from emp
-       --substræˆªå–å­—ç¬¦ä¸²
+       --substr½ØÈ¡×Ö·û´®
 select substr('helloworldqqqqq',6,10) from dual;
-       --INSTRå­—ç¬¦ä¸²æ£€ç´¢
+       --INSTR×Ö·û´®¼ìË÷
 select instr('thinking in java','in',4,2) from dual;
 
---10.(2)æ•°å­—å‡½æ•°
-       --æˆªå–ï¼Œç”¨äºå››èˆäº”å…¥
+--10.(2)Êı×Öº¯Êı
+       --½ØÈ¡£¬ÓÃÓÚËÄÉáÎåÈë
 select round(321.123,1) from dual;
-       --æˆªå–ï¼Œæ— å››èˆäº”å…¥
+       --½ØÈ¡£¬ÎŞËÄÉáÎåÈë
 select trunc(45.678,2), trunc(45.678,0), trunc(45.678), trunc(45.678,-1) from dual;
-       --å–ä½™æ•°
+       --È¡ÓàÊı
 select ename, sal, mod(sal,1000) from emp;
-       --å‘ä¸Šå–æ•´
+       --ÏòÉÏÈ¡Õû
 select ceil(45.678) from dual;
-       --å‘ä¸‹å–æ•´
+       --ÏòÏÂÈ¡Õû
 select floor(45.678) from dual;
---10.(3)æ—¥æœŸå‡½æ•°
-       --ç³»ç»Ÿæ—¶é—´ï¼Œç²¾ç¡®åˆ°ç§’
+--10.(3)ÈÕÆÚº¯Êı
+       --ÏµÍ³Ê±¼ä£¬¾«È·µ½Ãë
 select sysdate from dual;
-       --æ—¶é—´æˆ³ï¼Œç²¾ç¡®åˆ°æ¯«ç§’
+       --Ê±¼ä´Á£¬¾«È·µ½ºÁÃë
 select systimestamp from dual;
-       --TO_DATE(),æ—¥æœŸè½¬æ¢å‡½æ•°
+       --TO_DATE(),ÈÕÆÚ×ª»»º¯Êı
 select to_date('2018-12-01 11:30','YYYY-MM-DD HH:MI:SS') from dual;
 select to_date('2018-12-01 13:30','YYYY-MM-DD HH24:MI:SS') from dual;
-       --TO_CHAR(),å°†DATEæŒ‰ç…§ç»™å®šçš„æ—¥æœŸæ ¼å¼è½¬æ¢ä¸ºå­—ç¬¦ä¸²
+       --TO_CHAR(),½«DATE°´ÕÕ¸ø¶¨µÄÈÕÆÚ¸ñÊ½×ª»»Îª×Ö·û´®
 select ename, to_char(hiredate,'YYYY-MM-DD HH:MI:SS') from emp;
-select ename, to_char(hiredate,'YYYY"å¹´"MM"æœˆ"DD"æ—¥"') from emp;
-       --LAST_DAY(date),è¿”å›æŒ‡å®šæ—¥æœŸæ‰€åœ¨æœˆçš„æœ€åä¸€å¤©
+select ename, to_char(hiredate,'YYYY"Äê"MM"ÔÂ"DD"ÈÕ"') from emp;
+       --LAST_DAY(date),·µ»ØÖ¸¶¨ÈÕÆÚËùÔÚÔÂµÄ×îºóÒ»Ìì
 select last_day(sysdate) from dual;
 select last_day(to_date('2018-12-01 11:30','YYYY-MM-DD HH:MI:SS')) from dual;
-       --ADD_MONTHS(date,i),è¿”å›+-iä¸ªæœˆä¹‹åçš„æ—¥æœŸ
-select ename, hiredate, add_months(hiredate, 12*20) AS "20å‘¨å¹´" from emp;
-       --MONTHS_BETWEEN(date1,date2):è®¡ç®—ä¸¤ä¸ªæ—¥æœŸä¹‹é—´ç›¸å·®å¤šå°‘ä¸ªæœˆ
+       --ADD_MONTHS(date,i),·µ»Ø+-i¸öÔÂÖ®ºóµÄÈÕÆÚ
+select ename, hiredate, add_months(hiredate, 12*20) AS "20ÖÜÄê" from emp;
+       --MONTHS_BETWEEN(date1,date2):¼ÆËãÁ½¸öÈÕÆÚÖ®¼äÏà²î¶àÉÙ¸öÔÂ
 select ename,trunc(months_between(sysdate, hiredate)) from emp;
-       --dateæ—¥æœŸç±»å‹åœ¨æ•°æ®åº“ä¸­å¯ä»¥è¿›è¡Œå‡æ³•æ“ä½œï¼Œç»“æœæ˜¯ç›¸å·®çš„å¤©æ•°ï¼š
+       --dateÈÕÆÚÀàĞÍÔÚÊı¾İ¿âÖĞ¿ÉÒÔ½øĞĞ¼õ·¨²Ù×÷£¬½á¹ûÊÇÏà²îµÄÌìÊı£º
 select ename, sysdate-hiredate from emp;
-       --LEAST(date1,date2):æ˜¾ç¤ºä¸¤ä¸ªæ—¶é—´ä¸­çš„æœ€å°å€¼ã€‚å‚æ•°ç±»å‹å¿…é¡»ä¸€è‡´ã€‚
+       --LEAST(date1,date2):ÏÔÊ¾Á½¸öÊ±¼äÖĞµÄ×îĞ¡Öµ¡£²ÎÊıÀàĞÍ±ØĞëÒ»ÖÂ¡£
 select least(sysdate,to_date('2018/12/09','YYYY-MM-DD')) from dual;
-       --GREATEST(date1,date2):æ˜¾ç¤ºä¸¤ä¸ªæ—¶é—´ä¸­çš„æœ€å¤§å€¼ã€‚å‚æ•°ç±»å‹å¿…é¡»ä¸€è‡´ã€‚
+       --GREATEST(date1,date2):ÏÔÊ¾Á½¸öÊ±¼äÖĞµÄ×î´óÖµ¡£²ÎÊıÀàĞÍ±ØĞëÒ»ÖÂ¡£
 select greatest(sysdate,to_date('2018/12/09','YYYY-MM-DD')) from dual;
-       --EXTRACT(date from datetime):ä»å‚æ•°datetimeä¸­æå–å‚æ•°dateæŒ‡å®šçš„æ•°æ®ï¼Œæ¯”å¦‚æå–ï¼šå¹´ã€æœˆã€æ—¥ã€‚
+       --EXTRACT(date from datetime):´Ó²ÎÊıdatetimeÖĞÌáÈ¡²ÎÊıdateÖ¸¶¨µÄÊı¾İ£¬±ÈÈçÌáÈ¡£ºÄê¡¢ÔÂ¡¢ÈÕ¡£
 select extract(year from sysdate),extract(month from sysdate),extract(day from sysdate) from dual;
 select extract(hour from systimestamp),extract(minute from systimestamp),extract(second from systimestamp) from dual;
 select ename from emp where extract(year from hiredate) = 1980;
 
---10.(4)ç©ºå€¼å‡½æ•°ï¼š
+--10.(4)¿ÕÖµº¯Êı£º
 select * from emp where comm is not null and comm != 0;
-       --NVL(arg1,arg2):å°†nullè½¬å˜ä¸ºénullå€¼ã€‚å¦‚æœarg1ä¸ºnullï¼Œè¿”å›arg2ï¼›å¦åˆ™è¿”å›æœ¬èº«ã€‚
+       --NVL(arg1,arg2):½«null×ª±äÎª·ÇnullÖµ¡£Èç¹ûarg1Îªnull£¬·µ»Øarg2£»·ñÔò·µ»Ø±¾Éí¡£
 select ename,nvl(comm,0) from emp;
 select * from emp where nvl(comm,0)>0;
-       --NVL(arg1,arg2),å¦‚æœarg1ä¸ºnullï¼Œè¿”å›arg2ï¼›å¦åˆ™è¿”å›æœ¬èº«ã€‚è®¡ç®—å‘˜å·¥æœˆæ”¶å…¥ï¼ˆæœˆå·¥èµ„åŠ å¥–é‡‘ï¼ˆå¥–é‡‘å¯èƒ½ä¸ºnullï¼‰ï¼‰
-select ename, sal, comm, sal+nvl(comm,0) as "æœˆæ”¶å…¥" from emp;
-       --NVL2(arg,res1,res2):å¦‚æœargä¸ºnullï¼Œåˆ™è¿”å›res2,argä¸ä¸ºnullåˆ™è¿”å›res1.
-select ename, sal, comm, nvl2(comm,comm+sal,sal) as"æœˆæ”¶å…¥" from emp;
+       --NVL(arg1,arg2),Èç¹ûarg1Îªnull£¬·µ»Øarg2£»·ñÔò·µ»Ø±¾Éí¡£¼ÆËãÔ±¹¤ÔÂÊÕÈë£¨ÔÂ¹¤×Ê¼Ó½±½ğ£¨½±½ğ¿ÉÄÜÎªnull£©£©
+select ename, sal, comm, sal+nvl(comm,0) as "ÔÂÊÕÈë" from emp;
+       --NVL2(arg,res1,res2):Èç¹ûargÎªnull£¬Ôò·µ»Øres2,arg²»ÎªnullÔò·µ»Øres1.
+select ename, sal, comm, nvl2(comm,comm+sal,sal) as"ÔÂÊÕÈë" from emp;
 
---11.åŸºæœ¬æŸ¥è¯¢è¯­å¥:
-       --æŸ¥è¯¢éƒ¨é—¨10ä¸‹çš„å‘˜å·¥ä¿¡æ¯ï¼š
+--11.»ù±¾²éÑ¯Óï¾ä:
+       --²éÑ¯²¿ÃÅ10ÏÂµÄÔ±¹¤ĞÅÏ¢£º
 select * from emp where deptno = 10;
-       --æŸ¥è¯¢å‘˜å·¥è¡¨ä¸­èŒä½æ˜¯'SALESMAN'çš„å‘˜å·¥ä¿¡æ¯
+       --²éÑ¯Ô±¹¤±íÖĞÖ°Î»ÊÇ'SALESMAN'µÄÔ±¹¤ĞÅÏ¢
 select * from emp where job = 'SALESMAN';
 
---12.æŸ¥è¯¢æ¡ä»¶:
-       --æŸ¥è¯¢èŒå‘˜è¡¨ä¸­è–ªæ°´ä½äº2000çš„èŒå‘˜ä¿¡æ¯
+--12.²éÑ¯Ìõ¼ş:
+       --²éÑ¯Ö°Ô±±íÖĞĞ½Ë®µÍÓÚ2000µÄÖ°Ô±ĞÅÏ¢
 select ename, sal from emp where sal < 2000;
-       --æŸ¥è¯¢èŒå‘˜è¡¨ä¸­ä¸å±äºéƒ¨é—¨10çš„å‘˜å·¥ä¿¡æ¯
+       --²éÑ¯Ö°Ô±±íÖĞ²»ÊôÓÚ²¿ÃÅ10µÄÔ±¹¤ĞÅÏ¢
 select * from emp where deptno <>10;
-       --æŸ¥è¯¢èŒå‘˜è¡¨ä¸­åœ¨1981å¹´1æœˆ1å·ä»¥åå…¥èŒçš„èŒå‘˜ä¿¡æ¯
+       --²éÑ¯Ö°Ô±±íÖĞÔÚ1981Äê1ÔÂ1ºÅÒÔºóÈëÖ°µÄÖ°Ô±ĞÅÏ¢
 select * from emp where hiredate > to_date('1981/01/01','YYYY/MM/DD');
-       --æŸ¥è¯¢è–ªæ°´å¤§äº1000ï¼Œå¹¶ä¸”èŒä½æ˜¯'CLERK'çš„èŒå‘˜ä¿¡æ¯
+       --²éÑ¯Ğ½Ë®´óÓÚ1000£¬²¢ÇÒÖ°Î»ÊÇ'CLERK'µÄÖ°Ô±ĞÅÏ¢
 select * from emp where sal>1000 and job='CLERK';
-       --æŸ¥è¯¢è–ªæ°´å¤§äº1000ï¼Œæˆ–è€…èŒä½æ˜¯'CLERK'çš„èŒå‘˜ä¿¡æ¯
+       --²éÑ¯Ğ½Ë®´óÓÚ1000£¬»òÕßÖ°Î»ÊÇ'CLERK'µÄÖ°Ô±ĞÅÏ¢
 select * from emp where sal>1000 or job='CLERK';
-       --NVL(arg1,arg2)ï¼ŒNVL2(arg,res1,res2)
-       --æŸ¥è¯¢è–ªæ°´å¤§äº1000ï¼Œå¹¶ä¸”å¥–é‡‘ä¸ä¸ºnullçš„èŒå‘˜ä¿¡æ¯
+       --NVL(arg1,arg2)£¬NVL2(arg,res1,res2)
+       --²éÑ¯Ğ½Ë®´óÓÚ1000£¬²¢ÇÒ½±½ğ²»ÎªnullµÄÖ°Ô±ĞÅÏ¢
 select * from emp where sal>1000 and comm>0;
 select * from emp where sal>1000 and nvl(comm,0)>0;
 select * from emp where (deptno=20 or deptno=30) and sal>800;
-       --æ¨¡ç³ŠæŸ¥è¯¢ï¼ŒLIKE
-       --æŸ¥è¯¢å‘˜å·¥è¡¨ä¸­å§“åä»¥'A'å¼€å¤´çš„å‘˜å·¥ä¿¡æ¯
+       --Ä£ºı²éÑ¯£¬LIKE
+       --²éÑ¯Ô±¹¤±íÖĞĞÕÃûÒÔ'A'¿ªÍ·µÄÔ±¹¤ĞÅÏ¢
 select * from emp where ename like 'ALLEN';
-       --æŸ¥è¯¢å‘˜å·¥è¡¨ä¸­å§“åç¬¬äºŒä¸ªå­—æ¯æ˜¯'A'çš„å‘˜å·¥ä¿¡æ¯
+       --²éÑ¯Ô±¹¤±íÖĞĞÕÃûµÚ¶ş¸ö×ÖÄ¸ÊÇ'A'µÄÔ±¹¤ĞÅÏ¢
 select * from emp where ename like '_A%';
-       --INå’ŒNOT INï¼š
-       --æŸ¥è¯¢èŒä½æ˜¯ç»ç†æˆ–è€…èŒå‘˜çš„å‘˜å·¥ä¿¡æ¯
+       --INºÍNOT IN£º
+       --²éÑ¯Ö°Î»ÊÇ¾­Àí»òÕßÖ°Ô±µÄÔ±¹¤ĞÅÏ¢
 select * from emp where job in ('MANAGER','CLERK');
-       --æŸ¥è¯¢éƒ¨é—¨ä¸æ˜¯10æˆ–20çš„å‘˜å·¥
+       --²éÑ¯²¿ÃÅ²»ÊÇ10»ò20µÄÔ±¹¤
 select * from emp where deptno not in (10,20);
 select * from emp where deptno <> all(10,20);
-       --BETWEEN...AND...:æ˜¯ç”¨æ¥æŸ¥è¯¢ç¬¦åˆæŸä¸ªå€¼åŸŸèŒƒå›´æ¡ä»¶çš„æ•°æ®ã€‚
-       --æŸ¥è¯¢è–ªæ°´åœ¨1500~3000ä¹‹é—´çš„èŒå‘˜ä¿¡æ¯
+       --BETWEEN...AND...:ÊÇÓÃÀ´²éÑ¯·ûºÏÄ³¸öÖµÓò·¶Î§Ìõ¼şµÄÊı¾İ¡£
+       --²éÑ¯Ğ½Ë®ÔÚ1500~3000Ö®¼äµÄÖ°Ô±ĞÅÏ¢
 select * from emp where sal between 1500 and 3000;--[1500,3000]
-       --æŸ¥è¯¢æ¯”ç»ç†æœ€ä½å·¥èµ„é«˜çš„å‘˜å·¥ä¿¡æ¯ã€‚
+       --²éÑ¯±È¾­Àí×îµÍ¹¤×Ê¸ßµÄÔ±¹¤ĞÅÏ¢¡£
 select * from emp where sal > any(select sal from emp where job='MANAGER');
-       --æŸ¥è¯¢å‘˜å·¥çš„éƒ¨é—¨ç¼–å·
+       --²éÑ¯Ô±¹¤µÄ²¿ÃÅ±àºÅ
 select distinct(deptno) from emp;
 select distinct deptno,job from emp;
 
---14.ORDER BY æ’åº(å†™åœ¨æ‰€æœ‰å­å¥æœ€å)
+--14.ORDER BY ÅÅĞò(Ğ´ÔÚËùÓĞ×Ó¾ä×îºó)
 select ename, sal from emp order by sal;
 select ename, sal from emp order by sal asc;
 select * from emp where sal>2000 order by mgr desc;
-       --å¤šåˆ—æ’åºï¼Œå¯¹å‘˜å·¥è¡¨ä¸­çš„èŒå‘˜æ’åºï¼Œå…ˆæŒ‰ç…§éƒ¨é—¨ç¼–å·æ­£åºæ’åˆ—ï¼Œå†æŒ‰ç…§è–ªæ°´é™åºæ’åˆ—ã€‚
+       --¶àÁĞÅÅĞò£¬¶ÔÔ±¹¤±íÖĞµÄÖ°Ô±ÅÅĞò£¬ÏÈ°´ÕÕ²¿ÃÅ±àºÅÕıĞòÅÅÁĞ£¬ÔÙ°´ÕÕĞ½Ë®½µĞòÅÅÁĞ¡£
 select ename, deptno, sal from emp order by deptno asc, sal desc;
 
---15.èšåˆå‡½æ•°
-       --MAXå’ŒMIN
+--15.¾ÛºÏº¯Êı
+       --MAXºÍMIN
 select deptno,max(sal),min(sal) from emp group by deptno;
 select max(hiredate),min(hiredate) from emp;
 select ename from emp a where hiredate = (select max(hiredate) from emp);
@@ -187,171 +187,171 @@ select ename from emp a where hiredate = (select max(hiredate) from emp);
 select ename from emp a where hiredate = (select max(hiredate),min(hiredate) from emp);
              --RIGHT:
 select ename from emp where hiredate in ((select min(hiredate) from emp), (select max(hiredate) from emp));
-       --AVGå’ŒSUM
+       --AVGºÍSUM
 select avg(sal),sum(sal) from emp;
-select avg(comm),sum(comm) from emp;--å¿½ç•¥nullå€¼
+select avg(comm),sum(comm) from emp;--ºöÂÔnullÖµ
        --COUNT
 select count(*) from emp;
-select count(comm) from emp;--å¿½ç•¥nullå€¼
+select count(comm) from emp;--ºöÂÔnullÖµ
 select count(*) from emp where comm is not null;
-       --ä¸å¸Œæœ›èšåˆå‡½æ•°å¿½ç•¥NULLå€¼æ—¶ï¼š
+       --²»Ï£Íû¾ÛºÏº¯ÊıºöÂÔNULLÖµÊ±£º
 select avg(nvl(comm,0)) from emp;
 
 --16.GROUP BY
 select max(sal),min(sal),avg(sal) from emp group by deptno;
 select deptno,max(sal),min(sal),avg(sal) from emp group by deptno;
 select deptno,ename,max(sal),min(sal),avg(sal) from emp group by deptno,ename;
-       --whereåé¢ä¸èƒ½ä½¿ç”¨èšåˆå‡½æ•°,ä¸èƒ½æ‰§è¡Œ.
+       --whereºóÃæ²»ÄÜÊ¹ÓÃ¾ÛºÏº¯Êı,²»ÄÜÖ´ĞĞ.
 select max(sal),deptno from emp where max(sal)>4000 group by deptno;
-       --æŸ¥è¯¢éƒ¨é—¨ä¸­æœ€å¤§å·¥èµ„è¶…è¿‡4000çš„éƒ¨é—¨ä»¥åŠæœ€å¤§å·¥èµ„ã€‚
+       --²éÑ¯²¿ÃÅÖĞ×î´ó¹¤×Ê³¬¹ı4000µÄ²¿ÃÅÒÔ¼°×î´ó¹¤×Ê¡£
 select max(sal),deptno from emp group by deptno having max(sal)>4000;
-       --æŸ¥çœ‹éƒ¨é—¨ç¼–å·ï¼Œä»¥åŠè¯¥éƒ¨é—¨çš„å¹³å‡å·¥èµ„ï¼ˆè¦æ±‚æ˜¯è¯¥æœ¬é—¨çš„å¹³å‡å·¥èµ„è¶…è¿‡2000ï¼ŒèŒä½æ˜¯PRESIDENTçš„ä¸èƒ½å‚ä¸ç»Ÿè®¡)
+       --²é¿´²¿ÃÅ±àºÅ£¬ÒÔ¼°¸Ã²¿ÃÅµÄÆ½¾ù¹¤×Ê£¨ÒªÇóÊÇ¸Ã±¾ÃÅµÄÆ½¾ù¹¤×Ê³¬¹ı2000£¬Ö°Î»ÊÇPRESIDENTµÄ²»ÄÜ²ÎÓëÍ³¼Æ)
 select deptno, avg(sal) from emp where job<>'PRESIDENT' group by deptno having avg(sal)>2000;
 
---19.å…³è”æŸ¥è¯¢
-       --æŸ¥è¯¢æ¯ä¸ªå‘˜å·¥æ‰€åœ¨éƒ¨é—¨åç§°
+--19.¹ØÁª²éÑ¯
+       --²éÑ¯Ã¿¸öÔ±¹¤ËùÔÚ²¿ÃÅÃû³Æ
 select ename, dname from emp, dept where emp.deptno=dept.deptno;
-       --æŸ¥çœ‹å‘˜å·¥åå­—ã€å·¥èµ„ã€éƒ¨é—¨åç§°
+       --²é¿´Ô±¹¤Ãû×Ö¡¢¹¤×Ê¡¢²¿ÃÅÃû³Æ
 select ename, sal, dname from emp e, dept d where e.deptno=d.deptno and loc='CHICAGO';
-       --KINGåœ¨å“ªé‡Œå·¥ä½œä»¥åŠä»–çš„éƒ¨é—¨ç¼–å·æ˜¯å¤šå°‘ï¼Ÿ
+       --KINGÔÚÄÄÀï¹¤×÷ÒÔ¼°ËûµÄ²¿ÃÅ±àºÅÊÇ¶àÉÙ£¿
 select ename, e.deptno, loc from emp e, dept d where e.deptno=d.deptno and ename='KING';
 
---20.è¿æ¥ç§ç±»
-       --å†…è¿æ¥
+--20.Á¬½ÓÖÖÀà
+       --ÄÚÁ¬½Ó
 select ename, dname from emp inner join dept on emp.deptno=dept.deptno;
-       --å¤–è¿æ¥
-              --å¿«é€Ÿä»ä¸€ä¸ªè¡¨ä¸­å¤åˆ¶æ•°æ®
+       --ÍâÁ¬½Ó
+              --¿ìËÙ´ÓÒ»¸ö±íÖĞ¸´ÖÆÊı¾İ
 create table empc as select * from emp;
-             --å‘empcè¡¨ä¸­æ’å…¥ä¸€æ¡æ•°æ®ï¼Œéƒ¨é—¨å·ä¸º50
+             --Ïòempc±íÖĞ²åÈëÒ»ÌõÊı¾İ£¬²¿ÃÅºÅÎª50
 insert into empc(empno, ename, deptno)values(1000,'JACK',50);
 select * from empc;
-       --å·¦å¤–è¿æ¥ï¼ŒæŸ¥è¯¢å‘˜å·¥çš„ç¼–å·ã€å§“åã€ä»¥åŠéƒ¨é—¨åç§°ï¼ŒåŒ…æ‹¬ä¸å±äºä»»ä½•éƒ¨é—¨çš„å‘˜å·¥ã€‚
+       --×óÍâÁ¬½Ó£¬²éÑ¯Ô±¹¤µÄ±àºÅ¡¢ĞÕÃû¡¢ÒÔ¼°²¿ÃÅÃû³Æ£¬°üÀ¨²»ÊôÓÚÈÎºÎ²¿ÃÅµÄÔ±¹¤¡£
 select empno, ename, dname, empc.deptno from empc left outer join dept on empc.deptno=dept.deptno;
-       --å³å¤–è¿æ¥,æŸ¥è¯¢å‘˜å·¥çš„ç¼–å·ã€å§“åã€ä»¥åŠéƒ¨é—¨åç§°ï¼ŒåŒ…æ‹¬ä»»ä½•æ²¡æœ‰å‘˜å·¥çš„éƒ¨é—¨ã€‚
+       --ÓÒÍâÁ¬½Ó,²éÑ¯Ô±¹¤µÄ±àºÅ¡¢ĞÕÃû¡¢ÒÔ¼°²¿ÃÅÃû³Æ£¬°üÀ¨ÈÎºÎÃ»ÓĞÔ±¹¤µÄ²¿ÃÅ¡£
 select empno, ename, dname, c.deptno from empc c right outer join dept d on c.deptno=d.deptno;
-       --å…¨å¤–è¿æ¥ï¼ŒæŸ¥è¯¢å‘˜å·¥çš„ç¼–å·ã€å§“åã€ä»¥åŠéƒ¨é—¨åç§°ï¼ŒåŒ…æ‹¬ä¸å±äºä»»ä½•éƒ¨é—¨çš„å‘˜å·¥ï¼Œä¹ŸåŒ…æ‹¬ä»»ä½•æ²¡æœ‰å‘˜å·¥çš„éƒ¨é—¨ã€‚
+       --È«ÍâÁ¬½Ó£¬²éÑ¯Ô±¹¤µÄ±àºÅ¡¢ĞÕÃû¡¢ÒÔ¼°²¿ÃÅÃû³Æ£¬°üÀ¨²»ÊôÓÚÈÎºÎ²¿ÃÅµÄÔ±¹¤£¬Ò²°üÀ¨ÈÎºÎÃ»ÓĞÔ±¹¤µÄ²¿ÃÅ¡£
 select empno, ename, dname, c.deptno from empc c full outer join dept d on c.deptno=d.deptno;
-       --è‡ªè¿æ¥ï¼ŒæŸ¥è¯¢æ¯ä¸ªå‘˜å·¥çš„ä¸Šçº§é¢†å¯¼
+       --×ÔÁ¬½Ó£¬²éÑ¯Ã¿¸öÔ±¹¤µÄÉÏ¼¶Áìµ¼
 select e.ename, m.ename from emp e, emp m where e.mgr=m.empno;
 select e.ename emp, m.ename mgr from emp e left outer join emp m on e.mgr=m.empno;
-       --æŸ¥è¯¢SMITHçš„ä¸Šå¸åœ¨å“ªä¸ªåŸå¸‚å·¥ä½œ
-       --ç­‰å€¼è¿æ¥
+       --²éÑ¯SMITHµÄÉÏË¾ÔÚÄÄ¸ö³ÇÊĞ¹¤×÷
+       --µÈÖµÁ¬½Ó
 select e.ename emp, m.ename mgr, d.loc mgrloc 
 from emp e, emp m, dept d 
 where e.mgr=m.empno and m.deptno=d.deptno and e.ename='SMITH';
-       --å†…è¿æ¥
+       --ÄÚÁ¬½Ó
 select e.ename emp, m.ename mgr, d.loc mgrloc 
 from emp e inner join emp m 
 on e.mgr=m.empno and e.ename='SMITH'
 inner join dept d
 on m.deptno=d.deptno;
 
---(å¤–è¿æ¥çš„å¦ä¸€ç§å†™æ³•):æŸ¥è¯¢æ¯ä¸€ä¸ªå‘˜å·¥çš„åŒæ—¶ï¼Œæ ¹æ®å‘˜å·¥çš„éƒ¨é—¨ç¼–å·æŸ¥è¯¢éƒ¨é—¨çš„ä¿¡æ¯ï¼Œè‹¥æŸ¥è¯¢ä¸åˆ°éƒ¨é—¨ï¼Œè¯¥å‘˜å·¥çš„éƒ¨é—¨ä¿¡æ¯å°±æ˜¯null
+--(ÍâÁ¬½ÓµÄÁíÒ»ÖÖĞ´·¨):²éÑ¯Ã¿Ò»¸öÔ±¹¤µÄÍ¬Ê±£¬¸ù¾İÔ±¹¤µÄ²¿ÃÅ±àºÅ²éÑ¯²¿ÃÅµÄĞÅÏ¢£¬Èô²éÑ¯²»µ½²¿ÃÅ£¬¸ÃÔ±¹¤µÄ²¿ÃÅĞÅÏ¢¾ÍÊÇnull
 select e.ename, e.sal, e.deptno from empc e;--ERROR
        --Solution 1.
 select e.ename, e.sal,
 (select d.deptno from dept d where d.deptno=e.deptno) deptno 
 from empc e;--RIGHT
-       --Solution 2.æ­£å¸¸çš„å¤–è¿æ¥å†™æ³•ï¼šä¸ºæ»¡è¶³è¦æ±‚ï¼Œè¦å†™æˆd.deptno
+       --Solution 2.Õı³£µÄÍâÁ¬½ÓĞ´·¨£ºÎªÂú×ãÒªÇó£¬ÒªĞ´³Éd.deptno
 select e.ename, e.sal,d.deptno 
 from empc e left outer join dept d 
 on e.deptno=d.deptno;
-       --Solution 3.å½“ä¸‰å¼ è¡¨æ—¶(ä¾‹å­ä¸æ˜¯ä¸‰å¼ è¡¨)ï¼Œè¿™ç§æ–¹æ³•æ¯”è¾ƒç®€å•ä¸€äº›
+       --Solution 3.µ±ÈıÕÅ±íÊ±(Àı×Ó²»ÊÇÈıÕÅ±í)£¬ÕâÖÖ·½·¨±È½Ï¼òµ¥Ò»Ğ©
 select e.ename, e.sal,
 (select d.dname from dept d where d.deptno=e.deptno) dname,
 (select d.loc from dept d where d.deptno=e.deptno) loc
 from empc e;
 
---21.å­æŸ¥è¯¢
+--21.×Ó²éÑ¯
        --WHERE:
-       --å•è¡Œå­æŸ¥è¯¢ï¼šæŸ¥è¯¢å¤§äºéƒ¨é—¨å·20çš„æœ€é«˜å·¥èµ„çš„å‘˜å·¥ä¿¡æ¯
+       --µ¥ĞĞ×Ó²éÑ¯£º²éÑ¯´óÓÚ²¿ÃÅºÅ20µÄ×î¸ß¹¤×ÊµÄÔ±¹¤ĞÅÏ¢
 select ename, sal from emp where sal>(select max(sal) from emp where deptno=20);
-       --å•è¡Œå­æŸ¥è¯¢ï¼šæŸ¥è¯¢ä¸SCOTTåŒéƒ¨é—¨çš„å‘˜å·¥ä¿¡æ¯
+       --µ¥ĞĞ×Ó²éÑ¯£º²éÑ¯ÓëSCOTTÍ¬²¿ÃÅµÄÔ±¹¤ĞÅÏ¢
 select ename, job from emp where deptno=(select deptno from emp where ename='SCOTT')
-       --å•è¡Œå­æŸ¥è¯¢ï¼šæŸ¥æ‰¾è–ªæ°´æ¯”æ•´ä¸ªæœºæ„å¹³å‡è–ªæ°´é«˜çš„å‘˜å·¥
+       --µ¥ĞĞ×Ó²éÑ¯£º²éÕÒĞ½Ë®±ÈÕû¸ö»ú¹¹Æ½¾ùĞ½Ë®¸ßµÄÔ±¹¤
 select ename, job, sal from emp where sal>(select avg(sal) from emp);
-       --å¤šè¡Œå­æŸ¥è¯¢ï¼šæŸ¥è¯¢éƒ¨é—¨æœ‰SALESMANä½†èŒä½ä¸æ˜¯SALESMANçš„å‘˜å·¥çš„ä¿¡æ¯ã€‚
+       --¶àĞĞ×Ó²éÑ¯£º²éÑ¯²¿ÃÅÓĞSALESMANµ«Ö°Î»²»ÊÇSALESMANµÄÔ±¹¤µÄĞÅÏ¢¡£
 select * from emp where deptno in (select deptno from emp where job='SALESMAN') and job<>'SALESMAN';
-       --å¤šè¡Œå­æŸ¥è¯¢ï¼šæŸ¥è¯¢æ¯”10å·éƒ¨é—¨æŸä¸ªå‘˜å·¥å·¥èµ„ç›¸ç­‰çš„å‘˜å·¥ä¿¡æ¯
+       --¶àĞĞ×Ó²éÑ¯£º²éÑ¯±È10ºÅ²¿ÃÅÄ³¸öÔ±¹¤¹¤×ÊÏàµÈµÄÔ±¹¤ĞÅÏ¢
 select * from emp where sal = any (select sal from emp where deptno = 10);
-       --å¤šåˆ—å­æŸ¥è¯¢ï¼š??????????????????????????????????????????????????????????????????????????
-       --EXISTSå…³é”®å­—ï¼šåˆ—å‡ºæ¥é‚£äº›æœ‰å‘˜å·¥çš„éƒ¨é—¨ä¿¡æ¯
+       --¶àÁĞ×Ó²éÑ¯£º??????????????????????????????????????????????????????????????????????????
+       --EXISTS¹Ø¼ü×Ö£ºÁĞ³öÀ´ÄÇĞ©ÓĞÔ±¹¤µÄ²¿ÃÅĞÅÏ¢
 select deptno, dname from dept d where EXISTS (select * from emp e where e.deptno=d.deptno);
        --HAVING:
-       --æŸ¥è¯¢æœ€ä½å·¥èµ„é«˜äºéƒ¨é—¨30çš„æœ€ä½å·¥èµ„çš„éƒ¨é—¨ä¿¡æ¯
+       --²éÑ¯×îµÍ¹¤×Ê¸ßÓÚ²¿ÃÅ30µÄ×îµÍ¹¤×ÊµÄ²¿ÃÅĞÅÏ¢
 select min(sal) from emp group by deptno having min(sal)<(select min(sal) from emp where deptno=30);
        
---22.åˆ†é¡µæŸ¥è¯¢
-       --æŸ¥è¯¢rownumå¤§äº2çš„æ‰€æœ‰è®°å½•
-select  rownum, e.* from emp e where rownum>2;--ERRORï¼Œå› ä¸ºæ²¡æœ‰ä»»ä½•è®°å½•ã€‚
+--22.·ÖÒ³²éÑ¯
+       --²éÑ¯rownum´óÓÚ2µÄËùÓĞ¼ÇÂ¼
+select  rownum, e.* from emp e where rownum>2;--ERROR£¬ÒòÎªÃ»ÓĞÈÎºÎ¼ÇÂ¼¡£
 select rownum, e.* from emp e where rownum>=1;
 select rownum, e.* from emp e where rownum<6;
-       --æ‰¾åˆ°å‘˜å·¥è¡¨ä¸­å·¥èµ„æœ€é«˜çš„å‰ä¸‰åï¼ˆé™åºæ’åºï¼‰ï¼š
+       --ÕÒµ½Ô±¹¤±íÖĞ¹¤×Ê×î¸ßµÄÇ°ÈıÃû£¨½µĞòÅÅĞò£©£º
                --ERROR
 select rownum, e.* from emp e order by sal desc where rownum<=3;
                --RIGHT
-select * from emp order by sal desc;--å…ˆé™åºï¼Œå†æŠŠå®ƒå½“æˆä¸€å¼ è¡¨ï¼Œå†å»é€‰rownumå°äºç­‰äº3çš„è¡Œã€‚
+select * from emp order by sal desc;--ÏÈ½µĞò£¬ÔÙ°ÑËüµ±³ÉÒ»ÕÅ±í£¬ÔÙÈ¥Ñ¡rownumĞ¡ÓÚµÈÓÚ3µÄĞĞ¡£
 select rownum, t1.* from (select * from emp order by sal desc) t1 where rownum <=3;
-       --æŸ¥è¯¢ç¬¬6~10æ¡è®°å½•(ä¸¤ç§æ–¹æ³•ï¼‰
+       --²éÑ¯µÚ6~10Ìõ¼ÇÂ¼(Á½ÖÖ·½·¨£©
 select * from (select rownum rn, e.* from emp e) t where t.rn between 6 and 10;
 select t1.* from (select rownum rn, emp.* from emp where rownum<=10) t1 where rn between 6 and 10;
-       --å·¥èµ„é™åºåé€‰6~10æ¡è®°å½•ï¼šåŸè¡¨å…ˆé™åºï¼Œå†åŠ ä¼ªåˆ—ï¼Œå†å½“æ–°è¡¨é€‰èŒƒå›´ã€‚
+       --¹¤×Ê½µĞòºóÑ¡6~10Ìõ¼ÇÂ¼£ºÔ­±íÏÈ½µĞò£¬ÔÙ¼ÓÎ±ÁĞ£¬ÔÙµ±ĞÂ±íÑ¡·¶Î§¡£
 select * from (select rownum rn, e.* from (select * from emp order by sal desc) e) t where t.rn between 6 and 10;
 
---23.DECODE(å‚æ•°1ï¼Œå€¼1ï¼Œç»“æœ1ï¼Œå€¼2ï¼Œç»“æœ2...[,é»˜è®¤å€¼]);
-       --æŸ¥è¯¢èŒå‘˜è¡¨ï¼Œæ ¹æ®èŒå‘˜çš„èŒä½è®¡ç®—å¥–åŠ±é‡‘é¢ï¼Œå½“èŒä½åˆ†åˆ«æ˜¯'MANAGER','SALESMAN','ANALYST'æ—¶ï¼Œå¥–åŠ±é‡‘åˆ†åˆ«æ˜¯è–ªæ°´çš„1.2,1.1,1.05å€ï¼Œå…¶å®ƒä¸ºåŸæœ¬çš„è–ªæ°´å€¼ã€‚
-select ename, job, sal, decode(job,'MANAGER',sal*1.2,'SALESMAN',sal*1.1,'ANALYST',sal*1.05,sal) "å¥–é‡‘" from emp;
+--23.DECODE(²ÎÊı1£¬Öµ1£¬½á¹û1£¬Öµ2£¬½á¹û2...[,Ä¬ÈÏÖµ]);
+       --²éÑ¯Ö°Ô±±í£¬¸ù¾İÖ°Ô±µÄÖ°Î»¼ÆËã½±Àø½ğ¶î£¬µ±Ö°Î»·Ö±ğÊÇ'MANAGER','SALESMAN','ANALYST'Ê±£¬½±Àø½ğ·Ö±ğÊÇĞ½Ë®µÄ1.2,1.1,1.05±¶£¬ÆäËüÎªÔ­±¾µÄĞ½Ë®Öµ¡£
+select ename, job, sal, decode(job,'MANAGER',sal*1.2,'SALESMAN',sal*1.1,'ANALYST',sal*1.05,sal) "½±½ğ" from emp;
 select decode(job,'MANAGER','VIP','ANALYST','VIP','OPERATION') from emp;
-       --åˆ†ç»„æ“ä½œï¼Œä¸èƒ½èµ·åˆ«å
+       --·Ö×é²Ù×÷£¬²»ÄÜÆğ±ğÃû
 select decode(job,'MANAGER','VIP','ANALYST','VIP','OPERATION') job, count(*) from emp group by decode(job,'MANAGER','VIP','ANALYST','VIP','OPERATION');
-       --è‡ªå®šä¹‰æ’åº
+       --×Ô¶¨ÒåÅÅĞò
 select * from emp order by decode(job,'MANAGER','1','SALESMAN','2','ANALYST','3');
 
 --24
        --union
-         --å·¥èµ„å¤§äº1500æˆ–20å·éƒ¨é—¨ä¸‹çš„å‘˜å·¥
+         --¹¤×Ê´óÓÚ1500»ò20ºÅ²¿ÃÅÏÂµÄÔ±¹¤
 select * from emp where sal>1500 or deptno=20;
-         --å·¥èµ„å¤§äº1500çš„
-select * from emp where sal>1500;--7æ¡è®°å½•       
-         --20å·éƒ¨é—¨ä¸‹çš„å‘˜å·¥
-select * from emp where deptno=20;--5æ¡è®°å½•
-         --å¹¶é›†è¿ç®—ï¼šunion(å¿½ç•¥é‡å¤æ•°æ®ï¼Œ9æ¡è®°å½•ï¼Œå¹¶æ’åº), union all(ä¸å¿½ç•¥é‡å¤æ•°æ®ï¼Œ12æ¡è®°å½•ï¼Œä¸æ’åº)
-select * from emp where sal>1500 union select * from emp where deptno=20;--å¹¶é›†ä¹‹åï¼Œæ€»å…±9æ¡è®°å½•
-       --INTERSECTï¼Œäº¤é›†
+         --¹¤×Ê´óÓÚ1500µÄ
+select * from emp where sal>1500;--7Ìõ¼ÇÂ¼       
+         --20ºÅ²¿ÃÅÏÂµÄÔ±¹¤
+select * from emp where deptno=20;--5Ìõ¼ÇÂ¼
+         --²¢¼¯ÔËËã£ºunion(ºöÂÔÖØ¸´Êı¾İ£¬9Ìõ¼ÇÂ¼£¬²¢ÅÅĞò), union all(²»ºöÂÔÖØ¸´Êı¾İ£¬12Ìõ¼ÇÂ¼£¬²»ÅÅĞò)
+select * from emp where sal>1500 union select * from emp where deptno=20;--²¢¼¯Ö®ºó£¬×Ü¹²9Ìõ¼ÇÂ¼
+       --INTERSECT£¬½»¼¯
 select * from emp where sal>1500 INTERSECT select * from emp where deptno=20;
-       --MINUSå·®é›†ï¼šä¸¤ä¸ªç»“æœç›¸å‡ã€‚
-         --1981å¹´å…¥èŒå‘˜å·¥(ä¸åŒ…æ‹¬æ€»è£å’Œç»ç†)
+       --MINUS²î¼¯£ºÁ½¸ö½á¹ûÏà¼õ¡£
+         --1981ÄêÈëÖ°Ô±¹¤(²»°üÀ¨×Ü²ÃºÍ¾­Àí)
 select * from emp where to_char(hiredate,'YYYY')='1981';
 select * from emp where job in ('PRESIDENT','MANAGER');
 select * from emp where to_char(hiredate,'YYYY')='1981' MINUS select * from emp where job in ('PRESIDENT','MANAGER');
-       --æ³¨æ„äº‹é¡¹ï¼š
+       --×¢ÒâÊÂÏî£º
 select empno,ename from emp where to_char(hiredate,'YYYY')='1981' MINUS select null,ename from emp where job in ('PRESIDENT','MANAGER');
 
---25.DDLè¯­å¥ç®¡ç†è¡¨ï¼š
-CREATE tablespace YYP datafile 'e:/YYP.dbf' size 100m autoextend on next 10m;--åˆ›å»º
-drop tablespace YYP;--åˆ é™¤ï¼ˆå–æ¶ˆå’Œæ–‡ä»¶çš„å…³è”ï¼Œä¸ä¼šåˆ é™¤æ–‡ä»¶ï¼‰ï¼ˆå–æ¶ˆå…³è”ä¹‹åï¼Œå¯ä»¥æ‰‹åŠ¨åˆ é™¤ï¼‰ã€‚
-create user zicheng identified by qqq default tablespace YYP;--åˆ›å»ºç”¨æˆ·
-drop user zicheng cascade;--åˆ é™¤ç”¨æˆ·
-alter user zicheng identified by eee;--ä¿®æ”¹å¯†ç 
-grant connect to zicheng;--æˆæƒ
-grant dba to zicheng;--åˆ†é…è§’è‰²
-      --ä½¿ç”¨å­æŸ¥è¯¢çš„æ–¹å¼åˆ›å»ºè¡¨ï¼š
-create table emp as select * from scott.emp;--åªå¤åˆ¶è¡¨ç»“æ„å’Œè¡¨æ•°æ®ï¼Œä¸ä¼šå¤åˆ¶åˆ—çš„çº¦æŸã€‚
-create table dept as select * from scott.dept where 1=2;--åªå¤åˆ¶è¡¨ç»“æ„ï¼Œæ— æ•°æ®,å› ä¸º1=2ä¸ºfalseã€‚
-insert into dept select * from scott.dept;--åªå¤åˆ¶è¡¨æ•°æ®,ä½†å‰ææ˜¯è¡¨çš„ç»“æ„ä¸å·²æœ‰è¡¨ç»“æ„ä¸€è‡´ã€‚
+--25.DDLÓï¾ä¹ÜÀí±í£º
+CREATE tablespace YYP datafile 'e:/YYP.dbf' size 100m autoextend on next 10m;--´´½¨
+drop tablespace YYP;--É¾³ı£¨È¡ÏûºÍÎÄ¼şµÄ¹ØÁª£¬²»»áÉ¾³ıÎÄ¼ş£©£¨È¡Ïû¹ØÁªÖ®ºó£¬¿ÉÒÔÊÖ¶¯É¾³ı£©¡£
+create user zicheng identified by qqq default tablespace YYP;--´´½¨ÓÃ»§
+drop user zicheng cascade;--É¾³ıÓÃ»§
+alter user zicheng identified by eee;--ĞŞ¸ÄÃÜÂë
+grant connect to zicheng;--ÊÚÈ¨
+grant dba to zicheng;--·ÖÅä½ÇÉ«
+      --Ê¹ÓÃ×Ó²éÑ¯µÄ·½Ê½´´½¨±í£º
+create table emp as select * from scott.emp;--Ö»¸´ÖÆ±í½á¹¹ºÍ±íÊı¾İ£¬²»»á¸´ÖÆÁĞµÄÔ¼Êø¡£
+create table dept as select * from scott.dept where 1=2;--Ö»¸´ÖÆ±í½á¹¹£¬ÎŞÊı¾İ,ÒòÎª1=2Îªfalse¡£
+insert into dept select * from scott.dept;--Ö»¸´ÖÆ±íÊı¾İ,µ«Ç°ÌáÊÇ±íµÄ½á¹¹ÓëÒÑÓĞ±í½á¹¹Ò»ÖÂ¡£
 select * from dept;
 
---26.åˆ—çš„çº¦æŸ
-       --æ£€æŸ¥çº¦æŸ
+--26.ÁĞµÄÔ¼Êø
+       --¼ì²éÔ¼Êø
 CREATE TABLE users(
-      id number(10) primary key,--ä¸»é”®
-      name varchar2(20) unique,--å”¯ä¸€æ ‡è¯†
-      sex varchar2(2) check(sex in ('ç”·' ,'å¥³')),--æ£€æŸ¥çº¦æŸ
+      id number(10) primary key,--Ö÷¼ü
+      name varchar2(20) unique,--Î¨Ò»±êÊ¶
+      sex varchar2(2) check(sex in ('ÄĞ' ,'Å®')),--¼ì²éÔ¼Êø
       salary number(10,2) check(salary>3000),
       create_time date default sysdate
 );
-insert into users values(1,'admin','ç”·',3500,default);
-       --å¤–é”®çº¦æŸ
+insert into users values(1,'admin','ÄĞ',3500,default);
+       --Íâ¼üÔ¼Êø
 create table category(
        id number(10) primary key,
        cname varchar2(10)
@@ -359,76 +359,76 @@ create table category(
 create table books(
        book_id number(10) primary key,
        book_name varchar2(20) not null,
-       price number(10,2) check(price>100),--æ£€æŸ¥çº¦æŸ
-       cid number(10)  not null references category(id)--å¤–é”®çº¦æŸ
-       --foreign key(cid) references category(id)--å¦ä¸€ç§å¤–é”®çº¦æŸçš„æ–¹å¼
+       price number(10,2) check(price>100),--¼ì²éÔ¼Êø
+       cid number(10)  not null references category(id)--Íâ¼üÔ¼Êø
+       --foreign key(cid) references category(id)--ÁíÒ»ÖÖÍâ¼üÔ¼ÊøµÄ·½Ê½
 );
-                 --å¯ä»¥ä¸åœ¨å®šä¹‰è¡¨ä¸­å»ºç«‹å¤–é”®çº¦æŸï¼Œå•ç‹¬ç”¨æ­¤è¯­å¥ä¹Ÿå¯å®ç°å¤–é”®çº¦æŸã€‚
+                 --¿ÉÒÔ²»ÔÚ¶¨Òå±íÖĞ½¨Á¢Íâ¼üÔ¼Êø£¬µ¥¶ÀÓÃ´ËÓï¾äÒ²¿ÉÊµÏÖÍâ¼üÔ¼Êø¡£
 alter table books add foreign key(cid) references category(id);
-            --ä¾‹å­ï¼š
-insert into category values(1,'å°è¯´');
-insert into category values(2,'æ–‡å­¦');
-insert into category values(3,'ä¼ è®°');
+            --Àı×Ó£º
+insert into category values(1,'Ğ¡Ëµ');
+insert into category values(2,'ÎÄÑ§');
+insert into category values(3,'´«¼Ç');
 select * from category;
-insert into books values(1,'è¥¿æ¸¸è®°',101,1);
+insert into books values(1,'Î÷ÓÎ¼Ç',101,1);
 select * from books;
-            --ä¸èƒ½åˆ é™¤å¤–é”®ï¼Œå› ä¸ºä»è¡¨ä¸­æœ‰ç›¸å…³çš„å·²å»ºç«‹å…³è”çš„å¤–é”®çº¦æŸ
+				 --²»ÄÜÉ¾³ıÍâ¼ü£¬ÒòÎª´Ó±íÖĞÓĞÏà¹ØµÄÒÑ½¨Á¢¹ØÁªµÄÍâ¼üÔ¼Êø
 delete from category where id=1;
-delete from books where cid=1;--åˆ é™¤å¤–é”®å…³è”çš„ä¸¤ç§æ–¹æ³•
-update books set cid=null where cid=1;--ç„¶åå†åˆ é™¤ä¸»è¡¨ä¸­çš„æ•°æ®å°±okã€‚
+delete from books where cid=1;--É¾³ıÍâ¼ü¹ØÁªµÄÁ½ÖÖ·½·¨
+update books set cid=null where cid=1;--È»ºóÔÙÉ¾³ıÖ÷±íÖĞµÄÊı¾İ¾Íok¡£
 
---27.è§†å›¾
-       --åˆ›å»ºä¸€ä¸ªç®€å•è§†å›¾v_emp_10æ¥æ˜¾ç¤ºéƒ¨é—¨10ä¸­çš„å‘˜å·¥çš„ç¼–ç ã€å§“åå’Œè–ªæ°´ã€‚
+--27.ÊÓÍ¼
+       --´´½¨Ò»¸ö¼òµ¥ÊÓÍ¼v_emp_10À´ÏÔÊ¾²¿ÃÅ10ÖĞµÄÔ±¹¤µÄ±àÂë¡¢ĞÕÃûºÍĞ½Ë®¡£
 create view v_emp_10 as select empno,ename,sal,deptno from emp where deptno=10;
-       --ä¿®æ”¹è§†å›¾å°±æ˜¯æ›¿æ¢è¯¥è§†å›¾çš„å­æŸ¥è¯¢ï¼Œä½¿ç”¨create or replace view è§†å›¾å å³å¯ï¼Œè‹¥è§†å›¾ä¸å­˜åœ¨å°±åˆ›å»ºï¼Œå­˜åœ¨å°±æ›¿æ¢ã€‚åˆ›å»ºè§†å›¾æ—¶ï¼Œå¯ä»¥ç»™åˆ—èµ‹äºˆåˆ«åã€‚
+       --ĞŞ¸ÄÊÓÍ¼¾ÍÊÇÌæ»»¸ÃÊÓÍ¼µÄ×Ó²éÑ¯£¬Ê¹ÓÃcreate or replace view ÊÓÍ¼Ãû ¼´¿É£¬ÈôÊÓÍ¼²»´æÔÚ¾Í´´½¨£¬´æÔÚ¾ÍÌæ»»¡£´´½¨ÊÓÍ¼Ê±£¬¿ÉÒÔ¸øÁĞ¸³Óè±ğÃû¡£
 create or replace view v_emp_10 as select empno id,ename name,sal,deptno from emp where deptno=10;
-       --æŸ¥è¯¢è§†å›¾
+       --²éÑ¯ÊÓÍ¼
 select * from v_emp_10;
-       --è§†å›¾çš„DMLæ“ä½œ,ä¼šä¿®æ”¹åŸè¡¨çš„æ•°æ®
+       --ÊÓÍ¼µÄDML²Ù×÷,»áĞŞ¸ÄÔ­±íµÄÊı¾İ
 insert into v_emp_10 values(1,'Tony',8888,50)
 select * from emp;
        --with check option
 create or replace view v_emp_10 as select empno id,ename name,sal,deptno from emp where deptno=10 with check option
-       --with read onlyåªè¯»ï¼Œä¸èƒ½å¯¹è§†å›¾è¿›è¡ŒDMLæ“ä½œã€‚
+       --with read onlyÖ»¶Á£¬²»ÄÜ¶ÔÊÓÍ¼½øĞĞDML²Ù×÷¡£
 create or replace view v_emp_10 as select empno,ename,sal,deptno from emp where deptno=10 with read only;
-       --åˆ›å»ºä¸€ä¸ªè§†å›¾v_emp_salary,æŠŠèŒå‘˜è¡¨ä¸­çš„æ•°æ®æŒ‰éƒ¨é—¨åˆ†ç»„ï¼Œè·å¾—æ¯ä¸ªéƒ¨é—¨çš„å¹³å‡è–ªæ°´ã€è–ªæ°´æ€»å’Œã€æœ€ä½è–ªæ°´ã€‚
+       --´´½¨Ò»¸öÊÓÍ¼v_emp_salary,°ÑÖ°Ô±±íÖĞµÄÊı¾İ°´²¿ÃÅ·Ö×é£¬»ñµÃÃ¿¸ö²¿ÃÅµÄÆ½¾ùĞ½Ë®¡¢Ğ½Ë®×ÜºÍ¡¢×îµÍĞ½Ë®¡£
 create view v_emp_salary as select d.dname, avg(sal) avg_sal,sum(sal) sum_sal,min(sal) min_sal,max(sal) max_sal from emp e, dept d where e.deptno=d.deptno group by d.deptno, d.dname;
 select * from v_emp_salary;
-       --drop view è§†å›¾åç§°ï¼šåˆ é™¤è§†å›¾
+       --drop view ÊÓÍ¼Ãû³Æ£ºÉ¾³ıÊÓÍ¼
 drop view v_emp_slary;
 
---28.åºåˆ—
-     --å»ºè¡¨ã€å»ºç«‹åºåˆ—ã€æ’å…¥åŸºè¡¨ã€åˆ é™¤åºåˆ—
+--28.ĞòÁĞ
+     --½¨±í¡¢½¨Á¢ĞòÁĞ¡¢²åÈë»ù±í¡¢É¾³ıĞòÁĞ
 CREATE TABLE users(
-      id number(10) primary key,--ä¸»é”®
-      name varchar2(20), --unique,--å”¯ä¸€æ ‡è¯†
+      id number(10) primary key,--Ö÷¼ü
+      name varchar2(20), --unique,--Î¨Ò»±êÊ¶
       salary number(10,2),
       create_time date default sysdate
 );
-      --å»ºç«‹åºåˆ—ï¼šcreate sequence åºåˆ—å start with **(èµ·å§‹æ•°æ®) increment by **(æ­¥é•¿,æ¯æ¬¡å¢åŠ å‡ ï¼Œå¯æ­£å¯è´Ÿ) maxvalue **(æœ€å¤§å€¼) / minvalue **(æœ€å°å€¼);
-create sequence users_seq start with 100 increment by 10;--å»ºç«‹åºåˆ—,ç¬¬ä¸€æ¬¡ä¸€å®šè¦ç”¨nextvalï¼Œä¸èƒ½ç”¨currval
-insert into users(id,name)values(users_seq.nextval,'é©¬å†¬æ¢…');--æ’å…¥åŸºè¡¨
-select users_seq.currval from dual;--æŸ¥çœ‹å½“å‰åºåˆ—å€¼ã€‚
-drop sequence users_seq;--åˆ é™¤åºåˆ—
-     --å¾ªç¯æ’å…¥
+      --½¨Á¢ĞòÁĞ£ºcreate sequence ĞòÁĞÃû start with **(ÆğÊ¼Êı¾İ) increment by **(²½³¤,Ã¿´ÎÔö¼Ó¼¸£¬¿ÉÕı¿É¸º) maxvalue **(×î´óÖµ) / minvalue **(×îĞ¡Öµ);
+create sequence users_seq start with 100 increment by 10;--½¨Á¢ĞòÁĞ,µÚÒ»´ÎÒ»¶¨ÒªÓÃnextval£¬²»ÄÜÓÃcurrval
+insert into users(id,name)values(users_seq.nextval,'Âí¶¬Ã·');--²åÈë»ù±í
+select users_seq.currval from dual;--²é¿´µ±Ç°ĞòÁĞÖµ¡£
+drop sequence users_seq;--É¾³ıĞòÁĞ
+     --Ñ­»·²åÈë
 begin
     for i in  1..10000
     loop
-        insert into users(id,name,salary) values( users_seq.nextval,'ç¬é—´çˆ†ç‚¸',8888);
+        insert into users(id,name,salary) values( users_seq.nextval,'Ë²¼ä±¬Õ¨',8888);
     end loop;
     commit;
 end;
 
---29.ç´¢å¼•
-    --åˆ›å»ºç´¢å¼•ï¼šcreate [unique] index ç´¢å¼•åç§° on è¡¨å(åˆ—å)
-create index idx_users_name on users(name);--åœ¨usersè¡¨çš„enameåˆ—ä¸Šå»ºç«‹ç´¢å¼•
-    --æ·»åŠ å¤šåˆ—ç´¢å¼•ï¼š
+--29.Ë÷Òı
+    --´´½¨Ë÷Òı£ºcreate [unique] index Ë÷ÒıÃû³Æ on ±íÃû(ÁĞÃû)
+create index idx_users_name on users(name);--ÔÚusers±íµÄenameÁĞÉÏ½¨Á¢Ë÷Òı
+    --Ìí¼Ó¶àÁĞË÷Òı£º
 create index idx_users_salary on users(name,salary);
-    --æŸ¥è¯¢è¿‡ç¨‹ä¸­è‡ªåŠ¨åº”ç”¨ç´¢å¼•ï¼Œä¸éœ€è¦å•ç‹¬å»åˆ¶å®šï¼Œæé«˜æŸ¥è¯¢é€Ÿåº¦ã€‚
+    --²éÑ¯¹ı³ÌÖĞ×Ô¶¯Ó¦ÓÃË÷Òı£¬²»ĞèÒªµ¥¶ÀÈ¥ÖÆ¶¨£¬Ìá¸ß²éÑ¯ËÙ¶È¡£
 select users.* from users order by name, salary;
-    --é‡æ„ç´¢å¼•ï¼ˆç´¢å¼•æ˜¯å¹³è¡¡äºŒå‰æ ‘ï¼Œä¿®æ”¹è¡¨åï¼Œæœ€å¥½é‡æ„ä¸€ä¸‹ç´¢å¼•çš„å¹³è¡¡äºŒå‰æ ‘ï¼‰
-alter index ç´¢å¼•åç§° rebuild;--ç»å¸¸ä¿®æ”¹æ•°æ®çš„è¡¨ï¼Œä¸å»ºè®®å»ºç«‹ç´¢å¼•ã€‚
-    --åˆ é™¤ç´¢å¼•ï¼š
+    --ÖØ¹¹Ë÷Òı£¨Ë÷ÒıÊÇÆ½ºâ¶ş²æÊ÷£¬ĞŞ¸Ä±íºó£¬×îºÃÖØ¹¹Ò»ÏÂË÷ÒıµÄÆ½ºâ¶ş²æÊ÷£©
+alter index Ë÷ÒıÃû³Æ rebuild;--¾­³£ĞŞ¸ÄÊı¾İµÄ±í£¬²»½¨Òé½¨Á¢Ë÷Òı¡£
+    --É¾³ıË÷Òı£º
 drop index idx_users_salary;
 
 
@@ -439,7 +439,7 @@ drop index idx_users_salary;
 
 
 
---ç»ƒä¹ 
+--Á·Ï°
 create table student(
        id number(10) not null,
        name varchar2(20),
@@ -447,14 +447,14 @@ create table student(
        school varchar2(20),
        create_time date
 );
---ä¿®æ”¹è¡¨åstudent_t
+--ĞŞ¸Ä±íÃûstudent_t
 rename student to student_t;
---æ·»åŠ å­—æ®µï¼šç§‘ç›®projectï¼Œæˆç»©score
+--Ìí¼Ó×Ö¶Î£º¿ÆÄ¿project£¬³É¼¨score
 alter table student_t add(project varchar2(20), score number(3));
---åˆ é™¤å­¦æ ¡å­—æ®µ
+--É¾³ıÑ§Ğ£×Ö¶Î
 alter table student_t drop(school);
---ä¿®æ”¹å­—æ®µæ ¼å¼
+--ĞŞ¸Ä×Ö¶Î¸ñÊ½
 alter table student_t modify(create_time varchar2(20) default sysdate);
---ä¿®æ”¹è¡¨ä¸­å­—æ®µåç§°ï¼Œnameæ”¹ä¸ºstu_name
+--ĞŞ¸Ä±íÖĞ×Ö¶ÎÃû³Æ£¬name¸ÄÎªstu_name
 alter table student_t rename column name to stu_name;
 
