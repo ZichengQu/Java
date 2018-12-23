@@ -1,0 +1,17 @@
+﻿DBUtil：
+	 实现JDBC的工具类
+	 定义静态方法，直接返回数据库的连接对象
+	 定义静态方法，关闭所有资源
+ 
+JDBCDemo01：
+ 	使用了DBUtil工具类
+	 使用PrepareStatement，实现模糊查询：ps.setString(1, "%"+condition+"%");
+ 
+JDBCDemo02：
+	JDBC读取数据表users，每行数据封装到USers类的对象中。
+
+JDBCDemo03：
+	银行转账
+	conn.setAutoCommit(false);//将事务的自动提交取消。
+	conn.commit();//手动提交事务，可将上面的逻辑全部控制在一个事务中。
+	conn.rollback();//回滚事务。

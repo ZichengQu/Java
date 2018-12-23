@@ -1,0 +1,49 @@
+JDBCDemo01：
+	1.基本流程
+		(1)连接数据库/加载驱动类(注册驱动):
+			1)Class.forName("oracle.jdbc.driver.OracleDriver");//加载驱动类(注册驱动)
+			      或DriverManager.registerDriver(new OracleDriver());
+			2)Connection conn = DriverManager.getConnection(url, user, pwd);//创建连接对象
+		(2)Statement statement = conn.createStatement();//通过Connection对象创建Statement对象
+		(3)增删改/查询，都要传参。
+		(4)释放资源
+	2.DML增删改:int rows = statement.executeUpdate(sql);//影响了多少行//执行sql语句（DML）,要传参。
+	3.DQL查询:
+		(1)ResultSet rs = statement.executeQuery(sql);//执行sql语句（DQL）并获取结果集,要传参。
+		(2)ResultSet的boolean next();
+		(3)getInt(),getString(),getDouble(),getDate(),getObject();//getInt(1),getInt(empno);//获取第一列，或直接写列名。
+	4.规范写法;
+
+JDBCDemo02:
+	Java程序实现用户登录，验证用户名和密码.
+	演示SQL注入攻击。
+	1.连接数据库
+	2.输入用户名和密码及sql语句拼接
+	3.通过Connection对象创建Statement对象
+	4.执行sql语句（例子是查询）
+	5.获取结果集，并用next()进行数据判断用户是否登陆成功。
+	6.释放资源
+	
+JDBCDemo03:	
+	使用PrepareStatement，实现数据表的查询操作。
+	PreparedStatement:预编译（sql是否合符规范），是Statement接口的子接口，防止SQL攻击（不是主要性能），提高代码的可读性，可维护性，提高效率。
+	1.连接数据库
+	2.输入用户名和密码及sql语句拼接(这里是用？进行拼接)//String sql = "select * from users where username=? and password=?";
+	3.创建PrepareStatement预编译对象,因为PrepareStatement是接口，其实现类为Statement对象
+		1)ps = conn.prepareStatement(sql);//会预编译sql.//调用Connection接口的方法prepareStatement，获取PrepareStatement接口的实现类。
+		2)ps.setString(1, name);//调用PrepareStatement对象setXXX()方法，给问号赋值。1和2是占位参数，表示第几个问号。
+	4.调用方法，执行sql语句，获取结果集
+		rs = ps.executeQuery();//因为prepareStatement已经预编译过sql，所以statement.executeQuery()不需要传sql参数了。
+	5.遍历结果集
+	6.释放资源
+	
+JDBCDemo04:
+	使用PrepareStatement，实现数据表的更新操作。
+	1.连接数据库
+	2.输入要修改的用编号和新用户名及sql语句拼接(这里是用？进行拼接)
+	3.创建PrepareStatement预编译对象,因为PrepareStatement是接口，其实现类为Statement对象
+		1)ps = conn.prepareStatement(sql);//会预编译sql.//调用Connection接口的方法prepareStatement，获取PrepareStatement接口的实现类。
+		2)ps.setString(1, name);//调用PrepareStatement对象setXXX()方法，给问号赋值。1和2是占位参数，表示第几个问号。
+	4.执行sql语句
+		int rows = ps.executeUpdate();//因为prepareStatement已经预编译过sql，所以statement.executeUpdate()不需要传sql参数了。
+	5.释放资源
