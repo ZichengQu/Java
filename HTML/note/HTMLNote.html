@@ -159,12 +159,12 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 		tr元素定义表格的行，th元素定义表头，td元素定义单元格;		
 		table元素:
 			--width:设置表格宽度;
-			--heithg:姐姐设置表格高度;
+			--height:设置表格高度;
 			--align:设置表格对齐方式;
 			--border:蛇者表格边框宽度，border默认值为0，无边框;
-			--cellpadding:设置内边距()单元格边框与内容之间的距离;
-			--cellspacing:设置表格背景颜色;
-			--bgcolor
+			--cellpadding:设置内边距(单元格边框与内容之间的距离);
+			--cellspacing:单元格之间的距离;
+			--bgcolor:设置表格背景颜色;
 		tr元素:
 			--align:设置表格对齐方式;
 			--valign:设置垂直对齐方式(top/middle/bottom);
@@ -327,9 +327,10 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 				5)隐藏于和文件选项框：
 					隐藏域：<input type="hidden" value="Cannot find me" />
 					文件选项框：<input type="file" />
-					注意：
-						a.表单的method必须为post （因为不能超过2KB和二进制限制）
-						b.表单的enctype必须为multipat/form-data
+						文件选项框注意：
+							a.表单的method必须为post;
+							b.因为get方式不能超过2KB;
+							b.因为二进制限制，表单的enctype必须为multipat/form-data;
 		(2)input元素总结:
 			<input type="text"/>:text,password,radio,checkbox,submit,reset,button,hidden,file
 			name：名称(若是用于单选或复选按钮，则名称必须相同);
