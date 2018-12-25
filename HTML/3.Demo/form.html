@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form</title>
+	</head>
+	<body>
+		<form method="post">
+			<!-- 用户名和密码 -->
+			<span>username：</span>
+			<input name="username" maxlength="10" value="default"/>
+			<br />
+			<span>password：</span>
+			<input type="password" />
+			<br />
+			<!-- 单选按钮 -->
+			<span>sex:</span>
+			<input type="radio" name="sex" checked="checked"/>man
+			<input type="radio" name="sex" />woman
+			<br />
+			<!-- 复选按钮 -->
+			<span>checkbox demo:</span>
+			<input type="checkbox" name="star" value="number1" checked="checked"/>number1
+			<input type="checkbox" name="star" value="number2"/>number2
+			<br />
+			<!-- 隐藏域 -->
+			<input type="hidden" value="Cannot find me" />
+			<br />
+			<!-- 文件选项框 -->
+			<span>请选择文件：</span>
+			<input type="file" />
+			<br />
+			<!-- 按钮 -->
+			<input type="submit" />
+			<input type="reset" />
+			<input type="button" value="Click Me" onclick="javascript:alert('Notification');"/>
+		</form>		
+	</body>
+</html>
