@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form>
+			爱好:<input type="checkbox" id="swim"/><label for="swim">游泳</label>
+				<input type="checkbox" id="basketball"/><label for="basketball">篮球</label>
+				<input type="checkbox" id="football"/><label for="football">足球</label>
+			<br />
+			地区:<select name="position" size="4" multiple="multiple">
+					<option value="sy" >沈阳</option>
+					<option value="dl">大连</option>
+					<option value="jl">吉林</option>
+					<option value="harbin">哈尔滨</option>
+					<option value="bj" selected="selected">北京</option>
+				</select>
+			<br />
+			备注:<textarea name="remark" cols="20" rows="10" readonly="readonly">
+					文本区域
+				</textarea>
+			<br />
+			<fieldset style="width: 50%;">
+				<legend>地址信息</legend>
+				地址:<input /><br />
+				邮箱:<input /><br />
+			</fieldset>
+			<br />
+			<iframe src="https:www.baidu.com" width="500px" height="500px" frameborder="0">
+				百度
+			</iframe>
+			<br />
+			邮箱:<input type="email" /><input type="submit" />
+			<br />
+			请输入关键字:<input type="search" />
+			<br />
+			请输入URL:<input type="url" /><input type="submit" />
+			<br />
+			评分:<input type="number"  min="1" max="10" step="2"/>
+			<br />
+			请选择日期:<input type="date" />
+			<br />
+			<mark>高亮文本显示</mark>
+			<br />
+			<button onclick="alert('Notification!')">按钮</button>
+		</form>
+	</body>
+</html>
