@@ -85,7 +85,9 @@ HTMLNote.html: https://github.com/ZichengQu/Java/blob/HTML/HTML/note/HTMLNote.ht
 
 CSS
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+CSS.html,CSS笔记: https://github.com/ZichengQu/Java/blob/CSS/note/CSS.html
+CSS优先级演示: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/index.html
+选择器类型: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/css2.html
 
 
 
