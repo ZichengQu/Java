@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style >
+			.red{
+				color: red;
+				font-size: 20px;
+				font-weight: bold;
+			}
+			p.red{/*结合元素选择器*/
+				font-size: 200px;
+			}
+			#xr{/*id选择器*/
+				background-color: pink;
+			}
+			#xr,.red,p.red{/*群组选择器*/
+				...
+			}
+			h1 .a{/*后代选择器,h1后面要有空格*/
+				color: red;
+			}
+			.nav1 li{/*后代选择器*/
+				color: blue;
+			}
+			.nav2>li{/*子代选择器*/
+				color: green;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="red">熊大</div> <!-- 类选择器 -->
+		<div id="xr"> 熊二</div> <!-- id选择器 -->
+		<p>小强</p> <!-- 无属性,不是结合元素选择器 -->
+		<p class="red">光头强</p> <!-- 结合元素选择器 -->
+		<h1> 
+			<p class="a">演示p</p> 
+			<span class="a">演示span</span>
+		</h1>
+		
+		<ul class="nav1"> <!-- 后代选择器,所有li均变颜色 -->
+			<li>一级菜单</li>
+			<ul>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+			</ul>
+		</ul>
+		
+		<ul class="nav2">
+			<li>一级菜单</li> <!-- 子代选择器,只有这个li变颜色 -->
+			<ul>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+				<li>二级菜单</li>
+			</ul>			
+		</ul>						
+	</body>
+</html>
