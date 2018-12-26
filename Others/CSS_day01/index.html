@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<!--<link rel="stylesheet" href="css/style.css" />-->
+		<style >			
+			.pink{/*自定义*//*类选择器*/
+				color: pink;
+				font-size: 20px;
+				background-color: black;
+				font-weight: 1000; /*加粗*/
+			}
+			.orange{/*!important*/
+				color: orange!important;
+			}
+			div{
+				color: aqua;
+				font-size: 20px;
+			}
+			div{/*就近原则*/		
+				font-size: 50px;
+			}
+		</style>
+	</head>
+	<body >						
+		<div >
+			<p>段落1</p> <!-- color: aqua; font-size: 50px; -->
+		</div>
+		<div class="pink">
+			<p>段落2</p> <!-- .pink -->
+		</div>	
+		<div class="pink" style="color: red;">
+			<p>段落3</p> <!-- 内联优先级最高，所以是red -->
+		</div>
+		<div class="orange" style="color: red;">
+			<p>段落4</p> <!-- !important优先级最高，所以是orange -->
+		</div>
+		<div class="orange pink" style="color: red;"> <!-- 多类选择器 -->
+			<p>段落5</p> <!-- !important优先级最高，所以是orange -->
+		</div>
+	</body>
+</html>
