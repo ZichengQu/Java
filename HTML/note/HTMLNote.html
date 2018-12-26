@@ -345,8 +345,9 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 			URL:请输入URL:<input type="url" /><input type="submit" />
 			数字类型:评分:<input type="number"  min="1" max="10" step="2"/>,属性:min(当前域能接受的最小值)，max(当前域能接受的最大值)，step(步长)
 			日期描述:请选择日期:<input type="date" />
-			button:<button onclick="alert('Notification!')">按钮</button>
-			高亮文本显示:<mark>高亮文本显示</mark>			
+			颜色:<input type="color" />
+			button:<button onclick="alert('Notification!')">按钮</button> <!-- 该元素放在form中则为提交按钮(会刷新表单)，否则为普通按钮(IE除外) -->
+			高亮文本显示:<mark>高亮文本显示</mark>
 		(4)例子：
 			<form method="post">
 				<!-- 用户名和密码 -->
@@ -377,9 +378,8 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 				<input type="submit" />
 				<input type="reset" />
 				<input type="button" value="Click Me" onclick="javascript:alert('Notification');"/>
-			</form>
-		(5)登陆框：https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo
-		(6)其它控件：
+			</form>		
+		(5)其它控件：
 			1)<lable></lable>元素：将文本与控件联系在一起，单击文本，效果就如同单机控件一样。
 				主要属性：for：要关联的表单控件的id值
 				例子：
@@ -433,24 +433,4 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 					<iframe src="https:www.baidu.com" width="500px" height="500px" frameborder="0">
 						百度
 					</iframe>
-
-			
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		(6)登陆框：https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo
