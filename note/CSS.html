@@ -1,0 +1,231 @@
+CSS:
+	定义:层叠样式表，又叫级联样式表，简称样式表;用于HTML文档中元素的样式定义。
+	特点:1.实现将内容与表现相分离。2.提高代码的可重用性和可维护性。
+一、HTML与CSS的关系：
+	HTML用于构建网页的结构;CSS负责构建HTML页面元素的样式;HTML是页面的内容组成，CSS是页面的表现。
+二、CSS样式表：
+	1.内联方式:将样式定义在单个的HTML元素中;
+		color:red; background-color:green; font-size:24px; 文本颜色的样式属性，背景颜色的样式属性，文本大小的样式属性。
+		<div style="background-color: red; color: blue; font-size: 100px;">标题1</div>
+	2.内部样式表:将样式定义在HTML页的头元素中;
+		特点:
+			1.应用范围为整个页面而不是某一个别元素,能够提升可重用性和可维护性，同时体现内容与表现相分离;
+			2.在style元素中添加样式规则,可以定义多个样式规则,每个样式规则有两个部分：选择器和样式声明
+				<head>
+					<meta charset="utf-8" />
+					<title></title>
+					<style> /*内部样式表*/
+						h1{
+							...
+						}
+						p{
+							color: yellow;
+							background-color: black;
+							font-size: 24px;
+						}		
+					</style>
+				</head>
+				<body text="blue" bgcolor="silver">				
+					<h1><marquee>标题1</marquee></h1>
+					<div style="background-color: black; color: yellow; font-size: 48px;">div1</div> /*内联方式*/
+					<p>段落2</p>
+				</body>
+	3.外部样式表:将样式定义在一个外部CSS文件中(.css文件)，由HTML页面引用样式表文件。
+		(1)创建单独的样式表文件(*.css),在该文件中可以编写若干样式规则
+		(2)在需要使用该样式表文件的页面上，引入样式表文件，在页面的head元素中添加一下代码:<link rel="stylesheet" href="样式表文件的url"/>
+			<link rel="stylesheet" href="css/style.css" />			
+三、CSS语法
+	1.CSS语法规范：
+		内联规则:由样式声明组成.
+		样式表(内部样式表或者外部样式表):由多个样式表规则组成，每个样式规则由两个小部分组成:选择器和声明.
+	2.CSS样式表特征:
+		(1)继承性:所谓继承性是指书写CSS样式表时，子标签会继承父标签的某些样式，如文本颜色和字号，想要设置一个可继承的属性，只需要将它应用于父元素即可。子元素可以继承父元素的样式(text-,font-,line-开头&&color的属性)
+			<div style="color: pink; font-size: 20px;">
+				<p>段落</p>
+			</div>
+		(2)层叠性:CSS处理冲突的能力(样式冲突，遵循就近原则).
+			注意:层叠性只有在多个选择器选中"同一个标签"，然后又设置了"相同的属性"，才会发生层叠性。
+		(3)优先级:样式定义冲入(重复)时，会按照不同样式的优先级来应用样式。
+			低:浏览器缺省设置
+			中:外部样式表或内部样式表(就近原则)
+			高:内联样式
+			!important:调整显示样式属性(不是选择器)的优先级，只要都以!important为主
+			注意:继承的样式和自定义样式冲突时，永远都是以自定义优先。		
+		(4)例子：
+			<!DOCTYPE html>
+			<html>
+				<head>
+					<meta charset="utf-8" />
+					<title></title>
+					<!--<link rel="stylesheet" href="css/style.css" />-->
+					<style >			
+						.pink{/*自定义*//*类选择器*/
+							color: pink;
+							font-size: 20px;
+							background-color: black;
+							font-weight: 1000; /*加粗*/
+						}
+						.orange{/*!important*/
+							color: orange!important;
+						}
+						div{
+							color: aqua;
+							font-size: 20px;
+						}
+						div{/*就近原则*/		
+							font-size: 50px;
+						}
+					</style>
+				</head>
+				<body >						
+					<div >
+						<p>段落1</p> <!-- color: aqua; font-size: 50px; -->
+					</div>
+					<div class="pink">
+						<p>段落2</p> <!-- .pink -->
+					</div>	
+					<div class="pink" style="color: red;">
+						<p>段落3</p> <!-- 内联优先级最高，所以是red -->
+					</div>
+					<div class="orange" style="color: red;">
+						<p>段落4</p> <!-- !important优先级最高，所以是orange -->
+					</div>
+					<div class="orange pink" style="color: red;"> <!-- 多类选择器 -->
+						<p>段落5</p> <!-- !important优先级最高，所以是orange -->
+					</div>
+				</body>
+			</html>
+四、CSS基础选择器
+	1.选择器的作用:规范了页面中哪些元素能够使用定义好的样式，同时也帮助我们去匹配页面上的元素
+	2.选择器
+		(1)通用选择器(了解)
+			1)作用:匹配页面上所有的元素
+			2)语法:*{样式声明;}
+				<style >
+					*{
+						...
+					}
+				</style>
+			3)注意:效率低，尽可能通过继承性去代替通用选择器的效果，它常用来设置一些默认样式。
+		(2)元素选择器(标签选择器，标记选择器)(重点)
+			1)作用:匹配页面上某一指定元素
+			2)语法:
+				元素{}
+				div{color:pink;}
+				p{font-size:20px;}
+		(3)类选择器(重点)
+			1)作用:允许元素使用附带的class属性值，对选择器进行引用
+			2)语法:以.作为开始，类名以"字母，数字，_"组成,不能以数字开始，     .类名{样式声明;}
+			3)多类选择器:
+				作用:可以让一个元素同时引用多个类选择器，中间用空格分开即可
+		(4)结合元素选择器
+			语法:元素选择器。类选择器{样式声明;}
+		(5)id选择器(重点)
+			作用:只匹配指定id值的元素
+			语法:#id{样式声明;}
+			例子：	
+				#xr{
+					background-color: pink;
+				}				
+		(6)群组选择器
+			作用:选择器声明以逗号隔开的选择器列表，其目的是为了声明一组选择器中的公共样式。
+			语法:选择器1，选择器2，选择器3...{样式声明;}
+		(7)后代选择器
+			作用:又称为包含选择器，用于选择作为某元素后代的元素(可选儿子，孙子，重孙子)
+			注意:选择器一端包含两个或多个用空格分隔的选择器
+			语法:
+				选择器1 选择器2{样式声明;} <!-- 如果是自定义的就写. -->
+		(8)子代选择器
+			作用:选择某个元素的子元素(只选亲儿子)
+			语法:选择器1>选择器2(样式声明;)
+		(9)例子:
+			<!DOCTYPE html>
+			<html>
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<style >
+						.red{
+							color: red;
+							font-size: 20px;
+							font-weight: bold;
+						}
+						p.red{/*结合元素选择器*/
+							font-size: 200px;
+						}
+						#xr{/*id选择器*/
+							background-color: pink;
+						}
+						#xr,.red,p.red{/*群组选择器*/
+							...
+						}
+						h1 .a{/*后代选择器,h1后面要有空格*/
+							color: red;
+						}
+						.nav1 li{/*后代选择器*/
+							color: blue;
+						}
+						.nav2>li{/*子代选择器*/
+							color: green;
+						}
+					</style>
+				</head>
+				<body>
+					<div class="red">熊大</div> <!-- 类选择器 -->
+					<div id="xr"> 熊二</div> <!-- id选择器 -->
+					<p>小强</p> <!-- 无属性,不是结合元素选择器 -->
+					<p class="red">光头强</p> <!-- 结合元素选择器 -->
+					<h1> 
+						<p class="a">演示p</p> 
+						<span class="a">演示span</span>
+					</h1>
+					
+					<ul class="nav1"> <!-- 后代选择器,所有li均变颜色 -->
+						<li>一级菜单</li>
+						<ul>
+							<li>二级菜单</li>
+							<li>二级菜单</li>
+							<li>二级菜单</li>
+						</ul>
+					</ul>
+					
+					<ul class="nav2">
+						<li>一级菜单</li> <!-- 子代选择器,只有这个li变颜色 -->
+						<ul>
+							<li>二级菜单</li>
+							<li>二级菜单</li>
+							<li>二级菜单</li>
+						</ul>			
+					</ul>						
+				</body>
+			</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
