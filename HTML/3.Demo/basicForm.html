@@ -5,47 +5,57 @@
 		<title>基本表单</title>
 	</head>
 	<body>
-		<table align="center">
+		<table align="center" border="5">
 			<caption><b>基本表单</b></caption>
 				<form>				
 					<tr>
 						<td rowspan="6">
 							<img src="img/01a630d15a187036ad77602556f091d.png" />
 						</td>
+						<td align="right">
+							<span>用户名/邮箱:</span>							
+						</td>
 						<td>
-							<span>用户名/邮箱：</span>
 							<input name="username" placeholder="请输入您的用户名/邮箱账号"/>
 						</td>
 					</tr>
 					<tr>
+						<td align="right">
+							<span>密码:</span>							
+						</td>
 						<td>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码：</span>
 							<input type="password" placeholder="最多可输入10个字符" maxlength="10"/>
 						</td>
 					</tr>
 					<tr>
+						<td align="right">
+							<span>性别:</span>						
+						</td>
 						<td>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别:</span>
 							<input type="radio" name="sex" checked="checked"/>男
 							<input type="radio" name="sex" />女
 						</td>
 					</tr>
 					<tr>
+						<td align="right">
+							<span>爱好:</span>							
+						</td>
 						<td>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爱好:</span>
 							<input type="checkbox" name="star" value="number1" checked="checked"/>羽毛球
 							<input type="checkbox" name="star" value="number2"/>篮球
 							<input type="checkbox" name="star" value="number2"/>足球
 						</td>
 					</tr>
 					<tr>
+						<td align="right">
+							<span>上传文件:</span>							
+						</td>
 						<td>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;上传文件：</span>
 							<input type="file" />
 						</td>
 					</tr>
 					<tr>
-						<td align="right">
+						<td align="right" colspan="2">
 							<input type="submit" />
 							<input type="reset" />
 						</td>
