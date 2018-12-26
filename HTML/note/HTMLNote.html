@@ -163,7 +163,7 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 			--align:设置表格对齐方式;
 			--border:蛇者表格边框宽度，border默认值为0，无边框;
 			--cellpadding:设置内边距(单元格边框与内容之间的距离);
-			--cellspacing:单元格之间的距离;
+			--cellspacing:设置外边距(单元格之间的距离);
 			--bgcolor:设置表格背景颜色;
 		tr元素:
 			--align:设置表格对齐方式;
@@ -330,7 +330,7 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 						文件选项框注意：
 							a.表单的method必须为post;
 							b.因为get方式不能超过2KB;
-							b.因为二进制限制，表单的enctype必须为multipat/form-data;
+							b.表单的enctype必须为multipat/form-data,因为表单以二进制进行提交文件;
 		(2)input元素总结:
 			<input type="text"/>:text,password,radio,checkbox,submit,reset,button,hidden,file
 			name：名称(若是用于单选或复选按钮，则名称必须相同);
@@ -338,8 +338,16 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 			maxlength：限制输入的字符数;
 			readonly：文本控件只读;
 			checked：默认被选中。
-			onclick
-		(3)例子：
+			onclick			
+		(3)新的表单类型(HTML5):
+			电子邮件类型:<input type="email" /><input type="submit" />
+			搜索类型:请输入关键字:<input type="search" /> <!-- 与text区别：text只能一个一个删除所输入的内容，search可以清空已输入内容 -->
+			URL:请输入URL:<input type="url" /><input type="submit" />
+			数字类型:评分:<input type="number"  min="1" max="10" step="2"/>,属性:min(当前域能接受的最小值)，max(当前域能接受的最大值)，step(步长)
+			日期描述:请选择日期:<input type="date" />
+			button:<button onclick="alert('Notification!')">按钮</button>
+			高亮文本显示:<mark>高亮文本显示</mark>			
+		(4)例子：
 			<form method="post">
 				<!-- 用户名和密码 -->
 				<span>username：</span>
@@ -370,4 +378,79 @@ HTML: Hyper Text Markup Language, 超文本标记语言，一种纯文本类型�
 				<input type="reset" />
 				<input type="button" value="Click Me" onclick="javascript:alert('Notification');"/>
 			</form>
-		(4)登陆框：https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo
+		(5)登陆框：https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo
+		(6)其它控件：
+			1)<lable></lable>元素：将文本与控件联系在一起，单击文本，效果就如同单机控件一样。
+				主要属性：for：要关联的表单控件的id值
+				例子：
+					爱好:<input type="checkbox" id="swim"/><label for="swim">游泳</label>
+						 <input type="checkbox" id="basketball"/><label for="basketball">篮球</label>
+						 <input type="checkbox" id="football"/><label for="football">足球</label>
+			2)选项框
+				<select></selected>:创建选项框
+					属性：
+						name:选项框命名
+						size:默认显示的选项数量，如果取值大于1的话，则为滚动列表
+						multiple:设置多选
+				<option></option>:选项框中的选项
+					属性:
+						value:选项的值
+						selected:默认选中
+					例子:
+						地区:<select name="position" size="4" multiple="multiple">
+							<option value="sy" >沈阳</option>
+							<option value="dl">大连</option>
+							<option value="jl">吉林</option>
+							<option value="harbin">哈尔滨</option>
+							<option value="bj" selected="selected">北京</option>
+						</select>				
+			3)文本域
+				<textarea>内容</textarea>:
+					属性:
+						name:名称
+						cols:指定文本域的列数，变相设置宽度
+						rows:指定文本域的行数，变相设置高度
+						readonly:只读
+					例子:
+						备注:<textarea name="remark" cols="20" rows="10" readonly="readonly">
+								 文本区域
+							 </textarea>
+			4)<fieldset></fieldset>:为控件进行分组
+				例子:
+				<fieldset style="width: 50%;">
+					<legend>地址信息</legend>
+					地址:<input /><br />
+					邮箱:<input /><br />
+				</fieldset>
+			5)<iframe>内容</iframe>:浮动框架iframe元素
+				属性:
+					src：浮动框架中的网页的URL
+					width：宽度
+					height：高度
+					frameborder：浮动框架的边框，默认有，设为0可取消边框
+					内容：URL大不开的时候显示的内容
+				例子：
+					<iframe src="https:www.baidu.com" width="500px" height="500px" frameborder="0">
+						百度
+					</iframe>
+
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
