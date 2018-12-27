@@ -50,7 +50,7 @@ CSS:
 			中:外部样式表或内部样式表(就近原则)
 			高:内联样式
 			!important:调整显示样式属性(不是选择器)的优先级，只要都以!important为主
-			注意:继承的样式和自定义样式冲突时，永远都是以自定义优先。		
+			注意:继承的样式和自定义样式冲突时，永远都是以类选择器优先。		
 		(4)例子：https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/index.html
 			<!DOCTYPE html>
 			<html>
@@ -109,8 +109,7 @@ CSS:
 			3)注意:效率低，尽可能通过继承性去代替通用选择器的效果，它常用来设置一些默认样式。
 		(2)元素选择器(标签选择器，标记选择器)(重点)
 			1)作用:匹配页面上某一指定元素
-			2)语法:
-				元素{}
+			2)语法:元素{}				
 				div{color:pink;}
 				p{font-size:20px;}
 		(3)类选择器(重点)
@@ -119,7 +118,7 @@ CSS:
 			3)多类选择器:
 				作用:可以让一个元素同时引用多个类选择器，中间用空格分开即可
 		(4)结合元素选择器
-			语法:元素选择器。类选择器{样式声明;}
+			语法:元素选择器.类选择器{样式声明;}
 		(5)id选择器(重点)
 			作用:只匹配指定id值的元素
 			语法:#id{样式声明;}
@@ -199,9 +198,224 @@ CSS:
 					</ul>						
 				</body>
 			</html>
-
-
-
+		(10)伪类选择器:
+			作用:用于向某种选择器添加特殊的效果;
+			语法:		选择器:伪类选择器{样式声明;}
+			分类:
+				1.链接伪类:
+					link 匹配超链接未被访问时的状态。
+					visited 匹配超链接被访问过的状态(只能定义字体颜色)。
+				2.动态伪类:
+					hover 匹配鼠标悬停在html元素时的状态。
+					active 匹配html元素未激活时的状态(点击即被激活)。
+					focus 匹配html元素获取焦点时的状态(文本框与密码框)。
+				3.书写顺序:link>visited>hover>active
+				4.例子:
+					<head>
+						<meta charset="utf-8" />
+						<title></title>
+						<style>
+							a{/*去掉超链接的下划线*/
+								text-decoration: none;
+							}
+							a:link{/*匹配超链接未被访问时的状态*//*Ctrl+Shift+Delete删除浏览器缓存*/
+								color: darkgray;
+							}
+							a:visited{/*匹配超链接被访问过的状态(只能定义字体颜色)*/
+								color: dark;
+							}
+							a:hover{/*匹配鼠标悬停在html元素时的状态*/
+								color: red;
+								font-size: 20px;
+							}
+							a:active{/*匹配html元素未激活时的状态*/
+								color: yellow;
+								font-size: 100px;
+							}
+							input:focus{/*匹配html元素获取焦点时的状态*/
+								color: red;
+								background-color: yellow;
+							}
+						</style>
+					</head>
+					<body>
+						<a href="#">文本</a>
+						<br />
+						用户名:<input type="text" />
+					</body>
+		(11)选择器优先级顺序:
+			选择器类型  	 权值(不进位，只在本位一直相加)
+			元素选择器:		0,0,0,1
+			类选择器:		0,0,1,0
+			伪类选择器:		0,0,1,0
+			ID选择器:		0,1,0,0
+			内联样式:		1,0,0,0
+			例子:
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<style>
+						.h{/*0,0,1,0*/
+							font-size: 50px;
+							color: red;
+						}
+						p{/*0,0,0,1*/
+							font-size: 20px;
+							color: yellow;
+						}
+						div p{/*0,0,0,2*/
+							font-size: 50px;
+							color: blue;
+						}
+					</style>
+				</head>
+				<body>
+					<div>
+						<p class="h">文本</p><!--显示的是h的属性-->
+					</div>		
+				</body>
+五、尺寸与边框
+	1.尺寸属性:
+		(1)作用:尺寸属性一般用于设置元素的宽度和高度，单位一般为像素和百分比。
+		(2)宽度属性:width,min-width,max-width
+		(3)高度属性:height,min-height,max-height
+		(4)注意:
+			1)不是所有的元素都支持修改尺寸;
+			2)支持修改尺寸属性的如下:块级元素;非块级元素中存在width,height属性的html元素(table,img,input).
+			例子:
+				<style>
+					input{
+						width: 100px;
+						height: 100px;
+					}
+					span{
+						background-color: blueviolet;
+						color: bisque;
+						width: 200px;/*无变化，因为行内元素不能设置高和宽*/
+						height: 200px;				
+					}
+				</style>
+	2.溢出:使用尺寸控制元素大小时，如果内容所需的控件大小大于元素本身的空间，会导致内容溢出。
+		处理溢出的属性:
+			overflow:当内容溢出元素时如何处理
+			overfolw-x:横向溢出处理
+			overflow-y:纵向溢出处理
+		取值:
+			visible:默认值，溢出可见。
+			hidden:溢出隐藏。
+			scroll:溢出滚动,会为父元素添加滚动条，通过拖动滚动条来查看完整内容，该属性不论内容是否溢出，都会添加水平和垂直双方向的滚动条。
+			auto:当溢出的时候，才会出现滚动框，否则不出现。
+	3.边框
+		(1)简写方式:
+			border: width style color
+			width:边框粗细，以px为单位
+			style:solid(实线),dotted(点虚线),dashed(虚线),double(双实线)
+			color:边框颜色
+			作用:控制元素的上下左右四个部分的粗细，样式和颜色。
+		(2)单边定义:
+			border-top/bottom/left/right:width style color
+		(3)单属性定义:
+			border-width/style/color:值
+			作用:控制4条边的对应属性。
+		(4)单方向单属性定义:
+			border-top/bottom/left/right-width/style/color:值		
+		(5)例子:
+			<head>
+				<meta charset="UTF-8">
+				<title></title>
+				<style>
+					.box1{
+						width: 200px;
+						min-width: 150px;/*当width<min-width时,以min-width为准*/
+						height: 200px;
+						background-color: yellow;
+						/*overflow: visible;*//*默认值，溢出可见*/
+						/*overflow: hidden;*//*溢出隐藏*/
+						/*overflow: scroll;*//*溢出滚动*/
+						overflow: auto;/*当溢出的时候，才会出现滚动框，否则不出现*/
+						/*
+						border-width: 5px;
+						border-color: #8A2BE2;
+						border-style: solid; dotted虚线，dashed虚线,double双实线
+						*/
+						border: 5px red solid;/*简写方式*/
+					}
+					.box2{
+						width: 100px;
+						height: 500px;
+						background-color: pink;
+						border-bottom: 5px solid blueviolet;/*单边定义*/
+						border-width: 5px 10px 15px 20px;
+						border-style: solid double;
+					}			
+				</style>
+			</head>
+			<body>
+				<div class="box1">
+					<div class="box2"></div>
+				</div>		
+			</body>
+		(6)注意:
+			1)边框颜色可取值为transparent
+			2)取消边框显示
+				border:0/none;	border-top/bottom/left/right:0/none;
+	4.轮廓
+		(1)轮廓定义:绘制于元素边框周围的一条线，位于边框边缘的外围，可起到突出元素的作用。
+		(2)属性:
+			outline:width style color;
+			outline-width:宽度
+			outline-style:样式
+			outline-color:颜色
+			常用:outline:0/none;
+		(3)例子:
+			<head>
+				<meta charset="UTF-8">
+				<title></title>
+				<style>
+					input{/*取消显示边框*/
+						border: none;
+						outline: 0;
+					}
+					#username{
+						/*border: 0;*/
+						border-bottom: 5px solid blue;/*显示下边框*/
+					}
+				</style>
+			</head>
+			<body>
+				用户名:<input type="text" id="username" /> <!-- 只显示下边框  -->
+			</body>
+	5.京东登陆框demo:link@index5
+	
+盒子模型:
+	1.框模型:
+		框:盒子(box),页面元素皆为框。
+		框模型:(box-model)定义了元素处理内容，内边距，外边距，边框的一种方式。
+		框模型的宽度、高度和面积:
+			元素的width和height属性指定了内容区域的宽度和高度;
+			增加内边距、边框和外边框不会影响内容区域的大小，但会增加元素框的总尺寸;
+			元素的实际宽度=左右外边距+左右边框+左右内边距+width(元素的宽度);
+			元素的实际高度=上下外边距+上下边框+上下内边距+height(元素的宽度);
+	2.外边距:
+		(1)外边距定义:围绕在元素边框周围的空白区域(当前盒子与其它盒子之间的距离)称为外边距;
+		(2)作用:控制元素与元素之间的距离;移动元素位置;
+		(3)属性:
+		margin:四个方向的外边距
+		margin-top/bottom/left/right:(上/下/左/右)外边距
+		取值:px(像素),%(百分比),auto(自动),负值
+		(4)取值-auto
+			左右方向设置为auto时，允许元素在其父元素中水平居中对齐，前提必须设置该元素的宽度。
+		(5)取值-负值
+			移动元素，向着反方向移动; margin-left:-10; 向左移动10px
+		(6)外边距的简洁写法:
+			margin:value();四个方向外边距
+			margin:value1 value2;	上下、左右
+			margin:value2 value2 value3; 	上、左右、下
+			margin:value1 value2 value3 value4;	上右下左
+			margin:0 auto;水平居中
+		(7)页面中具备默认外边距的元素:h#,p,ol,ul,div.
+			清楚默认外边距:声明margin属性可以覆盖默认样式。 *{margin=0;}
+		
 
 
 
