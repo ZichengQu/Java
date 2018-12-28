@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*
+			 * 将一个内联元素(行内元素)变成块元素，通过display样式可以修改元素的类型;
+			 * 为其设置宽和高可以检测是否转换成功。
+			 * 可选值:
+			 * 	inline:可以将一个元素作为行内元素显示;
+			 * 	inline-block:可以将一个元素作为行内块元素显示;既可以设置高度，又不会独占一行(img);
+			 * 	block:可以将一个元素设置为块元素显示;
+			 * 	none:不显示元素，并且元素不会在页面中继续占有位置。
+			 */
+			/*
+			 * visibility:可以用来设置元素的隐藏和显示状态
+			 * 可选值:
+			 * 	visible:默认值，元素默认会在页面显示
+			 *  hidden:元素隐藏不显示,位置保留
+			 */
+			a{
+				background-color: yellow;
+				border: 1px solid blue;				
+				display:block;/*将一个元素设置为块元素显示*/
+				width: 200px;
+				height:200px;
+				visibility: hidden;
+			}
+			.box1{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				display: none;/* none:不显示元素，并且元素不会在页面中继续占有位置。*/
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+			.box3{
+				width: 100px;
+				height: 100px;
+				background-color: yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<a href="#">我是一个超链接</a>	
+		<div class="box2"></div>
+		<div class="box1"></div>
+		<div class="box3"></div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			a{/*去掉超链接的下划线*/
+				text-decoration: none;
+			}
+			a:link{/*匹配超链接未被访问时的状态*//*Ctrl+Shift+Delete删除浏览器缓存*/
+				color: darkgray;
+			}
+			a:visited{/*匹配超链接被访问过的状态(只能定义字体颜色)*/
+				color: dark;
+			}
+			a:hover{/*匹配鼠标悬停在html元素时的状态*/
+				color: red;
+				font-size: 20px;
+			}
+			a:active{/*匹配html元素未激活时的状态*/
+				color: yellow;
+				font-size: 100px;
+			}
+			input:focus{/*匹配html元素获取焦点时的状态*/
+				color: red;
+				background-color: yellow;
+			}			
+		</style>
+	</head>
+	<body>
+		<a href="#">文本</a>
+		<br />
+		用户名:<input type="text" />
+	</body>
+</html>

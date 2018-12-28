@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box1{
+				background-color: yellow;
+				width: 300px;
+				height: 300px;
+				/*由于页面中的元素都是靠左靠上摆放的，所以当我们设置上和左外边距时，会导致盒子自身的位置发生改变;而如果是设置右和下边距会改变其它盒子的位置。*/
+				/*margin-top: 100px;
+				margin-left: -100px;
+				margin-bottom: -100px;*/
+				/*margin-right: auto;
+				margin-left: auto;*/
+				margin:0 auto;
+			}
+			.box2{
+				background-color: pink;
+				width:100px;
+				height:100px;
+			}
+			p{
+				background-color: #FFC0CB;
+				height: 200px;
+				width: 500px;
+			}
+			*{
+				margin: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<!--<div class="box2">
+				
+			</div>-->
+			<div class="box2"></div>
+		</div>
+		<p>
+			
+		</p>
+		<ol>
+			<li>列表1</li>
+			<li>列表2</li>
+			<li>列表3</li>
+		</ol>
+		
+	</body>
+</html>
