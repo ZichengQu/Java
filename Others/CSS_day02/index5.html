@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			span{
+				color: grey;
+			}
+			input{
+				width: 300px;
+			}
+			input.msgv{
+				width: 180px;
+			}
+			input.check{
+				width: 20px;
+			}
+			input.submit{
+				background-color: red;
+				color: white;
+				border: 0;
+			}
+			.msg{
+				background-color: lightgray;
+				width: 120px;
+				height: 20px;
+				color: black;
+				border: 0;
+			}
+			a:link{
+				color: blue;
+			}
+			a:visited{
+				color: blueviolet;
+			}
+			a:hover{
+				color: red;
+			}
+			a:active{
+				color: yellow;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<table>
+			<tbody>
+				<tr>
+					<td align="right"><span>用户名:</span></td>
+					<td><input type="text"/> </td>
+					<td><span>4-20位字符，支持汉字，字母和数字组合</span></td>
+				</tr>
+				<tr>
+					<td align="right"><span>请设置密码:</span></td>
+					<td><input type="password"/> </td>
+					<td><span>6-20位字符，支持汉字，字母和数字组合</span></td>
+				</tr>
+				<tr>
+					<td align="right"><span>请确认密码:</span></td>
+					<td><input type="password"/> </td>
+					<td><span>请再次输入密码</span></td>
+				</tr>
+				<tr>
+					<td align="right"><span>验证手机:</span></td>
+					<td><input type="text"/> </td>
+					<td><span>完成验证后，可以使用收集找回密码</span></td>
+				</tr>
+				<tr>
+					<td align="right"><span>短信验证码:</span></td>
+					<td><input type="text" class="msgv"/> <input type="button" value="获取短信验证码" class="msg"/>
+					<td><span>请输入短信验证码</span></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2" align="center">
+						<input type="checkbox" class="check" id="v"/><label for="v">我已阅读并同意</label><a href="#">《京东用户注册协议》</a>
+					</td>										
+				</tr>
+				<tr>
+					<td></td>
+					<td colspan="2" align="center">
+						<input class="submit" type="submit" value="立即注册";/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
