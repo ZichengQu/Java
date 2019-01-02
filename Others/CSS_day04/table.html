@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			table,tr,th,td{
+				border: 2px solid blue;/*边框属性*/
+				font: normal 400 20px "微软雅黑";/*文本、字体属性*/
+			}
+			th,td{
+				height: 100px;
+				width: 100px;
+			}
+			table{
+				margin: 0 auto;/*表格居中*/
+				border-collapse: collapse;/*边框合并模式，默认是边框分离模式*/
+				border-spacing: 10px 20px;/*边框边距，仅用于"边框分离模式"*/
+				caption-side: bottom;/*标题位置:默认表格上方水平居中*/
+			}
+			th{
+				background-color: yellow;/*背景属性*/
+			}
+			tr:hover{/*伪列，鼠标悬停的时候*/
+				background-color: gainsboro;
+			}
+			td{
+				text-align: center;/*文本排列，规定元素中文本的水平对齐方式*/
+				vertical-align: middle;/*垂直方向对齐。默认垂直居中*/
+			}
+			table.one{
+				margin-bottom: 100px;
+				table-layout: fixed;/*显示规则,固定表格布局*/
+			}
+		</style>
+	</head>
+	<body>
+		<table class="one" border="1" width="100%">
+			<tr>
+				<td width="20%">2020202020202020202020202020202020202020202020202020</td>
+				<td width="40%">4040404040404040404040404040404040404040404040404040</td>
+				<td width="40%">4040404440404040404040</td>				
+			</tr>
+		</table>
+		<table border="1px">
+			<caption>员工信息表</caption>
+			<tr >
+				<th>empno</th>
+				<th>ename</th>
+				<th>job</th>
+				<th>mgr</th>
+				<th>hiredate</th>
+				<th>sal</th>
+				<th>comm</th>				
+				<th>deptno</th>				
+			</tr>
+			<tr >
+				<td>100</td>
+				<td>Jack</td>
+				<td>salesman</td>
+				<td>101</td>
+				<td>2000-5-30</td>
+				<td>5000</td>
+				<td>1000</td>
+				<td>10</td>
+			</tr>
+			<tr >
+				<td>101</td>
+				<td>Mary</td>
+				<td>manager</td>
+				<td>105</td>
+				<td>2000-5-29</td>
+				<td>6000</td>
+				<td>1500</td>
+				<td>20</td>
+			</tr>
+		</table>
+	</body>
+</html>

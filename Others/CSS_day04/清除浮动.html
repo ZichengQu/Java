@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box1{
+				width: 600px;
+				/*height: 200px;很多情况下，父级盒子不方便给高度(父盒子的高度会自适应)，因为子元素高度可能会变。*/
+				background-color: pink;	
+				overflow: hidden;/*和clear效果相同*/
+			}
+			.box2{
+				width: 600px;
+				height: 200px;
+				background-color: purple;
+			}
+			.son1{
+				/*若son1和son2是文档流，会使父级盒子高度自适应*/
+				/*若不是文档流，则不会撑开父级盒子*/
+				width: 150px;
+				height: 100px;
+				background-color: skyblue;
+				float: left;
+			}
+			.son2{
+				width: 150px;
+				height: 100px;
+				background-color: orange;
+				float: left;
+			}
+			.clear{/*如果son1和son2都浮动了，浮动元素不占有位置，父元素就没有高度，此时底下的盒子box2就会跑上来*/
+				clear:both;/*清楚浮动带来的影响，both/left/right/none(默认值)*/
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="son1"></div>
+			<div class="son2"></div>
+			<!--<div class="clear"></div>--> <!-- 在浮动盒子的后面添加一个空盒子 -->
+		</div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+	</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box1{
+				width: 200px;
+				height: 200px;
+				background-color: red;
+			}
+			.box2{
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				/*
+				 * 定位:将指定元素拜访到页面的任意位置，通过position属性来设置元素的定位;
+				 * 	可选值:static:默认值，元素没有开启定位;		relative:开启元素的相对定位;	absolute:开启元素的绝对定位;
+				 * 相对定位:相对定位是相对于元素在文档流中原来的位置进行定位(相对定位的元素不会脱离文档流)。
+				 * 相对定位会使元素提高一个层级(box2的黄色会盖住其它的box)，还属于文档流.
+				 * 相对定位不会改变元素的性质，块还是块，内联还是内联;浮动会将内联也变成块。
+				 */
+				position: relative;/*当开启了元素的相对定位以后，而不设置偏移量时，元素不会发生任何变化*/
+				/*
+				 * 当开启了元素的定位时，可通过left/right/top/bottom四个属性来设置元素的偏移量.
+				 * left:元素相对于其定位位置的左侧偏移量。left:200px --> 向右平移200px.
+				 * 通常偏移量只需要使用两个(一个水平方向的偏移量和一个垂直方向的偏移量)就可以对一个元素进行定位。
+				 */
+				left: 100px;
+				top:100px;
+			}
+			.box3{
+				width: 200px;
+				height: 200px;
+				background-color: blue;
+				/*position: relative;
+				bottom: 200px;*/
+			}
+			.s1{/*相对定位不会改变元素的性质，块还是块，内联还是内联。*/
+				width: 200px;
+				height: 200px;
+				background-color: pink;
+				position: relative;
+				left: 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<span class="s1">span标签</span>
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+	</body>
+</html>

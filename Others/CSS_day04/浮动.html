@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box1{
+				background-color: red;
+				width: 200px;
+				height: 200px;
+				float: left;
+			}
+			.box2{
+				background-color: yellow;
+				width: 200px;
+				height: 200px;
+				float: left;浮动定位
+			}
+			.box3{
+				background-color: blue;
+				width: 300px;
+				height: 300px;
+			}
+			.box4{/*文本，行内元素，行内块元素采用环绕的方式进行排列，会巧妙的避开浮动元素而不会被压住;*/
+				background-color: yellow;
+				width: 100px;
+				height: 100px;
+				float: left;
+			}
+			span{
+				background-color: yellow;
+			}
+			.s1{
+				width: 100px;
+				height: 100px;
+				background-color: pink;
+				float: left;
+				/*display: inline-block;*/
+			}
+		</style>
+	</head>
+	<body>
+		<!-- div.box$*3 -->
+		<div class="box1">
+			<div class="box4">
+				
+			</div>
+			浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!
+		</div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<span class="s1">span标签</span>
+		<span class="s2">span标签</span>
+		<span class="s3">span标签</span>
+	</body>
+</html>
