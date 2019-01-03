@@ -1,0 +1,303 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #999;
+    font-family: Arial,Verdana,"\5b8b\4f53";
+}
+
+img {
+    vertical-align: middle;
+}
+
+/*头部*/
+.w {
+    width: 990px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#logo {
+    position: relative;
+    width: 300px;
+    margin: 10px 0;
+    height: 60px;
+    float: left;
+}
+
+.q-link {
+    position: relative;
+    float: right;
+    top: 52px;
+}
+
+#logo b {
+    display: block;
+    width: 110px;
+    height: 40px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-image: url(../img/l-icon.png);
+}
+
+.q-link b {
+    display: inline-block;
+    width: 18px;
+    height: 14px;
+    margin: 0 5px;
+    background: url(../img/q-icon.png) no-repeat;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.tips-wrapper {
+  	background: #fff8f0;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #999;
+    font-size: 12px;
+}
+
+.tips-wrapper p {
+	vertical-align: middle;
+    color: #999;
+    font-size: 12px;
+    display: inline;
+}
+
+.icon-tips {
+    background: url(../img/icon-tips.png);
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.main{
+	width: 100%;
+	height: 475px;
+	background:#e93854;
+}
+
+.main-wrap{
+	width: 990px;
+	height: 475px;
+	margin: 0 auto;
+	background: url(../img/bg.png) no-repeat;
+}
+
+.login-form{
+	width: 346px;
+	background:#fff;
+	float: right;
+	margin-top: 10px;
+	position: relative;
+	overflow: visible;
+}
+
+.login-tab {
+    height: 54px;
+    font-size: 18px;
+    font-family: "microsoft yahei";
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+    position: absolute;
+}
+
+.login-form .login-tab {
+	width: 173px;
+    height: 54px;
+    font-family: "microsoft yahei";
+    text-align: center;
+    border-bottom: 1px solid #f4f4f4;
+    position: absolute;
+    background: #fff;
+}
+.login-form .login-tab-r {
+    right: 0;
+}
+.login-tab a {
+  	width: 99%;
+    height: 18px;
+    color: #666;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top: 18px;
+    border-right: 1px solid #f4f4f4;
+    text-decoration: none;
+}
+a:hover {
+    color: #E4393C;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.login-tab a:hover {
+  	font-weight: 700;
+    color: #e4393c;
+    text-decoration:none;
+}
+.login-form .login-box {
+    width: 306px;
+    padding: 20px;
+}
+.login-form .form {
+    overflow: visible;
+    margin-top: 55px;
+    padding-top: 28;
+    height: 200px;
+}
+.form .item {
+    position: relative;
+    margin-bottom: 20px;
+    border: 1px solid #bdbdbd;
+    height: 38px;
+    width: 304px;
+
+}
+.login-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    border-right: 1px solid #bdbdbd;
+}
+.name-label{
+	background: url(../img/name.png) no-repeat center;
+}
+.pwd-label{
+	background: url(../img/pwd.png) no-repeat center;
+}
+
+.text{
+	line-height: 18px;
+    height: 18px;
+    border: 0;
+    padding: 10px 0 10px 50px;
+    width: 254px;
+    float: none;
+    overflow: hidden;
+    font-size: 14px;
+}
+.forget-pw {
+    text-align: right;
+}
+.login-form .login-box .login-btn {
+    /*border: 1px solid #cb2a2d;*/
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 32px;
+    
+}
+.input-submit{
+	width: 100%;
+	height: 32px;
+    background: #e4393c;
+    border: 1px solid #e4393c;
+    color: #fff;
+    font-size: 20px;
+    text-align: center;
+}
+.bottom{
+    padding-left: 20px;
+    padding-right: 20px;
+    line-height: 50px;
+    border-top: 1px solid #f4f4f4;
+    height: auto;
+    background-color: #fcfcfc;
+}
+.bottom li{
+	float: left;
+}
+.bottom li a.pd{
+    display: inline-block;
+    position: relative;
+    padding-left: 24px;
+}
+ol, ul {
+    list-style: none;
+}
+.QQ-icon{
+	width: 19px;
+    height: 18px;
+	display: block;
+	background: url(../img/QQ.png) no-repeat;
+	position: absolute;
+	float: left;
+	left: 0;
+	top: 16px;
+}
+.w-icon{
+	width: 19px;
+    height: 18px;
+	display: block;
+	background: url(../img/weixin.png) no-repeat;
+	position: absolute;
+	float: left;
+	left: 0;
+	top: 16px;
+}
+li .line {
+    color: #ccc;
+    padding: 0 10px;
+}
+.bottom li.extra-r {
+    float: right;
+}
+.reg-link .reg{
+    color: #b61d1d;
+    font-size: 14px;
+}
+.reg b{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    overflow: hidden;
+    background: url(../img/r.png) no-repeat;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+/*尾部样式*/
+.footer{
+	width: 100%;
+	margin: 30px auto;
+	font-size: 12px;
+	color: #666;
+	text-align: center;
+}
+.links a{
+    margin: 0 10px;
+    color: #666;
+}
+.footer p{
+	text-align: center;
+	margin-top: 10px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+
