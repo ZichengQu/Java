@@ -608,3 +608,480 @@ CSS:
 			font: italic 100 20px "黑体";
 			使用font属性时，必须按上面语法格式中的混徐书写，不能更换顺序，各个属性以空格隔开。
 			其中不需要设置的属性可以忽略(取默认值)，但必须保留size和family属性，否则font属性将不起作用。
+	2.文本属性: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%96%87%E6%9C%AC%E5%B1%9E%E6%80%A7.html
+		(1)文本颜色属性:color;	color: red;
+		(2)文本排列
+			作用:规定元素中文本的水平对齐方式
+			属性:text-align
+			取值:left/center/right
+			例子:text-align: center;
+		(3)文字修饰
+			属性:text-decoration
+			取值:none/underline/overline(上划线)/line-through(删除线)
+			例子:
+				a{
+					text-decoration: none;
+					/*
+					 * 超链接会默认添加下划线，也就是说超链接的text-decoration属性默认值是underline;
+					 * 如果需要去除超链接的下划线，需要将该样式设置为none;
+					 */
+				}
+		(4)行高
+			作用:指定一行文本的高度，如果行高高于文字本身大小，那么文本将在指定的行高范围内垂直居中显示。行间距=行高-字体大小。
+			属性:line-height
+			取值:数值(px/%/一个具体的数)
+			例子:
+				.p1{
+					font-size: 20px;/*此时行高为30*/
+					line-height:1;
+					/*
+					 * line-height可以接收的值:
+					 * 	1.直接接收一个大小px;
+					 * 	2.可以指定一个百分比,会相对于字体设置百分比，100%无间距，200%有1倍的间距;
+					 * 	3.可以直接传一个数值(无px)，1相当于100%，2相当于200%;
+					 */
+				}
+		(5)首行文本缩进
+			属性:text-indent
+			取值:px/?em
+			例子:
+				.p1{
+					text-indent: 2em;/*1em是一个汉字字符的大小(跟随text-size)*/
+					/*text-indent: 16px;*//*一个汉字字符的默认大小是16px*/
+				}
+		(6)文本阴影
+			属性:text-shadow
+			取值:h-shadow(必须，水平阴影的位置) v-shadow(必须，垂直阴影的位置) blur(模糊的距离) color
+			例子:
+				.box{
+					 color: blue;
+					 font-size: 50px;
+					 width: 50%;
+					 height: 200px;
+					 background-color: lightpink;
+					 text-shadow: 10px 10px 10px red;/*取值*/
+				}
+		(7)字间距
+			属性:letter-spacing
+			取值:px
+			例子:letter-spacing: 20px;
+		(8)文本大小写(只适用于英文)
+			属性:text-transform
+			取值:none(默认值),capitalize(每个单词首字母大写),uppercase(大写),lowercase(小写);
+			例子:
+				.p2{
+					font-size: 20px;
+					text-transform: capitalize;
+				}
+	3.表格
+		(1)表格常用样式属性:
+			1)边距属性:padding
+			2)尺寸属性:width,height
+			3)文本、字体属性:
+			4)背景属性:background...
+			5)边框属性:border
+			6)垂直方向对齐:vertical-align;	取值:top/middle(默认)/bottom
+		(2)表格特有的样式属性:
+			1)边框合并:	属性:border-collapse	取值:separate(默认，分离边框模式)/collapse(合并)
+			2)边框边距:	
+				属性:border-spacing
+				作用:设置相邻单元格的边框的距离(仅用于"边框分离模式")
+				取值:value	水平和垂直间距相同
+					 value1 value2	第一个值表示水平间距，第二个值表示垂直间距，两个值之间用空格隔开
+			3)标题:<caption></caption>
+				标题位置:默认表格上方水平居中
+				属性:caption-side	取值:top(默认值),bottom(标题位于表格之下)
+			4)显示规则
+				作用:如何去布局一个表格，指定了表格显示单元格，行的算法规则，又称为表格的布局。
+				属性:table-layout
+				取值:
+					auto(默认值，自动布局表格数据):列的宽度是根据内容决定的。
+					fixed(固定表格布局):列宽度由表格以及单元格所设定好的数据为主。
+				auto和fixed的区别:
+					自动布局auto:单元格的大小会适应内容;
+								 当表格复杂时，加载速度慢(缺点);
+								 自动布局会比较灵活(优点);
+								 适用于表格不太复杂并且不确定每一列大小时使用。
+					固定布局fixed:单元格的尺寸取决于设定的值;
+								  任何情况下都会加速显示表格(优点);
+								  固定布局不够灵活(缺点);
+								  适用于确定每列大小时使用;
+				例子:
+					table.one{
+						table-layout: fixed;/*显示规则,固定表格布局*/
+					}
+			5)例子:CSS表格:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/table.html
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<style>
+						table,tr,th,td{
+							border: 2px solid blue;/*边框属性*/
+							font: normal 400 20px "微软雅黑";/*文本、字体属性*/
+						}
+						th,td{
+							height: 100px;
+							width: 100px;
+						}
+						table{
+							margin: 0 auto;/*表格居中*/
+							border-collapse: collapse;/*边框合并模式，默认是边框分离模式*/
+							border-spacing: 10px 20px;/*边框边距，仅用于"边框分离模式"*/
+							caption-side: bottom;/*标题位置:默认表格上方水平居中*/
+						}
+						th{
+							background-color: yellow;/*背景属性*/
+						}
+						tr:hover{/*伪列，鼠标悬停的时候*/
+							background-color: gainsboro;
+						}
+						td{
+							text-align: center;/*文本排列，规定元素中文本的水平对齐方式*/
+							vertical-align: middle;/*垂直方向对齐。默认垂直居中*/
+						}
+						table.one{
+							margin-bottom: 100px;
+							table-layout: fixed;/*显示规则,固定表格布局*/
+						}
+					</style>
+				</head>
+				<body>
+					<table class="one" border="1" width="100%">
+						<tr>
+							<td width="20%">2020202020202020202020202020202020202020202020202020</td>
+							<td width="40%">4040404040404040404040404040404040404040404040404040</td>
+							<td width="40%">4040404440404040404040</td>				
+						</tr>
+					</table>
+					<table border="1px">
+						<caption>员工信息表</caption>
+						<tr >
+							<th>empno</th>
+							<th>ename</th>
+							<th>job</th>
+							<th>mgr</th>
+							<th>hiredate</th>
+							<th>sal</th>
+							<th>comm</th>				
+							<th>deptno</th>				
+						</tr>
+						<tr >
+							<td>100</td>
+							<td>Jack</td>
+							<td>salesman</td>
+							<td>101</td>
+							<td>2000-5-30</td>
+							<td>5000</td>
+							<td>1000</td>
+							<td>10</td>
+						</tr>
+						<tr >
+							<td>101</td>
+							<td>Mary</td>
+							<td>manager</td>
+							<td>105</td>
+							<td>2000-5-29</td>
+							<td>6000</td>
+							<td>1500</td>
+							<td>20</td>
+						</tr>
+					</table>
+				</body>
+	4.浮动
+		(1)定位:定义元素框相对于其正常位置应该出现的位置;或者相对于父元素，另一个元素甚至浏览器窗口本身的位置;
+		(2)普通流定位(文档流定位):浏览器默认的定位方式称为普通流定位;
+		(3)浮动定位:
+			1)特征:
+				脱离文档流，不占据页面空间，后续元素上前补位;
+				会停靠在父元素的左侧或右侧，或者停靠在其它平级已浮动元素边缘上;
+				依然包含在父元素内(比如body元素);
+				让多个块级元素在一行内显示;
+			2)语法:
+				属性及取值:float:none/left/right
+			3)浮动引发的特殊效果:
+				父元素宽度不足以包含所有的已浮动子元素时，最后一个将换行;
+				元素浮动起来后，宽度将变成自适应(未设置宽度时，内容决定宽度)(在文档流定位中，不设置宽度，则宽度为父元素宽度);
+				行内元素，行内块元素，一旦浮动起来后将变成块级元素;
+				文本，行内元素，行内块元素采用环绕的方式进行排列，会巧妙的避开浮动元素而不会被压住;
+			4)例子:
+				.box2{
+					background-color: yellow;
+					/*width: 200px;*//*未设置宽度时，内容决定宽度*/
+					height: 200px;
+					float: left;/*浮动定位*/
+				}
+			5)例子:
+				浮动:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%B5%AE%E5%8A%A8.html
+					<head>
+						<meta charset="UTF-8">
+						<title></title>
+						<style>
+							.box1{
+								background-color: red;
+								width: 200px;
+								height: 200px;
+								float: left;
+							}
+							.box2{
+								background-color: yellow;
+								width: 200px;
+								height: 200px;
+								float: left;浮动定位
+							}
+							.box3{
+								background-color: blue;
+								width: 300px;
+								height: 300px;
+							}
+							.box4{/*文本，行内元素，行内块元素采用环绕的方式进行排列，会巧妙的避开浮动元素而不会被压住;*/
+								background-color: yellow;
+								width: 100px;
+								height: 100px;
+								float: left;
+							}
+							span{
+								background-color: yellow;
+							}
+							.s1{
+								width: 100px;
+								height: 100px;
+								background-color: pink;
+								float: left;
+								/*display: inline-block;*/
+							}
+						</style>
+					</head>
+					<body>
+						<!-- div.box$*3 -->
+						<div class="box1">
+							<div class="box4">
+								
+							</div>
+							浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!浮动引发的特殊效果!
+						</div>
+						<div class="box2"></div>
+						<div class="box3"></div>
+						<span class="s1">span标签</span>
+						<span class="s2">span标签</span>
+						<span class="s3">span标签</span>
+					</body>
+				简单布局:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%AE%80%E5%8D%95%E5%B8%83%E5%B1%80.html
+					<head>
+						<meta charset="UTF-8">
+						<title></title>
+						<style>
+							*{/*清除默认样式*/
+								margin: 0;
+								padding: 0;
+							}
+							.header{
+								width: 100%;
+								height: 150px;
+								background-color: yellow;
+								margin: 0 auto;
+							}
+							.content{
+								width: 100%;
+								height: 400px;
+								background-color: orange;
+								margin: 0 auto;
+								margin: 10px auto;
+							}
+							.footer{
+								width: 100%;
+								height: 150px;
+								background-color: pink;
+								margin: 0 auto;
+							}
+							/*设置content中小div的样式*/
+							.left{
+								width: 20%;
+								height: 100%;
+								background-color: skyblue;
+								float: left;
+							}
+							.center{
+								width: 58.68%;
+								height: 100%;
+								background-color: blanchedalmond;
+								float: left;
+								margin:0 10px;
+							}
+							.right{
+								width: 20%;
+								height: 100%;
+								background-color: purple;
+								float: left;
+							}
+						</style>
+					</head>
+					<body>		
+						<div class="header"></div><!-- 头部div -->
+						<div class="content"><!-- 主题内容div -->
+							<div class="left"></div><!-- 左侧div -->	
+							<div class="center"></div><!-- 中间div -->
+							<div class="right"></div><!-- 右侧div -->
+						</div>
+						<div class="footer"></div><!-- 底部信息div -->
+					</body>
+		(4)清除浮动:
+			属性:clear
+			取值:none/left/right/both
+		(5)浮动元素对父元素带来的影响(对父元素高度带来影响)			
+			1)设置父元素的高度(弊端:必须知道父元素的高度)
+			2)设置父元素也浮动(弊端:必须后续元素有影响)
+			3)为父元素设置overflow，取值为hidden或auto(弊端:如果有内容要溢出，显示也会被一同隐藏)
+			4)在父元素中追加空子级块元素，并设置其clear属性为both/left/right; <div style="clear:both"></div>
+			5)清除浮动的例子:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8.html
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<style>
+						.box1{
+							width: 600px;
+							/*height: 200px;很多情况下，父级盒子不方便给高度(父盒子的高度会自适应)，因为子元素高度可能会变。*/
+							background-color: pink;	
+							overflow: hidden;/*和clear效果相同*/
+						}
+						.box2{
+							width: 600px;
+							height: 200px;
+							background-color: purple;
+						}
+						.son1{
+							/*若son1和son2是文档流，会使父级盒子高度自适应*/
+							/*若不是文档流，则不会撑开父级盒子*/
+							width: 150px;
+							height: 100px;
+							background-color: skyblue;
+							float: left;
+						}
+						.son2{
+							width: 150px;
+							height: 100px;
+							background-color: orange;
+							float: left;
+						}
+						.clear{/*如果son1和son2都浮动了，浮动元素不占有位置，父元素就没有高度，此时底下的盒子box2就会跑上来*/
+							clear:both;/*清楚浮动带来的影响，both/left/right/none(默认值)*/
+						}
+					</style>
+				</head>
+				<body>
+					<div class="box1">
+						<div class="son1"></div>
+						<div class="son2"></div>
+						<!--<div class="clear"></div>--> <!-- 在浮动盒子的后面添加一个空盒子 -->
+					</div>
+					<div class="box2"></div>
+					<div class="box3"></div>
+				</body>
+		(4)相对定位:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D.html
+			例子:
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<style>
+						.box1{
+							width: 200px;
+							height: 200px;
+							background-color: red;
+						}
+						.box2{
+							width: 200px;
+							height: 200px;
+							background-color: yellow;
+							/*
+							 * 定位:将指定元素拜访到页面的任意位置，通过position属性来设置元素的定位;
+							 * 	可选值:static:默认值，元素没有开启定位;		relative:开启元素的相对定位;	absolute:开启元素的绝对定位;
+							 * 相对定位:相对定位是相对于元素在文档流中原来的位置进行定位(相对定位的元素不会脱离文档流)。
+							 * 相对定位会使元素提高一个层级(box2的黄色会盖住其它的box)，还属于文档流.
+							 * 相对定位不会改变元素的性质，块还是块，内联还是内联;浮动会将内联也变成块。
+							 */
+							position: relative;/*当开启了元素的相对定位以后，而不设置偏移量时，元素不会发生任何变化*/
+							/*
+							 * 当开启了元素的定位时，可通过left/right/top/bottom四个属性来设置元素的偏移量.
+							 * left:元素相对于其定位位置的左侧偏移量。left:200px --> 向右平移200px.
+							 * 通常偏移量只需要使用两个(一个水平方向的偏移量和一个垂直方向的偏移量)就可以对一个元素进行定位。
+							 */
+							left: 100px;
+							top:100px;
+						}
+						.box3{
+							width: 200px;
+							height: 200px;
+							background-color: blue;
+							/*position: relative;
+							bottom: 200px;*/
+						}
+						.s1{/*相对定位不会改变元素的性质，块还是块，内联还是内联。*/
+							width: 200px;
+							height: 200px;
+							background-color: pink;
+							position: relative;
+							left: 100px;
+						}
+					</style>
+				</head>
+				<body>
+					<span class="s1">span标签</span>
+					<div class="box1"></div>
+					<div class="box2"></div>
+					<div class="box3"></div>
+				</body>
+		(5)绝对定位: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D.html
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<style >
+						.box1{
+							width:200px;
+							height: 200px;
+							background-color: red;
+						}
+						.box2{
+							/*width:200px;*/
+							height: 200px;
+							background-color: yellow;
+							/*
+							 * 当position属性值设置为absolute时，则开启了元素的绝对定位;
+							 * 绝对定位:
+							 * 		1.开启绝对定位，会使元素脱离文档流;会使元素提升一个层级;
+							 * 		2.开启绝对定位以后，如果不设置偏移量，则元素的位置不会发生变化;
+							 * 		3.绝对定位是相对于离它最近的开启了定位的祖先元素进行定位的(一般情况下，开启了子元素的绝对定位都会同时开启父元素的相对定位)，如果所有的祖先元素都没有开启定位(相对和绝对)，则相对于浏览器窗口进行定位;
+							 *      4.绝对定位会改变元素的性质，内联元素变成块元素，块元素的宽度和高度(若不指定)默认都被内容撑开;
+							 */		
+							position: absolute;
+							left:100px;
+							top: 100px;
+						}
+						.box3{
+							width:200px;
+							height: 200px;
+							background-color: blue;
+						}
+						.box4{
+							width:300px;
+							height: 300px;
+							background-color: orange;
+							/*position: relative;*/
+						}
+						.s1{
+							width: 100px;
+							height: 100px;
+							background-color: yellow;
+							position: absolute;
+						}
+					</style>
+				</head>
+				<body>
+					<span class="s1">span标签</span>
+					<div class="box1"></div>
+					<div class="box4">
+						<div class="box2"></div>
+					</div>		
+					<div class="box3"></div>
+				</body>
+
+Demo:
+京东登录页:https://github.com/ZichengQu/Java/tree/CSS/%E4%BA%AC%E4%B8%9C%E7%99%BB%E5%BD%95%E9%A1%B5
