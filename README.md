@@ -1,11 +1,11 @@
 JavaSE:  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
-JavaSE：https://github.com/ZichengQu/Java/tree/JavaSE  
-JavaSe.docx: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe.docx  
-JavaSe总结: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe%E6%80%BB%E7%BB%93  
-JavaSe习题：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/Java%E5%9F%BA%E7%A1%80~Java%E9%AB%98%E7%BA%A7%E6%A3%80%E6%B5%8B%E9%A2%98.docm  
-JavaSe汽车租赁：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JAVA%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%AE%AD%E7%BB%83%E4%B9%A0.docx  
-范例：https://github.com/ZichengQu/Java/tree/JavaSE/JavaSE/src/liucong  
+1.JavaSE：https://github.com/ZichengQu/Java/tree/JavaSE  
+2.JavaSe.docx: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe.docx  
+3.JavaSe总结: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe%E6%80%BB%E7%BB%93  
+4.JavaSe习题：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/Java%E5%9F%BA%E7%A1%80~Java%E9%AB%98%E7%BA%A7%E6%A3%80%E6%B5%8B%E9%A2%98.docm  
+5.JavaSe汽车租赁：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JAVA%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%AE%AD%E7%BB%83%E4%B9%A0.docx  
+6.范例：https://github.com/ZichengQu/Java/tree/JavaSE/JavaSE/src/liucong  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 1.平闰年: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/mine/one/pingrunnian/PingRunNian.java  
 2.计算器: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/mine/two/calculator/JiSuanQi.java  
@@ -45,27 +45,27 @@ JavaSe汽车租赁：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/no
 SQL%%JDBC  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 note/sql:  
-SQLNote.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLNote.sql  
-SQL.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQL.sql  
-SQLPractice.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLPractice.sql  
-Oracle原始笔记.txt：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/Oracle%E5%8E%9F%E5%A7%8B%E7%AC%94%E8%AE%B0.txt  
-多表查询练习（自己）.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0%EF%BC%88%E8%87%AA%E5%B7%B1%EF%BC%89.sql  
-多表查询练习（答案）.txt：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0%EF%BC%88%E7%AD%94%E6%A1%88%EF%BC%89.txt  
+1.SQLNote.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLNote.sql  
+2.SQL.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQL.sql  
+3.SQLPractice.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLPractice.sql  
+4.Oracle原始笔记.txt：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/Oracle%E5%8E%9F%E5%A7%8B%E7%AC%94%E8%AE%B0.txt  
+5.多表查询练习（自己）.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0%EF%BC%88%E8%87%AA%E5%B7%B1%EF%BC%89.sql  
+6.多表查询练习（答案）.txt：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0%EF%BC%88%E7%AD%94%E6%A1%88%EF%BC%89.txt  
 note/JDBC_day01&&02:  
-JDBC_day01_summary.txt: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/JDBC_day01/JDBC_day01_summary.txt  
-JDBC原理.jpg: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/JDBC_day01/JDBC%E5%8E%9F%E7%90%86.jpg  
-JDBC_day02_summary.txt:https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/JDBC_day02/JDBC_day02_summary.txt  
-note/project:  
-project_EmpManage_summary: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/project/one/project_EmpManage_summary  
-carRent_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/note/project/two  
+1.JDBC_day01_summary.txt: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/JDBC_day01/JDBC_day01_summary.txt  
+2.JDBC原理.jpg: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/JDBC_day01/JDBC%E5%8E%9F%E7%90%86.jpg  
+3.JDBC_day02_summary.txt:https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/JDBC_day02/JDBC_day02_summary.txt  
+4.note/project:  
+5.project_EmpManage_summary: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/project/one/project_EmpManage_summary  
+6.carRent_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/note/project/two  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
-JDBC_day01: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/JDBC_day01  
-JDBC_day02: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/JDBC_day02  
+7.JDBC_day01: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/JDBC_day01  
+8.JDBC_day02: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/JDBC_day02  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 project:  
-EmpManage_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/project/EmpManage_JDBC  
-EmpManage_JDBC_Demo: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/Demo  
-carRent_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/project/carRent_JDBC  
+9.EmpManage_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/project/EmpManage_JDBC  
+10.EmpManage_JDBC_Demo: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/Demo  
+11.carRent_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/project/carRent_JDBC  
   
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 ***************************************************************************************************************************************************************************************  
@@ -73,7 +73,7 @@ carRent_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/proj
   
 HTML  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
-HTMLNote.html: https://github.com/ZichengQu/Java/blob/HTML/HTML/note/HTMLNote.html  
+0.HTMLNote.html: https://github.com/ZichengQu/Java/blob/HTML/HTML/note/HTMLNote.html  
 1.gun,锚点，链接: https://github.com/ZichengQu/Java/tree/HTML/HTML/1.Demo  
 2.两个表格，一个简易网页: https://github.com/ZichengQu/Java/tree/HTML/HTML/2.Demo  
 3.form的用法，简易登陆界面: https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo  
@@ -85,26 +85,26 @@ HTMLNote.html: https://github.com/ZichengQu/Java/blob/HTML/HTML/note/HTMLNote.ht
   
 CSS  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
-CSS.html,CSS笔记: https://github.com/ZichengQu/Java/blob/CSS/note/CSS.html  
-CSS优先级演示: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/index.html  
-选择器类型: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/css2.html  
-超链接的style设置:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index.html  
-选择器优先级顺序:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index2.html  
-边框border:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index3.html  
-轮廓outline:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index4.html  
-京东登陆框demo(自己写的):https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index5.html  
-内边距:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/index.html  
-行内元素盒模型:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9B%92%E6%A8%A1%E5%9E%8B.html  
-diaplay和visibility:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/display%E5%B1%9E%E6%80%A7.html  
-背景属性:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/index2.html  
-文本格式化:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F%E5%8C%96.html  
-文本属性:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%96%87%E6%9C%AC%E5%B1%9E%E6%80%A7.html  
-CSS表格:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/table.html  
-浮动:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%B5%AE%E5%8A%A8.html  
-清除浮动:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8.html  
-相对定位:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D.html  
-绝对定位:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D.html  
-京东登录页:https://github.com/ZichengQu/Java/tree/CSS/%E4%BA%AC%E4%B8%9C%E7%99%BB%E5%BD%95%E9%A1%B5  
+1.CSS.html,CSS笔记: https://github.com/ZichengQu/Java/blob/CSS/note/CSS.html  
+2.CSS优先级演示: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/index.html  
+3.选择器类型: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/css2.html  
+4.超链接的style设置:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index.html  
+5.选择器优先级顺序:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index2.html  
+6.边框border:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index3.html  
+7.轮廓outline:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index4.html  
+8.京东登陆框demo(自己写的):https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index5.html  
+9.内边距:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/index.html  
+10.行内元素盒模型:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E7%9B%92%E6%A8%A1%E5%9E%8B.html  
+11.diaplay和visibility:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/display%E5%B1%9E%E6%80%A7.html  
+12.背景属性:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/index2.html  
+13.文本格式化:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day03/%E6%96%87%E6%9C%AC%E6%A0%BC%E5%BC%8F%E5%8C%96.html  
+14.文本属性:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%96%87%E6%9C%AC%E5%B1%9E%E6%80%A7.html  
+15.CSS表格:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/table.html  
+16.浮动:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%B5%AE%E5%8A%A8.html  
+17.清除浮动:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E6%B8%85%E9%99%A4%E6%B5%AE%E5%8A%A8.html  
+18.相对定位:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%9B%B8%E5%AF%B9%E5%AE%9A%E4%BD%8D.html  
+19.绝对定位:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day04/%E7%BB%9D%E5%AF%B9%E5%AE%9A%E4%BD%8D.html  
+20.京东登录页:https://github.com/ZichengQu/Java/tree/CSS/%E4%BA%AC%E4%B8%9C%E7%99%BB%E5%BD%95%E9%A1%B5  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
 ***************************************************************************************************************************************************************************************  
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------  
