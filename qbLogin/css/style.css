@@ -1,0 +1,253 @@
+	*{
+		padding: 0;
+		margin: 0;
+	}
+	.header{
+		background-color: #2e2e2e;
+		width: 100%;
+		height: 36px;
+		position: relative;
+	}
+	.header .left{
+		background-image: url(../img/top_a.png);
+		width: 369.45px;
+		height: 26px;
+		background-repeat: no-repeat;
+		position: absolute;
+		left: 170px;
+		margin-top: 10px;
+		display: inline-block;
+		padding-left: 30px;
+		color: white;
+		vertical-align: top;
+	}
+	.header .right{
+		position: absolute;
+		right: 150px;
+		background-color: #2e2e2e;
+		width: 280px;
+		height: 36px;
+	}
+	.quickReg, .promptyLogin, .choujiang{
+		display: inline-block;
+		width: 72px;
+		height: 26px;
+		vertical-align: middle;
+		text-decoration: none;
+		text-align: center;
+		padding-top: 10px;
+	}
+	.quickReg{
+		background-color:#b52e2e;
+		color:#fff;
+		vertical-align: middle;
+	}
+	.promptyLogin{
+		background: #0984b1;
+		color:#fff;
+	}
+	.choujiang{
+		width: 90px;
+		background-color: #d48a04;
+		color:#fff;
+		background-image: url(../img/choujiang.png);
+		background-repeat: no-repeat;
+		background-position: left center;
+		padding-left: 10px;
+	}
+	.nav2{
+		width: 100%;
+		height: 70px;
+		background-color: white;
+		padding: 14px 0px;
+		border-bottom: 2px solid lightgrey;
+		position: relative;
+	}
+	.nav2 .logo{
+		width: 210px;
+		height: 70px;
+		background-image: url(../img/logo.png);
+		background-repeat: no-repeat;
+		position: absolute;
+		left: 170px;
+	}
+	.nav2 .pic{
+		width: 190px;
+		height: 70px;
+		background-image: url(../img/publicize.gif);
+		position: absolute;
+		left: 390px;
+	}
+	.nav2 .navbar{
+		margin-top: 15px;
+		position: absolute;
+		right: 0px;
+		width: 756px;
+		height: 56px;
+	}
+	.navbar li{
+		display: inline-block;
+		margin-right: 40px;
+		text-align:center;
+	}
+	.navbar li a{
+		text-decoration: none;
+		color: #555;
+		font-size: 20px;
+		font-weight: 500;
+		font-family: "微软雅黑";
+	}
+	.navbar li a:hover{
+		text-decoration: none;
+		color: #00a4e1;
+		font-size: 20px;
+		font-weight: 500;
+		font-family: "微软雅黑";
+	}
+	.bg{
+		background-color: lightblue;
+		width:100%;
+		height: 750px;
+		background-image: url(../img/5302e977b0c99501269638c0ec08317.jpg);
+		background-position: -200px 0px;
+		background-repeat: no-repeat;
+	}
+	.main_login{
+		width: 320px;
+	    height: 300px;
+	    padding: 34px 40px;	   
+	    background: #fff;
+	    position: relative;
+	    margin-top: 163px;
+	    margin-right: 42px;
+	    float: right;
+	    right: 152px;
+	    border-radius: 4px;
+	    border: 0.5px solid #D5D5D5;
+	}
+	.loginTitle{
+		font-family: "微软雅黑";
+		width: 320px;
+	    height: 30px;
+	    line-height: 30px;
+	    margin-bottom: 38px;
+	}
+	.loginTitle p{
+		font-size: 28px;
+	    color: #333;
+	    float: left;
+	    vertical-align: middle;
+	}
+	.loginTitle .r_title{
+		float: right;
+	    margin-right: 7px;
+	    padding-top: 8px;
+	    vertical-align: bottom;
+	}
+	.loginTitle .q_identity {
+	    font-size: 16px;
+	    color: #333;
+	}
+	.r_title .b_sign {
+	    font-size: 16px;
+	    color: #00a4e1;
+	    text-decoration: none;
+	}
+	.main_login .loginIpt {
+	    width: 320px;
+	    height: 44px;
+	    border: 1px solid #d5d5d5;
+	    color: #4c4c4c;
+	    line-height: 42px;
+	    font: 14px "微软雅黑";
+	    padding-left: 10px;
+	    box-sizing: border-box;
+	}
+	.main_login .inputBox {
+	    margin-bottom: 20px;
+	}
+	.r_pwd{
+		margin-top: 20px;
+		text-align: right;
+		margin-bottom: 30px;
+	}
+	.r_pwd a{
+		text-decoration: none;
+		color: #4c4c4c;
+		font-size: 14px;
+		font-family: "微软雅黑";
+	}
+	.main_login .b_button {
+	    width: 320px;
+	    height: 42px;
+	    background: #00a4e1;
+	    margin: 0 auto;
+	    line-height: 40px;
+	    border-radius: 4px;
+	    color: #fff;
+	    text-align: center;
+	    font: 18px "微软雅黑";
+	    border-style: none;
+	    cursor: pointer;
+	}
+	
+	.nav2 .navbar{
+		margin-top: 15px;
+		position: absolute;
+		right: 0px;
+		width: 756px;
+		height: 56px;
+	}
+	.navbar li{
+		display: inline-block;
+		margin-right: 40px;
+		text-align:center;
+	}
+	.navbar li a{
+		text-decoration: none;
+		color: #555;
+		font-size: 20px;
+		font-weight: 500;
+		font-family: "微软雅黑";
+	}
+	.navbar li a:hover{
+		text-decoration: none;
+		color: #00a4e1;
+		font-size: 20px;
+		font-weight: 500;
+		font-family: "微软雅黑";
+	}
+	
+	.foot{
+		background-color: #363636;
+		width: 100%;
+		height: 81.4px;
+	}
+	.foot1{
+		height: 100%;
+		width: 78.98%;
+		margin: 0 auto;
+	}
+	.foot1 ul,li{
+		display: inline-block;
+	}
+	#footbar1{
+		float: left;
+		padding-top: 30px;
+	}
+	#footbar1 li,#footbar2 li{
+		margin-right: 60px;
+	}
+	#footbar1 li a{
+		text-decoration: none;
+		color: #716d6d;
+	}
+	#footbar1 li a:hover{
+		text-decoration: none;
+		color: #716d6d;
+	}
+	#footbar2{
+		float: right;
+		padding-top: 30px;
+	}
+	
