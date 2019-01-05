@@ -1,0 +1,157 @@
+一、JavaScript简介:
+	JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，
+	最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
+二、特点:
+	1.是一种解释性脚本语言（代码不进行预编译）。
+	2.主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。
+	3.可以直接嵌入HTML页面，但写成单独的js文件有利于结构和行为的分离。
+	4.跨平台特性，在绝大多数浏览器的支持下，可以在多种平台下运行（如Windows、Linux、Mac、Android、iOS等）。
+三、Java和JavaScript的区别:
+	1.JavaScript是属于网景公司的产品;Java是sun公司的产品;
+	2.JavaScript是基于对象的，Java是面向对象的;
+	3.JavaScript只需解析就可以执行，而Java需要先编译成字节码文件，再执行。
+	4.JavaScript是弱类型语言，Java是强类型语言(Java中声明变量的时候要明确该变量的数据类型，而JavaScript都是使用关键字var去声明即可)。
+四、JS的组成:
+	1.ECMAScript(JS的核心):欧洲计算机协会，由ECMA组织指定的js基本语法、语句和函数等。
+	2.BOM:浏览器对象模型
+	3.DOM:文档对象模型
+五、JS编写位置:
+	1.可以将js代码编写到标签的onclick属性中，当我们点击按钮时，js代码才会执行。
+		<button onclick="alert('点了按钮')">按钮</button>
+	2.可以将js代码写在超链接的href属性中，这样当点击超链接时会执行js。
+		<a href="javascript:alert('点了链接')">超链接</a>
+	3.可以将js代码编写到script标签中。
+		<script type="text/javascript">
+			alert("警告框")//控制浏览器弹出一个警告框
+			document.write("<b><i>可以向body中输出一个内容</i></b>");//让计算机在页面中输出一个内容
+			console.log("在控制台出现")//向控制台输出一个内容
+		</script>
+	4.可以将js代码编写到外部js文件中，然后通过script标签引入。
+	  script标签一旦用于引入外部文件了，就不能再编写代码了，即使编写了浏览器也会忽略，如果需要则可以再创建一个新的script标签用于编写内部代码。
+		<script type="text/javascript" src="js/script.js" >alert("这个js标签的内部代码不会被执行")</script>
+六、基本语法:
+	1.js严格区分大小写。
+	2.js中每一条语句以分号结尾(如果不写分号，浏览器会自动添加，但是会消耗一些系统资源，而且有些时候，浏览器会加错分号，因此在开发中，分号必须写)。
+	3.js会忽略多个空格和换行，因此可以利用空格和换行对代码进行格式化。
+七、字面量和变量
+	1.字面量:都是一些不可改变的值，都是可以直接使用的，但一般不会直接使用字面量，比如1、2、3、4、5。
+	2.变量:可以用来保存自变量，而且变量的值是可以任意改变的。
+	3.声明变量:在js中使用关键字var来声明一个变量。 var a = 12345;//声明并赋值。
+八、标识符:在js中所有的可以由我们自主命名的都可以称为标识符，例如:变量名、函数名等。
+		命名规则:
+			1.标识符中可以含有数字,字母,_,$
+			2.不能以数字开头
+			3.不能使用js中的关键字和保留字
+			4.标识符一般采用驼峰命名法(首字母小写，每个单词的开头字母大写，其余字母小写)(js底层保存标识符时实际上采用的是Unicode编码，所以理论上，所有的UTF-8中含有的内容都可以作为标识符，包括中文(var 汉字标识符 = "12345";))
+九、数据类型:指的是字面量的类型
+		1.在js中一共有六种数据类型:其中String,Number,Boolean,Null,Undefined属于原始数据类型，而Object属于引用数据类型。
+			String:字符串
+			Number:数值
+			Boolean:布尔值
+			Null:空值
+			Undefined:未定义
+			Object:对象
+		2.String 字符串:在js中字符串需要使用引号(单双引号都可以)引起来。在字符串中我们可以使用\作为转义字符，当我们表示一些特殊符号时可以使用\进行转义。\" --> "	\' --> '	\\ -->\		\n -->换行		\t -->制表位
+			var name = "username: 'Mary'"; 或 var name = "username: \"Mary\"";
+		3.Number 数值:在js中所有的数值都是Number，包括整数和浮点数(小数)，
+			typeof(变量):可以使用一个运算符typeof来检查数据类型。	var a =123;	a="字符串";	console.log(typeof(a));
+			NaN是一个特殊的数字，表示not a number，使用typeof检查一个NaN也会返回一个number; var a = "qqq"*2;//typeof:Number, value:NaN.
+			在js中整数的运算基本可以保证精确;如果使用js进行浮点运算，可能得到不精确的结果(0.1+0.2=0.30000000000000004),因此不要使用js进行对精确度要求较高的运算;
+		4.Boolean 布尔值:true和false，主要做逻辑判断。
+		5.Null 空值:只有一个值，就是Null。null专门用来表示一个为空的对象。typeof(null)返回object。
+		6.Undefined 未定义:只有一个值，就是undefined。当声明一个变量，但不给变量赋值时，它的值就是undefined。
+十、强制类型转换:指将一个数据类型转换为其它的数据类型。主要是指，将其它的数据类型转换为String,Number,Boolean.
+	1.将其它的数据类型转换为String:
+		(1)调用被转换数据类型的toString();	var a=123;	var b=a.toString();//该方法不会影响原变量，它会将转换的结果返回。//此时b是String，a还是Number类型。
+			注意:null和undefined没有toString()方法，如果调用它们，控制台会报错。
+		(2)调用String()函数，并将被转换的数据作为参数传递给String()函数，var a=123; var b=String(a);
+			注意:String()函数可以将NaN，null，undefined和Boolean等转换成String。对于Number和Boolean，实际上就是调用的toString()方法，但是对于null和undefined，就不会调用toString(),它会将null和undefined直接转换为"null"，"undefined".
+		(3)加或减一个空串:	+""; -"";	//这是一种隐式类型转换。
+	2.将其它的数据类型转换为Number:
+		(1)使用Number()函数:
+			字符串 --> 数字:
+				1)如果是纯数字字符串，则直接将其转换为数字:	var a ="123";	a = Number(a);//typeof(a) --> number
+				2)如果字符串中有非数字的内容，则转换为NaN: var a ="123abc";	a = Number(a);//typeof(a) --> NaN
+				3)如果字符串是一个空串，或者是一个全是空格的字符串，则转换为0: var a ="    ";	a = Number(a);//typeof(a) --> number, value:0.
+			布尔 --> 数字:	true --> 1;	false --> 0;
+			null --> 数字: 0.
+			undefined --> 数字: NaN.
+		(2)var a=任意类型-0或*1或/1;	var a="123"-0//会转换为Number:123。原理和Number()函数一样。
+		   var a=+任意类型; var a=1+ +"2"+ 3;////会转换为Number:6。原理和Number()函数一样。
+		(3)这种方式专门用来应对字符串:如果对非String使用parseInt()或parseFloat()，它会先将其转换为String，然后再转为Number。
+			1)parseInt():把一个字符串转换为一个整数。 var a="10.03p3x3";	a=parseInt(a);//typeof:Number,value:10;
+				注意:可以将一个字符串中的有效的整数内容(从头开始，遇到非数字内容就停止，第一个为非数字内容则typeof为Number,value为NaN)读取出来，然后转换为Number
+			2)parseFloat():把一个字符串转换为一个浮点数。 var a="10.03p3x3";	a=parseFloat(a);//typeof:Number,value:10.03;
+				注意:和parseInt()类似，不同的是它可以获得有效的小数。
+		(4)将其它的数据类型转换为Boolean(使用Boolean()函数):			
+			数字 --> Boolean:除了0和NaN，其余都是true: var a=12345; a=Boolean(a);//typeof:Boolean, value:true.
+			字符串 --> Boolean: 除了空串，其余都是true: var a="qqq"; a=Boolean(a);//typeof:Boolean, value:true.
+			null和undefined都会转换为false。
+			Object也会转换为true。
+十一、运算符(操作符):通过运算符可以对一个或多个值进行运算，并获取运算结果。
+	1.typeof():用来获取一个值的类型,并会将值以string类型返回。 var a=123; var b=typeof(a);//b的typeof:string.
+	2.算数运算符:+-*/%,当对Number或能转换成Number类型的值，进行运算时，会将这些值转换为Number，然后再运算任何值和NaN做运算都得NaN。+-可以转换字符串，-*/%可以转换Number。
+	3.一元运算符:只需要操作一个数，+(正号),-(负号);对于非Number类型的，它会先转换为Number，然后再运算，可以对一个其它的数据类型使用+，来将其转换为Number，它的原理和Number()函数一样。
+	4.自增++,自减--
+	5.逻辑运算符:
+		!非:如果对非Boolean值进行运算，则会将其转换为Boolean再取反;可以利用该特点将一个其它数据类型转换为布尔值(两次取反)。
+		&&与:短路与
+		||或:短路或
+		&& || 对于非布尔值的情况:对于非布尔值进行与或运算时，会先将其转换为布尔值，然后再运算，并且返回原值。
+			与运算:如果第一个值为true，则返回第二个值;如果第一个值为false，则直接返回第一个值。
+			或运算:如果第一个值为true，则返回第一个值;如果第一个值为false，则直接返回第二个值。
+	6.赋值运算符:=,+=,-=,*=,/=,%=
+	7.关系运算符:通过关系运算符可以比较两个值之间的大小关系，如果关系成立，它会返回true，否则返回false:>,<,>=,<=
+		非数值的情况:对于非数值进行比较时，会将其转换为数字，然后再比较。任何值和NaN作比较，都是false。"abc">"ab"和"123"<"5" -->比较的是Unicode码，类似于java的compareTo。
+					 如果符号两侧的值都是字符串时不会将其转为数字进行比较。比较字符串时，比较的是字符串的Unicode编码。如果比较的是两个字符串型的数字，可能会得到不可预期的结果。
+	8.相等运算符
+		(1)相等运算符==:当使用==来比较两个值时，如果值的类型不同，则会自动转换为相同的类型，然后再比较。
+						1=="1"-->true;	true=="1"-->true;	null==0-->false; null==undefined-->true; NaN==NaN-->false;
+		(2)通过isNaN()函数来判断一个值是否是NaN:如果该值是NaN则返回true，否则返回false。
+		(3)不相等 !=:用来判断两个值是否不相等，如果不相等返回true，否则返回false。不相等也会对变量自动进行类型转换，如果转换后相等也返回false。
+		(4)全等 ===:用来判断两个值是否权等，它和相等类似，不同的是它不会做自动的类型转换。
+		(5)不全等 !==:用来判断两个值是否不全等，和不等类似，不同的是它不会做自动的类型转换。如果两个值类型不同，直接返回true。
+	9.条件运算符(三元运算符)
+		语法:条件表达式?语句1:语句2
+		如果条件表达式的结果是一个非布尔值，会将其转换为布尔值然后再运算。
+十二、代码块:在js中使用{}来为语句进行分组，同一个{}中的语句称之为一组语句，它们要么都执行，要么都不执行。
+		js中的代码块，只具有分组的作用，没有其它的用途。代码块内部的内容，在外部是完全可以调用的。
+		例子:
+			<script>
+				{
+					var a = 123;//外部可调用
+					alert("警告框")//控制浏览器弹出一个警告框
+					document.write("<b><i>可以向body中输出一个内容</i></b>");//让计算机在页面中输出一个内容
+					console.log("在控制台出现")//向控制台输出一个内容
+				}
+				console.log(a);//外部可以调用代码块中的a。
+			</script>
+十三、流程控制语句:通过流程控制语句可以控制程序执行流程，使程序可以根据一定的条件来选择执行。
+		1.语句分类:
+			(1)条件判断语句
+			(2)条件分支语句
+			(3)循环语句
+		2.条件判断语句:使用条件判断语句可以在执行某个语句之前进行判断，如果成立瑷珲执行语句，条件不成立则语句不执行。
+			if语句:条件表达式可以不适用Boolean类型的值，其它类型会自动转换。
+			例子:
+				var year = prompt("input a year:")//可以弹出一个提示框，该提示框会带有一个文本框，并带有括号中的提示。
+				if(!isNaN(year)&&year!=null){
+					if(year%400==0||(year%100!=0&&year%4==0)){
+						console.log(year+"是闰年");
+					}else{
+						console.log(year+"不是闰年")
+					}
+				}else{
+					console.log("不是年份");
+				}
+		3.条件分支语句(switch语句)
+			语法:
+				switch(parseInt(prompt("input a score:")/10)){
+					case 10: console.log("level 10"); break;
+					case 9: console.log("level 9"); break;
+					case 8: console.log("level 8"); break;
+					case 7: console.log("level 7"); break;
+					case 6: console.log("level 6"); break;
+					default: console.log("level fail"); break;
+				}
+			执行流程:在执行时会一次将case后的表达式的值和switch后的条件表达式的值进行全等比较。若比较结果为true，则从当前case处开始执行语句。
