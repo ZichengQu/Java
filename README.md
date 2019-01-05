@@ -83,7 +83,7 @@ HTML
   
 CSS   
 ..............................................................................................................................................  
-1.CSS.html,CSS笔记: https://github.com/ZichengQu/Java/blob/CSS/note/CSS.js  
+1.CSS.js,CSS笔记: https://github.com/ZichengQu/Java/blob/CSS/note/CSS.js  
 2.CSS优先级演示: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/index.html  
 3.选择器类型: https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day01/css2.html  
 4.超链接的style设置:https://github.com/ZichengQu/Java/blob/CSS/Others/CSS_day02/index.html  
@@ -106,3 +106,9 @@ CSS
   
 **********************************************************************************************************************************************  
   
+  
+JavaScript  
+..............................................................................................................................................  
+1.JavaScript.js,JavaScript笔记: https://github.com/ZichengQu/Java/blob/JavaScript/note/JavaScript.js  
+2.
+**********************************************************************************************************************************************  
