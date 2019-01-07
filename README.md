@@ -2,7 +2,7 @@ JavaSE:
 ..............................................................................................................................................  
 JavaSE：https://github.com/ZichengQu/Java/tree/JavaSE  
 JavaSe.docx: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe.docx  
-JavaSe总结: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe%E6%80%BB%E7%BB%93  
+JavaSe总结: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe%E6%80%BB%E7%BB%93.java  
 JavaSe习题：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/Java%E5%9F%BA%E7%A1%80~Java%E9%AB%98%E7%BA%A7%E6%A3%80%E6%B5%8B%E9%A2%98.docm  
 JavaSe汽车租赁：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JAVA%E5%9F%BA%E7%A1%80%E5%AE%9E%E8%AE%AD%E7%BB%83%E4%B9%A0.docx  
 范例：https://github.com/ZichengQu/Java/tree/JavaSE/JavaSE/src/liucong  
