@@ -155,3 +155,239 @@
 					default: console.log("level fail"); break;
 				}
 			执行流程:在执行时会一次将case后的表达式的值和switch后的条件表达式的值进行全等比较。若比较结果为true，则从当前case处开始执行语句。
+		4.循环语句:通过循环语句可以反复的执行一段代码多次。
+			(1)while循环
+				语法:while(条件表达式){
+					statement...;
+					}
+			(2)do...while 循环:
+				语法:do{
+						statement...;
+					}while(条件表达式);
+			(3)for循环
+				语法:for(初始化条件;条件表达式;循环增量){
+						statement...;
+					}
+			(4)99乘法表、1~100以内所有质数，例子:link@index............................................................................................................................
+				<style>//99乘法表
+					span{
+						width: 80px;
+						display: inline-block;
+					}
+				</style>
+				<script>
+					for(var i=1;i<=9;i++){
+						for(var j=1;j<=i;j++){
+							document.write("<span>"+j+"*"+i+"="+j*i+"</span>");
+						}
+						document.write("<br />")
+					}
+				</script>
+				<script>//1~100以内所有质数
+					a:for(var i=2; i<100; i++){
+						for(var j=2; j<i/2+1; j++){
+							if(i%j==0){
+								continue a;
+							}
+						}
+						console.log(i);
+					}
+				</script>
+十四、数组
+	1.定义方式(三种):
+		第一种: var arr=[1,2,3];
+		第二种: 使用内置对象Array， var arr = new Array(5);//定义一个数组，数组的长度是5	arr[0]=1;//赋值
+		第三种: var arr = new Array(3,4,5);//定义一个数组,数组里的元素是3，4，5
+	2.获取数组长度: 数组名.length;
+		数组的长度是可变的，数组可以存放不同数据类型的数据。var arr = new Array(5);		arr[10]=100;//下标10可以大于5		console.log(arr.length);
+	3.数组的遍历:
+		<script>
+			var arr=['a','b','c','d','e'];
+			for(var i=0;i<arr.length;i++){
+				console.log(arr[i]);
+			}
+			for( var i in arr){//遍历Object对象的时候可能不对。
+				console.log(arr[i]);
+			}
+		</script
+十五、函数:在js里定义函数有三种方式, link@函数。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+	1.定义方式:
+		(1)使用一个function关键字
+			语法:function 方法名(参数列表里直接写参数名称，不需要写var){
+					方法体;
+					返回值(根据实际需求);
+				}
+			例子:
+				<script>
+					function fun(){//1.无参方法
+						alert("fun方法");
+					}
+					fun();//可以直接在js里调用。
+					function add(a,b){//2.有参方法
+						var c = a+b;
+						alert(a+"+"+b+"="+c);
+					}
+					add(1,2);
+					function addReturn(a,b){//3.有参有返回值方法
+						var c = a+b;
+						return c;
+					}
+					alert(addReturn(1,2));
+				</script>
+		(2)匿名函数:
+				语法:var fun = function(参数列表){
+						方法体;
+						返回值(根据实际需求);
+					 }
+				例子:
+					<script>
+						var a = function(a,b){
+							alert(a+b);
+						}
+						a(1,2);//函数也是对象，所以直接给函数对象传参。
+						console.log(a);//function (a,b){alert(a+b);}"
+						console.log(typeof(a));//function
+					</script>
+		(3)动态函数:使用js里面的一个内置对象 Function
+			语法:var add = new Function("参数列表","方法体和返回值");
+			例子:
+				<script>
+					var cs="x,y";
+					var fft="var sum=x+y; return sum;";
+					var add = new Function(cs,fft);//也可以直接把参数写进去
+					alert(add(1,2));
+				</script>
+	2.js的全局变量和局部变量
+		(1)全局变量:在script标签里定义一个变量，这个变量在页面中js部分都可以使用。
+			例子:
+				<script>
+					var str="全局变量";//在方法外部，在方法内部，在另一个sctipt标签使用。
+					alert("方法外部: "+str);
+					function fun(){
+						alert("方法内部: "+str);
+					}
+					fun();
+				</script>
+				<script>
+					alert("另一个sctipt: "+str);
+				</script>
+		(2)局部变量:在方法内部定义一个变量，只能在方法内部使用。代码块中的变量在外界中能够访问。
+js对象
+	1.js的String对象:
+		(1)创建String对象: var str="String对象";	var str=new String("String对象");
+		(2)属性(参考API文档):
+			length 字符串的长度: var str = " abc ";	console.log(str.length);//5,识别空格
+		(3)方法(参考API文档):
+			1)与html相关的方法:
+				bold() 使用粗体显示字符串。 document.write(str.bold());
+				fontcolor() 使用指定的颜色来显示字符串。 document.write(str.fontcolor("Red"));
+				fontsize() 使用指定的尺寸(大小)来显示字符串。 document.write(str.fontsize(7));//size 参数必须是从 1 至 7 的数字。
+				italics() 使用斜体显示字符串。 document.write(str.italics());
+				link() 将字符串显示为链接。 document.write(str.link("http://www.w3school.com.cn"))
+			2)与java相似的方法:
+				charAt() 返回在指定位置的字符。 document.write(str.charAt(0));//字符串中第一个字符的下标是 0。如果参数 index 不在 0 与 string.length 之间，该方法将返回一个空字符串。
+				concat() 连接字符串。 document.write(str1.concat(str2));
+				indexOf() 检索字符串。 indexOf() 方法对大小写敏感！如果要检索的字符串值没有出现，则该方法返回 -1。
+										var str="Hello world!";
+										document.write(str.indexOf("Hello") + "<br />");//0
+										document.write(str.indexOf("World") + "<br />");//-1
+										document.write(str.indexOf("world"));//6
+				split() 把字符串分割为字符串数组。 stringObject.split(separator,howmany)
+					separator 必需。字符串或正则表达式，从该参数指定的地方分割 stringObject。 
+					howmany 可选。该参数可指定返回的数组的最大长度。如果设置了该参数，返回的子串不会多于这个参数指定的数组。如果没有设置该参数，整个字符串都会被分割，不考虑它的长度.
+										var str="How are you doing today?";
+										document.write(str.split(" ") + "<br />");//How,are,you,doing,today?
+										document.write(str.split("") + "<br />");//H,o,w, ,a,r,e, ,y,o,u, ,d,o,i,n,g, ,t,o,d,a,y,?
+										document.write(str.split(" ",3));//How,are,you
+				replace() 替换与正则表达式匹配的子串。 stringObject.replace(regexp/substr,replacement)
+										var str="Welcome to Microsoft! ";
+										str=str + "We are proud to announce that Microsoft has ";
+										str=str + "one of the largest Web Developers sites in the world.";
+										document.write(str.replace(/Microsoft/ig, "W3School"));//i是忽略大小写，g是全局匹配(否则只匹配第一个)，m是多行匹配。
+				substr() 从起始索引号提取字符串中指定数目的字符。 stringObject.substr(start,length)，length可不写，则默认到结尾。
+				substring() 提取字符串中两个指定的索引号之间的字符。 stringObject.substring(start,stop);
+				toLowerCase() 把字符串转换为小写。 stringObject.toLowerCase();
+				toUpperCase() 把字符串转换为大写。 stringObject.toUpperCase();
+				toString() 返回字符串。 var num=10; var str=num.toString(); <==>  var str=num+"";
+	2.js的Array对象:
+		属性:length 设置或返回数组中元素的数目。 
+		方法:
+			concat() 连接两个或更多的数组，并返回结果。 var a=[1,2,3]; var b=["qqq","www"];	document.write(a.concat(4,5));/*1,2,3,4,5*/	document.write(a.concat(b));//1,2,3,qqq,www
+			join() 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。 arrayObject.join(separator),separator可选，不写则默认","
+				var arr = new Array(3);	arr[0] = "George";	arr[1] = "John";	arr[2] = "Thomas";	document.write(arr.join("."));//George.John.Thomas
+			push() 向数组的末尾添加一个或更多元素，并返回新的长度。 
+				document.write(arr + "<br />");//George,John,Thomas
+				document.write(arr.push("James") + "<br />");//4	//如果push的是另一个数组，那这一整个数组就只占一个元素。
+				document.write(arr);//George,John,Thomas,James
+			pop() 删除并返回数组的最后一个元素。document.write(arr.pop());
+			shift() 删除并返回数组的第一个元素 
+			reverse() 颠倒数组中元素的顺序。 var arr = new Array["George","John","Thomas"];	document.write(arr.reverse());//Thomas,John,George
+			sort() 对数组的元素进行排序。若不写参数则类似于java的compareTo进行排序。
+				function sortNumber(a,b)
+				{
+					return a - b;
+				}
+				var arr = new Array(6);
+				arr[0] = "10";arr[1] = "5";arr[2] = "40";arr[3] = "25";arr[4] = "1000";arr[5] = "1"
+				document.write(arr + "<br />");document.write(arr.sort(sortNumber));
+			splice() 删除元素，并向数组添加新元素。 arrayObject.splice(index,howmany,item1,.....,itemX);
+				index 必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。 
+				howmany 必需。要删除的项目数量。如果设置为 0，则不会删除项目。 
+				item1, ..., itemX 可选。向数组添加的新项目。 
+				var arr = new Array(6);arr[0] = "George";arr[1] = "John";arr[2] = "Thomas";arr[3] = "James";arr[4] = "Adrew";arr[5] = "Martin";
+				document.write(arr + "<br />");//George,John,Thomas,James,Adrew,Martin
+				arr.splice(2,3,"William","qqq");//George,John,William,Martin,qqq
+				document.write(arr);
+	3.js的Date对象:
+		Date() 返回当日的日期和时间。 var date=new Date()/new Date("July 21, 1983 01:15:00");
+		toLocaleString() 根据本地时间格式，把 Date 对象转换为字符串。
+		getFullYear() 从 Date 对象以四位数字返回年份。 //getYear()不推荐使用
+		getMonth() 从 Date 对象返回月份 (0 ~ 11)。 //和真实月份之间差1
+		getDay() 从 Date 对象返回一周中的某一天 (0 ~ 6)。 //星期日是0，其它的对应1~6.
+		getDate() 从 Date 对象返回一个月中的某一天 (1 ~ 31)。 
+		getHours() 返回 Date 对象的小时 (0 ~ 23)。 
+		getMinutes() 返回 Date 对象的分钟 (0 ~ 59)。 
+		getSeconds() 返回 Date 对象的秒数 (0 ~ 59)。 
+		getMilliseconds() 返回 Date 对象的毫秒(0 ~ 999)。 
+		getTime() 返回 1970 年 1 月 1 日至今的毫秒数。
+	4.js的Math对象:
+		数学的运算:都是静态的方法，可以直接使用Math.方法();
+		ceil(x) 对数进行上舍入。 var a=5.5; document.write(Math.ceil(a));/*6*/	document.ceil(a);/*5.5*/
+		floor(x) 对数进行下舍入。 
+		round(x) 把数四舍五入为最接近的整数。 
+		random() 返回 0 ~ 1 之间的随机数。 Math.floor(Math.random()*10) //0~9的随机整数。
+	5.js的全局函数:由于不属于任何对象，直接写名称使用。
+		eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码(该方法只接受原始字符串作为参数，如果 string 参数不是原始字符串，那么该方法将不作任何改变地返回。因此请不要为 eval() 函数传递 String 对象来作为参数。)。
+			eval("alert('qqq')"); document.write(eval("5+5"));
+		isNaN() 检查某个值是否是数字。 document.write(isNaN(123));
+		parseFloat() 解析一个字符串并返回一个浮点数。 document.write(parseFloat("34 45 66")) //34
+		parseInt() 解析一个字符串并返回一个整数。
+	6.js的函数重载:
+		java函数重载定义:方法名相同，返回值无关，参数列表不同。
+		js的函数重载不存在，但是可以通过其它方式模拟重载。
+		把传递到的参数保存到argument数组中。
+		例子:
+			function add(){
+				var sum=0;
+				for(var i=0;i<arguments.length;i++){
+					sum+=arguments[i];
+				}
+				return sum;
+			}			
+			document.write(add(1,2));
+			document.write(add(1,2,3));
+			document.write(add(1,2,3,4,5,6,7,8,9));
+	7.js的BOM对象:浏览器对象模型
+		1.navigator:包含有关浏览器的信息。
+			appName 返回浏览器的名称。 document.write(navigator.appName);
+		2.screen:包含有关客户端显示屏幕的信息。
+			height 返回显示屏幕的高度,以像素计。document.write(screen.height); 
+			width 返回显示器屏幕的宽度,以像素计。 
+		3.location:包含有关当前 URL 的信息。
+			href 设置或返回完整的 URL。 document.write(location.href);/*输出当前地址*/	<button onclick="location.href='https://www.baidu.com'">百度</button>	<button onclick="location.href='index.html'">本地文件</button>
+		4.history:包含用户（在浏览器窗口中）访问过的 URL。
+			length 返回浏览器历史列表中的 URL 数量。 
+			back() 加载 history 列表中的前一个 URL。 <input type="button" onclick="history.back()" value="back" /> 
+			forward() 加载 history 列表中的下一个 URL。 <input type="button" onclick="history.forward()" value="next" /> 
+			go() 加载 history 列表中的某个具体页面。 <input type="button" onclick="history.go(-1)" value="back" />	<input type="button" onclick="history.go(1)" value="next" />
+		5.window:
