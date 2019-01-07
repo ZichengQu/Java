@@ -1,6 +1,6 @@
 一、JavaScript简介:
 	JavaScript一种直译式脚本语言，是一种动态类型、弱类型、基于原型的语言，内置支持类型。它的解释器被称为JavaScript引擎，为浏览器的一部分，广泛用于客户端的脚本语言，
-	最早是在HTML（标准通用标记语言下的一个应用）网页上使用，用来给HTML网页增加动态功能。
+	最早是在HTML(标准通用标记语言下的一个应用)网页上使用，用来给HTML网页增加动态功能。
 二、特点:
 	1.是一种解释性脚本语言（代码不进行预编译）。
 	2.主要用来向HTML（标准通用标记语言下的一个应用）页面添加交互行为。
@@ -109,7 +109,7 @@
 						1=="1"-->true;	true=="1"-->true;	null==0-->false; null==undefined-->true; NaN==NaN-->false;
 		(2)通过isNaN()函数来判断一个值是否是NaN:如果该值是NaN则返回true，否则返回false。
 		(3)不相等 !=:用来判断两个值是否不相等，如果不相等返回true，否则返回false。不相等也会对变量自动进行类型转换，如果转换后相等也返回false。
-		(4)全等 ===:用来判断两个值是否权等，它和相等类似，不同的是它不会做自动的类型转换。
+		(4)全等 ===:用来判断两个值是否全等，它和相等类似，不同的是它不会做自动的类型转换。
 		(5)不全等 !==:用来判断两个值是否不全等，和不等类似，不同的是它不会做自动的类型转换。如果两个值类型不同，直接返回true。
 	9.条件运算符(三元运算符)
 		语法:条件表达式?语句1:语句2
@@ -168,7 +168,7 @@
 				语法:for(初始化条件;条件表达式;循环增量){
 						statement...;
 					}
-			(4)99乘法表、1~100以内所有质数，例子:link@index............................................................................................................................
+			(4)99乘法表、1~100以内所有质数，例子:
 				<style>//99乘法表
 					span{
 						width: 80px;
@@ -210,7 +210,7 @@
 				console.log(arr[i]);
 			}
 		</script
-十五、函数:在js里定义函数有三种方式, link@函数。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+十五、函数:在js里定义函数有三种方式。
 	1.定义方式:
 		(1)使用一个function关键字
 			语法:function 方法名(参数列表里直接写参数名称，不需要写var){
@@ -286,7 +286,7 @@ js对象
 				link() 将字符串显示为链接。 document.write(str.link("http://www.w3school.com.cn"))
 			2)与java相似的方法:
 				charAt() 返回在指定位置的字符。 document.write(str.charAt(0));//字符串中第一个字符的下标是 0。如果参数 index 不在 0 与 string.length 之间，该方法将返回一个空字符串。
-				concat() 连接字符串。 document.write(str1.concat(str2));
+				concat() 连接字符串(并未改变str1的值)。 document.write(str1.concat(str2));
 				indexOf() 检索字符串。 indexOf() 方法对大小写敏感！如果要检索的字符串值没有出现，则该方法返回 -1。
 										var str="Hello world!";
 										document.write(str.indexOf("Hello") + "<br />");//0
@@ -305,14 +305,14 @@ js对象
 										str=str + "one of the largest Web Developers sites in the world.";
 										document.write(str.replace(/Microsoft/ig, "W3School"));//i是忽略大小写，g是全局匹配(否则只匹配第一个)，m是多行匹配。
 				substr() 从起始索引号提取字符串中指定数目的字符。 stringObject.substr(start,length)，length可不写，则默认到结尾。
-				substring() 提取字符串中两个指定的索引号之间的字符。 stringObject.substring(start,stop);
+				substring() 提取字符串中两个指定的索引号之间的字符。 stringObject.substring(start,stop);//[start,stop)
 				toLowerCase() 把字符串转换为小写。 stringObject.toLowerCase();
 				toUpperCase() 把字符串转换为大写。 stringObject.toUpperCase();
 				toString() 返回字符串。 var num=10; var str=num.toString(); <==>  var str=num+"";
 	2.js的Array对象:
 		属性:length 设置或返回数组中元素的数目。 
 		方法:
-			concat() 连接两个或更多的数组，并返回结果。 var a=[1,2,3]; var b=["qqq","www"];	document.write(a.concat(4,5));/*1,2,3,4,5*/	document.write(a.concat(b));//1,2,3,qqq,www
+			concat() 连接两个或更多的数组，并返回结果(并未改变a的值)。 var a=[1,2,3]; var b=["qqq","www"];	document.write(a.concat(4,5));/*1,2,3,4,5*/	document.write(a.concat(b));//1,2,3,qqq,www
 			join() 把数组的所有元素放入一个字符串。元素通过指定的分隔符进行分隔。 arrayObject.join(separator),separator可选，不写则默认","
 				var arr = new Array(3);	arr[0] = "George";	arr[1] = "John";	arr[2] = "Thomas";	document.write(arr.join("."));//George.John.Thomas
 			push() 向数组的末尾添加一个或更多元素，并返回新的长度。 
@@ -320,8 +320,8 @@ js对象
 				document.write(arr.push("James") + "<br />");//4	//如果push的是另一个数组，那这一整个数组就只占一个元素。
 				document.write(arr);//George,John,Thomas,James
 			pop() 删除并返回数组的最后一个元素。document.write(arr.pop());
-			shift() 删除并返回数组的第一个元素 
-			reverse() 颠倒数组中元素的顺序。 var arr = new Array["George","John","Thomas"];	document.write(arr.reverse());//Thomas,John,George
+			shift() 删除并返回数组的第一个元素。
+			reverse() 颠倒数组中元素的顺序(会改变arr本身，使其变为倒序)。 var arr = new Array["George","John","Thomas"];	document.write(arr.reverse());//Thomas,John,George
 			sort() 对数组的元素进行排序。若不写参数则类似于java的compareTo进行排序。
 				function sortNumber(a,b)
 				{
