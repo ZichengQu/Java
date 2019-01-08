@@ -112,7 +112,12 @@ CSS
 JavaScript  
 ..............................................................................................................................................  
 1.JavaScript.js,JavaScript笔记: https://github.com/ZichengQu/Java/blob/JavaScript/note/JavaScript.js  
-2.
+2.正则表达式: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html  
+3.Document对象常用方法: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/Document%E5%AF%B9%E8%B1%A1.html  
+4.window弹窗练习: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html  
+				  https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/user.html  
+5.标题栏滚动演示练习(一个字一个字往外蹦，不是左右滚动): https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html  
+
   
   
 **********************************************************************************************************************************************  
