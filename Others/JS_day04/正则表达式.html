@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			/*
+			 * 正则表达式用于定义一些字符串规则，计算机可以根据正则表达式，来检查一个字符串是否符合规则或者将字符串中符合规则的内容提取出来。
+			 * 创建正则表达式的对象:
+			 * 	语法: var 变量 = new RegExp("正则表达式","匹配模式");
+			 */
+			var reg1 = new RegExp("a");
+			var reg2 = new RegExp("a","i");//相当于reg2 = /a/i;
+			console.log(reg1);
+			//test() 方法用于检测一个字符串是否匹配某个模式.
+			console.log(reg1.test("abcd"));//true
+			console.log(reg1.test("Abcd"));//false
+			console.log(reg2.test("Abcd"));//true
+			/*
+			 * 使用字面量来创建正则表达式:
+			 * 	语法: var 变量 = /正则表达式/匹配模式;
+			 * 	使用字面量的方式创建更加简单，使用构造函数创建更加灵活。
+			 */
+			reg2 = /a/i;//相当于reg2 = new RegExp("a","i");
+			/*
+			 * 创建一个正则表达式，检查一个字符串中是否有a或b。
+			 * 使用	|	表示"或者"的意思;[ab]==a|b;
+			 */
+			var reg3 = /a|b/;
+			console.log(reg3.test("acd"));//true
+			/*
+			 * 创建一个正则表达式，检查一个字符串中是否有任意一个字母。
+			 * [a-z][A-Z] --> 任意小大写字母; [A-z] --> 任意一个字母
+			 */
+			var reg4 = /[a-z]/i;
+			console.log(reg4.test("ABD"));//true
+			/*
+			 * 检查一个字符串中是否含有abc或adc或aec
+			 */
+			var reg5 = /a[bde]c/i;
+			console.log(reg5.test("Abcd"));//true
+			/*
+			 * 检查一个字符串中是否含有数字之外的字符
+			 * [^ ]除了
+			 */
+			var reg6 = /[^0-9]/;
+			console.log(reg6.test("1ac23"));//true
+			/*
+			 * search 检索与正则表达式相匹配的值。 
+			 * 	返回下标。
+			 * 	如果搜索到制定内容，则会返回第一次出现索引的位置(下标从0开始)，如果没有搜索到则返回-1.
+			 * 	该参数可以是需要在 stringObject 中检索的子串，也可以是需要检索的 RegExp 对象。
+			 */
+			var str1 = "1a2a3a4b5c6c";
+			var r = str1.search("a");//等效于var r = str1.search(/a/);
+			console.log(r);//1
+			console.log(typeof(r));//number
+			/*
+			 * match 找到一个或多个正则表达式的匹配。 
+			 * 返回内容。
+			 * 从一个字符串或正则表达式中将符合条件的内容提取出来。
+			 * 默认情况下只会找到第一个符合要求的内容，找到以后就停止检索。
+			 * 我们可以设置正则表达式为全局匹配(g)模式。
+			 */
+			console.log(str1.match(/[a-z]/g));//a,a,a,b,c,c
+			console.log(typeof(str1.match(/[a-z]/g)));//object
+			/*
+			 * 量词: 通过量词可以设置一个内容出现的次数。
+			 * 	量词只对它前面的一个内容起作用:
+			 * 	{n}:正好出现n次.
+			 * 	{m,n}:出现m-n次.
+			 * 	{m,}:m次以上.
+			 * 	+:至少一个，相当于{1,};
+			 * 	*:0个或多个，相当于{0,};
+			 * 	?:0个或1个，相当于{0,1};
+			 */
+			var reg7 = /a{3}/;
+			console.log("aaabcd".match(reg7));//aaa
+			var reg8 = /(ab){3,4}/;
+			console.log("abababab".match(reg8));//abababab,ab
+			var reg9=/a+/;
+			console.log("aaaaabcd".match(reg9));//aaaaa
+			var reg10=/a*/;
+			console.log("aaaaabcd".match(reg10));//aaaaa
+			var reg11=/a?/;
+			console.log("aaaaabcd".match(reg11));//a
+			/*
+			 * 检查一个字符串，是否以a开头。
+			 * 	^:表示开头;
+			 * 	$:表示结尾;
+			 * 	如果在正则表达式中同时使用^$，则要求字符串必须完全符合正则表达式。
+			 */
+			var reg12 = /^a/;//匹配开头的a
+			console.log(reg12.test("abcd"));//true
+			console.log(reg12.test("babcd"));//false
+			var reg13 = /^a|a$/;//匹配以a开头或以a结尾
+			console.log(reg13.test("babcda"));//true
+			/*
+			 * 创建一个正则表达式，用来检查一个字符串是否是一个合法手机号
+			 * 以1开头，第二位3-9，11位。
+			 * ^1 [3-9] \d{9}$
+			 */
+			var reg14 = /^1[3-9]\d{9}$/;
+			console.log(reg14.test(18004015850));//true
+			/*
+			 * 元字符
+			 * 	. 表示任意单个字符，除了换行和行结束符。 
+			 * 	在正则表达式中，使用 \ 作为转义字符。
+			 * 	\\	表示一个	\	注意:使用构造函数时，由于它的参数是一个字符串，而 \ 是字符串中转义字符，如果要使用 \ ，则需要使用 \\ 来代替。
+			 * 	\.	表示一个 .
+			 * 	\w 查找单词字符。 匹配字母、数字、下划线;相当于[A-z0-9_]
+			 * 	\W 查找非单词字符。 [^A-z0-9_]
+			 * 	\d 查找数字。 	[0-9]
+			 * 	\D 查找非数字字符。 [^0-9]
+			 * 	\s 查找空白字符。 	有空格则返回true，无空格则返回false。
+			 * 	\S 查找非空白字符。  又不是空格的就返回true。全是空格则返回false。
+			 * 	\b 匹配单词边界。 /\bword\b/;//单词
+			 * 	\B 匹配非单词边界。 
+			 */
+			var reg15 = /\./; //检测一个.
+			console.log(reg15.test("."));//true
+			var reg16 = /\bchild\b/;
+			console.log(reg16.test("hello, children"));//true
+			str = "      hello";//去掉字符串中的空格，使用""来替换空格。
+			str=str.replace(/\s/g,"");
+			console.log(str);
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

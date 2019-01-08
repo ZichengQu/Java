@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function del(){
+				if(confirm("确认删除吗？")){
+					alert("成功");
+				}else{
+					alert("失败");
+				}			
+			}
+		</script>
+		<script type="text/javascript">
+			function open_win() 
+			{
+				window.open("http://www.w3school.com.cn","","width=200,height=100");
+			}
+			function closeWin()
+		    {
+		  	    myWindow.close()
+		    }
+			var id1 = setInterval("alert('周期定时器')",3000); 
+			var id2 = setTimeout("alert('周期定时器')",3000);
+		</script>
+
+	</head>
+	<body>
+		<button onclick="del()">删除按钮</button>
+		<button onclick=" return del()">删除按钮</button>
+		<input type=button value="Open Window" onclick="open_win()" />
+		<button onclick="window.close()">关闭</button>
+		<button onclick="clearInterval(id1)">停止周期</button>
+		<button onclick="clearTimeout(id2)">停止一次</button>
+	</body>
+</html>

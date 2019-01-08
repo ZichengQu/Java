@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function fun(){//1.无参方法
+				alert("fun方法");
+			}
+			fun();//可以直接在js里调用。
+			function add(a,b){//2.有参方法
+				var c = a+b;
+				alert(a+"+"+b+"="+c);
+			}
+			add(1,2);
+			function addReturn(a,b){//3.有参有返回值方法
+				var c = a+b;
+				return c;
+			}
+			alert(addReturn(1,2));
+		</script>
+		<script>
+			var a = function(a,b){
+				alert(a+b);
+			}
+			a(1,2);//函数也是对象，所以直接给函数对象传参。
+			console.log(a);//function (a,b){alert(a+b);}"
+			console.log(typeof(a));//function
+		</script>
+		<script>
+			var cs="x,y";
+			var fft="var sum=x+y; return sum;";
+			var add = new Function(cs,fft);//也可以直接把参数写进去
+			alert(add(1,2));
+		</script>
+		<script>
+			var str="全局变量";
+			alert("方法外部: "+str);
+			function fun(){
+				alert("方法内部: "+str);
+			}
+			fun();
+		</script>
+		<script>
+			alert("另一个sctipt: "+str);
+		</script>
+		<script>
+			function fun(){
+				var str
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

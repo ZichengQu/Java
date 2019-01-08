@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			{
+				var a = 123;//外部可调用
+				alert("警告框")//控制浏览器弹出一个警告框
+				document.write("<b><i>可以向body中输出一个内容</i></b>");//让计算机在页面中输出一个内容
+				console.log("在控制台出现")//向控制台输出一个内容
+			}
+			var year = prompt("input a year:")//可以弹出一个提示框，该提示框会带有一个文本框，并带有括号中的提示。
+			if(!isNaN(year)&&year!=null){
+				if(year%400==0||(year%100!=0&&year%4==0)){
+					console.log(year+"是闰年");
+				}else{
+					console.log(year+"不是闰年")
+				}
+			}else{
+				console.log("不是年份");
+			}
+			var score = 80;
+			switch(parseInt(prompt("input a score:")/10)){
+				case 10: console.log("level 10"); break;
+				case 9: console.log("level 9"); break;
+				case 8: console.log("level 8"); break;
+				case 7: console.log("level 7"); break;
+				case 6: console.log("level 6"); break;
+				default: console.log("level fail"); break;
+			}
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

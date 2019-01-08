@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<input id="name" name="username" value="这是id为name的value(改之前)。"/>
+		<br />
+		<input id="input1" type="checkbox" value="吃饭" name="hobby"/><label for="input1">吃饭</label>
+		<input id="input2" type="checkbox" value="篮球" name="hobby"/><label for="input2">篮球</label>
+		<input id="input3" type="checkbox" value="足球" name="hobby"/><label for="input3">足球</label>
+		<br />
+		
+		<script>
+			var username = document.getElementById("name");//通过id得到元素。
+			console.log(username.value);//得到input里面的value的值。username.id/username.name/username.value
+			username.value="这是id为name的value(改之后)。";
+			var inputs1 = document.getElementsByName("hobby");//使用getElementsByName得到input标签
+			for(var i=0;i<inputs1.length;i++){//遍历inputs数组,得到标签里面具体的值。
+				var hobby=inputs1[i];
+				console.log(hobby.value);
+			}
+			var inputs2 = document.getElementsByTagName("input");
+			console.log(inputs2.length);
+		</script>
+	</body>
+</html>

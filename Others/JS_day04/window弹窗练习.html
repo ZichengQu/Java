@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我在标题栏上滚动显示</title>
+		<script>
+			{
+				//滚动的文字
+				var t = document.title;
+				var len = t.length;
+				var s=1;
+				function roll(){
+					document.title = t.substring(0,s++);
+					if(s>len) s=1;
+				}
+				setInterval('roll()',500);
+			}
+			function open1(){//实现弹出窗口的方法
+				window.open("user.html","","width=350px,height=250px");
+			}
+		</script>
+	</head>
+	<body>
+		编号: <input id="uId" />
+		<br />
+		姓名: <input id="name" />
+		<br />
+		<input type="button" value="选择" onclick="open1();" />
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function fun(num,name){
+				var win = window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
+				win.document.getElementById("uId").value = num;//需要把num和name赋值到window窗口。
+				win.document.getElementById("name").value = name;
+				window.close();
+			}
+		</script>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<th>操作</th>
+				<th>编号</th>
+				<th>姓名</th>
+			</tr>
+			<tr>
+				<td><input type="button" value="选择" onclick="fun('number1','name1')"/></td>
+				<td>number1</td>
+				<td>name1</td>
+			</tr>
+			<tr>
+				<td><input type="button" value="选择" onclick="fun('number2','name2')"/></td>
+				<td>number2</td>
+				<td>name2</td>				
+			</tr>
+			<tr>
+				<td><input type="button" value="选择" onclick="fun('number3','name3')"/></td>
+				<td>number3</td>
+				<td>name3</td>				
+			</tr>
+			<tr>
+				<td><input type="button" value="选择" onclick="fun('number4','name4')"/></td>
+				<td>number4</td>
+				<td>name4</td>				
+			</tr>
+		</table>
+	</body>
+</html>
