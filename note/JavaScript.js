@@ -498,6 +498,7 @@ js对象
 				文本:
 				Node节点对象: 这个对象是这些对象的父对象。如果在对象里面找不到想要的方法，这个时候到Node里面去找。
 		(1)Document对象: 每个载入浏览器的HTML文档都会称为Document对象。
+			dom解析html.png: https://github.com/ZichengQu/Java/blob/JavaScript/Others/dom%E8%A7%A3%E6%9E%90html.png
 			常用方法：https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/Document%E5%AF%B9%E8%B1%A1.html
 				write() 向文档写 HTML 表达式 或 JavaScript 代码。
 				getElementById() 返回对拥有指定 id 的第一个对象的引用。
