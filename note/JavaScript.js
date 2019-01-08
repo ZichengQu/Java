@@ -390,4 +390,140 @@ js对象
 			back() 加载 history 列表中的前一个 URL。 <input type="button" onclick="history.back()" value="back" /> 
 			forward() 加载 history 列表中的下一个 URL。 <input type="button" onclick="history.forward()" value="next" /> 
 			go() 加载 history 列表中的某个具体页面。 <input type="button" onclick="history.go(-1)" value="back" />	<input type="button" onclick="history.go(1)" value="next" />
-		5.window:
+		5.window: 表示浏览器中打开的窗口。顶层对象(所有的bom对象都是在window里面操作的)。
+			alert() 显示带有一段消息和一个确认按钮的警告框。 
+			prompt() 显示可提示用户输入的对话框。 prompt(text,defaultText);/*两个参数都可以不写*/	var name=prompt("Please enter your name","");
+			confirm() 显示带有一段消息以及确认按钮和取消按钮的对话框。 
+				confirm(message);/*message 要在 window 上弹出的对话框中显示的纯文本（而非 HTML 文本） */	 
+				var r=confirm("Press a button");//value r: true or false.
+				例子:
+					<head>
+						<meta charset="UTF-8">
+						<title></title>
+						<script>
+							function del(){
+								if(confirm("确认删除吗？")){
+									alert("成功");
+								}else{
+									alert("失败");
+								}			
+							}
+						</script>
+					</head>
+					<body>
+						<button onclick="del()">删除按钮</button>
+						<button onclick=" return del()">删除按钮</button>
+					</body>
+			blur() 把键盘焦点从顶层窗口移开。 
+			open() 打开一个新的浏览器窗口或查找一个已命名的窗口。window.open(URL,name,features,replace);
+				function open_win() 
+				{
+					window.open("http://www.w3school.com.cn","","width=200,height=100");
+				}
+				<input type=button value="Open Window" onclick="open_win()" />
+			close() 关闭浏览器窗口。 <button onclick="window.close()">关闭</button> //最好向open那样写
+			setInterval() 按照指定的周期（以毫秒计）来调用函数或计算表达式。
+				setInterval(code,millisec[,"lang"]); /*code 必需。要调用的函数或要执行的代码串。 millisec 必须。周期性执行或调用 code 之间的时间间隔，以毫秒计。*/
+				setInterval("alert('周期定时器')",1000); 
+			setTimeout() 在指定的毫秒数后调用函数或计算表达式，只会执行一次。setTimeout("alert('周期定时器')",1000);
+			clearInterval() 取消由 setInterval() 设置的 timeout。
+			clearTimeout() 取消由 setTimeout() 方法设置的 timeout。
+				例子:
+					var id1 = setInterval("alert('周期定时器')",3000); 
+					var id2 = setTimeout("alert('周期定时器')",3000);
+					<button onclick="clearInterval(id1)">停止周期</button>
+					<button onclick="clearTimeout(id2)">停止一次</button>
+	8.js的正则表达式: API及https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.html
+		[]-------表示一个位置，如果该位置上只有一种可能，可以忽略不写
+		()-------表示一个组合（至少是两位，并且是连续的）
+		{}-------用来定义字符串长度的范围
+		i 执行对大小写不敏感的匹配。 
+		g 执行全局匹配（查找所有匹配而非在找到第一个匹配后停止）。 
+		m 执行多行匹配。 
+		[abc] 查找方括号之间的任何字符。 
+		[^abc] 查找任何不在方括号之间的字符。 
+		[0-9] 查找任何从 0 至 9 的数字。 
+		[a-z] 查找任何从小写 a 到小写 z 的字符。 
+		[A-Z] 查找任何从大写 A 到大写 Z 的字符。 
+		[A-z] 查找任何从大写 A 到小写 z 的字符。 
+		[adgk] 查找给定集合内的任何字符。 
+		[^adgk] 查找给定集合外的任何字符。 
+		(red|blue|green) 查找任何指定的选项。 
+		. 查找单个字符，除了换行和行结束符。 
+		\w 查找单词字符。 
+		\W 查找非单词字符。 
+		\d 查找数字。 
+		\D 查找非数字字符。 
+		\s 查找空白字符。 
+		\S 查找非空白字符。 
+		\b 匹配单词边界。 
+		\B 匹配非单词边界。 
+		\0 查找 NUL 字符。 
+		\n 查找换行符。 
+		\f 查找换页符。 
+		\r 查找回车符。 
+		\t 查找制表符。 
+		\v 查找垂直制表符。 
+		\xxx 查找以八进制数 xxx 规定的字符。 
+		\xdd 查找以十六进制数 dd 规定的字符。 
+		\uxxxx 查找以十六进制数 xxxx 规定的 Unicode 字符。 
+		n+ 匹配任何包含至少一个 n 的字符串。 
+		n* 匹配任何包含零个或多个 n 的字符串。 
+		n? 匹配任何包含零个或一个 n 的字符串。 
+		n{X} 匹配包含 X 个 n 的序列的字符串。 
+		n{X,Y} 匹配包含 X 至 Y 个 n 的序列的字符串。 
+		n{X,} 匹配包含至少 X 个 n 的序列的字符串。 
+		n$ 匹配任何结尾为 n 的字符串。 
+		^n 匹配任何开头为 n 的字符串。 
+		?=n 匹配任何其后紧接指定字符串 n 的字符串。 
+		?!n 匹配任何其后没有紧接指定字符串 n 的字符串。 
+		test: RegExp的对象方法，检索字符串中指定的值。返回 true 或 false。 
+		search: String对象的方法，检索与正则表达式相匹配的值。
+		match: String对象的方法，找到一个或多个正则表达式的匹配
+		replace: String对象的方法，替换与正则表达式匹配的子串。
+		split: String对象的方法，把字符串分割为字符串数组。
+	9.js的DOM:文档对象模型
+		文档:超文本标记(超文本标记文档) html、xml;
+		对象:提供了属性和方法;
+		模型:使用属性和方法操作超文本标记文档;
+		可以使用js的dom里面提供的对象，使用这些对象的属性和方法，对标记型文档进行操作。想要对标记型文档进行操作，首先需要对标记型文档里面的所有内容封装成对象。
+			需要把html里面的标签、属性、文本内容都封装成对象进行操作。
+		想要对标记型文档进行操作，解析标记型文档
+			画图分析，如何使用DOM解析html。
+			解析过程:
+				根据html的层级结构，在内存中分配一个树形结构，需要把html中每部分封装成对象。
+				document对象: 整个文档
+				element对象: 标签对象
+				属性对象:
+				文本:
+				Node节点对象: 这个对象是这些对象的父对象。如果在对象里面找不到想要的方法，这个时候到Node里面去找。
+		(1)Document对象: 每个载入浏览器的HTML文档都会称为Document对象。
+			常用方法：https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/Document%E5%AF%B9%E8%B1%A1.html
+				write() 向文档写 HTML 表达式 或 JavaScript 代码。
+				getElementById() 返回对拥有指定 id 的第一个对象的引用。
+						<input id="name" name="username" value="这是id为name的value(改之前)。"/>
+						var username = document.getElementById("name");//通过id得到元素。
+						alert(username.value);//得到input里面的value的值。username.id/username.name/username.value
+						username.value="这是id为name的value(改之后)。";
+				getElementsByName() 返回带有指定名称的对象集合(数组)。 
+						<input id="input1" type="checkbox" value="吃饭" name="hobby"/><label for="input1">吃饭</label>
+						<input id="input2" type="checkbox" value="篮球" name="hobby"/><label for="input2">篮球</label>
+						<input id="input3" type="checkbox" value="足球" name="hobby"/><label for="input3">足球</label>
+						var inputs = document.getElementsByName("hobby");//使用getElementsByName得到input标签
+						for(var i=0;i<inputs.length;i++){//遍历inputs数组,得到标签里面具体的值。
+							var hobby=inputs[i];
+							console.log(hobby.value);
+						}
+				getElementsByTagName() 返回带有指定标签名的对象集合。
+						var inputs2 = document.getElementsByTagName("input");
+						console.log(inputs2.length);
+				注意: 使用getElementsByName()和getElementsByTagName()返回的是一个数组，若此数组的length是1，这个时候不需要遍历，而是可以直接通过数组的下标获取到值。
+		(2)window弹窗练习:
+			https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
+			https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/user.html
+			实现过程:
+				1)创建一个页面，有两个输入项和一个按钮;按钮上面有一个事件，弹出一个新窗口open();
+				2)创建弹出表格，每一行有一个按钮、编号和姓名;按钮上有一个事件，把当前的编号和姓名赋值到第一个页面相应的两个输入项中;
+					window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
+		(3)标题栏滚动演示练习(一个字一个字往外蹦，不是左右滚动):https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
+					
