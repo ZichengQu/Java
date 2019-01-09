@@ -527,6 +527,67 @@ js对象
 					a.创建一个页面，有两个输入项和一个按钮;按钮上面有一个事件，弹出一个新窗口open();
 					b.创建弹出表格，每一行有一个按钮、编号和姓名;按钮上有一个事件，把当前的编号和姓名赋值到第一个页面相应的两个输入项中;
 						window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
+					c.例子:
+						<head>
+							<meta charset="UTF-8">
+							<title>我在标题栏上滚动显示</title>
+							<script>
+								{
+									//滚动的文字
+									var t = document.title;
+									var s=1;
+									function roll(){
+										document.title = t.substring(0,s++);
+										if(s>t.len) s=1;
+									}
+									setInterval('roll()',500);
+								}
+								function open1(){//实现弹出窗口的方法
+									window.open("user.html","","width=350px,height=250px");
+								}
+							</script>
+						</head>
+						<body>
+							编号: <input id="uId" />
+							<br />
+							姓名: <input id="name" />
+							<br />
+							<input type="button" value="选择" onclick="open1();" />
+						</body>
+						//////////
+						<head>
+							<meta charset="UTF-8">
+							<title></title>
+							<script>
+								function fun(num,name){
+									var win = window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
+									win.document.getElementById("uId").value = num;//需要把num和name赋值到window窗口。
+									win.document.getElementById("name").value = name;
+									window.close();
+								}
+							</script>
+						</head>
+						<body>
+							<table border="1">
+								<tr>
+									<th>操作</th>
+									<th>编号</th>
+									<th>姓名</th>
+								</tr>
+								<tr>
+									<td><input type="button" value="选择" onclick="fun('number1','name1')"/></td>
+									<td>number1</td>
+									<td>name1</td>
+								</tr>
+								<tr>
+									<td><input type="button" value="选择" onclick="fun('number2','name2')"/></td>
+									<td>number2</td>
+									<td>name2</td>				
+								</tr>
+								<tr>...</tr>
+								<tr>...</tr>
+							</table>
+						</body>
 			2)标题栏滚动演示练习(一个字一个字往外蹦，不是左右滚动):https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
 		(2)js的事件:
 			onabort 图像加载被中断
@@ -578,6 +639,8 @@ js对象
 					<a onmouseover="show()" onmouseout="hide()">显示隐藏</a>
 				</body>
 		(3)元素对象(element对象，标签对象):要操作element对象。首先需要获取到element，使用document相应的方法获取;然后再用element进行相应的操作。
+			注意事项:在getAttribute和setAttribute等方法(用于html标签中固有的属性和自定义的属性中，所有浏览器都支持此方法，兼容性好)无效时(有些特殊情况会不起作用)，用对象(使用document相应的方法获取)去将属性点出来。//自己的观点，若是错了，要及时更改。
+				比如:class不是固有属性，不能点出来。
 			链接:https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/element%E5%AF%B9%E8%B1%A1.html
 			方法:
 				element.getAttribute("属性名称") 返回元素节点的指定属性值。 
@@ -592,7 +655,7 @@ js对象
 									input.setAttribute("class","ulul")
 									console.log(input.getAttribute("value"));//默认的value
 									input.removeAttribute("value");//Chrome能删掉value，IE不会删value
-									console.log(input.getAttribute("value"));//null
+									console.log(input.getAttribute("value"));//Chrome:null; IE:默认的value
 								}			
 							</script>
 						</body>
@@ -633,7 +696,7 @@ js对象
 							//获得标签对象
 							console.log(span.nodeName);//SPAN
 							console.log(span.nodeType);//1
-							console.log(span.nodeValue);//null
+							console.log(span.nodeValue);//null //就算是input标签中有value属性，这条也是null，因为value是在属性对象中获取的。
 							//获得属性对象
 							var id = span.getAttributeNode("id");
 							console.log(id);//[object Attr]
@@ -681,6 +744,44 @@ js对象
 				element.removeChild(oldnode) 从元素中移除子节点。 
 				element.replaceChild(newnode,oldnode) 替换元素中的子节点。
 					例子: 以上几个节点操作: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C.html
+						<head>
+							<meta charset="UTF-8">
+							<title></title>
+							<script>
+								function insert(){
+									var li4 = document.getElementById("n4");//获取id为n4的li节点
+									var li5 = document.createElement("li");//创建li5
+									var text = document.createTextNode("Number5");//创建文本
+									li5.appendChild(text);//把文本添加到li5下面
+									li5.setAttribute("id","n5");//可以不写，这是为其它方法的li5服务的。
+									document.getElementById("uid").insertBefore(li5,li4);
+								}
+								function del(){
+									var li5 = document.getElementById("n5");//获取要删除的元素
+									var ul = li5.parentNode;//获取父节点
+									ul.removeChild(li5);//删除节点
+								}
+								function replace(){
+									var li5 = document.getElementById("n5");
+									var li6 = document.createElement("li");
+									var text = document.createTextNode("Number6");
+									li6.appendChild(text);
+									li6.setAttribute("id","n6");
+									document.getElementById("uid").replaceChild(li6,li5);
+								}
+							</script>
+						</head>
+						<body>
+							<ul id="uid">
+								<li id="n1">Number1</li>
+								<li id="n2">Number2</li>
+								<li id="n3">Number3</li>
+								<li id="n4">Number4</li>
+							</ul>
+							<button onclick="insert()">插入</button>
+							<button onclick="del()">删除</button>
+							<button onclick="replace()">替换</button>
+						</body>
 			4)操作DOM总结:
 				获取节点的方法:
 					getElementById() 通过节点的id属性，查找对应的节点
@@ -693,7 +794,7 @@ js对象
 				替换节点: replaceChild() 通过父节点替换
 			5)element.innerHTML 设置或返回元素的内容。 (不是dom的组成部分，但是大多数浏览器都支持)
 				作用: 获取文本内容;向标签里面设置内容，可以是html代码。
-				例子:
+				例子:https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/innerHTML%E4%B8%8EinnerText.html
 					<body>
 						<span id="sid"><b>span文本</b></span>
 						<script>
@@ -709,8 +810,93 @@ js对象
 		得到当前时间: var date = new Date();	date = date.toLocaleString();
 		页面每秒均获取当前时间: setInterval() 定时器
 		显示在页面上: 每秒向div里面写一次时间，使用innerHTML/innerText修改值。
+		例子:
+			<head>
+				<meta charset="UTF-8">
+				<title></title>
+			</head>
+			<body>
+				<span>当前时间为: </span>
+				<div id="box" style="display: inline-block;"></div>
+				<script>
+					function dateStyle(){
+						var date = new Date();
+						var year = date.getFullYear();
+						var month = date.getMonth()+1;
+						var day = date.getDate();
+						var hour = date.getHours();
+						var minute = date.getMinutes()<=9?"0"+date.getMinutes():date.getMinutes();
+						var second = date.getSeconds()<=9?"0"+date.getSeconds():date.getSeconds();
+						var w = date.getDay()==0?7:date.getDay();//星期日为0.
+						date = year+"年"+month+"月"+day+"日\t"+hour+"时"+minute+"分"+second+"秒\t星期"+w;
+						return date;
+					}
+					function showTimes(){
+						document.getElementById("box").innerHTML = dateStyle();
+					}
+					showTimes();//一进入页面就会出现，没有这行就会等一秒再出现。
+					setInterval("showTimes()",1000);
+				</script>
+			</body>
 	11.全选: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%85%A8%E9%80%89.html
-补充:
+		例子:
+			<head>
+				<meta charset="UTF-8">
+				<title></title>
+				<style>
+					body{
+						font:20px "微软雅黑";
+					}
+				</style>
+				<script>
+					/*
+					 * 1、得上面那个复选框
+					 * 2、判断这个复选框是否被选中
+					 * 3、如果是选中，下面是全选
+					 * 4、如果不是选中，下面全部选
+					 */
+					function sel(){
+						var selAll=document.getElementById("selAll");//获取最上面的复选框
+						var language=document.getElementsByName("language");//获取下面所有的复选框返回一个数组
+						if(selAll.checked){//判断全选是否被选中
+							selAll.nextSibling.nodeValue="取消选择";//修改下一个节点的值为取消选择
+							for(var i=0;i<language.length;i++){//对数组进行遍历，设置下面所有复选框的状态为选中
+								language[i].checked=true;//"checked","qqq"
+							}
+						}else{
+							selAll.nextSibling.nodeValue="全选";
+							for(var i=0;i<language.length;i++){
+								language[i].checked="";//false
+							}
+						}
+					}
+					function check(){
+						var num=0;
+						var selAll=document.getElementById("selAll");
+						var language=document.getElementsByName("language");
+						for(var i=0;i<language.length;i++){
+							if(language[i].checked){//判断下面的复选框是否被选中
+								num++;
+							}
+						if(num==language.length){//判断选中的复选框和数组长度是否相等
+							selAll.checked=true;
+							selAll.nextSibling.nodeValue="取消选择";
+						}else{
+							selAll.checked=false;
+							selAll.nextSibling.nodeValue="全选";
+						}
+					}
+				}
+				</script>
+			</head>
+			<body>
+				<input type="checkbox" id="selAll" onclick="sel();"/>全选<br/>
+				<input name="language" type="checkbox" id="java" onclick="check();"/>java<br/>
+				<input name="language" type="checkbox" id="python" onclick="check();"/>python<br/>
+				<input name="language" type="checkbox" id="c" onclick="check();"/>c语言<br/>
+				<input name="language" type="checkbox" id="php" onclick="check();"/>php<br/>
+			</body>
+补充: https://www.cnblogs.com/xuehaoyue/p/6638202.html
 	区分 点操作符+属性名 和 getAttribute()
 	在用DOM操作控制HTML时，很多初学者会把 点操作符+属性名 与getAttribute("属性名") 混淆，误以为这两种方法是等价的。
 	实际上，
