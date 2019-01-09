@@ -680,7 +680,7 @@ js对象
 				element.insertBefore(newItem,existingItem) 在指定的已有的子节点之前插入新节点。
 				element.removeChild(oldnode) 从元素中移除子节点。 
 				element.replaceChild(newnode,oldnode) 替换元素中的子节点。
-					例子: 
+					例子: 以上几个节点操作: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C.html
 			4)操作DOM总结:
 				获取节点的方法:
 					getElementById() 通过节点的id属性，查找对应的节点
@@ -705,9 +705,9 @@ js对象
 							span.innerText = "<b>加粗的span文本</b>";//<b>加粗的span文本</b>
 						</script>
 					</body>
-	10.动态显示时间:@link。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+	10.动态显示时间: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4.html
 		得到当前时间: var date = new Date();	date = date.toLocaleString();
 		页面每秒均获取当前时间: setInterval() 定时器
 		显示在页面上: 每秒向div里面写一次时间，使用innerHTML/innerText修改值。
-	11.全选:@link............................................................................
+	11.全选: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%85%A8%E9%80%89.html
 		
