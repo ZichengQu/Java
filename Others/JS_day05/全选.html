@@ -21,12 +21,12 @@
 				if(selAll.checked){//判断全选是否被选中
 					selAll.nextSibling.nodeValue="取消选择";//修改下一个节点的值为取消选择
 					for(var i=0;i<language.length;i++){//对数组进行遍历，设置下面所有复选框的状态为选中
-						language[i].checked=true;
+						language[i].checked=true;//"checked","qqq"
 					}
 				}else{
 					selAll.nextSibling.nodeValue="全选";
 					for(var i=0;i<language.length;i++){
-						language[i].checked=false;
+						language[i].checked="";//false
 					}
 				}
 			}
