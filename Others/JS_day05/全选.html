@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				font:20px "微软雅黑";
+			}
+		</style>
+		<script>
+			/*
+			 * 1、得上面那个复选框
+			 * 2、判断这个复选框是否被选中
+			 * 3、如果是选中，下面是全选
+			 * 4、如果不是选中，下面全部选
+			 */
+			function sel(){
+				var selAll=document.getElementById("selAll");//获取最上面的复选框
+				var language=document.getElementsByName("language");//获取下面所有的复选框返回一个数组
+				if(selAll.checked){//判断全选是否被选中
+					selAll.nextSibling.nodeValue="取消选择";//修改下一个节点的值为取消选择
+					for(var i=0;i<language.length;i++){//对数组进行遍历，设置下面所有复选框的状态为选中
+						language[i].checked=true;
+					}
+				}else{
+					selAll.nextSibling.nodeValue="全选";
+					for(var i=0;i<language.length;i++){
+						language[i].checked=false;
+					}
+				}
+			}
+			function check(){
+				var num=0;
+				var selAll=document.getElementById("selAll");
+				var language=document.getElementsByName("language");
+				for(var i=0;i<language.length;i++){
+					if(language[i].checked){//判断下面的复选框是否被选中
+						num++;
+					}
+				
+				if(num==language.length){//判断选中的复选框和数组长度是否相等
+					selAll.checked=true;
+					selAll.nextSibling.nodeValue="取消选择";
+				}else{
+					selAll.checked=false;
+					selAll.nextSibling.nodeValue="全选";
+				}
+			}
+		}
+		</script>
+	</head>
+	<body>
+		<input type="checkbox" id="selAll" onclick="sel();"/>全选<br/>
+		<input name="language" type="checkbox" id="java" onclick="check();"/>java<br/>
+		<input name="language" type="checkbox" id="python" onclick="check();"/>python<br/>
+		<input name="language" type="checkbox" id="c" onclick="check();"/>c语言<br/>
+		<input name="language" type="checkbox" id="php" onclick="check();"/>php<br/>
+			
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span id="sid"><b>span文本</b></span>
+		<script>
+			var span = document.getElementById("sid");
+			//innerHTML能识别标签，innerText只识别文本。
+			console.log(span.innerHTML);//<b>span文本</b>
+			console.log(span.innerText);//span文本
+			span.innerHTML = "<b>加粗的span文本</b>";//加粗的span文本(加粗的)
+			span.innerText = "<b>加粗的span文本</b>";//<b>加粗的span文本</b>
+		</script>
+	</body>
+</html>

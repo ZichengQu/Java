@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var index = 5
+			function add(){
+				var ul = document.getElementById("uid");//获取到ul标签;
+				var li = document.createElement("li");//创建li标签;
+				var text = document.createTextNode("Number"+index++);//创建文本;
+				li.appendChild(text);//把文本加入到li下面;
+				ul.appendChild(li);//把li加入到ul下面。
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="uid">
+			<li>Number1</li>
+			<li>Number2</li>
+			<li>Number3</li>
+			<li>Number4</li>
+		</ul>
+		<button onclick="add()">添加</button>
+	</body>
+</html>

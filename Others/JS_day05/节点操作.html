@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function insert(){
+				var li4 = document.getElementById("n4");//获取id为n4的li节点
+				var li5 = document.createElement("li");//创建li5
+				var text = document.createTextNode("Number5");//创建文本
+				li5.appendChild(text);//把文本添加到li5下面
+				li5.setAttribute("id","n5");//可以不写，这是为其它方法的li5服务的。
+				document.getElementById("uid").insertBefore(li5,li4);
+			}
+			function del(){
+				var li5 = document.getElementById("n5");//获取要删除的元素
+				var ul = li5.parentNode;//获取父节点
+				ul.removeChild(li5);//删除节点
+			}
+			function replace(){
+				var li5 = document.getElementById("n5");
+				var li6 = document.createElement("li");
+				var text = document.createTextNode("Number6");
+				li6.appendChild(text);
+				li6.setAttribute("id","n6");
+				document.getElementById("uid").replaceChild(li6,li5);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="uid">
+			<li id="n1">Number1</li>
+			<li id="n2">Number2</li>
+			<li id="n3">Number3</li>
+			<li id="n4">Number4</li>
+		</ul>
+		<button onclick="insert()">插入</button>
+		<button onclick="del()">删除</button>
+		<button onclick="replace()">替换</button>
+	</body>
+</html>

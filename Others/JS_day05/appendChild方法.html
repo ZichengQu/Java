@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box1{
+				width: 200px;
+				height: 200px;
+				border: 2px solid red;
+			}
+			#box2{
+				width: 200px;
+				height: 200px;
+				border: 2px solid blue;
+			}
+		</style>
+		<script>
+			function add(){
+				var div2 = document.getElementById("box2");
+				var ul = document.getElementById("uid");
+				div2.appendChild(ul);//类似于剪切粘贴的效果。
+			}
+		</script>
+	</head>
+	<body>
+		<div id="box1">
+			<ul id="uid">
+				<li id="n1">Number1</li>
+				<li id="n2">Number2</li>
+				<li id="n3">Number3</li>
+				<li id="n4">Number4</li>
+			</ul>
+		</div>
+		<div id="box2"></div>
+		<input type="button" value="添加" onclick="add()"/>
+	</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="uid" name="1234" class="ul">
+			<li>Number1</li>
+			<li>Number2</li>
+			<li>Number3</li>
+			<li>Number4</li>
+		</ul>
+		<input type="text" value="默认的value" id="text" onblur="fun()" class="in"/>
+		<script>
+			{
+				var ul = document.getElementById("uid");
+				var arr = ul.childNodes;			
+				console.log(arr.length);//4个标签+5个换行(空格)=9
+				arr = ul.getElementsByTagName("li");
+				console.log(arr.length);//4
+			}
+			function fun(){
+				var input = document.getElementById("text");
+				input.setAttribute("class","ulul")
+				console.log(input.getAttribute("value"));//默认的value
+				input.removeAttribute("value");//Chrome能删掉value，IE不会删value
+				console.log(input.getAttribute("value"));//null
+			}			
+		</script>
+	</body>
+</html>

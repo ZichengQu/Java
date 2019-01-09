@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span>当前时间为: </span>
+		<div id="box" style="display: inline-block;"></div>
+		<script>
+			function dateStyle(){
+				var date = new Date();
+				var year = date.getFullYear();
+				var month = date.getMonth()+1;
+				var day = date.getDate();
+				var hour = date.getHours();
+				var minute = date.getMinutes()<=9?"0"+date.getMinutes():date.getMinutes();
+				var second = date.getSeconds()<=9?"0"+date.getSeconds():date.getSeconds();
+				var w = date.getDay()==0?7:date.getDay();//星期日为0.
+				date = year+"年"+month+"月"+day+"日\t"+hour+"时"+minute+"分"+second+"秒\t星期"+w;
+				return date;
+			}
+			function showTimes(){
+				document.getElementById("box").innerHTML = dateStyle();
+			}
+			showTimes();//一进入页面就会出现，没有这行就会等一秒再出现。
+			setInterval("showTimes()",1000);
+		</script>
+	</body>
+</html>

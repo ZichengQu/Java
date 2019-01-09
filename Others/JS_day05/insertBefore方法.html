@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			function insert(){
+				var li4 = document.getElementById("n4");//获取id为n4的li节点
+				var li5 = document.createElement("li");//创建li5
+				var text = document.createTextNode("Number5");//创建文本
+				li5.appendChild(text);//把文本添加到li5下面
+				document.getElementById("uid").insertBefore(li5,li4);
+			}
+		</script>
+	</head>
+	<body>
+		<ul id="uid">
+			<li id="n1">Number1</li>
+			<li id="n2">Number2</li>
+			<li id="n3">Number3</li>
+			<li id="n4">Number4</li>
+		</ul>
+		<button onclick="insert()">插入</button>
+	</body>
+</html>

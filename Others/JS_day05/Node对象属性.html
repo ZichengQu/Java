@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		
+	</head>
+	<body>
+		<span id="sid" >span文本</span>
+		<script>
+			var span = document.getElementById("sid");
+			//获得标签对象
+			console.log(span.nodeName);//SPAN
+			console.log(span.nodeType);//1
+			console.log(span.nodeValue);//null
+			//获得属性对象
+			var id = span.getAttributeNode("id");
+			console.log(id);//[object Attr]
+			console.log(id.nodeName);//id
+			console.log(id.nodeType);//2
+			console.log(id.nodeValue);//sid
+			//获取文本
+			var text = span.firstChild;
+			console.log(text);//[object Text]
+			console.log(text.nodeName);//#text
+			console.log(text.nodeType);//3
+			console.log(text.nodeValue);//span文本
+		</script>
+	</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="uid">
+			<li id="n1">Number1</li>
+			<li id="n2">Number2</li>
+			<li id="n3">Number3</li>
+			<li id="n4">Number4</li>
+		</ul>
+		<script>
+			//获取父节点
+			var n1 = document.getElementById("n1");//得到id为n1的li
+			var ul1 = n1.parentNode;//得到li的父节点ul
+			console.log(ul1.id);//uid
+			//获取ul的第一个和最后一个子节点
+			var ul2 = document.getElementById("uid");
+			var firstLi = ul2.firstChild;//会得到空格节点(因为第一个是空格节点)
+			var secondLi = firstLi.nextSibling;//返回与当前节点同级的下一个节点
+			console.log(secondLi.id);//n1
+			var lastLi = ul2.lastChild;//会得到空格节点(因为最后一个还是空格)
+			var li = ul2.getElementsByTagName("li");
+			console.log(li[0].id);//n1
+		</script>
+	</body>
+</html>
