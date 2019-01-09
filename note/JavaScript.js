@@ -710,4 +710,37 @@ js对象
 		页面每秒均获取当前时间: setInterval() 定时器
 		显示在页面上: 每秒向div里面写一次时间，使用innerHTML/innerText修改值。
 	11.全选: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%85%A8%E9%80%89.html
+补充:
+	区分 点操作符+属性名 和 getAttribute()
+	在用DOM操作控制HTML时，很多初学者会把 点操作符+属性名 与getAttribute("属性名") 混淆，误以为这两种方法是等价的。
+	实际上，
+	通过getAttribute("属性名")和setAttribute("属性名","属性值") 可以获取或修改标签上的属性值
+	通过 点操作符+属性名 可以获取或修改元素对应的DOM对象的属性值
+	这两种方法并不相同，不可混为一谈
+	举个栗子：
+	HTML代码：
+	<p id="name" align="left" title="名字" test="测试">妙音天女</p>
+	JS代码：
+		var myname=document.getElementById("name");//myname是HTMLParagraphElement类型的DOM对象
+
+		console.log(myname.title);//名字 //HTMLParagraphElement具有title属性（继承自父类HTMLElement）
+		console.log(myname.getAttribute("title"));//名字 //p标签具有title属性（html标签的全局属性）
+
+		console.log(myname.align);//left //HTMLParagraphElement具有align属性
+		console.log(myname.getAttribute("align"));//left //p标签具有align属性
+
+		console.log(myname.test);//undefined//HTMLParagraphElement类型的myname对象没有test属性
+		console.log(myname.getAttribute("test"));//测试 //此处的p标签具有自定义的test属性
+
+		console.log(myname.innerHTML);//妙音天女 //HTMLParagraphElement具有innerHTML属性（继承自祖父类Element)
+		console.log(myname.getAttribute("innerHTML"));//null //p标签没有innerHTML属性
+
+		myname.hi="hello";
+		console.log(myname.hi);//hello //myname对象具有hi属性
+		console.log(myname.getAttribute("hi"));//null //p标签没有hi属性
+	我们可以清晰地看到，
+	对于HTML标签和相应的DOM对象都具有的属性（如例子中的title属性和align属性），两种方法取得的值是相同的
+	对于HTML标签具有而DOM对象不具有的属性（通常是标签上的自定义属性，如例子中的test属性，或data-* 属性），getAttribute()可以取得相应的属性值，但点操作符返回undefined
+	对于DOM对象具有而HTML标签不具有的属性（如例子中的innerHTML和对象上自定义的hi属性），点操作符可以取得相应的属性值，但getAttribute()返回null
+	注：p标签对应的DOM类型是HTMLParagraphElement，其父类型是HTMLElement，详见我的另一篇博客：HTMLElement
 		
