@@ -450,7 +450,8 @@ js对象
 		[^adgk] 查找给定集合外的任何字符。 
 		(red|blue|green) 查找任何指定的选项。 
 		. 查找单个字符，除了换行和行结束符。 
-		\w 查找单词字符。 
+		\. 查找 .
+		\w 查找单词字符。 匹配字母、数字和下划线
 		\W 查找非单词字符。 
 		\d 查找数字。 
 		\D 查找非数字字符。 
@@ -480,7 +481,7 @@ js对象
 		test: RegExp的对象方法，检索字符串中指定的值。返回 true 或 false。 
 		search: String对象的方法，检索与正则表达式相匹配的值。
 		match: String对象的方法，找到一个或多个正则表达式的匹配
-		replace: String对象的方法，替换与正则表达式匹配的子串。
+		replace: String对象的方法，替换与正则表达式匹配的子串。	用空串替换空格。
 		split: String对象的方法，把字符串分割为字符串数组。
 	9.js的DOM:文档对象模型
 		文档:超文本标记(超文本标记文档) html、xml;
@@ -493,7 +494,7 @@ js对象
 			解析过程:
 				根据html的层级结构，在内存中分配一个树形结构，需要把html中每部分封装成对象。
 				document对象: 整个文档
-				element对象: 标签对象
+				element对象(标签对象，元素对象):要操作element对象。首先需要获取到element，使用document相应的方法获取;然后再用element进行相应的操作。
 				属性对象:
 				文本:
 				Node节点对象: 这个对象是这些对象的父对象。如果在对象里面找不到想要的方法，这个时候到Node里面去找。
@@ -510,21 +511,203 @@ js对象
 						<input id="input1" type="checkbox" value="吃饭" name="hobby"/><label for="input1">吃饭</label>
 						<input id="input2" type="checkbox" value="篮球" name="hobby"/><label for="input2">篮球</label>
 						<input id="input3" type="checkbox" value="足球" name="hobby"/><label for="input3">足球</label>
-						var inputs = document.getElementsByName("hobby");//使用getElementsByName得到input标签
-						for(var i=0;i<inputs.length;i++){//遍历inputs数组,得到标签里面具体的值。
-							var hobby=inputs[i];
+						var inputs1 = document.getElementsByName("hobby");//使用getElementsByName得到input标签
+						for(var i=0;i<inputs1.length;i++){//遍历inputs数组,得到标签里面具体的值。
+							var hobby=inputs1[i];
 							console.log(hobby.value);
 						}
 				getElementsByTagName() 返回带有指定标签名的对象集合。
 						var inputs2 = document.getElementsByTagName("input");
 						console.log(inputs2.length);
 				注意: 使用getElementsByName()和getElementsByTagName()返回的是一个数组，若此数组的length是1，这个时候不需要遍历，而是可以直接通过数组的下标获取到值。
-		(2)window弹窗练习:
-			https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
-			https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/user.html
-			实现过程:
-				1)创建一个页面，有两个输入项和一个按钮;按钮上面有一个事件，弹出一个新窗口open();
-				2)创建弹出表格，每一行有一个按钮、编号和姓名;按钮上有一个事件，把当前的编号和姓名赋值到第一个页面相应的两个输入项中;
-					window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
-		(3)标题栏滚动演示练习(一个字一个字往外蹦，不是左右滚动):https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
-					
+			1)window弹窗练习:
+				https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
+				https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/user.html
+				实现过程:
+					a.创建一个页面，有两个输入项和一个按钮;按钮上面有一个事件，弹出一个新窗口open();
+					b.创建弹出表格，每一行有一个按钮、编号和姓名;按钮上有一个事件，把当前的编号和姓名赋值到第一个页面相应的两个输入项中;
+						window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
+			2)标题栏滚动演示练习(一个字一个字往外蹦，不是左右滚动):https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day04/window%E5%BC%B9%E7%AA%97%E7%BB%83%E4%B9%A0.html
+		(2)js的事件:
+			onabort 图像加载被中断
+			onblur 元素失去焦点
+			onchange 用户改变域的内容
+			onclick 鼠标点击某个对象
+			ondblclick 鼠标双击某个对象
+			onerror 当加载文档或图像时发生某个错误
+			onfocus 元素获得焦点
+			onkeydown 某个键盘的键被按下
+			onkeypress 某个键盘的键被按下或按住
+			onkeyup 某个键盘的键被松开
+			onload 某个页面或图像被完成加载
+			onmousedown 某个鼠标按键被按下
+			onmousemove 鼠标被移动
+			onmouseout 鼠标从某元素移开
+			onmouseover 鼠标被移到某元素之上
+			onmouseup 某个鼠标按键被松开
+			onreset 重置按钮被点击
+			onresize 窗口或框架被调整尺寸
+			onselect 文本被选定
+			onsubmit 提交按钮被点击 
+			onunload 用户退出页面 
+			js的隐藏事件例子:https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/index.html
+				<head>
+					<meta charset="utf-8" />
+					<title></title>
+					<style>
+						.box1{
+							width: 100px;
+							height: 100px;
+							background-color: yellow;
+							visibility: hidden;
+						}
+					</style>
+					<script>
+						function show(){
+							var d = document.getElementById("d");
+							d.style.visibility="visible";
+						}
+						function hide(){
+							var d = document.getElementById("d");
+							d.style.visibility="hidden";
+						}
+					</script>
+				</head>
+				<body>
+					<div id="d" class="box1"></div>
+					<a onmouseover="show()" onmouseout="hide()">显示隐藏</a>
+				</body>
+		(3)元素对象(element对象，标签对象):要操作element对象。首先需要获取到element，使用document相应的方法获取;然后再用element进行相应的操作。
+			链接:https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/element%E5%AF%B9%E8%B1%A1.html
+			方法:
+				element.getAttribute("属性名称") 返回元素节点的指定属性值。 
+				element.setAttribute("属性名称","属性值") 把指定属性设置或更改为指定值。 
+				element.removeAttribute("属性名称") 从元素中移除指定属性。不能删除value，其它都可以删除。 //Chrome能删掉value，IE不会删value
+					例子：
+						<body>
+							<input type="text" value="默认的value" id="text" onblur="fun()" class="in"/>
+							<script>
+								function fun(){
+									var input = document.getElementById("text");
+									input.setAttribute("class","ulul")
+									console.log(input.getAttribute("value"));//默认的value
+									input.removeAttribute("value");//Chrome能删掉value，IE不会删value
+									console.log(input.getAttribute("value"));//null
+								}			
+							</script>
+						</body>
+				element.childNodes 返回元素子节点的 NodeList。 //不推荐使用,因为这个属性的兼容性很差，会包含空格和换行符结点
+				element.getElementsByTagName("标签名称") 返回拥有指定标签名的所有子元素的集合。 
+					例子:
+						<ul id="uid" name="1234" class="ul">
+							<li>Number1</li>
+							<li>Number2</li>
+							<li>Number3</li>
+							<li>Number4</li>
+						</ul>
+						var ul = document.getElementById("uid");
+						var arr = ul.childNodes;			
+						console.log(arr.length);//4个标签+5个换行(空格)=9
+						arr = ul.getElementsByTagName("li");
+						console.log(arr.length);//4
+		(4)Node对象属性及方法:使用DOM解析html的时候，需要将html里面的标签属性和文本都封装成对象。
+			1)Node对象的属性一:
+				nodeName/nodeType/nodeValue
+				标签节点对应的值:
+					nodeName:大写的标签名
+					nodeType:1
+					nodeValue:null
+				属性节点对应的值:
+					nodeName:属性名称
+					nodeType:2
+					nodeValue:属性的值
+				文本节点对应的值:
+					nodeName:#text
+					nodeType:3
+					nodeValue:文本内容
+				例子:Node对象属性: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/Node%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7.html
+					<body>
+						<span id="sid" >span文本</span>
+						<script>
+							var span = document.getElementById("sid");
+							//获得标签对象
+							console.log(span.nodeName);//SPAN
+							console.log(span.nodeType);//1
+							console.log(span.nodeValue);//null
+							//获得属性对象
+							var id = span.getAttributeNode("id");
+							console.log(id);//[object Attr]
+							console.log(id.nodeName);//id
+							console.log(id.nodeType);//2
+							console.log(id.nodeValue);//sid
+							//获取文本
+							var text = span.firstChild;
+							console.log(text);//[object Text]
+							console.log(text.nodeName);//#text
+							console.log(text.nodeType);//3
+							console.log(text.nodeValue);//span文本
+						</script>
+					</body>
+			2)Node对象的属性二: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/Node%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BA%8C.html
+				父节点:ul是li的父节点; parentNode
+				子节点:li是ul的子节点; childNodes,firstChild,lastChild
+				同辈节点:li之间的关系是同辈节点。element.previousSibling  element.nextSibling
+				例子:
+					<body>
+						<ul id="uid">
+							<li id="n1">Number1</li>
+							<li id="n2">Number2</li>
+							<li id="n3">Number3</li>
+							<li id="n4">Number4</li>
+						</ul>
+						<script>
+							//获取父节点
+							var n1 = document.getElementById("n1");//得到id为n1的li
+							var ul1 = n1.parentNode;//得到li的父节点ul
+							console.log(ul1.id);//uid
+							//获取ul的第一个和最后一个子节点
+							var ul2 = document.getElementById("uid");
+							var firstLi = ul2.firstChild;//会得到空格节点(因为第一个是空格节点)
+							var lastLi = ul2.lastChild;//会得到空格节点(因为最后一个还是空格)
+							var li = ul2.getElementsByTagName("li");
+							console.log(li[0].id);//n1
+						</script>
+					</body>	
+			3)操作DOM树:
+				在末尾添加节点，例子: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%9C%A8%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9.html
+				element.appendChild(newnode) 向元素添加新的子节点，作为最后一个子节点。类似于剪切粘贴的效果。
+					例子:appendChild方法: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/appendChild%E6%96%B9%E6%B3%95.html
+				element.insertBefore(newItem,existingItem) 在指定的已有的子节点之前插入新节点。
+				element.removeChild(oldnode) 从元素中移除子节点。 
+				element.replaceChild(newnode,oldnode) 替换元素中的子节点。
+					例子: 
+			4)操作DOM总结:
+				获取节点的方法:
+					getElementById() 通过节点的id属性，查找对应的节点
+					getElementsByName() 通过节点的name属性，查找对应的节点，返回节点集合。
+					getElementsByTagName() 通过节点的名称，查找对应的节点，返回节点集合。
+				插入节点的方法:
+					insertBefore() 在某个节点之前插入
+					appendChild() 在末尾添加，有剪切粘贴的效果
+				删除节点: removeChild() 通过父节点删除
+				替换节点: replaceChild() 通过父节点替换
+			5)element.innerHTML 设置或返回元素的内容。 (不是dom的组成部分，但是大多数浏览器都支持)
+				作用: 获取文本内容;向标签里面设置内容，可以是html代码。
+				例子:
+					<body>
+						<span id="sid"><b>span文本</b></span>
+						<script>
+							var span = document.getElementById("sid");
+							//innerHTML能识别标签，innerText只识别文本。
+							console.log(span.innerHTML);//<b>span文本</b>
+							console.log(span.innerText);//span文本
+							span.innerHTML = "<b>加粗的span文本</b>";//加粗的span文本(加粗的)
+							span.innerText = "<b>加粗的span文本</b>";//<b>加粗的span文本</b>
+						</script>
+					</body>
+	10.动态显示时间:@link。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。。
+		得到当前时间: var date = new Date();	date = date.toLocaleString();
+		页面每秒均获取当前时间: setInterval() 定时器
+		显示在页面上: 每秒向div里面写一次时间，使用innerHTML/innerText修改值。
+	11.全选:@link............................................................................
+		
