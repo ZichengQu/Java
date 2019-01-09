@@ -22,10 +22,10 @@
 			}
 			function fun(){
 				var input = document.getElementById("text");
-				input.setAttribute("class","ulul")
+				input.setAttribute("class","ulul");
 				console.log(input.getAttribute("value"));//默认的value
 				input.removeAttribute("value");//Chrome能删掉value，IE不会删value
-				console.log(input.getAttribute("value"));//null
+				console.log(input.getAttribute("value"));//Chrome:null; IE:默认的value
 			}			
 		</script>
 	</body>
