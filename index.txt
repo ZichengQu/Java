@@ -127,6 +127,6 @@ JavaScript
 13.节点操作(insertBefore(newItem,existingItem),removeChild(oldnode),replaceChild(newnode,oldnode)): https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C.html  
 14.动态显示时间: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4.html  
 15.全选: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%85%A8%E9%80%89.html  
-  
+16.点操作符+属性名 和 getAttribute(): https://www.cnblogs.com/xuehaoyue/p/6638202.html  
   
 **********************************************************************************************************************************************  
