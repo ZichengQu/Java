@@ -136,3 +136,14 @@ JavaScript
   
   
 **********************************************************************************************************************************************  
+  
+jQuery
+..............................................................................................................................................    
+1.jQuery笔记: https://github.com/ZichengQu/Java/blob/jQuery/note/jQuery.js  
+2.js与jq的区别: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%88%9D%E8%AF%86jq.html  
+3.基本选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8.html  
+4.层级选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.html  
+5.基本过滤选择器:https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html  
+  
+  
+**********************************************************************************************************************************************  
