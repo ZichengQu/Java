@@ -123,7 +123,7 @@ JavaScript
 9.Node对象属性(nodeName,nodeType,nodeValue): https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/Node%E5%AF%B9%E8%B1%A1%E5%B1%9E%E6%80%A7.html  
 10.Node对象的属性二(父子同辈节点的获取): https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/Node%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%B1%9E%E6%80%A7%E4%BA%8C.html  
 11.在末尾添加节点: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%9C%A8%E6%9C%AB%E5%B0%BE%E6%B7%BB%E5%8A%A0%E8%8A%82%E7%82%B9.html  
-12.appendChild(newnode)方法: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/appendChild%E6%96%B9%E6%B3%95.html
+12.appendChild(newnode)方法: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/appendChild%E6%96%B9%E6%B3%95.html  
 13.节点操作(insertBefore(newItem,existingItem),removeChild(oldnode),replaceChild(newnode,oldnode)): https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E8%8A%82%E7%82%B9%E6%93%8D%E4%BD%9C.html  
 14.innerHTML和innerText: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/innerHTML%E4%B8%8EinnerText.html  
 15.动态显示时间: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4.html  
