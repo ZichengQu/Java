@@ -2,18 +2,19 @@
 	jQuery是一个快速、简洁的JavaScript框架，是继Prototype之后又一个优秀的JavaScript代码库(或JavaScript框架);
 	jQuery设计的宗旨是“write Less，Do More”，即倡导写更少的代码，做更多的事情;
 	它封装JavaScript常用的功能代码，提供一种简便的JavaScript设计模式，优化HTML文档操作、事件处理、动画设计和Ajax交互;
+	js与jq的区别: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%88%9D%E8%AF%86jq.html
 2.使用步骤:
 	1.引入jQuery的js文件;
 	2.使用选择器找到要操作的节点;
 	3.调用jQuery的方法处理节点;
 3.选择器:
-	(1)基本选择器:
+	(1)基本选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8.html
 		id选择器:$("#id")		根据给定的ID匹配一个元素;
 		元素选择器:$("element") 根据给定的元素名匹配所有元素;
 		类选择器:$(".class")	根据给定的类匹配元素;
 		通配符选择器:$("*")		匹配所有元素;
 		复合选择器:$("selector1,selector2,...,selectorN")		将每一个选择器匹配到的元素合并后一起返回。
-	(2)层级选择器:
+	(2)层级选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.html
 		$("ancestor descendant") 	在给定的祖先元素下匹配所有的后代元素;
 		$("parent > child") 		在给定的父元素下匹配所有的子元素;只查找直接子节点，不查找间接子节点。
 		$("prev + next")			匹配所有紧接在 prev 元素后的 next 元素(若next不紧跟在prev之后，则不起作用);
@@ -22,7 +23,7 @@
 		过滤选择器主要是通过特定的过滤规则来筛选出所需要的DOM元素;
 		过滤选择器的特点是以":"开头;
 		按照不同的过滤规则，过滤选择器可分为基本过滤、内容过滤、可见性过滤、属性过滤、子元素过滤和表单过滤选择器等.
-		1)基本过滤选择器:
+		1)基本过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html
 			注意:索引和index都是从0开始的。
 			$(":first")	第一个元素;//$("li:first")
 			$(":last")	最后一个元素;//$("li:last")
