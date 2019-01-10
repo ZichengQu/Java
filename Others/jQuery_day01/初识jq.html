@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script>
+			window.onload = function(){//使用原生js实现
+				var btn1 = document.getElementById("btn1");
+				btn1.onclick=function(){
+					var username = document.getElementById("name");
+					console.log(username.value);
+				}
+			}
+		</script>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			jQuery(document).ready(function(){//使用jq实现
+			  $("#btn2").click(function(){
+			  	var username = $("#name");
+			  	console.log(username.val());
+			  });
+			});
+		</script>
+	</head>
+	<body>
+		用户名: <input type="text" id="name" />
+		<input id="btn1" type="button" value="确定(js版)" />
+		<input id="btn2" type="button" value="确定(jq版)" />
+	</body>
+</html>

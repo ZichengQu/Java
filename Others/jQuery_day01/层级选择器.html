@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				$("div span").css({ background: "yellow" });//1,2,3
+				$("div > span").css({ background: "red" });//1,3
+				$("div+span").css({ background: "red" });//4,7
+				$("div~span").css({ background: "red" });//4,5,7,9
+			});
+		</script>
+	</head>
+	<body>
+		<h2>层级选择器</h2>
+		<div>
+			<span>Number1</span>
+			<p><span>Number2</span></p>
+			<span>Number3</span>
+		</div>
+		<span>Number4</span>
+		<span>Number5</span>
+		<div>Number6</div>
+		<span>Number7</span>
+		<p>Number8</p>
+		<span>Number9</span>
+	</body>
+</html>
