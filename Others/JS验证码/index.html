@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#code{
+				border: 1px solid burlywood;
+				background-color: burlywood;
+				font: italic bold 20px "微软雅黑";
+				display: inline-block;
+				width: 70px;
+				text-align: center;
+			}
+		</style>
+		<script>
+			function show(){
+				document.getElementById("code").style.visibility="visible";
+				var str = "";
+				var yzm = ['0','1','2','3','4','5','6','7','8','9',
+							'a','b','c','d','e','f','g','h','k','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+							'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+				for(var i=0; i<4; i++){
+					str += yzm[Math.floor(Math.random()*62)];
+				}
+				document.getElementById("code").innerHTML = str;
+			}
+		</script>
+	</head>
+	<body>
+		验证码: <input type="text" placeholder="点击获取验证码" onclick="show()"/>&nbsp;
+		<span id="code" style="visibility: hidden;"></span>
+	</body>
+</html>
