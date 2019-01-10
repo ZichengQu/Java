@@ -132,5 +132,7 @@ JavaScript
 18.JSON和JS之间的转换: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/JSON.html  
 19.JS创建表格: https://github.com/ZichengQu/Java/tree/JavaScript/Others/JS%E5%88%9B%E5%BB%BA%E8%A1%A8%E6%A0%BC  
 20.JS轮播图: https://github.com/ZichengQu/Java/tree/JavaScript/Others/JS%E8%BD%AE%E6%92%AD%E5%9B%BE  
+21.JS验证码: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS%E9%AA%8C%E8%AF%81%E7%A0%81/index.html  
+  
   
 **********************************************************************************************************************************************  
