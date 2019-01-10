@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script>
+			var json = '{"name":"Mary","age":18,"gender":"woman"}';//js对象属性可以加双引号，也可以不加。JSON一定要加
+			var arr1 = '[1,2,3,"hello",true]';
+			var obj = '{"arr":[1,2,3]}';//JSON对象放数组
+			var arr2 = '[{"name":"Mary",age:18,gender:"woman"}]';//JSON数组放对象
+			//JSON --> JS对象
+			var person = JSON.parse(json);
+			console.log(person.name);//Mary
+			var arr = JSON.parse(arr1);//JSON --> JS数组
+			console.log(arr[3]);//hello
+			//JS对象 --> JSON
+			var jsObj = {name:"Mary",age:18,gender:"woman"};
+			var jsonStr = JSON.stringify(jsObj);
+			console.log(typeof(jsonStr));//string
+			console.log(jsonStr);//"{"name":"Mary","age":18,"gender":"woman"}"
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
