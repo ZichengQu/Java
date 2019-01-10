@@ -129,5 +129,8 @@ JavaScript
 15.动态显示时间: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%8A%A8%E6%80%81%E6%98%BE%E7%A4%BA%E6%97%B6%E9%97%B4.html  
 16.全选: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/%E5%85%A8%E9%80%89.html  
 17.点操作符+属性名 和 getAttribute(): https://www.cnblogs.com/xuehaoyue/p/6638202.html  
+18.JSON和JS之间的转换: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/JSON.html  
+19.JS创建表格: https://github.com/ZichengQu/Java/tree/JavaScript/Others/JS%E5%88%9B%E5%BB%BA%E8%A1%A8%E6%A0%BC  
+20.JS轮播图: https://github.com/ZichengQu/Java/tree/JavaScript/Others/JS%E8%BD%AE%E6%92%AD%E5%9B%BE  
   
 **********************************************************************************************************************************************  
