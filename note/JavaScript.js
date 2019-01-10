@@ -1070,3 +1070,50 @@ JSON:JavaScript Object Notation JS对象表示法。
 					<a id="a" target="_blank"> <img id="img" src="img/卡尔.jpg" /></a>
 				</div>
 			</body>
+		8.JS验证码: https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS%E9%AA%8C%E8%AF%81%E7%A0%81/index.html
+			<head>
+				<meta charset="utf-8" />
+				<title></title>
+				<style>
+					#code{
+						border: 1px solid burlywood;
+						background-color: burlywood;
+						font: italic bold 20px "微软雅黑";
+						display: inline-block;
+						width: 70px;
+						text-align: center;
+					}
+				</style>
+				<script>
+					function show(){
+						var str = "";
+						document.getElementById("code").style.visibility="visible";
+						var yzm = ['0','1','2','3','4','5','6','7','8','9',
+									'a','b','c','d','e','f','g','h','k','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
+									'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+						for(var i=0; i<4; i++){
+							str += yzm[Math.floor(Math.random()*62)];
+						}
+						document.getElementById("code").innerHTML = str;
+					}
+					function checked(){
+						var yzm = document.getElementById("yzm").value.toLowerCase();
+						var code = document.getElementById("code").innerHTML.toLowerCase();
+						if(yzm==""){
+							alert("Please input the verification code.");
+							return false;
+						}else if(yzm!=code){
+							alert("Please input the right verification code.");
+							return false;
+						}
+						return true;
+					}
+				</script>
+			</head>
+			<body>
+				<form id="form1"  onsubmit="return checked()">
+					验证码: <input id="yzm" name="yzm" type="text" placeholder="点击获取验证码" onclick="show()"/>&nbsp;
+					<span id="code" style="visibility: hidden;"></span><br />
+					<input type="submit" />
+				</form>
+			</body>
