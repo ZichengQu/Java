@@ -1,0 +1,37 @@
+var hoopster = [
+	{
+		"picture":"img/科比.jpg",
+		"name":"科比·布莱恩特",
+		"team":"洛杉矶湖人",
+		"number":"24",
+		"position":"得分后卫"
+	},
+	{
+		"picture":"img/詹姆斯.jpg",
+		"name":"勒布朗·詹姆斯",
+		"team":"洛杉矶湖人",
+		"number":"23",
+		"position":"小前锋"
+	},
+	{
+		"picture":"img/库里.jpg",
+		"name":"史蒂芬·库里",
+		"team":"金州勇士",
+		"number":"30",
+		"position":"控球后卫"
+	},
+	{
+		"picture":"img/杜兰特.jpg",
+		"name":"凯文·杜兰特",
+		"team":"金州勇士",
+		"number":"35",
+		"position":"小前锋"
+	},
+	{
+		"picture":"img/汤普森.jpg",
+		"name":"克莱·汤普森",
+		"team":"金州勇士",
+		"number":"11",
+		"position":"小前锋"
+	}
+];

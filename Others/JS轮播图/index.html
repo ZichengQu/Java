@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			div,img{
+				margin: 0 auto;
+				width: 192px;/*让div和图片大小一致，使图片居中*/
+				height: 108px;
+			}
+		</style>
+		<script>
+			var index = 0;
+			function change(){
+				var dog = ["卡尔","布迪","多芬","莫兹"];
+				var img = document.getElementById("img");
+				img.src = "img/"+dog[index++%dog.length]+".jpg";//设置图片轮播。
+				var a = document.getElementById("a");
+				a.href = img.src;//设置点击图片的时候，显示相应的图片。
+			}
+			setInterval("change()",1000);
+		</script>
+	</head>
+	<body>
+		<div>
+			<a id="a" target="_blank"> <img id="img" src="img/卡尔.jpg" /></a>
+		</div>
+	</body>
+</html>
