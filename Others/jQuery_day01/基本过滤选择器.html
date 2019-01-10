@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				$("li:first").css({ background: "yellow" });//第一个元素
+				$("li:last").css({ background: "yellow" });//最后一个元素
+				$("li:not(:first)").css({ background: "red" });//把selector排除在外 //$("li:not(:eq(3))")
+				$("li:even").css({ background: "yellow" });//挑选偶数行
+				$("li:odd").css({ background: "pink" });//挑选奇数行
+				$("li:eq(0)").css({ background: "red" });//挑选下标等于index的元素
+				$("li:gt(0)").css({ background: "red" });//挑选下标大于index的元素
+				$("li:lt(6)").css({ background: "red" });//挑选下标小于index的元素
+			});
+		</script>
+	</head>
+	<body>
+		<h2>基本过滤选择器</h2>
+		<ul>
+			<li>Number1</li>
+			<li>Number2</li>
+			<li>Number3</li>
+			<li>Number4</li>
+			<li>Number5</li>
+			<li>Number6</li>
+			<li>Number7</li>
+		</ul>
+	</body>
+</html>

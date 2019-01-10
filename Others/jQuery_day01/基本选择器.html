@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				$("#myDiv").css({ color: "#ff0011", background: "blue" });//id选择器
+				$("div").css({ color: "#ff0011", background: "red" });//元素选择器
+				$(".ps").css({ color: "#ff0011", background: "blue" });//类选择器
+				$("*").css({ color: "#ff0011", background: "blue" });//通配符选择器
+				$("#myDiv,h1,.ps").css({ color: "#ff0011", background: "blue" });//复合选择器
+			});
+		</script>
+	</head>
+	<body>
+		<h1>基本选择器</h1>
+		<div id="notMe">
+			<p class="ps">id="notMe"</p>
+		</div>
+		<div id="myDiv">id="myDiv"</div>
+	</body>
+</html>
