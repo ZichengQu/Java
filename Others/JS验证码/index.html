@@ -15,8 +15,8 @@
 		</style>
 		<script>
 			function show(){
-				document.getElementById("code").style.visibility="visible";
 				var str = "";
+				document.getElementById("code").style.visibility="visible";
 				var yzm = ['0','1','2','3','4','5','6','7','8','9',
 							'a','b','c','d','e','f','g','h','k','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
 							'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
@@ -25,10 +25,25 @@
 				}
 				document.getElementById("code").innerHTML = str;
 			}
+			function checked(){
+				var yzm = document.getElementById("yzm").value.toLowerCase();
+				var code = document.getElementById("code").innerHTML.toLowerCase();
+				if(yzm==""){
+					alert("Please input the verification code.");
+					return false;
+				}else if(yzm!=code){
+					alert("Please input the right verification code.");
+					return false;
+				}
+				return true;
+			}
 		</script>
 	</head>
 	<body>
-		验证码: <input type="text" placeholder="点击获取验证码" onclick="show()"/>&nbsp;
-		<span id="code" style="visibility: hidden;"></span>
+		<form id="form1"  onsubmit="return checked()">
+			验证码: <input id="yzm" name="yzm" type="text" placeholder="点击获取验证码" onclick="show()"/>&nbsp;
+			<span id="code" style="visibility: hidden;"></span><br />
+			<input type="submit" />
+		</form>
 	</body>
 </html>
