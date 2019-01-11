@@ -33,3 +33,87 @@
 			$(":eq(index)")	挑选下标等于index的元素;//$("li:eq(0)")
 			$(":gt(index)")	挑选下标大于index的元素;//$("li:gt(0)")
 			$(":lt(index")	挑选下标小于index的元素;//$("li:lt(6)")
+		2)内容过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%86%85%E5%AE%B9%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html
+			:contains(text) 匹配包含给定文本的元素//
+			:empty 匹配所有不包含子元素或者文本的空元素//
+			:has(selector) 匹配含有选择器所匹配的元素的元素//
+			:parent 匹配含有子元素或者文本的元素//
+			例子:
+				<head>
+					<meta charset="UTF-8">
+					<title></title>
+					<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+					<script>
+						$(function(){
+							$("div:contains('John')").css({ background: "yellow" });//:contains(text) 匹配包含给定文本的元素//第1和3行
+							console.log($("div:empty"));//:empty 匹配所有不包含子元素或者文本的空元素
+							$("div:has(p)").css({ color: "blue" });//:has(selector) 匹配含有选择器所匹配的元素的元素
+							$("div:parent").css({ color: "blue" });//:parent 匹配含有子元素或者文本的元素
+						});
+					</script>
+				</head>
+				<body>
+					<div>John Resig</div>
+					<div><p>George</p> Martin</div>
+					<div>Malcom John Sinclair</div>
+					<div style="border: 1px solid blue; width: 100px; height: 100px;"></div>
+				</body>
+		3)可见性选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%8F%AF%E8%A7%81%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8.html
+			:hidden 匹配所有不可见元素，或者type为hidden的元素 //console.log($("input:hidden").val());
+			:visible 匹配所有的可见元素
+		4)属性过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html
+			注意，在jQuery 1.3中，前导的@符号已经被废除！如果想要兼容最新版本，只需要简单去掉@符号即可。
+			[attribute] 匹配包含给定属性的元素。//$("div[id]") div中有id属性的
+			[attribute=value] 匹配给定的属性是某个特定值的元素 //$("input[name='newsletter']") input中name为newsletter的
+			[attribute!=value] 
+			[attribute^=value] 匹配给定的属性是以某些值开始的元素 //$("input[name^='news']").attr("checked", true); input中name以news开头的
+			[attribute$=value] 
+			[attribute*=value] 
+			[attrSel1][attrSel2][attrSelN] 
+		5)表单属性过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html
+			:enabled 匹配所有可用元素 //$("input:enabled")
+			:disabled 匹配所有不可用元素 //$("input:disabled")
+			获得复选框，单选按钮，下拉列表的选中元素节点:
+				:checked 匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option) //$("input:checked").attr("checked",false);
+				:selected 匹配所有选中的option元素 //console.log($("select option:selected").text());
+		6)表单选择器:	api
+			:input 匹配所有 input, textarea, select 和 button 元素 //$(":input") //$("input")是元素选择器，只能匹配input元素。
+			:text 匹配所有的单行文本框 //$(":text")
+			:password 匹配所有密码框 //$(":password")
+			:radio 匹配所有单选按钮 //$(":radio")
+			:checkbox 匹配所有复选框 //$(":checkbox")
+			:submit 匹配所有提交按钮 //$(":submit")
+			:image 匹配所有图像域 //$(":image")
+			:reset 匹配所有重置按钮 //$(":reset")
+			:button 匹配所有按钮 //$(":button")
+			:file 匹配所有文件域 //$(":file")
+			:hidden 匹配所有不可见元素，或者type为hidden的元素 //$(":hidden")//$("input:hidden")
+4.基本操作: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html
+	(1)html操作:
+		html([val|fn]) 在一个 HTML 文档中, 我们可以使用 .html() 方法来获取任意一个元素的内容。 如果选择器匹配多于一个的元素，那么只有第一个匹配元素的 HTML 内容会被获取。
+		例子:
+			console.log($("p").html())//返回p元素的内容。//<span>哈哈哈哈</span>
+			$("p").html("<b>加粗文本</b>");//设置p元素的内容，识别标签
+	(2)文本操作:
+		text([val|fn]) 取得所有匹配元素的内容。	$("p").text("<b>加粗文本</b>");//设置p元素的内容，不识别标签，会输出标签
+	(3)值操作:
+		console.log($("img").attr("src"));//img/科比.jpg
+	(4)属性操作:
+		$("img").attr("title","科比");
+		$("img").attr({style:"display:none;title:科比"});
+		$("img").attr("title", function() { return this.src });//this获取当前元素的html属性
+	(5)jQuery的表单验证: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html
+		$("form:first").submit(function(){//验证表达输入项是否为空
+			if($("#name").val()==""){
+				console.log("请输入用户名");
+				return false;
+			}
+		});
+		<form >
+			<input id="name" name="username"/>
+			<input type="submit" />
+		</form>
+
+			
+
+
