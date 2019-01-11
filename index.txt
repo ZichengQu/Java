@@ -144,6 +144,11 @@ jQuery
 3.基本选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E9%80%89%E6%8B%A9%E5%99%A8.html  
 4.层级选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%B1%82%E7%BA%A7%E9%80%89%E6%8B%A9%E5%99%A8.html  
 5.基本过滤选择器:https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html  
-  
+6.内容过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%86%85%E5%AE%B9%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html
+7.可见性选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%8F%AF%E8%A7%81%E6%80%A7%E9%80%89%E6%8B%A9%E5%99%A8.html  
+8.属性过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html  
+9.表单属性过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E8%A1%A8%E5%8D%95%E5%B1%9E%E6%80%A7%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html  
+
+11.基本操作(html操作,文本操作,值操作,属性操作,jQuery的表单验证): https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html    
   
 **********************************************************************************************************************************************  
