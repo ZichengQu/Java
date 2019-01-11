@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				$("input:enabled").css({background:"yellow"}); //匹配所有可用元素
+				$("input:disabled").css({background:"blue"}); //匹配所有不可用元素
+				$("input:checked").attr("checked",false); //匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)
+				console.log($("select option:selected").text()); //匹配所有选中的option元素
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+		  <input name="email" disabled="disabled" />
+		  <input name="id" />
+		</form>
+		<form>
+		  <input type="checkbox" name="newsletter" checked="checked" value="Daily" />
+		  <input type="checkbox" name="newsletter" value="Weekly" />
+		  <input type="checkbox" name="newsletter" checked="checked" value="Monthly" />
+		</form>
+		<select>
+		  <option value="1">Flowers</option>
+		  <option value="2" selected="selected">Gardens</option>
+		  <option value="3">Trees</option>
+		</select>
+	</body>
+</html>

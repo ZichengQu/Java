@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				//$("div[id]").css({color:"yellow"});//匹配包含给定属性的元素。
+				//$("input[name='newsletter']").attr("checked", true);//匹配给定的属性是某个特定值的元素
+				$("input[name^='news']").attr("checked", true);//匹配给定的属性是以某些值开始的元素
+			});
+		</script>
+	</head>
+	<body>
+		<div>
+		  <p>Hello</p>
+		</div>
+		<div id="test2">World!</div>
+		<input type="checkbox" name="newsletter" value="Hot Fuzz" />
+		<input type="checkbox" name="newsletter" value="Cold Fusion" />
+		<input type="checkbox" name="accept" value="Evil Plans" />
+	</body>
+</html>

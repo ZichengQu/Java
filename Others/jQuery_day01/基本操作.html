@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				console.log($("p").html())//返回p元素的内容。//<span>哈哈哈哈</span>
+				$("p").html("<b>加粗文本</b>");//设置p元素的内容，识别标签
+				$("p").text("<b>加粗文本</b>");//设置p元素的内容，不识别标签，会输出标签
+				$("form:first").submit(function(){//验证表达输入项是否为空
+					if($("#name").val()==""){
+						console.log("请输入用户名");
+						return false;
+					}
+				});
+				console.log($("img").attr("src"));//img/科比.jpg
+				$("img").attr("title","科比");
+				//$("img").attr({style:"display:none;title:科比"});
+				$("img").attr("title", function() { return this.src });//this获取当前元素的html属性
+			});
+		</script>
+	</head>
+	<body>
+		<p><span>哈哈哈哈</span></p>
+		<form >
+			<input id="name" name="username"/>
+			<input type="submit" />
+		</form>
+		<img src="img/科比.jpg"/>
+	</body>
+</html>

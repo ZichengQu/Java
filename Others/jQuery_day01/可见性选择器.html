@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				console.log($("tr:hidden").text());//Value 1
+				console.log($("input:hidden").val());//hiddenDemo
+				console.log($("tr:visible").text());//Value 2Value 3
+				console.log($("tr:visible").html());//<td>Value 2</td><td>Value 3</td>
+			});
+		</script>
+	</head>
+	<body>
+		<table>
+		  <tr style="display:none"><td>Value 1</td></tr>
+		  <tr><td>Value 2</td><td>Value 3</td></tr>
+		</table>
+		<form>
+		  <input type="text" name="email" value="textDemo"/>
+		  <input type="hidden" name="id" value="hiddenDemo"/>
+		</form>
+	</body>
+</html>
