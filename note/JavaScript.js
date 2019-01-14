@@ -1117,3 +1117,5 @@ JSON:JavaScript Object Notation JS对象表示法。
 					<input type="submit" />
 				</form>
 			</body>
+
+qb_login: https://github.com/ZichengQu/Java/tree/JavaScript/Others/QBLogin  
