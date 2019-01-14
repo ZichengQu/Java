@@ -1,0 +1,212 @@
+ *{
+ 	margin: 0;
+ 	padding: 0;
+ }
+ span,a{
+ 	color: white;
+ 	text-decoration: none;
+ }
+ .head1{
+ 	width: 100%;
+ 	height: 36px;
+ 	background-color: #2e2e2e;
+ }
+ .head1-1{
+ 	width: 1200px;
+ 	height: 36px;
+ 	background-color: #2e2e2e;
+ 	margin: 0 auto;
+ }
+ .head1-1-1{
+ 	width: 40%;
+ 	height: 26px;
+ 	background-image: url(../img/top_a.png);
+ 	background-repeat: no-repeat;
+ 	background-position: left center;
+ 	background-size: 18px 16px;
+ 	color: white;
+ 	font-size: 12px;
+ 	padding: 10px 0px 0px 20px;
+ 	float: left;
+ }
+ .head1-1-2{
+ 	width: 22%;
+ 	height: 36px;
+ 	float: right;
+ }
+ .head1-1-2 li{
+ 	width: 72px;
+ 	height: 26px;
+ 	display: inline-block;
+ 	vertical-align: middle;
+ 	text-align: center;
+ 	padding-top: 10px;
+ 	font-weight: 500;
+ 	margin-right: 4px;
+ }
+ #li1{
+ 	background-color: #b52e2e;
+ }
+ #li2{
+ 	background-color: #0984b1;
+ }
+ #li3{
+ 	width: 100px;
+ 	background-color: #d48a04;
+ 	vertical-align: top;
+ }
+ #li3 div{
+ 	display: inline;
+ 	vertical-align: top;
+ 	color: white;
+ }
+ .head2{
+ 	width: 100%;
+ 	height: 70px;
+ 	padding: 14px 0px;
+ 	border-bottom: 4px solid #eff0f2;
+ 	position: relative;
+ }
+ .head2-1{
+ 	width: 210px;
+ 	height: 70px;
+ 	position: absolute;
+ 	left: 155px;
+ }
+ .head2-2{
+ 	width: 210px;
+ 	height: 70px;
+ 	position: absolute;
+ 	left: 365px;
+ }
+ .img1{
+ 	width: 210px;
+ 	height: 70px;
+ }
+ .head2-3{
+ 	width: 720px;
+ 	height: 56px;
+ 	margin-top: 28px;
+ 	position: absolute;
+ 	right: 161px;
+ }
+ .head2-3 a,.head2-3 li{
+ 	display: inline-block;
+ 	color: #555;
+ 	margin-left: 13px;
+ 	font-weight: 600;
+ 	font-size: 18px;
+ }
+ .head2-3 a:hover{
+ 	color: #00A4E1;
+ }
+  .bg{
+	background-color: lightblue;
+	width:100%;
+	height: 750px;
+	background-image: url(../img/bg_login.jpg);
+	background-position: -200px 0px;
+	background-repeat: no-repeat;
+ }
+ .main_login{
+	width: 370px;
+    height: 415px;
+    padding: 34px 40px;	   
+    background: #fff;
+    position: relative;
+    margin-top: 163px;
+    margin-right: 42px;
+    float: right;
+    right: 152px;
+    position: relative;
+}
+.loginTitle{
+	font-family: "微软雅黑";
+	width: 298px;
+    height: 42px;
+    line-height: 30px;
+    margin: 0 auto;
+    margin-bottom: 38px;
+ }
+ .loginTitle p{
+	font-size: 28px;
+    color: #333;
+    float: left;
+    vertical-align: middle;
+ }
+ .loginTitle .r_title{
+	float: right;
+    margin-right: 7px;
+    padding-top: 8px;
+    vertical-align: bottom;
+ }
+ .loginTitle .r_title2 {
+    font-size: 16px;
+    color: #333;
+ }
+ .r_title .b_sign {
+    font-size: 16px;
+    color: #00a4e1;
+    text-decoration: none;
+ }
+ .main_login .loginIpt {
+    width: 298px;
+    height: 42px;
+    line-height: 42px;
+    padding-left: 10px;
+ }
+ .main_login .inputBox {
+    margin-bottom: 20px;
+ }
+ .r_pwd{
+ 	width: 310px;
+	margin-top: 20px;
+	text-align: right;
+	margin-bottom: 30px;
+ }
+ .r_pwd a{
+	text-decoration: none;
+	color: black;
+ }
+ .main_login .b_button {
+    width: 310px;
+    height: 42px;
+    background: #00A4E1;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    font-size: 18px;
+    border-style: none;
+ }
+ .foot{
+	background-color: #363636;
+	width: 100%;
+	height: 81.4px;
+ }
+ .foot1{
+	height: 100%;
+	width: 78.98%;
+	margin: 0 auto;
+ }
+ .foot1 ul,li{
+	display: inline-block;
+ }
+ #footbar1{
+	float: left;
+	padding-top: 30px;
+ }
+ #footbar1 li,#footbar2 li{
+	margin-right: 60px;
+ }
+ #footbar1 li a{
+	text-decoration: none;
+	color: #716d6d;
+ }
+ #footbar1 li a:hover{
+	text-decoration: none;
+	color: #716d6d;
+ }
+ #footbar2{
+	float: right;
+	padding-top: 30px;
+ }

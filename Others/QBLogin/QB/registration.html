@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册</title>
+		<link rel="stylesheet" href="css/Registration.css" />
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script type="text/javascript" src="js/Registration.js" ></script>
+		<script type="text/javascript" src="js/code.js" ></script>
+	</head>
+	<body>
+		<div class="head1">
+			<div class="head1-1">
+				<div id="head1-1-1" class="head1-1-1">
+					<span>用户服务热线&nbsp;&nbsp;User service hotline:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;400-1170-178</span>
+				</div>
+				<div class="head1-1-2">
+					<ul>
+						<li id="li1"><a href="#"><span>快速注册</span></a></li>
+						<li id="li2"><a href="#"><span>立即登陆</span></a></li>
+						<li id="li3"><a href="#"><img src="img/choujiang.png" />&nbsp;<div>每日抽奖</div></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="head2">
+			<div class="head2-1">
+				<a href="#"><img class="img1" src="img/logo.png"/></a>
+			</div>
+			<div class="head2-2"><img class="img1" src="img/publicize.gif" /> </div>
+			<ul class="head2-3">
+				<li><a href="#">首页</a></li>
+				<li><a href="#">我要出借 <img src="img/nav_b_06.png" /></a></li>
+				<li><a href="#">我要借款 <img src="img/nav_b_06.png" /></a></li>
+				<li><a href="#">信息披露 <img src="img/nav_b_06.png" /></a></li>
+				<li><a href="#">了解乾包 <img src="img/nav_b_06.png" /></a></li>
+				<li><a href="#">合作企业</a></li>
+			</ul>
+		</div>
+		<div class="body1">
+			<div class="formbox">
+				<div class="fhead">
+					<div class="fhead-1">用户注册</div>
+					<div class="fhead-2">
+						<a href="#" class="fhead-2-1"><span>特定用户入口</span></a>
+						<span>已有账号？</span>
+						<a href="#">立即登陆</a>
+					</div>
+				</div>
+				<form name="f" onsubmit="return check()">
+					<div class="form1" >
+						<div id="dd1" class="form1-1" onclick="change1()"><span>个人注册</span></div>
+						<div id="dd2" class="form1-2" onclick="change2()"><span>企业注册</span></div>
+					</div>
+					<table>
+						<tr>
+							<td class="td1">用户名:&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td ><input id="username" class="input2" type="text" placeholder="可由字母、数字、中文、下划线组成"/></td>
+						</tr>
+						<tr>
+							<td class="td1">密码:&nbsp;&nbsp;</td>
+							<td ><input id="password" class="input2" type="password" placeholder="密码由6-12个字符组成" maxlength="12"/></td>
+						</tr>
+						<tr>
+							<td class="td1">QQ号:&nbsp;&nbsp;</td>
+							<td ><input id="qq" class="input2" type="text" placeholder="请输入您的QQ号码"/></td>
+						</tr>
+						<tr>
+							<td class="td1">手机号:&nbsp;&nbsp;</td>
+							<td ><input id="phone" class="input2" type="text" placeholder="请输入11位手机号码"/></td>
+						</tr>
+						<tr>
+							<td class="td1">验证码:&nbsp;&nbsp;</td>
+							<td ><input id="verificationM" class="input2" type="text" placeholder="请输入验证码" onblur="check()"/><canvas id="verifyCanvas" onclick="drawCode()"><div id="code_img" ></div>/><span id="sendCode"></span></canvas></td>
+						</tr>
+						<tr>
+							<td class="td1">手机验证码:&nbsp;&nbsp;</td>
+							<td ><input id="verificationP" class="input2" type="text" placeholder="请输入手机验证码" /></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class="td1"></td>
+							<td><input id="checkbox" type="checkbox"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label for="checkbox">我已阅读并同意</label><a href="#">《乾包用户协议》</a></td>
+						</tr>
+						<tr>
+							<td class="td1"></td>
+							<td><input type="submit" class="submit1"/></td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div class="bg2"></div>
+		</div>
+		<div class="foot">
+			<div class="foot1">
+				<ul id="footbar1">
+					<li><a id="a1" href="#" onmouseover="f1()" onmouseout="b1()">合作企业</a></li>
+					<li><a id="a2" href="#" onmouseover="f2()" onmouseout="b2()">关于我们</a></li>
+					<li><a id="a3" href="#" onmouseover="f3()" onmouseout="b3()">站长统计</a></li>
+				</ul>
+				<ul id="footbar2">
+					<li><a href="#"><img src="img/nwx_01.png"/></a></li>
+					<li><a href="#"><img src="img/nwb_01.png"/></a></li>
+					<li><a href="#"><img src="img/nqq_01.png"/></a></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>
