@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			function f1(){
+				document.getElementsByTagName("h2")[0].style.backgroundColor="pink";
+				//$("h2").style.backgroundColor="orange";//会报错
+				$("h2")[1].style.backgroundColor="orange";//jQuery对象调用DOM对象的成员
+			}
+			function f2(){
+				$("div").css("color","red");
+				//document.getElementsByTagName("div")[0].css("color","blue");//DOM对象调用jQuery成员,会报错
+				var domObj = document.getElementsByTagName("div")[0];
+				$(domObj).css("color","orange");
+			}
+		</script>
+	</head>
+	<body>
+		<h2 >标题二</h2>
+		<h2 >标题二</h2>
+		<div>段落一</div>
+		<input type="button" value="按钮1" onclick="f1();"/>
+		<input type="button" value="按钮2" onclick="f2();"/>
+	</body>
+</html>

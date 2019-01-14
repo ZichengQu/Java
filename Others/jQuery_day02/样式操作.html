@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.apple{width: 100px; height: 100px; background-color: pink;}
+			.pear{color: blue;}
+			.banana{font-size: 30px;}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				console.log($("div").css("color"));
+				$("div").css({"color":"red","font-family":"微软雅黑"});
+			});
+			function f1(){
+				//给div设置class属性值.
+					//attr对同一个属性进行多次设置修改，后者覆盖前者。
+				$("div").attr("class","apple");
+				$("div").attr("class","pear");
+				$("div").attr("class","banana");
+					//addClass给class属性追加属性值，可以叠加，不会覆盖前者。
+				$("div").addClass("apple");
+				$("div").addClass("pear");
+				$("div").addClass("banana");
+					//切换样式; 可以实现开关效果，有就删除，没有就加入。
+				$("div").toggleClass("apple");
+			}
+			function f2(){
+				//删除class属性值
+				$("div").removeClass("apple");//移除class属性中的apple
+				$("div").removeClass();//移除所有class属性，class属性为空。
+				$("div").removeAttr("class");//删除class属性。
+			}
+		</script>
+	</head>
+	<body>
+		<h2>样式操作标题2</h2>
+		<div class="apple banana pear">此处是div</div>
+		<button onclick="f1()">添加样式</button>
+		<button onclick="f2()">移除样式</button>
+		
+	</body>
+</html>

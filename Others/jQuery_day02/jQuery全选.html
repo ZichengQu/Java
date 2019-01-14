@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body{
+				font:20px "微软雅黑";
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			/*
+			 * 1、得上面那个复选框
+			 * 2、判断这个复选框是否被选中
+			 * 3、如果是选中，下面是全选
+			 * 4、如果不是选中，下面全部选
+			 */
+			$(function(){
+				$("#selAll").click(function(){
+					if($(this).prop("checked")){//判断全选是否被选中
+						$("input[name='language']").prop("checked",true);
+					}else{
+						$("input[name='language']").prop("checked",false);
+					}
+				});
+				$("input[name='language']").click(function(){//第一种
+					var L = $("input[name='language']").length;
+					var sel = $("input[name='language']:checked").length;
+					if(L==sel){
+						$("#selAll").prop("checked",true);
+					}else{
+						$("#selAll").prop("checked",false);
+					}
+				});
+				$("input[name='language']").click(function(){//第二种(较为规范)，对name='language'的元素进行遍历
+					var flag = true;
+					$("input[name='language']").each(function(){
+						if(!this.checked){
+							flag = false;
+							return;//结束遍历
+						}
+					});
+					if(flag){
+						$("#selAll").prop("checked",true);
+					}else{
+						$("#selAll").prop("checked",false);
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="checkbox" id="selAll"/>全选<br/>
+		<input name="language" type="checkbox" id="java" />java<br/>
+		<input name="language" type="checkbox" id="python" />python<br/>
+		<input name="language" type="checkbox" id="c" />c语言<br/>
+		<input name="language" type="checkbox" id="php" />php<br/>
+			
+	</body>
+</html>

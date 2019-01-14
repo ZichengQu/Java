@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script>
+			$(function(){
+				$("#username").focus(function(){
+					console.log("获得焦点");
+				});
+				$("#username").blur(function(){
+					console.log("失去焦点");
+				});
+				$("input").keyup(function(){//当按钮被松开时，发生keyup事件。
+				  $("input").css("background-color","#D6D6FF");
+				});
+				$("#phone").keyup(function(){
+					var v = $(this).val();//$(this).val() -->jQuery对象;this.value --> DOM对象
+					var reg = /\D/g;
+					if(reg.test(v)){
+						$(this).val(v.replace(/\D/g,""));////禁止用户输入非数字字符，将非数字字符替换成空串。
+					}
+				});
+				$("p").click( function () { 
+					$(this).hide(); 
+				});
+				$("#form1").submit(function(){
+					if($("#user").val()==""){
+						console.log("请输入用户名!");
+						return false;
+					}
+				});
+				$("#btn").click(function(){//普通按钮提交,不通过type为submit的方式进行提交
+					if($("#user").val()==""){
+						console.log("请输入用户名!");
+						return false;
+					}
+					$("#form1").submit();
+				});
+				
+			});
+		</script>
+	</head>
+	<body>
+		用户名: <input id="username" /><br />
+		手机号: <input id="phone" /><br />
+		<p>段落</p>
+		<form id="form1">
+			用户名: <input id="user" name="username"/><br />
+			<input type="submit" />
+			<input id="btn" type="button" value="普通按钮提交"/>
+		</form>
+	</body>
+</html>
