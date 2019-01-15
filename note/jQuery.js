@@ -442,8 +442,49 @@
 			<input name="language" type="checkbox" id="c" />c语言<br/>
 			<input name="language" type="checkbox" id="php" />php<br/>
 		</body>
-	
-
-			
-
-
+8.jQuery的动画:
+	(1)主要方法(参考API)
+		show([s,[e],[fn]]) 
+		hide([s,[e],[fn]]) 
+		slideDown([s],[e],[fn]) 
+		slideUp([s,[e],[fn]]) 
+		fadeIn([s],[e],[fn]) 
+		fadeOut([s],[e],[fn]) 
+	例子: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/jQuery%E5%8A%A8%E7%94%BB.html
+		<head>
+			<meta charset="UTF-8">
+			<title></title>
+			<style>
+				div{
+					width: 100px;
+					height: 100px;
+					background-color: yellow;
+				}
+			</style>
+			<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+			<script>
+				function f1(){
+					$("div").hide(2000,f2);//隐藏显示的元素
+				}
+				function f2(){
+					//显示
+					$("div").css("background-color","blue");
+					$("div").slideDown(2000,f3);//通过高度变化（向下增大）来动态地显示所有匹配的元素，在显示完成后可选地触发一个回调函数。
+				}
+				function f3(){
+					$("div").css("background-color","purple");
+					$("div").slideUp(2000,f4);//通过高度变化（向上减小）来动态地隐藏所有匹配的元素，在隐藏完成后可选地触发一个回调函数。
+				}
+				function f4(){
+					$("div").css("background-color","orange");
+					$("div").fadeIn(20000,function(){//通过不透明度的变化来实现所有匹配元素的淡入效果，并在动画完成后可选地触发一个回调函数。
+						alert("finished");
+					});
+				}
+			</script>
+		</head>
+		<body>
+			<div></div>
+			<input type="button" value="隐藏" id="btn1" onclick="f1();">
+		</body>
+9.jQuery的表单验证: https://github.com/ZichengQu/Java/tree/jQuery/Others/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81
