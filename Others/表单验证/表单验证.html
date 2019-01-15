@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width:500px;
+				margin: 100px auto;
+				background-color: antiquewhite;
+			}
+			#code{
+				border:1px solid burlywood;
+				background-color: burlywood;
+				font:italic bold 20px "微软雅黑";
+				display: inline-block;
+				width:70px;
+				text-align: center;
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+		<script type="text/javascript" src="js/laydate/laydate.js" ></script>
+		<script>
+			
+			function show(){
+				document.getElementById('code').style.visibility="visible";
+				var str="";
+				var yzm = ['0','1','2','3','4','5','6','7','8','9','a','b','c','d',
+					       'e','f','g','h','k','j','k','l','m','n','o','p','q','r',
+					       's','t','u','v','w','x','y','z','A','B','C','D','E','F',
+					       'G','H','I','J','K','L','M','N','O','P','Q','R','S','T',
+					       'U','V','W','X','Y','Z'];
+				for(var i=0;i<4;i++){
+					str+=yzm[Math.floor(Math.random()*62)];
+				}
+				document.getElementById('code').innerText=str;
+			}
+			$(function(){
+				$("#btn").click(function(){
+					$("[name='hobby']").each(function(){
+						this.checked=true;
+					});
+				});
+				$("#res").click(function(){
+					$("[name='hobby']").each(function(){
+						this.checked=false;
+					});
+				});
+				$("#form1").submit(function(){
+					if($("#username").val()==""){
+						alert("请输入用户名");
+						return false;
+					}
+					var reg=/^[\u4e00-\u9fa5]/g;
+					if(!reg.test($("#username").val())){
+						alert("请输入中文");
+						return false;
+					}
+					if($("#username").val().length<3||$("#username").val().length>5){
+						alert("用户名3~5字符");
+						return false;
+					}
+					if($("#pwd").val()==""){
+						alert("请输入密码");
+						return false;
+					}
+					if($("#pwd").val().length<6||$("#username").val().length>10){
+						alert("密码6~10字符");
+						return false;
+					}
+					if($("#repwd").val()==""){
+						alert("请输入确认密码");
+						return false;
+					}
+					if($("#repwd").val()!=$("#pwd").val()){
+						alert("两次输入密码不一致");
+						return false;
+					}
+					if($("[name='hobby']:checked").length==0){
+						alert("请选择爱好！");
+						return false;
+					}
+					if($("#yzm").val()==""){
+						alert("请输入验证码！");
+						return false;
+					}
+					if($("#yzm").val().toLowerCase()!=$("#code").text().toLowerCase()){
+						alert("验证码输入错误，请重新输入验证码！");
+						return false;
+					}
+					alert($("#province").val());
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form id="form1">
+			<table border="1px" class="box">
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" placeholder="用户名3~5字符" id="username" name="username"/></td>
+				</tr>
+				<tr>
+					<td>密码</td>
+					<td><input type="password" placeholder="密码6~10字符" id="pwd" name="pwd"/></td>
+				</tr>
+				<tr>
+					<td>确认密码</td>
+					<td><input type="password" placeholder="密码6~10字符" id="repwd" name="repwd"/></td>
+				</tr>
+				<tr>
+					<td>性别</td>
+					<td>
+						男<input type="radio" name="sex" id="boy" checked="checked"/>
+						女<input type="radio" name="sex" id="girl"/>
+					</td>
+				</tr>
+				<tr>
+					<td>爱好</td>
+					<td>
+						篮球<input type="checkbox" name="hobby"/>
+						足球<input type="checkbox" name="hobby"/>
+						棒球<input type="checkbox" name="hobby"/>
+						游泳<input type="checkbox" name="hobby"/>
+						<input type="button" value="全选" id="btn"/>
+						<input type="button" value="重置" id="res"/>
+					</td>
+				</tr>
+				<tr>
+					<td>出生日期</td>
+					<td><input name="birth" id="birth"/></td>
+				</tr>
+				<tr>
+					<td>请选择省份</td>
+					<td>
+						<select id="province" onchange="chooseProvince(this)">
+							<option value="">--请选择省--</option>
+						</select>
+						<select id="city" onChange="chooseCity(this)">
+							<option value="">--请选择市--</option>
+						</select>
+						<select id="area">
+							<option value="">--请选择区--</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>请输入验证码</td>
+					<td>
+						验证码：<input id='yzm' name="yzm" type="text" placeholder="点击获取验证码" onclick="show();"/>&nbsp;
+						<span id="code" style="visibility: hidden;"></span>
+					</td>
+				</tr>
+				<tr>
+					
+					<td colspan="2" align="center">
+						<input type="submit"/>
+						<input type="reset"/>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<script type="text/javascript" src="js/provice.js" ></script>
+		<script>
+			laydate.render({
+			  	elem: '#birth' //指定元素
+			});
+		</script>
+	</body>
+</html>
