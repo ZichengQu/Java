@@ -14,7 +14,7 @@ Servlet:
 		Servlet和客户端的通信采用"请求/响应"的模式。
 	(2)主要功能: 交互式的浏览和修改数据。生成动态Web内容。
 3.Servlet容器: 运行Servlet、JSP、Filter等软件环境。
-4.Servlet快速入门:
+4.Servlet快速入门: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01
 	(1)创建一个Servlet接口的实现类，重写方法;
 	(2)在web.xml中配置和映射这个Servlet;
 		<!-- 配置Servlet -->
