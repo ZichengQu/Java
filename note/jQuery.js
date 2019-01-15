@@ -222,9 +222,9 @@
 					$("#uid4").after($li3);//同级节点.after(同级节点) 作为下一个节点加进来
 					$("#uid4").before($li3);//同级节点.before(同级节点) 作为上一个节点加进来 //类似于节点的剪切，不能将同一个节点插入到不同的位置。
 						//2.3删除节点
-					//$("#uid").remove(); //节点.remove() 删除节点
-					//$("li").remove("#uid5") //节点.remove(选择器) 删除满足该选择器的节点
-					//$("#uid").empty(); //节点.empty() 清空节点,节点不删除
+					$("#uid").remove(); //节点.remove() 删除节点
+					$("li").remove("#uid5") //节点.remove(选择器) 删除满足该选择器的节点
+					$("#uid").empty(); //节点.empty() 清空节点,节点不删除
 					//3.遍历节点
 						//3.1
 					console.log($("#uid").children());//所有对象，$("#uid").children()[index]
