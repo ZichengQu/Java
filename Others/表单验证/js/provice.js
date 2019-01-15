@@ -2199,12 +2199,13 @@ for (var i = 0; i < provinceList.length; i++) {
 console.log(provinceTag);
 //选择省
 function chooseProvince(th) {
-	var index = th.selectedIndex - 1;
+	var index = th.selectedIndex - 1;//var index = th.value; 
+	//value和selectedIndex都是从0开始的，但是"请选择省"算第0个selectedIndex,在这个js文件中添加省市区对应的value的时候是从0开始的，忽略了"请选择省"
 	var provinceName = provinceArray[index];
 
 	for (var n = 0; n < provinceList.length; n++) {
 		var provice = provinceList[n];
-		if (provice.name == provinceName) {
+		if (provice.name == provinceName) {//不用遍历，直接用index获得也可以。
 			cityList = provice.city;
 			cityTag.innerHTML = "<option value=''>--请选择市--</option>";
 			for (var c = 0; c < cityList.length; c++) {
@@ -2215,14 +2216,14 @@ function chooseProvince(th) {
 			}
 		}
 	}
-	var cityName = cityArray[0];
+	/*var cityName = cityArray[0];
 	var city1 = cityList[0];
 	var areaList = city1.area;
 	areaTag.innerHTML = "<option value=''>--请选择区--</option>";
 	for (var a = 0; a < areaList.length; a++) {
 		var area = areaList[a];
 		areaTag.add(new Option(area, a));
-	}
+	}*/
 }
 //选择市
 function chooseCity(tag) {
