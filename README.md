@@ -156,6 +156,21 @@ jQuery
 13.样式操作: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C.html  
 14.jQuery事件(blur/focus/keyup/click/submit): https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/jQuery%E4%BA%8B%E4%BB%B6.html  
 15.jQuery全选: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/jQuery%E5%85%A8%E9%80%89.html  
+16.jQuery的动画: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/jQuery%E5%8A%A8%E7%94%BB.html  
+17.jQuery的表单验证: https://github.com/ZichengQu/Java/tree/jQuery/Others/%E8%A1%A8%E5%8D%95%E9%AA%8C%E8%AF%81  
   
   
 **********************************************************************************************************************************************  
+  
+  
+Servlet
+..............................................................................................................................................
+1.Servlet笔记: https://github.com/ZichengQu/Java/blob/JavaWeb/note/Servlet.java  
+2.Servlet原理图: https://github.com/ZichengQu/Java/blob/JavaWeb/note/286c4681404b63c3ddb297ce7c4863b.png  
+3.Eclipse配置tomcat服务器: https://github.com/ZichengQu/Java/blob/JavaWeb/note/Eclipse%E9%85%8D%E7%BD%AEtomcat%E6%9C%8D%E5%8A%A1%E5%99%A8.docx  
+4.Servlet的配置和映射(Servlet_day01): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01  
+  
+  
+**********************************************************************************************************************************************  
+  
+  
