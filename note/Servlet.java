@@ -96,7 +96,8 @@ Servlet:
 	(2)生命周期:
 		创建: 该web应用被加载
 		销毁: web应用被卸载(服务器关闭，移除该web应用)
-	(3)作用: 
+	(3)在自动创建的servlet.java中，使用this.getServletContext();
+	(4)作用: 
 		1)获得web应用全局的初始化参数
 			<!-- 配置当前web应用的初始化参数 -->
 			  <context-param>
@@ -121,11 +122,33 @@ Servlet:
 	(4)若是一个GET请求获取请求参数对应的那个字符串，即网址链接中"?"后的那个字符串(键值对的字符串): public String getQueryString();
 	(5)获取请求的Servlet的映射路径: public String getServletPath();//	"/"加上mapping中映射的名字。
 13.ServletResponse接口: 封装了响应信息，如果想给用户什么响应，具体可以使用该接口的方法实现。
-	(1)getWriter();返回PrintWriter对象，调用该对象的print()方法，将print()中的参数直接打印到用户的浏览器上。
+	(1)设置响应的内容类型。public void setContentType(String type);
+		response.setContentType("application/msword");//会自动下载文件。这个参数代表word文档，可以使用microsoft word来打开
+		response.setContentType("text/html;charset=utf-8");//设置响应内容类型以及编码格式,使服务器和浏览器编码一致，否则中文出现乱码。
+	(2)getWriter();返回PrintWriter对象，调用该对象的print()方法，将print()中的参数直接打印到用户的浏览器上。
 		PrintWriter writer = response.getWriter();
 		writer.print("<h1>welcome</h1>");
-	(2)设置响应的内容类型。public void setContentType(String type);
-		response.setContentType("application/msword");//会自动下载文件。这个参数代表word文档，可以使用microsoft word来打开
+	(3)转码: 
+		request.setCharacterEncoding("UTF-8");//解决表单post提交中文时的乱码问题。
+		String username_u = request.getParameter("username");
+		//username_u = new String(username_u.getBytes("iso-8859-1"),"UTF-8");//表单get/post提交中文时，会乱码，用这种方式转码。
+		String password_u = request.getParameter("password");
+		System.out.println(username+"\n"+username_u+"\n"+password+"\n"+password_u);
+		response.setContentType("text/html;charset=utf-8");//解决响应时中文乱码的问题。
+		PrintWriter writer = response.getWriter();
+	(4) 响应编码：
+		response.setContentType("text/html;charset=utf-8");//解决响应时中文乱码的问题。
+		请求编码：
+			GET请求
+				username=new String(username.getByte("iso-8859-1),"UTF-8");
+				在server.xml中配置URIEncoding="UTF-8"
+			POST请求
+				username=new String(username.getByte("iso-8859-1),"UTF-8");
+				在获取参数之前调用request.setCharacterEncoding("UTF-8");//解决表单post提交中文时的乱码问题。
+14.JavaEE三层结构:
+	(1)dao层: 和数据库进行交互;
+	(2)service层: 业务逻辑层;
+	(3)web层(servlet/jsp): 数据显示;
 100.小tips:
 	(1)表单form中的action对应的是servlet中的mapping的url的映射,例如:
 		<form id="form1" action="Login" method="get">
