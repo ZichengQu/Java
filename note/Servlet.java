@@ -19,18 +19,14 @@ Servlet:
 	(2)在web.xml中配置和映射这个Servlet;
 		<!-- 配置Servlet -->
 		  <servlet>
-			<!-- Servlet注册的名字 -->
-			<servlet-name>FirstServlet</servlet-name>
-			<!-- Servlet的全类名 -->
-			<servlet-class>com.servlet.FirstServlet</servlet-class>
-			<!-- 指定Servlet被创建的时机 -->
-			<load-on-startup>1</load-on-startup>
+			<servlet-name>FirstServlet</servlet-name>					<!-- Servlet注册的名字 -->
+			<servlet-class>com.servlet.FirstServlet</servlet-class>		<!-- Servlet的全类名 -->
+			<load-on-startup>1</load-on-startup>						<!-- 指定Servlet被创建的时机 -->
 		  </servlet>
 		<!-- 映射Servlet -->
 		  <servlet-mapping>
 			<servlet-name>FirstServlet</servlet-name>
-			<!-- 映射具体的访问路径: /代表当前web应用的根目录 -->
-			<url-pattern>/first</url-pattern>
+			<url-pattern>/first</url-pattern>	<!-- 映射具体的访问路径: /代表当前web应用的根目录 -->
 		  </servlet-mapping>
 	(3)访问这个页面: http://localhost:8080/Servlet_day01/first
 5.Servlet生命周期的方法: 以下方法都是由Servlet容器负责调用。
@@ -55,8 +51,7 @@ Servlet:
 	(1)Servlet可以被映射到多个URL上，即多个<servlet-mapping>元素的<servlet-name>子元素的值可以是同一个servlet的注册名。
 		  <servlet-mapping>
 			<servlet-name>FirstServlet</servlet-name>
-			<!-- 映射具体的访问路径: /代表当前web应用的根目录 -->
-			<url-pattern>/first</url-pattern>
+			<url-pattern>/first</url-pattern>	<!-- 映射具体的访问路径: /代表当前web应用的根目录 -->
 		  </servlet-mapping>
 		  <servlet-mapping>
 			<servlet-name>FirstServlet</servlet-name>
@@ -81,24 +76,21 @@ Servlet:
 	(1)配置了Servlet的初始化参数。
 		<!-- 配置Servlet的初始化参数，且该<init-param>节点必须在<load-on-startup>节点的前面 -->
 		<init-param>
-			<!-- 参数名 -->
-			<param-name>username</param-name>
-			<!-- 参数值 -->
-			<param-value>admin</param-value>
+			<param-name>username</param-name>	<!-- 参数名 -->
+			<param-value>admin</param-value>	<!-- 参数值 -->
 		</init-param>
-	(2)获取初始化参数:
-		getInitParameter(String name) 根据初始化参数名返回对应的初始化参数值。
+	(2)获取初始化参数: getInitParameter(String name) 根据初始化参数名返回对应的初始化参数值。
 	(3)获得Servlet的名字(Servlet注册的名字,不是类名): getServletName();
 	(4)获得ServletContext对象: getServletContext();
 	(5)当继承的是HttpServlet的时候，通过this.public ServletConfig getServletConfig()(此方法是HttpServlet实现的GenericServlet接口中的方法)获得ServletConfig对象
 11.ServletContext接口: 
 	(1)定义: 代表一个WEB应用环境(上下文)对象，即一个WEB环境，也就是说ServletContext内部封装了该web应用的信息。因此一个web应用只有一个ServletContext对象，但一个WEB应用中可以有多个servlet对象。
 	(2)生命周期:
-		创建: 该web应用被加载
-		销毁: web应用被卸载(服务器关闭，移除该web应用)
+		创建: 该web应用被加载;
+		销毁: web应用被卸载(服务器关闭，移除该web应用);
 	(3)在自动创建的servlet.java中，使用this.getServletContext();
 	(4)作用: 
-		1)获得web应用全局的初始化参数
+		1)获得web应用全局的初始化参数:
 			<!-- 配置当前web应用的初始化参数 -->
 			  <context-param>
 				<param-name>driver</param-name>
@@ -106,11 +98,19 @@ Servlet:
 			  </context-param>
 		2)获得当前wen应用的初始化参数: String driver = servletContext.getInitParameter("driver");
 		3)获得web应用中任何资源的绝对路径: servletContext.getRealPath("相对于该web应用的相对地址");
+			String realPath_A = servletContext.getRealPath("a.txt");//a在WebContent目录里。
+			String realPath_B = servletContext.getRealPath("/WEB-INF/b.txt");//b在WebContent/WEB-INF目录里。
+			String realPath_C = servletContext.getRealPath("/WEB-INF/classes/c.txt");//c在WebContent/WEB-INF/classes目录里。
+			String realPath_D = servletContext.getRealPath("path");//找不到，因为d不算是web项目里的文件，d是eclipse的workkplace里的文件。
 		4)ServletContext是一个域对象: 存储数据的区域就是域对象。ServletContext域对象的作为范围: 整个web应用(所有的web资源都可以随意向ServletContext域对象中存取数据，数据可以共享)。
 			域对象的通用方法:
-				setAttribute(String name, Object obj);//存数据
+				setAttribute(String name, Object obj);//存数据 
 				getAttribute(String name);//取数据
 				removeAttribute(String name);//移除数据
+				例子: 同一个Web应用中，Servlet可以有多个，ServletContext只有一个，因此ServletContext可以跨Servlet共享。
+					servletContext.setAttribute("name", "name_value");	
+					String name = (String) servletContext.getAttribute("name");
+					servletContext.removeAttribute("name");
 12.ServletRequest接口: 封装了请求信息，可以从中获取任何的请求信息。
 	(1)获取请求参数:
 		public String getParameter(String name);//根据请求的参数的名字，返回参数值。//若请求参数有多个值(例如checkbox)只能获取第一个提交的值
@@ -136,22 +136,26 @@ Servlet:
 		System.out.println(username+"\n"+username_u+"\n"+password+"\n"+password_u);
 		response.setContentType("text/html;charset=utf-8");//解决响应时中文乱码的问题。
 		PrintWriter writer = response.getWriter();
-	(4) 响应编码：
-		response.setContentType("text/html;charset=utf-8");//解决响应时中文乱码的问题。
-		请求编码：
+	(4) 请求编码：
 			GET请求
 				username=new String(username.getByte("iso-8859-1),"UTF-8");
 				在server.xml中配置URIEncoding="UTF-8"
 			POST请求
 				username=new String(username.getByte("iso-8859-1),"UTF-8");
 				在获取参数之前调用request.setCharacterEncoding("UTF-8");//解决表单post提交中文时的乱码问题。
+		响应编码：
+			response.setContentType("text/html;charset=utf-8");//解决响应时中文乱码的问题。
 14.JavaEE三层结构:
-	(1)dao层: 和数据库进行交互;
+	(1)dao层: 和数据库进行交互，JDBC;
 	(2)service层: 业务逻辑层;
 	(3)web层(servlet/jsp): 数据显示;
-100.小tips:
-	(1)表单form中的action对应的是servlet中的mapping的url的映射,例如:
-		<form id="form1" action="Login" method="get">
+15.Servlet_day01,Servlet入门的例子: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01
+16.Servlet_day01_login(简易表单验证): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01_login
+17.LoginByServlet(用servlet与数据库进行交互,bean/dao/service/servlet/util/): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/LoginByServlet
+18.Demo(Servlet_day01_login/LoginByServlet)的两个代码: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Others
+19.小tips:
+	(1)表单form中的action对应的是servlet中的mapping的url的映射或url地址，比如***.jsp,例如:
+		<form id="form1" action="Login" method="get">  //<form id="form1" action="main.jsp" method="get">
 		<url-pattern>/Login</url-pattern>
 	(2)在获取表单数据getParameter()方法中的参数是name而不是id,例如:
 		<input id="username" name="username"/>
