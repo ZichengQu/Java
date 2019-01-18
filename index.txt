@@ -163,12 +163,25 @@ jQuery
 **********************************************************************************************************************************************  
   
   
+JavaWEB  
+..............................................................................................................................................  
 Servlet  
 ..............................................................................................................................................  
 1.Servlet笔记: https://github.com/ZichengQu/Java/blob/JavaWeb/note/Servlet.java  
 2.Servlet原理图: https://github.com/ZichengQu/Java/blob/JavaWeb/note/286c4681404b63c3ddb297ce7c4863b.png  
 3.Eclipse配置tomcat服务器: https://github.com/ZichengQu/Java/blob/JavaWeb/note/Eclipse%E9%85%8D%E7%BD%AEtomcat%E6%9C%8D%E5%8A%A1%E5%99%A8.docx  
-4.Servlet的配置和映射(Servlet_day01): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01  
+4.服务器和客户端中数据交互的原理: https://github.com/ZichengQu/Java/blob/JavaWeb/note/e375c77073dd72de7ccff02d3ba7640.png  
+4.Servlet的配置和映射及基本接口方法(Servlet_day01): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01  
+5.Servlet_day01_login(简易表单验证,主要是利用4的知识点): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01_login  
+6.LoginByServlet(用servlet与数据库进行交互,bean/dao/service/servlet/util/): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/LoginByServlet  
+7.Demo(Servlet_day01_login/LoginByServlet)的两个代码: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Others  
+..............................................................................................................................................  
+  
+JSP  
+..............................................................................................................................................  
+1.JSP笔记: https://github.com/ZichengQu/Java/blob/JavaWeb/note/JSP.java  
+2.HelloJSP(JSP基本方法): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/HelloJSP/WebContent  
+3.PageJumpAndDataTransfer(页面跳转和数据传递(转发/重定向)): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/PageJumpAndDataTransfer/WebContent  
   
   
 **********************************************************************************************************************************************  
