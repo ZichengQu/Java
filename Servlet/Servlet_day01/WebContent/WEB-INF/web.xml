@@ -2,35 +2,38 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Servlet_day01</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
+    <welcome-file>login.html</welcome-file>
   </welcome-file-list>
-  <!-- 配置Servlet -->
+  <context-param>
+    <param-name>driver</param-name>
+    <param-value>oracle.jdbc.driver.OracleDriver</param-value>
+  </context-param>
   <servlet>
-  	<!-- Servlet注册的名字 -->
-  	<servlet-name>FirstServlet</servlet-name>
-  	<!-- Servlet的全类名 -->
-  	<servlet-class>com.servlet.FirstServlet</servlet-class>
-  	<!-- 指定Servlet被创建的时机 -->
-  	<load-on-startup>1</load-on-startup>
+    <servlet-name>FirstServlet</servlet-name>
+    <servlet-class>com.servlet.FirstServlet</servlet-class>
+    <init-param>
+      <param-name>username</param-name>
+      <param-value>admin</param-value>
+    </init-param>
+    <load-on-startup>-1</load-on-startup>
   </servlet>
   <servlet>
-  	<servlet-name>SecondServlet</servlet-name>
-  	<servlet-class>com.servlet.SecondServlet</servlet-class>
-  	<load-on-startup>-8</load-on-startup>
+    <servlet-name>SecondServlet</servlet-name>
+    <servlet-class>com.servlet.SecondServlet</servlet-class>
+    <load-on-startup>-8</load-on-startup>
   </servlet>
-  <!-- 映射Servlet -->
   <servlet-mapping>
-  	<servlet-name>FirstServlet</servlet-name>
-  	<!-- 映射具体的访问路径: /代表当前web应用的根目录 -->
-  	<url-pattern>/first</url-pattern>
+    <servlet-name>SecondServlet</servlet-name>
+    <url-pattern>/second</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginServlet</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.servlet.LoginServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
-  	<servlet-name>SecondServlet</servlet-name>
-  	<url-pattern>/second</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
   </servlet-mapping>
 </web-app>
