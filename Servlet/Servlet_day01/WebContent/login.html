@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		//alert("测试jq");
+	});
+</script>
+</head>
+<body>
+	<form action="login" method="get">
+		<table>
+			<tr>
+				<td>用户名: </td>
+				<td><input id="username" name="username"/></td>
+			</tr>
+			<tr>
+				<td>密码: </td>
+				<td><input id="password" name="password" type="password"/></td>
+			</tr>
+			<tr>
+				<td>爱好: </td>
+				<td>
+					篮球: <input name="hobby" type="checkbox" value="basketball"/>
+					足球: <input name="hobby" type="checkbox" value="football"/>
+					游泳: <input name="hobby" type="checkbox" value="swim"/>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit"/></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
