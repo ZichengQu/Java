@@ -151,7 +151,7 @@ Servlet:
 	(3)web层(servlet/jsp): 数据显示;
 15.Servlet_day01,Servlet入门的例子: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01
 16.Servlet_day01_login(简易表单验证): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01_login
-17.LoginByServlet(用servlet与数据库进行交互,bean/dao/service/servlet/util/): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/LoginByServlet
+17.LoginByServlet(用servlet/jsp与数据库进行交互,bean/dao/service/servlet/util/): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/LoginByServlet
 18.Demo(Servlet_day01_login/LoginByServlet)的两个代码: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Others
 19.小tips:
 	(1)表单form中的action对应的是servlet中的mapping的url的映射或url地址，比如***.jsp,例如:
