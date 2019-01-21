@@ -6,7 +6,7 @@
 	String password = request.getParameter("password");
 	if("admin".equals(username)&&"123456".equals(password)){
 		//服务器的隐式请求对象(request)设置属性的方法，参数:(字符串,Object)
-		//request..setAttribute("username",username);
+		//request.setAttribute("username",username);
 		request.getSession().setAttribute("username",username);
 		//session.setAttribute("username",username);
 		//页面跳转，同时将数据传递到指定页面
