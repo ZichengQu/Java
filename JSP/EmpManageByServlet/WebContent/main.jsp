@@ -14,7 +14,7 @@
 	String condition = request.getParameter("condition");//获取查询类型
 	String value = request.getParameter("value");//获取输入的查询内容
 	if(value!=null){
-		list = empService.selEmpByCondition(condition,value.toUpperCase());		
+		list = empService.selEmpByCondition(condition,value.toUpperCase());
 	}
 %>
 <!DOCTYPE html>
@@ -39,6 +39,7 @@
 				</select>
 				<input name="value" type="search" placeholder="请输入查询内容" value="<%=value==null?"":value%>"/>
 				<input type="submit" value="查询"/>
+				<a href="addEmp.jsp">添加</a>
 			</p>
 		</form>
 		<table border="1px">
@@ -61,12 +62,12 @@
 				<td><%=emp.getEmpno() %></td>
 				<td><%=emp.getEname() %></td>
 				<td><%=emp.getJob() %></td>
-				<td><%=emp.getEmpno() %></td>
+				<td><%=emp.getMgr() %></td>
 				<td><%=emp.getHiredate() %></td>
 				<td><%=emp.getSal() %></td>
 				<td><%=emp.getComm() %></td>
 				<td><%=emp.getDeptno() %></td>
-				<td><a href="delEmp.do?empno=<%=emp.getEmpno() %>">删除</a></td>
+				<td><a href="delEmp.do?empno=<%=emp.getEmpno() %>" onclick="return confirm('是否确认删除');">删除</a></td>
 			</tr>
 		<%		}
 			} %>

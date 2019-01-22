@@ -54,4 +54,14 @@ public class EmpServiceImpl implements EmpService {
 		}
 		return false;
 	}
+	@Override
+	public int addEmp(Emp emp) {
+		int num = 0;
+		try {
+			num = eDao.addEmp(emp);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return num;
+	}
 }

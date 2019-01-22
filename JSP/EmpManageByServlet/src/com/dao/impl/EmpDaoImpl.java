@@ -4,8 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import com.bean.Dept;
 import com.bean.Emp;
 import com.dao.EmpDao;
 import com.util.DBUtil;
@@ -86,6 +88,25 @@ public class EmpDaoImpl implements EmpDao {
 		String sql = "delete from emp where empno = ?";
 		ps = conn.prepareStatement(sql);
 		ps.setInt(1, empno);
+		num = ps.executeUpdate();
+		
+		DBUtil.close(conn, ps, null);
+		return num;
+	}
+	@Override
+	public int addEmp(Emp emp) throws Exception {
+		int num = 0;
+		Connection conn = DBUtil.getConnection();
+		String sql = "insert into emp values(?,?,?,?,?,?,?,?)";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, emp.getEmpno());
+		ps.setString(2, emp.getEname());
+		ps.setString(3, emp.getJob());
+		ps.setInt(4, emp.getMgr());
+		ps.setDate(5, new java.sql.Date(emp.getHiredate().getTime()));
+		ps.setDouble(6, emp.getSal());
+		ps.setDouble(7, emp.getComm());
+		ps.setInt(8, emp.getDeptno());
 		num = ps.executeUpdate();
 		
 		DBUtil.close(conn, ps, null);
