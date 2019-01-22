@@ -13,6 +13,6 @@
 </head>
 <body>
 	<h2>applicationScope</h2>
-	<%=application.getAttribute("application") %> <!-- null -->
+	<%=application.getAttribute("application") %> <!-- applicationScopeValue  -->
 </body>
 </html>
