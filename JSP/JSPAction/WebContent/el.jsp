@@ -12,8 +12,7 @@
 	<%
 		request.setAttribute("name", "name_value");//存储字符串
 		
-		Student stu1 = new Student();
-		stu1.setName("Tom");
+		Student stu1 = new Student("Tom");
 		session.setAttribute("stu", stu1);
 		
 		List<Student> list = new ArrayList<Student>();//存储一个集合
@@ -31,9 +30,9 @@
 	application: <%=list.get(1).getName() %>
 	<br>
 	<!-- 使用el表达式获得域中的数据 -->
-	${ requestScope.name}
-	${ sessionScope.stu.name}	<%-- ${ sessionScope.stu["name"]} --%>
-	${ applicationScope.list[1].name}  <!-- name调用的是相应的getName()的方法，不是private的name;若getName0(),则应写list[1].name0 -->
+	${ requestScope.name} <!-- name_value -->
+	${ sessionScope.stu.name} <!-- Tom -->	<%-- ${ sessionScope.stu["name"]} --%>  
+	${ applicationScope.list[1].name} <!-- Mary --> <!-- name调用的是相应的getName()的方法，不是private的name;若getName0(),则应写list[1].name0 -->
 	<br>
 	<!-- 全域查找，四个作用域找一遍 -->
 	${ name}
