@@ -4,7 +4,7 @@ JSP: Java Server Pages/Java服务器页面
 	(1)创建web项目;
 	(2)编辑jsp: 
 		位置: 项目/WebContent/
-		默认页面字符编码为pageEncoding="iso-8859-1",不识别中文;要识别中文,将其改为"UTF-8";
+		默认页面字符编码为charset/pageEncoding/charset="iso-8859-1",不识别中文;要识别中文,将它们改为"UTF-8";
 	(3)部署项目至服务器的webapps/
 	(4)启动服务器;
 	(5)浏览器运行;
@@ -13,7 +13,7 @@ JSP: Java Server Pages/Java服务器页面
 	(2)WEB容器将jsp翻译成servlet源代码;
 	(3)WEB容器将产生的源代码进行编译;
 	(4)WEB容器加载编译成字节码文件后，并执行;
-	(5)把执行结构响应至客户端;
+	(5)把执行结果响应至客户端;
 4.jsp脚本和注释:
 	(1)脚本:
 		1) <%java代码%> 内部的java代码翻译到service方法的内部;
@@ -28,7 +28,7 @@ JSP: Java Server Pages/Java服务器页面
 		3) <%!java代码%> 声明变量和方法。会被翻译成servlet的成员内容;
 				<%!String name="Jack"; %>
 				<%!public void add(){
-					System.out.println(name);//在声明里写输出语句不起作用。
+					System.out.println(name);//在声明里写输出语句虽然不会报错，但不起作用。
 				}%>
 	(2)jsp注释: 不同的注释可见范围是不同的
 		1)HTML注释: <!-- 注释内容 -->		可见范围: jsp源码，翻译后的servlet，页面显示html源码
@@ -50,28 +50,29 @@ JSP: Java Server Pages/Java服务器页面
 		常用属性: 
 			1)language: jsp脚本可以嵌入的语言种类(jsp只支持java语言，这句话可不写)。
 			2)pageEncoding: 当前jsp文件本身的编码;内部包含contentType属性。
-			3)contentType: response.setContentType("text/html; charset=UTF-8");//所有的UTF-8的大小写要一致，否则可能报错
+			3)contentType: 等同于response.setContentType("text/html; charset=???");//假设???是UTF-8的话，所有的???/UTF-8的大小写要一致，否则可能报错;
 			4)import: 导入java的包;
 			5)errorPage: 当页面出错后跳转到某一个指定的页面。
 			6)isErrorPage: 当前页面是一个处理错误的页面。
-				例子: <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" errorPage="error.jsp"%>
-						isErrorPage="true"
-			7)
-			<!-- 或直接设置web.xml应用的全局的错误页面 -->	
-			  <error-page> //网址链接不正确
-				<error-code>404</error-code>
-				<location>/404.html</location>
-			  </error-page>
-			 <error-page> //网页出现错误，比如int a = 1/0;
-				<error-code>500</error-code>
-				<location>/error.jsp</location>
-			 </error-page>
-			//若404跳转到500的页面，并使用隐式的exception等，会出现空指针异常，因为没有500错误，exception为null。
+				例子: 
+					<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" errorPage="error.jsp"%>
+					<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true"%>
+			7)不属于page指令的范围:
+				<!-- 或直接设置web.xml应用的全局的错误页面 -->	
+				  <error-page> //网址链接不正确
+					<error-code>404</error-code>
+					<location>/404.html</location>
+				  </error-page>
+				 <error-page> //网页出现错误，比如int a = 1/0;
+					<error-code>500</error-code>
+					<location>/error.jsp</location>
+				 </error-page>
+				//若404跳转到500的页面，并使用隐式的exception等，会出现空指针异常，因为没有500错误，exception为null。
 	(2)include指令: 页面包含(静态包含)指令，可以将一个jsp页面包含到另一个jsp页面中。
 		格式: <%@ include file="被包含的文件地址"%>	//<%@include file="/includeDemo.jsp" %>
 	(3)tablib指令: 在jsp页面中引入标签库
 		格式: <%@ taglib uri="标签库的地址" prefix="标签库的前缀"%>
-7.页面跳转与数据传递: 
+7.页面跳转与数据传递: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/PageJumpAndDataTransfer/WebContent
 	(1)超链接: <a href="link"></a>	<a href="main.jsp?id=123&username=管理员">跳转到主页</a> //跳转的时候传递参数，类似于get提交方式,也可以用getParameter获取参数值。
 	(2)表单提交: <form action="路径" method="提交方式"></form>
 	(3)js跳转: <script>window.location.href="路径";</script>	//window.location.href="login.jsp";//也可以传递参数，但一般不这么用。
@@ -79,7 +80,7 @@ JSP: Java Server Pages/Java服务器页面
 	(4)request.getRequestDispatcher("success.jsp").forward(request,response);//转发
 		注意:
 			1)在服务器内部跳转，地址栏不发生变化;
-			2)这种跳转同时还可以将对象(request/response等)一起传递到另一个jsp;因为服务器地址栏不发生变化;
+			2)这种跳转同时还可以将对象(request/response等)一起传递到另一个jsp;
 	(5)response.sendRedirect("error.jsp");//重定向
 		注意:
 			1)这种跳转发生新的服务器响应，地址栏为新的路径;
@@ -90,7 +91,15 @@ JSP: Java Server Pages/Java服务器页面
 			2)session.setAttribute发送数据
 	(6)例子: PageJumpAndDataTransfer(页面跳转和数据传递(转发/重定向)): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/PageJumpAndDataTransfer/WebContent
 		默认首页index --> login页面 --> main页面(判断一些验证) --> 跳转到success页面或error页面
-		<%
+		<script type="text/javascript">	//index.jsp
+			//window.location.href="login.jsp";
+		</script>
+		</head>
+		<body>
+			<p>超链接: <a href="login.jsp">跳转到登录页</a></p>
+			<p>超链接: <a href="main.jsp?username=admin&password=123456">直接登陆跳转到主页</a></p>
+		</body>
+		<%	//main.jsp
 			System.out.println(request);//隐式对象request在直接调用此页面的时候(不经过表单提交等操作)，也不会为null。
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
@@ -108,7 +117,7 @@ JSP: Java Server Pages/Java服务器页面
 			System.out.println(username+"\n"+password);
 		%>
 		<!--  <h1>欢迎您: <%=request.getAttribute("username") %></h1> -->
-		<h1>欢迎您: <%=session.getAttribute("username") %></h1>
+		<h1>欢迎您: <%=session.getAttribute("username") %></h1> //不能相互代替，若用request/session设置的属性，只能用request/session读取
 8.转发和重定向的区别:
 	转发: 一次请求，一次响应; 地址栏的URL不会发生改变，在服务器端执行，所以必须在同一台服务器上; 转发的速度快;
 	重定向: 两次请求; 地址栏的URL改变为重定向后的那个URL，在客户端执行，所以可以在不同的服务器上;
@@ -128,7 +137,7 @@ JSP: Java Server Pages/Java服务器页面
 				request.getParameterValues("参数名");
 	(3)response: HttpServletResponse接口的实例;响应服务器请求;
 		常用方法:
-			1)跳转: response.sendRedirect();/*重定向*/ 
+			1)跳转: response.sendRedirect("路径");/*重定向*/ 
 				与request跳转不同，request是服务器内部跳转，地址栏内部不发生变化，通过request的属性方法，在另一个jsp页面可以收到来自服务器的数据; response跳转为重新发送请求，地址栏发生变化，通过request的属性方法发送的数据必须放大权限才能在另一个jsp接收到数据。
 			2)增加Cookie: response.addCookie();
 	(4)session: HttpSession类的实例;会话，浏览器关闭即session关闭，不是关闭其中的某一个页面;
@@ -150,12 +159,10 @@ JSP: Java Server Pages/Java服务器页面
 				<%
 					//Integer num = (Integer)session.getAttribute("num");
 					Integer num = (Integer)application.getAttribute("num");
-					if(num==null||num==0){
-						//第一次访问页面
+					if(num==null||num==0){//第一次访问页面
 						out.print("欢迎访问乾包网");
 						num = 1;
 					}else{
-						//返回访问值
 						out.print("欢迎再次访问");
 						num += 1;
 					}
@@ -164,6 +171,7 @@ JSP: Java Server Pages/Java服务器页面
 				%>
 				<p>页面访问量为:<%=num %></p>
 			</body>
+			只要服务器不关闭，application的数据就不会重置，并可在不同的浏览器中共享数据;session是会话级的，各个浏览器之间数据相互独立。
 11.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
 12.JavaEE的开发模式:
 	(1)model1模式:
@@ -187,11 +195,11 @@ JSP: Java Server Pages/Java服务器页面
 	(4)<jsp:include>: 相当于导入一个文件，动态导入;
 		静态包含: 同时声明两个相同的对象或变量时，而静态包含((在tomcat的work里产生一个servlet))是先包含后编译，同名对象报异常。
 		动态包含: 同时声明两个相同的对象或变量时，动态包含(在tomcat的work里产生两个servlet)成立，它是先编译后包含;
-	(5)<jsp:forward>: 相当于请求转发;
-	(6)<jsp:param>通过forward传递参数;
+	(5)<jsp:forward>: 相当于请求转发,地址栏不会发生改变;
+	(6)<jsp:param>: 通过forward传递参数;
 	(7)例子:
 		<body>//index.jsp
-			<jsp:useBean id="stu" class="com.entity.Student"></jsp:useBean>	//相当于Student stu = new Student();
+			<jsp:useBean id="stu" class="com.entity.Student"></jsp:useBean>	//相当于Student stu = new Student();//类Student在src下的com.entity.Student里
 			<%=stu.getName() %>
 			<jsp:setProperty property="name" name="stu" value="renameJack"/>	//相当于stu.setName("str");
 			<jsp:getProperty property="name" name="stu"/>	//相当于stu.getName();
@@ -208,7 +216,7 @@ JSP: Java Server Pages/Java服务器页面
 		</body>
 		<body>//forward.jsp
 			<h1>forward页面</h1>
-			<%request.setCharacterEncoding("UTF-8"); %>
+			<%request.setCharacterEncoding("UTF-8"); %> //要在提交前设置转码，否则会先乱码，再在接收request的页面写转码，所得到的值还是乱码
 			<jsp:forward page="forwardResult.jsp">
 				<jsp:param value="用户名的值" name="username"/>
 			</jsp:forward>
@@ -221,6 +229,7 @@ JSP: Java Server Pages/Java服务器页面
 	expression language/表达式语言:	$(表达式)
 	(1)EL表达式可以嵌入在jsp页面的内部，减少jsp脚本的编写，EL出现的目的是要代替jsp页面中脚本的编写;
 	(2)可以从域中取数据: (EL表达式最重要的作用)
+	(3)el支持表达式运算;
 		${pageScope.name}
 		${requestScope.name}	//${param.paramName}相当于request.getParameter("str");
 		${sessionScope.name}
@@ -248,44 +257,21 @@ JSP: Java Server Pages/Java服务器页面
 				application: <%=list.get(1).getName() %>
 				<br>
 				//使用el表达式获得域中的数据
-				${ requestScope.name}
-				${ sessionScope.stu.name}	//${ sessionScope.stu["name"]}
-				${ applicationScope.list[1].name} //name调用的是相应的getName()的方法，不是private的name;若getName0(),则应写list[1].name0
+				${ requestScope.name}				//name_value
+				${ sessionScope.stu.name} 			//Tom		//${ sessionScope.stu["name"]}
+				${ applicationScope.list[1].name} 	//Mary 		//name调用的是相应的getName()的方法，不是private的name;若getName0(),则应写list[1].name0
 				//全域查找，四个作用域找一遍
-				${ name}
-				${ stu.name}
-				${ list[1].name}
+				${ name}			//name_value
+				${ stu.name}		//Tom
+				${ list[1].name}	//Mary
+				//el支持表达式运算
+				${1+1 }	//2
+				${1>1?true:false }	//false
+				<form>
+					分数: <input name="score"/> //输入100
+					<input type="submit"/>
+				</form>
+				<!-- el可以进行自动的类型转换 -->
+				score: ${param.score +1 }//101	//进行自动非空判断 //<%=request.getParameter("score")==null?"":request.getParameter("score") %>
+				score: <%=request.getParameter("score")+1 %>//1001，字符串拼接
 			</body>
-	(3)el支持表达式运算
-		${1+1 }
-		${1>1?true:false }
-		<form>
-			分数: <input name="score"/> //输入100
-			<input type="submit"/>
-		</form>
-		<!-- el可以进行自动的类型转换 -->
-		score: ${param.score +1 }//101	//进行自动非空判断 //<%=request.getParameter("score")==null?"":request.getParameter("score") %>
-		score: <%=request.getParameter("score")+1 %>//1001，字符串拼接
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
