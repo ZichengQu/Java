@@ -55,8 +55,8 @@ public class EmpServlet extends HttpServlet {
 		String empno = request.getParameter("empno");
 		boolean flag = empService.delEmpById(Integer.parseInt(empno));
 		if(flag) {
-			request.setAttribute("msg", "删除成功");
-			request.getRequestDispatcher("main.jsp").forward(request, response);
+			request.getSession().setAttribute("msg", "删除成功");
+			response.sendRedirect("main.jsp");
 		}else {
 			response.getWriter().print("<script>alert('删除失败');location.href='main.jsp'</script>");
 		}
@@ -84,8 +84,8 @@ public class EmpServlet extends HttpServlet {
 		 int deptno = Integer.parseInt(request.getParameter("deptno")); 
 		 Emp emp = new Emp(empno, ename, job, mgr, hiredate, sal, comm, deptno); 
 		 empService.addEmp(emp);
-		 request.setAttribute("msg", "添加成功！"); 
-		 request.getRequestDispatcher("main.jsp").forward(request,response); 
+		 request.getSession().setAttribute("msg", "添加成功");
+		 response.sendRedirect("main.jsp");
 	}
 	
 }

@@ -6,7 +6,7 @@
     pageEncoding="UTF-8"%>
 <%
 	EmpService empService = new EmpServiceImpl();
-	String msg = (String)request.getAttribute("msg");
+	String msg = (String)session.getAttribute("msg");
 	if(msg!=null){
 		out.print("<script>alert('"+msg+"');</script>");
 	}
