@@ -10,12 +10,10 @@
 	<%
 		//Integer num = (Integer)session.getAttribute("num");
 		Integer num = (Integer)application.getAttribute("num");
-		if(num==null||num==0){
-			//第一次访问页面
+		if(num==null||num==0){//第一次访问页面
 			out.print("欢迎访问乾包网");
 			num = 1;
 		}else{
-			//返回访问值
 			out.print("欢迎再次访问");
 			num += 1;
 		}
