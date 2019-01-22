@@ -71,9 +71,9 @@ Servlet:
 			<servlet-name>FirstServlet</servlet-name>
 			<url-pattern>/</url-pattern>
 		  </servlet-mapping>
-	(4)WEB应用中所有的资源响应都是servlet负责，包括静态资源(不和数据库进行交互)和动态页面(和数据库进行交互);在前三种方式均找不到的情况下，会去查找WebContent下的html文件。
+	(4)WEB应用中所有的资源响应都是servlet负责，包括静态资源(不和数据库进行交互)和动态页面(和数据库进行交互);在前三种方式均找不到的情况下，会去查找WebContent下的html和jsp等文件。
 10.ServletConfig接口: 封装了Servlet的配置信息
-	(1)配置了Servlet的初始化参数。
+	(1)配置Servlet的初始化参数。
 		<!-- 配置Servlet的初始化参数，且该<init-param>节点必须在<load-on-startup>节点的前面 -->
 		<init-param>
 			<param-name>username</param-name>	<!-- 参数名 -->
@@ -112,13 +112,14 @@ Servlet:
 					String name = (String) servletContext.getAttribute("name");
 					servletContext.removeAttribute("name");
 12.ServletRequest接口: 封装了请求信息，可以从中获取任何的请求信息。
+	链接: https://github.com/ZichengQu/Java/blob/JavaWeb/Servlet/Servlet_day01/src/com/servlet/LoginServlet.java
 	(1)获取请求参数:
 		public String getParameter(String name);//根据请求的参数的名字，返回参数值。//若请求参数有多个值(例如checkbox)只能获取第一个提交的值
 		public String[] getParameterValues(String name);//根据请求的参数的名字，返回请求参数对应的字符串数组。
 	(2)获取请求的URI和URL:
 		public String getRequestURI();//Servlet_day01/login
 		public String getRequestURL();//http://localhost:8080/Servlet_day01/login
-	(3)获取请求方式: public String getMethod();
+	(3)获取请求方式: public String getMethod();// get/post/...
 	(4)若是一个GET请求获取请求参数对应的那个字符串，即网址链接中"?"后的那个字符串(键值对的字符串): public String getQueryString();
 	(5)获取请求的Servlet的映射路径: public String getServletPath();//	"/"加上mapping中映射的名字。
 13.ServletResponse接口: 封装了响应信息，如果想给用户什么响应，具体可以使用该接口的方法实现。
@@ -133,9 +134,9 @@ Servlet:
 		String username_u = request.getParameter("username");
 		//username_u = new String(username_u.getBytes("iso-8859-1"),"UTF-8");//表单get/post提交中文时，会乱码，用这种方式转码。
 		String password_u = request.getParameter("password");
-		System.out.println(username+"\n"+username_u+"\n"+password+"\n"+password_u);
 		response.setContentType("text/html;charset=utf-8");//解决响应时中文乱码的问题。
 		PrintWriter writer = response.getWriter();
+		writer.print("<h1>欢迎</h1>");
 	(4) 请求编码：
 			GET请求
 				username=new String(username.getByte("iso-8859-1),"UTF-8");
