@@ -184,7 +184,9 @@ JSP
 3.PageJumpAndDataTransfer(页面跳转和数据传递(转发/重定向)): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/PageJumpAndDataTransfer/WebContent  
 4.四个作用域(pageContext/request/session/application): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/FourScopes/WebContent  
 5.session和application作用域区别的例子: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/FourScopes/WebContent/countOnline.jsp  
-5.EmpManageByServlet(查询/模糊查询/删除，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
+6.jsp常用5 of 7种动作(userBean/getProperty/setProperty/include/forward/param): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/JSPAction  
+7.EL表达式: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/JSPAction/WebContent/el.jsp  
+8.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
   
     
 **********************************************************************************************************************************************  
