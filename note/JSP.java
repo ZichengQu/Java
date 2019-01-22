@@ -164,4 +164,128 @@ JSP: Java Server Pages/Java服务器页面
 				%>
 				<p>页面访问量为:<%=num %></p>
 			</body>
-11.EmpManageByServlet(查询/模糊查询/删除，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
+11.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
+12.JavaEE的开发模式:
+	(1)model1模式:
+		技术组成: jsp+javaBean
+		弊端: 随着业务复杂性，导致jsp页面比较混乱。
+	(2)model2模式:
+		技术组成: jsp+servlet+javaBean;
+		优点: 开发中使用各个技术擅长的方面;servlet: 擅长处理java业务;jsp: 擅长页面的显示;
+		MVC: Model-View-Controller的简称，即模型-视图-控制器;MVC是一种设计模式,它把应用程序分成三个核心模块(M/V/C),它们各自处理自己的任务;
+		Model(bean/dao/service): 模型是应用程序的主体部分,模型表示业务数据和业务逻辑;一个模型能为多个视图提供数据;
+		View(jsp): 视图是用户看到并与之交互的界面,作用如下:视图向用户显示相关的数据;接受用户的输入;视图不进行任何实际的业务处理;
+		Controller(目前是servlet，框架之后会是别的): 控制器接受用户的输入并调用模型和视图去完成用户的需求;控制器接受请求并决定调用哪个模型组件去处理请求，然后决定调用哪个视图来显示模型处理返回的数据;
+13.JavaEE三层结构:
+	(1)dao层(MyBatis): 和数据库进行交互，JDBC; 
+	(2)service层(Spring): 业务逻辑层;
+	(3)web层(servlet/jsp)(Structs2): 数据显示;
+14.jsp常用7种动作(这里只总结了最常用的5种): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/JSPAction
+	(1)<jsp:userBean>: 相当于实例化一个类;
+	(2)<jsp:getProperty>: 相当于获得一个实体类的属性值;
+	(3)<jsp:setProperty>: 相当于设置一个实体类的属性值;
+	(4)<jsp:include>: 相当于导入一个文件，动态导入;
+		静态包含: 同时声明两个相同的对象或变量时，而静态包含((在tomcat的work里产生一个servlet))是先包含后编译，同名对象报异常。
+		动态包含: 同时声明两个相同的对象或变量时，动态包含(在tomcat的work里产生两个servlet)成立，它是先编译后包含;
+	(5)<jsp:forward>: 相当于请求转发;
+	(6)<jsp:param>通过forward传递参数;
+	(7)例子:
+		<body>//index.jsp
+			<jsp:useBean id="stu" class="com.entity.Student"></jsp:useBean>	//相当于Student stu = new Student();
+			<%=stu.getName() %>
+			<jsp:setProperty property="name" name="stu" value="renameJack"/>	//相当于stu.setName("str");
+			<jsp:getProperty property="name" name="stu"/>	//相当于stu.getName();
+			<%int num = 1; %> //用来测试静态包含和动态包含的区别
+			<%-- <%@include file="foot.jsp" %> --%>	//静态包含
+			<jsp:include page="foot.jsp"></jsp:include> //动态包含
+			<a href="forward.jsp">直接跳转到指定的页面，通过JSP动作完成</a>
+		</body>
+		<body>//foot.jsp;页面统一底部
+			<%int num = 2; %> //若是静态包含的话，此处不能和index.jsp中的num定义相同的变量名。
+			<center>
+				<h1>&copy;版权所有2019,联系电话: 123456789</h1>
+			</center>
+		</body>
+		<body>//forward.jsp
+			<h1>forward页面</h1>
+			<%request.setCharacterEncoding("UTF-8"); %>
+			<jsp:forward page="forwardResult.jsp">
+				<jsp:param value="用户名的值" name="username"/>
+			</jsp:forward>
+		</body>
+		<body>//forwardResult.jsp
+			<h1>forwardResult页面,测试jsp动作forward结果页。</h1>
+			<%=request.getParameter("username") %>
+		</body>
+15.EL表达式: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/JSPAction/WebContent/el.jsp
+	expression language/表达式语言:	$(表达式)
+	(1)EL表达式可以嵌入在jsp页面的内部，减少jsp脚本的编写，EL出现的目的是要代替jsp页面中脚本的编写;
+	(2)可以从域中取数据: (EL表达式最重要的作用)
+		${pageScope.name}
+		${requestScope.name}	//${param.paramName}相当于request.getParameter("str");
+		${sessionScope.name}
+		${applicationScope.name}
+		例子:
+			<body>
+				<%
+					request.setAttribute("name", "name_value");//存储字符串
+					Student stu1 = new Student();
+					stu1.setName("Tom");
+					session.setAttribute("stu", stu1);
+					
+					List<Student> list = new ArrayList<Student>();//存储一个集合
+					Student stu2 = new Student("Mary");
+					Student stu3 = new Student("Jack");
+					list.add(stu1);
+					list.add(stu2);
+					list.add(stu3);
+					application.setAttribute("list", list);
+				%>
+				request: <%=request.getAttribute("name") %>
+				<%Student stu =(Student)session.getAttribute("stu");  %>
+				session: <%=stu.getName() %>
+				<%list = (List)application.getAttribute("list"); %>
+				application: <%=list.get(1).getName() %>
+				<br>
+				//使用el表达式获得域中的数据
+				${ requestScope.name}
+				${ sessionScope.stu.name}	//${ sessionScope.stu["name"]}
+				${ applicationScope.list[1].name} //name调用的是相应的getName()的方法，不是private的name;若getName0(),则应写list[1].name0
+				//全域查找，四个作用域找一遍
+				${ name}
+				${ stu.name}
+				${ list[1].name}
+			</body>
+	(3)el支持表达式运算
+		${1+1 }
+		${1>1?true:false }
+		<form>
+			分数: <input name="score"/> //输入100
+			<input type="submit"/>
+		</form>
+		<!-- el可以进行自动的类型转换 -->
+		score: ${param.score +1 }//101	//进行自动非空判断 //<%=request.getParameter("score")==null?"":request.getParameter("score") %>
+		score: <%=request.getParameter("score")+1 %>//1001，字符串拼接
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
