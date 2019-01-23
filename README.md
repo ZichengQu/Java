@@ -71,11 +71,11 @@ project:
   
 HTML  
 ..............................................................................................................................................  
-0.HTMLNote.html: https://github.com/ZichengQu/Java/blob/HTML/HTML/note/HTMLNote.html  
-1.gun,锚点，链接: https://github.com/ZichengQu/Java/tree/HTML/HTML/1.Demo  
-2.两个表格，一个简易网页: https://github.com/ZichengQu/Java/tree/HTML/HTML/2.Demo  
-3.form的用法，简易登陆界面: https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo  
-4.随堂笔记代码: https://github.com/ZichengQu/Java/tree/HTML/HTML/Others  
+1.HTMLNote.html: https://github.com/ZichengQu/Java/blob/HTML/HTML/note/HTMLNote.html  
+2.gun,锚点，链接: https://github.com/ZichengQu/Java/tree/HTML/HTML/1.Demo  
+3.两个表格，一个简易网页: https://github.com/ZichengQu/Java/tree/HTML/HTML/2.Demo  
+4.form的用法，简易登陆界面: https://github.com/ZichengQu/Java/tree/HTML/HTML/3.Demo  
+5.随堂笔记代码: https://github.com/ZichengQu/Java/tree/HTML/HTML/Others  
   
   
 **********************************************************************************************************************************************  
@@ -171,10 +171,10 @@ Servlet
 2.Servlet原理图: https://github.com/ZichengQu/Java/blob/JavaWeb/note/286c4681404b63c3ddb297ce7c4863b.png  
 3.Eclipse配置tomcat服务器: https://github.com/ZichengQu/Java/blob/JavaWeb/note/Eclipse%E9%85%8D%E7%BD%AEtomcat%E6%9C%8D%E5%8A%A1%E5%99%A8.docx  
 4.服务器和客户端中数据交互的原理: https://github.com/ZichengQu/Java/blob/JavaWeb/note/e375c77073dd72de7ccff02d3ba7640.png  
-4.Servlet的配置和映射及基本接口方法(Servlet_day01): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01  
-5.Servlet_day01_login(简易表单验证,主要是利用4的知识点): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01_login  
-6.LoginByServlet(用servlet/jsp与数据库进行交互,bean/dao/service/servlet/util/): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/LoginByServlet  
-7.Demo(Servlet_day01_login/LoginByServlet)的两个代码: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Others  
+5.Servlet的配置和映射及基本接口方法(Servlet_day01): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01  
+6.Servlet_day01_login(简易表单验证,主要是利用5的知识点): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Servlet_day01_login  
+7.LoginByServlet(用servlet与数据库进行交互,bean/dao/service/servlet/util/): https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/LoginByServlet  
+8.Demo(Servlet_day01_login/LoginByServlet)的两个代码: https://github.com/ZichengQu/Java/tree/JavaWeb/Servlet/Others  
 ..............................................................................................................................................  
   
 JSP  
@@ -186,7 +186,12 @@ JSP
 5.session和application作用域区别的例子: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/FourScopes/WebContent/countOnline.jsp  
 6.jsp常用5 of 7种动作(userBean/getProperty/setProperty/include/forward/param): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/JSPAction  
 7.EL表达式: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/JSPAction/WebContent/el.jsp  
-8.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
+8.MVC处理过程: https://github.com/ZichengQu/Java/blob/JavaWeb/note/20443a27db56d49357bb6f811238852.png  
+9.Cookie基本知识: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/Cookie.jsp  
+10.Cookie的简单应用: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/main.jsp  
+11.Session的生命周期: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/Session.jsp  
+11.StudentManagement(分页查询): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage  
+9.EmpManageByServlet(查询/模糊查询/删除/添加/定时跳转，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
   
     
 **********************************************************************************************************************************************  
