@@ -190,8 +190,8 @@ JSP
 9.Cookie基本知识: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/Cookie.jsp  
 10.Cookie的简单应用: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/main.jsp  
 11.Session的生命周期: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/Session.jsp  
-11.StudentManagement(分页查询): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage  
-9.EmpManageByServlet(查询/模糊查询/删除/添加/定时跳转，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
+12.StudentManagement(分页查询): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage  
+13.EmpManageByServlet(查询/模糊查询/删除/添加/定时跳转，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
   
     
 **********************************************************************************************************************************************  
