@@ -172,8 +172,8 @@ JSP: Java Server Pages/Java服务器页面
 				<p>页面访问量为:<%=num %></p>
 			</body>
 			只要服务器不关闭，application的数据就不会重置，并可在不同的浏览器中共享数据;session是会话级的，各个浏览器之间数据相互独立。
-11.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
-12.JavaEE的开发模式:
+
+11.JavaEE的开发模式:
 	(1)model1模式:
 		技术组成: jsp+javaBean
 		弊端: 随着业务复杂性，导致jsp页面比较混乱。
@@ -184,11 +184,11 @@ JSP: Java Server Pages/Java服务器页面
 		Model(bean/dao/service): 模型是应用程序的主体部分,模型表示业务数据和业务逻辑;一个模型能为多个视图提供数据;
 		View(jsp): 视图是用户看到并与之交互的界面,作用如下:视图向用户显示相关的数据;接受用户的输入;视图不进行任何实际的业务处理;
 		Controller(目前是servlet，框架之后会是别的): 控制器接受用户的输入并调用模型和视图去完成用户的需求;控制器接受请求并决定调用哪个模型组件去处理请求，然后决定调用哪个视图来显示模型处理返回的数据;
-13.JavaEE三层结构:
+12.JavaEE三层结构:
 	(1)dao层(MyBatis): 和数据库进行交互，JDBC; 
 	(2)service层(Spring): 业务逻辑层;
 	(3)web层(servlet/jsp)(Structs2): 数据显示;
-14.jsp常用7种动作(这里只总结了最常用的5种): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/JSPAction
+13.jsp常用7种动作(这里只总结了最常用的5种): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/JSPAction
 	(1)<jsp:userBean>: 相当于实例化一个类;
 	(2)<jsp:getProperty>: 相当于获得一个实体类的属性值;
 	(3)<jsp:setProperty>: 相当于设置一个实体类的属性值;
@@ -225,7 +225,7 @@ JSP: Java Server Pages/Java服务器页面
 			<h1>forwardResult页面,测试jsp动作forward结果页。</h1>
 			<%=request.getParameter("username") %>
 		</body>
-15.EL表达式: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/JSPAction/WebContent/el.jsp
+14.EL表达式: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/JSPAction/WebContent/el.jsp
 	expression language/表达式语言:	$(表达式)
 	(1)EL表达式可以嵌入在jsp页面的内部，减少jsp脚本的编写，EL出现的目的是要代替jsp页面中脚本的编写;
 	(2)可以从域中取数据: (EL表达式最重要的作用)
@@ -275,3 +275,94 @@ JSP: Java Server Pages/Java服务器页面
 				score: ${param.score +1 }//101	//进行自动非空判断 //<%=request.getParameter("score")==null?"":request.getParameter("score") %>
 				score: <%=request.getParameter("score")+1 %>//1001，字符串拼接
 			</body>
+15.会话技术: 
+	(1)会话技术产生原因: 
+		Web应用程序是通过HTTP协议传输数据的;
+		HTTP协议是无状态的;Web服务器本身不能识别出哪些请求是同一个浏览器发出的，浏览器的每一次请求都是完全孤立的;
+		作为Web浏览器，必须能采用一种机制(session/cookie)来唯一地标识一个用户，同时记录该用户的状态。
+	(2)定义: 从打开一个浏览器访问某个站点，到关闭这个浏览器的整个过程，称为一次会话，会话技术就是记录这次客户端的状态与数据的，会话技术分为Cookie和Session;
+	(3)Cookie: ....................................................................................................................................................
+		1)优缺点:存储在客户端本地;减少服务器的压力，安全性不好，客户端可以清除Cookie;
+		2)Cookie是在浏览器访问Web服务器的时候，在Web服务器的HTTP响应头中附带传送给浏览器的一个小文本文件;
+			一旦浏览器保存了Cookie，那么它在以后每次访问该Web服务器时都会在HTTP请求头中将这个Cookie回传给Web服务器，服务器通过这种方式来获取用户信息。
+		3)如果创建了一个Cookie，并将它发送到浏览器，默认情况下它是一个会话级别的Cookie: 存储在浏览器的内存中，用户退出浏览器后被删除;
+			若希望浏览器将Cookie存储在磁盘上，则需要使用setMaxAge()并给出一个以秒为单位的时间;
+		4)设置Cookie的携带路径: 如果不设置携带路径，那么该Cookie信息会在访问时产生该Cookie的Web资源所在的路径都携带Cookie信息。 
+			cookie.setPath("/CookieDemo/main.jsp");//访问CookieDemo应用中的main.jsp页面时，才加载该cookie;
+			cookie.setPath("/CookieDemo");//默认代表访问CookieDemo应用中的任何资源都携带该cookie;
+		<%	//Cookie基本知识 https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/Cookie.jsp
+			Cookie[] cookies = request.getCookies();//获取Cookie
+			if(cookies!=null&&cookies.length>0){
+				for(Cookie cookie: cookies){
+					out.print(cookie.getName()+": "+cookie.getValue()+"<br>");//获取Cookie的name和value
+				}
+			}else{
+				out.print("没有Cookie,正在创建，并返回给浏览器");
+				Cookie cookie = new Cookie("name","Tom");//创建一个Cookie对象
+				cookie.setMaxAge(30);//设置Cookie的最大时效，以秒为单位
+				cookie.setPath("/CookieDemo/main.jsp");//设置Cookie的携带路径 //访问CookieDemo应用中的main.jsp页面时，才加载该cookie;
+				//cookie.setPath("/CookieDemo");//默认代表访问CookieDemo应用中的任何资源都携带该cookie;
+				response.addCookie(cookie);//调用response的方法把cookie传给客户端
+			}
+		%>
+		<%  https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/login.jsp
+			https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/main.jsp
+			//从login.jsp的<form action="main.jsp" method="post">跳转过来的
+			//如果能够获取到请求参数，然后把登陆信息存储到Cookie中，并设置Cookie的最大时效30s。
+			String username_value = request.getParameter("username");
+			if(username_value!=null&&!username_value.trim().equals("")){
+				Cookie cookie = new Cookie("username",username_value);
+				cookie.setMaxAge(30);
+				cookie.setPath("/CookieDemo/main.jsp");//设置Cookie的携带路径 //访问CookieDemo应用中的main.jsp页面时，才加载该cookie;
+				//cookie.setPath("/CookieDemo");//默认代表访问CookieDemo应用中的任何资源都携带该cookie;
+				response.addCookie(cookie);
+			}else{
+				//第二次请求的时候从Cookie中读取用户信息，如果存在则打印出"欢迎登陆"。
+				Cookie[] cookies = request.getCookies();
+				if(cookies!=null&&cookies.length>0){
+					for(Cookie cookie: cookies){
+						if("username".equals(cookie.getName())){
+							String value = cookie.getValue();
+							username_value = value;
+						}
+					}
+				}
+			}
+			if(username_value!=null&&!username_value.trim().equals("")){
+				out.print("Hello: "+username_value);
+			}else{//若没有请求参数也没有Cookie，则重定向到login页面重新登陆。
+				response.sendRedirect("login.jsp");
+			}
+		%>
+	(4)Session: 
+		1)优缺点: 将数据存储到服务器端，安全性好，增加服务器的压力;
+		2)定义: Session技术是将数据存储在服务器端的技术，会为每个客户端都创建一块内存空间存储客户的数据，但客户端需要每次都携带一个标识ID去服务器中寻找属于自己的内存空间。
+					所以说是Session的实现是基于Cookie的，Session需要借助于Cookie存储客户的唯一标识:JSESSIONID;
+		3)获取Session对象:
+			HttpSession request.getSession();//获得当前会话的Session;如果服务器端没有Session，则创建新的Session并返回;如果有(JSESSIONID)则返回已存在的Session;
+		4)向Session中存数据:
+			session.setAttribute(String name, Object obj);
+			session.getAttribute(String name);
+			session.removeAttribute(String name);
+		5)Session对象的生命周期: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/CookieDemo/WebContent/Session.jsp
+			默认声明周期30min;可以在web.xml配置时长。浏览器关闭，Session不会销毁，只有过了生命周期之后才会销毁。
+				<body>	//Session.jsp
+					<%	
+						session.setAttribute("username", "中文用户名");
+						response.sendRedirect("SessionResult.jsp");
+					%>
+				</body>
+				<body>	//SessionResult.jsp
+					<h1>用户名: ${username }</h1>
+					<%
+						Cookie cookie = new Cookie("JSESSIONID",session.getId());//手动创建一个存储JSESSIONID的Cookie
+						cookie.setMaxAge(60*10);
+						response.addCookie(cookie);
+					%>
+					ID: <%=session.getId() %>
+				</body>
+		6)转码: 在设置Cookie时将中文参数进行UTF-8编码，在接收Cookie时将中文参数解码
+			URLEncoder.encode(name, "utf-8"); // 设置Cookie时先对中文参数编码
+			URLDecoder.decode(cookies[i].getName(),"utf-8") // 读取Cookie时对中文参数解码
+100.StudentManagement(分页查询): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage
+11.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
