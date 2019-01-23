@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%
+	<%	//从login.jsp的<form action="main.jsp" method="post">跳转过来的
 		request.setCharacterEncoding("UTF-8");
 		//如果能够获取到请求参数，然后把登陆信息存储到Cookie中，并设置Cookie的最大时效30s。
 		String username_value = request.getParameter("username");
