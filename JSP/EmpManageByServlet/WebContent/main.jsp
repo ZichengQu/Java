@@ -10,6 +10,7 @@
 	if(msg!=null){
 		out.print("<script>alert('"+msg+"');</script>");
 	}
+	msg = null;
 	List<Emp> list = empService.selAllEmp();
 	String condition = request.getParameter("condition");//获取查询类型
 	String value = request.getParameter("value");//获取输入的查询内容

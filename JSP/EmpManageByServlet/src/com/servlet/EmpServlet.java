@@ -84,8 +84,8 @@ public class EmpServlet extends HttpServlet {
 		 int deptno = Integer.parseInt(request.getParameter("deptno")); 
 		 Emp emp = new Emp(empno, ename, job, mgr, hiredate, sal, comm, deptno); 
 		 empService.addEmp(emp);
-		 request.getSession().setAttribute("msg", "添加成功");
-		 response.sendRedirect("main.jsp");
+		 //request.getSession().setAttribute("msg", "添加成功");
+		 response.sendRedirect("forward.jsp");
 	}
 	
 }
