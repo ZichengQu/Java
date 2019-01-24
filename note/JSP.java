@@ -364,5 +364,68 @@ JSP: Java Server Pages/Java服务器页面
 		6)转码: 在设置Cookie时将中文参数进行UTF-8编码，在接收Cookie时将中文参数解码
 			URLEncoder.encode(name, "utf-8"); // 设置Cookie时先对中文参数编码
 			URLDecoder.decode(cookies[i].getName(),"utf-8") // 读取Cookie时对中文参数解码
-100.StudentManagement(分页查询): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage
-11.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
+16.StudentManagement(分页查询/添加/修改): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage
+17.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
+18.Ajax(异步 JavaScript 和 XML) 异步通信技术:
+	(1)定义:
+		1)Ajax 是一种在无需重新加载整个网页的情况下，能够更新部分网页的技术;
+		2)通过在后台与服务器进行少量数据交换，Ajax 可以使网页实现异步更新;这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新;
+		3)传统的网页（不使用 Ajax）如果需要更新内容，必须重载整个网页页面;
+	(2)
+		$.ajax({
+		  type: "GET",			//提交的类型,默认: "GET";
+		  url: "test.js",		//发送请求的地址
+		  data:	发送到服务器的数据,
+		  dataType: "script",	//预期服务器返回的数据类型。
+		  success: 请求成功后的回调函数 //ajax的success必须通过流返回参数，流的参数不会打印在页面上，只会当作参数返回;
+		});
+	(3)dataType:
+		"xml": 返回 XML 文档，可用 jQuery 处理。
+		"html": 返回纯文本 HTML 信息；包含的script标签会在插入dom时执行。
+		"script": 返回纯文本 JavaScript 代码。不会自动缓存结果。除非设置了"cache"参数。'''注意：'''在远程请求时(不在同一个域下)，所有POST请求都将转为GET请求。(因为将使用DOM的script标签来加载)
+		"json": 返回 JSON 数据 。
+		"jsonp": JSONP 格式。使用 JSONP 形式调用函数时，如 "myurl?callback=?" jQuery 将自动替换 ? 为正确的函数名，以执行回调函数。
+		"text": 返回纯文本字符串
+	(4)例子: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/LoginAndRegisterByAjax
+		$(function(){//ajax
+			var flag = true;
+			$("#username").blur(function(){
+				var username=$(this).val();
+				$.ajax({
+					url:"selUserByName.do",
+					type:"post",
+					data:"username="+username,
+					dataType:"text",
+					success:function(data){
+						if(data=="true"){
+							$("#msg1").text("用户名已存在，请更换用户名");
+							flag = false;
+						}else{
+							$("#msg1").text("用户名可用");
+							flag = true;
+						}
+					}
+				});
+			});
+		});
+		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {// *.do
+			request.setCharacterEncoding("UTF-8");
+			response.setContentType("text/html;charset=UTF-8");
+			String servletPath = request.getServletPath();
+			if("/selUserByName.do".equals(servletPath)) {
+				selUserByName(request,response);
+			}
+		}
+		private void selUserByName(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			PrintWriter writer = response.getWriter();//ajax的success必须通过流返回参数，流的参数不会打印在页面上，只会当作参数返回;
+			String username = request.getParameter("username");
+			Users user = userService.selUserByName(username);
+			if(user!=null) {
+				writer.print("true");
+			}else{
+				writer.print("false");
+			}
+			System.out.println(user);
+		}
+		
+
