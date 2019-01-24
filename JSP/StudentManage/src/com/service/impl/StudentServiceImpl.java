@@ -30,5 +30,24 @@ public class StudentServiceImpl implements StudentService {
 		}
 		return list;
 	}
+	@Override
+	public void addStudent(Student stu) {
+		try {
+			sDao.addStudent(stu);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	@Override
+	public Student selStuById(int id) {
+		Student stu = null;
+		try {
+			stu = sDao.selStuById(id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return stu;
+	}
 
 }

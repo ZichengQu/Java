@@ -1,6 +1,8 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -45,8 +47,11 @@ public class StudentServlet extends HttpServlet {
 			selAllStudent(request, response);
 		}else if("/selStuByPage.do".equals(servletPath)) {
 			selStudentByPage(request, response);
+		}else if("/addStudent.do".equals(servletPath)) {
+			addStudent(request, response);
 		}
 	}
+
 	protected void selAllStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Student> list = stuService.selAllStudents();
 		request.setAttribute("list", list);
@@ -61,5 +66,18 @@ public class StudentServlet extends HttpServlet {
 		request.setAttribute("totalPages", totalPages);
 		request.setAttribute("pageIndex", pageIndex);
 		request.getRequestDispatcher("selStudent.jsp").forward(request, response);
+	}
+	private void addStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		String[] hobbys = request.getParameterValues("hobby");
+		String hobby = Arrays.toString(hobbys);
+		System.out.println(hobby);///////////////////////
+		String school = request.getParameter("school");
+		Date date = new Date();
+		Student student = new Student(0,name,hobby.substring(1, hobby.length()-1),school,date);
+		stuService.addStudent(student);
+		request.setAttribute("msg", "Ìí¼Ó³É¹¦");
+		request.getRequestDispatcher("selStuByPage.do").forward(request, response);
+		System.out.println(111);
 	}
 }
