@@ -27,6 +27,11 @@
 				}
 			});
 		});
+		$("#form01").submit(function(){
+			if(!flag){
+				return false;
+			}
+		});
 	});
 </script>
 </head>
