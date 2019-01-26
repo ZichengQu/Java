@@ -10,4 +10,5 @@ public interface EmpDao {
 	public List<Emp> selEmpByCondition(String condition, String value) throws Exception;//条件查询
 	public int delEmpById(int empno) throws Exception;//删除
 	public int addEmp(Emp emp) throws Exception;
+	public List<Emp> selMgrByDept(int deptno) throws Exception;//addEmp.jsp中添加员工时根据选择的部门号利用ajax显示不同的mgr。
 }

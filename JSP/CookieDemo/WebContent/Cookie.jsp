@@ -11,6 +11,7 @@
 		Cookie[] cookies = request.getCookies();//获取Cookie
 		if(cookies!=null&&cookies.length>0){
 			for(Cookie cookie: cookies){
+				out.print(cookies.length);
 				out.print(cookie.getName()+": "+cookie.getValue()+"<br>");//获取Cookie的name和value
 			}
 		}else{

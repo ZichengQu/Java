@@ -112,4 +112,20 @@ public class EmpDaoImpl implements EmpDao {
 		DBUtil.close(conn, ps, null);
 		return num;
 	}
+
+	@Override
+	public List<Emp> selMgrByDept(int deptno) throws Exception {
+		List<Emp> list = new ArrayList<Emp>();
+		Connection conn = DBUtil.getConnection();
+		String sql = "select * from emp where deptno = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, deptno);
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			list.add(new Emp(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getDouble(6),rs.getDouble(7),rs.getInt(8)));
+		}
+		
+		DBUtil.close(conn, ps, rs);
+		return list;
+	}
 }

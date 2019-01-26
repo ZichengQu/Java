@@ -9,8 +9,8 @@
 	String msg = (String)session.getAttribute("msg");
 	if(msg!=null){
 		out.print("<script>alert('"+msg+"');</script>");
+		msg = null;//若是不设置为null，刷新页面还会alert。
 	}
-	msg = null;
 	List<Emp> list = empService.selAllEmp();
 	String condition = request.getParameter("condition");//获取查询类型
 	String value = request.getParameter("value");//获取输入的查询内容
@@ -32,7 +32,7 @@
 </head>
 <body>
 	<div class="box">
-		<form action="">
+		<form action="" method="post">
 			<p> 
 				<select name="condition">
 					<option value="ename">员工姓名</option>

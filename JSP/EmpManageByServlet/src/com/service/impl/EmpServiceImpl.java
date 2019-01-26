@@ -64,4 +64,14 @@ public class EmpServiceImpl implements EmpService {
 		}
 		return num;
 	}
+	@Override
+	public List<Emp> selMgrByDept(int deptno) {
+		List<Emp> list = new ArrayList<Emp>();
+		try {
+			list = eDao.selMgrByDept(deptno);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }

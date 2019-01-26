@@ -1,9 +1,11 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -49,6 +51,8 @@ public class EmpServlet extends HttpServlet {
 			delEmpById(request, response);
 		}else if ("/addEmp.do".equals(servletPath)) {
 			addEmp(request, response);
+		}else if("/selMgrByDept.do".equals(servletPath)) {
+			selMgrByDept(request,response);
 		}
 	}
 	public void delEmpById(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -87,5 +91,11 @@ public class EmpServlet extends HttpServlet {
 		 //request.getSession().setAttribute("msg", "添加成功");
 		 response.sendRedirect("forward.jsp");
 	}
-	
+	 public void selMgrByDept(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 int deptno = Integer.parseInt(request.getParameter("deptno")); 
+		 List<Emp> list = empService.selMgrByDept(deptno);
+		 PrintWriter writer = response.getWriter();
+		 String list1 = String.valueOf(list);//此处应该将list转为json，并将其传给ajax。
+		 writer.print(list1);
+	 }
 }

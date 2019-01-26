@@ -14,11 +14,12 @@
 		String username_value = request.getParameter("username");
 		if(username_value!=null&&!username_value.trim().equals("")){
 			Cookie cookie = new Cookie("username",username_value);
-			cookie.setMaxAge(30);
-			cookie.setPath("/CookieDemo/main.jsp");//设置Cookie的携带路径 //访问CookieDemo应用中的main.jsp页面时，才加载该cookie;
-			//cookie.setPath("/CookieDemo");//默认代表访问CookieDemo应用中的任何资源都携带该cookie;
+			cookie.setMaxAge(60);
+			//cookie.setPath("/CookieDemo/main.jsp");//设置Cookie的携带路径 //访问CookieDemo应用中的main.jsp页面时，才加载该cookie;
+			cookie.setPath("/CookieDemo");//默认代表访问CookieDemo应用中的任何资源都携带该cookie;
 			response.addCookie(cookie);
-		}else{
+			System.out.println(111);
+		}else{//可直接点击登陆，若有cookie则执行此else分支。
 			//第二次请求的时候从Cookie中读取用户信息，如果存在则打印出"欢迎登陆"。
 			Cookie[] cookies = request.getCookies();
 			if(cookies!=null&&cookies.length>0){
@@ -26,6 +27,7 @@
 					if("username".equals(cookie.getName())){
 						String value = cookie.getValue();
 						username_value = value;
+						System.out.println(222);
 					}
 				}
 			}

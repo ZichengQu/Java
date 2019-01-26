@@ -23,6 +23,28 @@
 		border: 1px solid blue;
 	}
 </style>
+<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+<script type="text/javascript">
+	$(function(){
+		$("#deptno").change(function(){
+			var deptno_option =$(this).val();
+			$.ajax({
+				url:"selMgrByDept.do",
+				type:"post",
+				data:"deptno"+deptno_option,
+				dataType:"text",
+				success:function(data){
+					alert(data);
+				}
+			});
+		});
+		$("#form01").submit(function(){
+			if(!flag){
+				return false;
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<form action="addEmp.do" method="post">
@@ -42,7 +64,7 @@
 			<tr>
 				<td>员工的经理编号</td>
 				<td>
-					<select name="mgr">
+					<select id="mgr" name="mgr">
 						<option value="">--请选择--</option>
 						<%if(!empList.isEmpty()){
 							for(Emp emp:empList){
@@ -70,12 +92,12 @@
 			<tr>
 				<td>员工部门编号</td>
 				<td>
-					<select name="deptno">
+					<select id="deptno" name="deptno">
 						<option value="">--请选择--</option>
 						<%if(!deptList.isEmpty()){
 							for(Dept dept:deptList){
 						%>
-						<option value="<%=dept.getDeptno()%>"><%=dept.getDname() %></option>
+						<option value="<%=dept.getDeptno()%>"><%=dept.getDeptno() %></option>
 						<%
 							}
 						}

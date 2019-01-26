@@ -78,6 +78,5 @@ public class StudentServlet extends HttpServlet {
 		stuService.addStudent(student);
 		request.setAttribute("msg", "Ìí¼Ó³É¹¦");
 		request.getRequestDispatcher("selStuByPage.do").forward(request, response);
-		System.out.println(111);
 	}
 }
