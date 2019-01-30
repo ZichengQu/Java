@@ -179,7 +179,7 @@ Servlet
   
 JSP  
 ..............................................................................................................................................  
-*1.JSP笔记: https://github.com/ZichengQu/Java/blob/JavaWeb/note/JSP.java  
+1.JSP笔记: https://github.com/ZichengQu/Java/blob/JavaWeb/note/JSP.java  
 2.HelloJSP(JSP基本方法): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/HelloJSP/WebContent  
 3.PageJumpAndDataTransfer(页面跳转和数据传递(转发/重定向)): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/PageJumpAndDataTransfer/WebContent  
 4.四个作用域(pageContext/request/session/application): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/FourScopes/WebContent  
