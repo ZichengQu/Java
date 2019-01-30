@@ -1,0 +1,20 @@
+/* 全局样式 */
+body {
+	background-color: #0063a0;
+}
+/* 登录页面 */
+body.login {
+	background-color: #00629f;
+}
+
+div.login_box {
+	background: url(../img/login_box.png) no-repeat;
+}
+
+div.login_box table tr td {
+	color: #FFF;
+}
+
+#span_msg{
+	color:red;
+}
