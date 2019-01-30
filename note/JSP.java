@@ -281,7 +281,7 @@ JSP: Java Server Pages/Java服务器页面
 		HTTP协议是无状态的;Web服务器本身不能识别出哪些请求是同一个浏览器发出的，浏览器的每一次请求都是完全孤立的;
 		作为Web浏览器，必须能采用一种机制(session/cookie)来唯一地标识一个用户，同时记录该用户的状态。
 	(2)定义: 从打开一个浏览器访问某个站点，到关闭这个浏览器的整个过程，称为一次会话，会话技术就是记录这次客户端的状态与数据的，会话技术分为Cookie和Session;
-	(3)Cookie: ....................................................................................................................................................
+	(3)Cookie: 
 		1)优缺点:存储在客户端本地;减少服务器的压力，安全性不好，客户端可以清除Cookie;
 		2)Cookie是在浏览器访问Web服务器的时候，在Web服务器的HTTP响应头中附带传送给浏览器的一个小文本文件;
 			一旦浏览器保存了Cookie，那么它在以后每次访问该Web服务器时都会在HTTP请求头中将这个Cookie回传给Web服务器，服务器通过这种方式来获取用户信息。
@@ -364,6 +364,11 @@ JSP: Java Server Pages/Java服务器页面
 		6)转码: 在设置Cookie时将中文参数进行UTF-8编码，在接收Cookie时将中文参数解码
 			URLEncoder.encode(name, "utf-8"); // 设置Cookie时先对中文参数编码
 			URLDecoder.decode(cookies[i].getName(),"utf-8") // 读取Cookie时对中文参数解码
+		7)小总结: 
+			Cookie的生命周期是浏览器关闭即消失;
+			jsessionid会自动存放到Cookie数组中，但若要长久保留jsessionid，只能单独创建一个cookie并设置有效时间;
+			在关闭浏览器之后，session不会消失，通过jsessionid可将其找到;
+			每次session的生成都会从Cookie数组中查找jsessionid，若是存在，则将通过其jsessionid的值找到session的存储区域;若是不存在jsessionid则重新创建一个新的session和新的jsessionid。
 16.StudentManagement(分页查询/添加/修改): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage
 17.EmpManageByServlet(查询/模糊查询/删除/添加，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet
 18.Ajax(异步 JavaScript 和 XML) 异步通信技术:
@@ -407,6 +412,11 @@ JSP: Java Server Pages/Java服务器页面
 					}
 				});
 			});
+			$("#form01").submit(function(){
+				if(!flag){
+					return false;
+				}
+			});
 		});
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {// *.do
 			request.setCharacterEncoding("UTF-8");
@@ -427,5 +437,5 @@ JSP: Java Server Pages/Java服务器页面
 			}
 			System.out.println(user);
 		}
-		
+19.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
 
