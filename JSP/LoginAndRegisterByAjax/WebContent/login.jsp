@@ -9,7 +9,7 @@
 <title>登录</title>
 </head>
 <body onload="change()">
-	<form action="login" method="post" id="form01">
+	<form action="login.do" method="post" id="form01">
 		<table>
 			<tr>
 				<td>用户名：</td><td><input name="username" id="username" placeholder="用户名3-5个字符之间" value="${requestScope.username }"/></td>
