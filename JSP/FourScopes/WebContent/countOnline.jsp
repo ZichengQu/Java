@@ -20,6 +20,6 @@
 		//session.setAttribute("num", num);
 		application.setAttribute("num", num);//application是应用级，对于这个应用，数据共享;session是会话级，关闭浏览器或切换浏览器则数据重置;
 	%>
-	<p>页面访问量为:<%=num %></p>
+	<p>页面访问量为:${applicationScope.num}</p>
 </body>
 </html>
