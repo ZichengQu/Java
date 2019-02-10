@@ -896,45 +896,46 @@ js对象
 				<input name="language" type="checkbox" id="c" onclick="check();"/>c语言<br/>
 				<input name="language" type="checkbox" id="php" onclick="check();"/>php<br/>
 			</body>
-补充: https://www.cnblogs.com/xuehaoyue/p/6638202.html
-	区分 点操作符+属性名 和 getAttribute()
-	在用DOM操作控制HTML时，很多初学者会把 点操作符+属性名 与getAttribute("属性名") 混淆，误以为这两种方法是等价的。
-	实际上，
-	通过getAttribute("属性名")和setAttribute("属性名","属性值") 可以获取或修改标签上的属性值
-	通过 点操作符+属性名 可以获取或修改元素对应的DOM对象的属性值
-	这两种方法并不相同，不可混为一谈
-	举个栗子：
-	HTML代码：
-	<p id="name" align="left" title="名字" test="测试">妙音天女</p>
-	JS代码：
-		var myname=document.getElementById("name");//myname是HTMLParagraphElement类型的DOM对象
+		补充: https://www.cnblogs.com/xuehaoyue/p/6638202.html
+			区分 点操作符+属性名 和 getAttribute()
+			在用DOM操作控制HTML时，很多初学者会把 点操作符+属性名 与getAttribute("属性名") 混淆，误以为这两种方法是等价的。
+			实际上，
+			通过getAttribute("属性名")和setAttribute("属性名","属性值") 可以获取或修改标签上的属性值
+			通过 点操作符+属性名 可以获取或修改元素对应的DOM对象的属性值
+			这两种方法并不相同，不可混为一谈
+			举个栗子：
+			HTML代码：
+			<p id="name" align="left" title="名字" test="测试">妙音天女</p>
+			JS代码：
+				var myname=document.getElementById("name");//myname是HTMLParagraphElement类型的DOM对象
 
-		console.log(myname.title);//名字 //HTMLParagraphElement具有title属性（继承自父类HTMLElement）
-		console.log(myname.getAttribute("title"));//名字 //p标签具有title属性（html标签的全局属性）
+				console.log(myname.title);//名字 //HTMLParagraphElement具有title属性（继承自父类HTMLElement）
+				console.log(myname.getAttribute("title"));//名字 //p标签具有title属性（html标签的全局属性）
 
-		console.log(myname.align);//left //HTMLParagraphElement具有align属性
-		console.log(myname.getAttribute("align"));//left //p标签具有align属性
+				console.log(myname.align);//left //HTMLParagraphElement具有align属性
+				console.log(myname.getAttribute("align"));//left //p标签具有align属性
 
-		console.log(myname.test);//undefined//HTMLParagraphElement类型的myname对象没有test属性
-		console.log(myname.getAttribute("test"));//测试 //此处的p标签具有自定义的test属性
+				console.log(myname.test);//undefined//HTMLParagraphElement类型的myname对象没有test属性
+				console.log(myname.getAttribute("test"));//测试 //此处的p标签具有自定义的test属性
 
-		console.log(myname.innerHTML);//妙音天女 //HTMLParagraphElement具有innerHTML属性（继承自祖父类Element)
-		console.log(myname.getAttribute("innerHTML"));//null //p标签没有innerHTML属性
+				console.log(myname.innerHTML);//妙音天女 //HTMLParagraphElement具有innerHTML属性（继承自祖父类Element)
+				console.log(myname.getAttribute("innerHTML"));//null //p标签没有innerHTML属性
 
-		myname.hi="hello";
-		console.log(myname.hi);//hello //myname对象具有hi属性
-		console.log(myname.getAttribute("hi"));//null //p标签没有hi属性
-	我们可以清晰地看到，
-	对于HTML标签和相应的DOM对象都具有的属性（如例子中的title属性和align属性），两种方法取得的值是相同的
-	对于HTML标签具有而DOM对象不具有的属性（通常是标签上的自定义属性，如例子中的test属性，或data-* 属性），getAttribute()可以取得相应的属性值，但点操作符返回undefined
-	对于DOM对象具有而HTML标签不具有的属性（如例子中的innerHTML和对象上自定义的hi属性），点操作符可以取得相应的属性值，但getAttribute()返回null
-	注：p标签对应的DOM类型是HTMLParagraphElement，其父类型是HTMLElement，详见我的另一篇博客：HTMLElement
+				myname.hi="hello";
+				console.log(myname.hi);//hello //myname对象具有hi属性
+				console.log(myname.getAttribute("hi"));//null //p标签没有hi属性
+			我们可以清晰地看到，
+			对于HTML标签和相应的DOM对象都具有的属性（如例子中的title属性和align属性），两种方法取得的值是相同的
+			对于HTML标签具有而DOM对象不具有的属性（通常是标签上的自定义属性，如例子中的test属性，或data-* 属性），getAttribute()可以取得相应的属性值，但点操作符返回undefined
+			对于DOM对象具有而HTML标签不具有的属性（如例子中的innerHTML和对象上自定义的hi属性），点操作符可以取得相应的属性值，但getAttribute()返回null
+			注：p标签对应的DOM类型是HTMLParagraphElement，其父类型是HTMLElement，详见我的另一篇博客：HTMLElement
+			总结: HTML里本身具有的属性(即使在标签里没写出来)可以用点获取其属性;DOM只能获得当前标签里的属性(即使在HTML本身具有，但标签中未写出来，因此用get方法只能获得null).
 
-JSON:JavaScript Object Notation JS对象表示法。
+十六、JSON:JavaScript Object Notation JS对象表示法。
 	1.JS中的对象只有JS自己认识，其它的语言都不认识。JSON就是一个特殊的字符串，这个字符串可以被任意的语言所识别，并且可以转换为任意语言中的对象。JSON在开发中的作用主要用来数据的交互。
 	2.JSON和JS对象的格式一样，只不过JSON字符串中的属性名必须加双引号，其它的和JS语法一致:
-		JS: var person = {"name":"Mary",age:18,gender:"woman"};//属性可以加双引号，也可以不加。
-		JSON: var person = '{"name":"Mary","age":18,"gender":"woman"}';//属性可以加双引号，也可以不加;属性值正常表示。
+		JS: var person = {"name":"Mary",age:18,gender:"woman"};//属性名和值可以加双引号，也可以不加。
+		JSON: var person = '{"name":"Mary","age":18,"gender":"woman"}';//属性名必须加双引号;属性值可以加双引号，也可以不加;
 	3.JSON分类:
 		(1)对象:{}	var person = '{"name":"Mary","age":18,"gender":"woman"}';
 		(2)数组:[]	var arr = '[1,2,3,"hello",true]';
@@ -943,15 +944,15 @@ JSON:JavaScript Object Notation JS对象表示法。
 		(2)数字:
 		(3)布尔值:
 		(4)null:
-		(5)对象:	var arr2 = '[{"name":"Mary",age:18,gender:"woman"}]';//JSON数组放对象
+		(5)对象:	var arr2 = '[{"name":"Mary",age:18,gender:"woman"}，{"name":"Jack",age:20,gender:"man"}]';//JSON数组放对象
 		(6)数组:	var obj = '{"arr":[1,2,3]}';//JSON对象放数组
 	5.将JSON字符串转换为JS中的对象:在JS中，为我们提供了一个工具类，就叫JSON，这个对象可以帮助我们将一个JSON转换为JS对象，也可以将一个JS对象转换为JSON。
 		https://github.com/ZichengQu/Java/blob/JavaScript/Others/JS_day05/JSON.html
 		JSON --> JS对象: JSON.Parse():可以将JSON字符串转换为JS对象。需要一个JSON字符串作为参数，会将该字符串转换为JS对象并返回。
 			例子:
-				var json = '{"name":"Mary","age":18,"gender":"woman"}';/*对象*/		var arr1 = '[1,2,3,"hello",true]';/*数组*/
-				var person = JSON.parse(json);/*JSON --> JS对象*/					console.log(person.name);//Mary
-				var arr = JSON.parse(arr1);/*JSON --> JS数组*/						console.log(arr[3]);//hello
+				var jsonObj = '{"name":"Mary","age":18,"gender":"woman"}';/*对象*/		var jsonArr = '[1,2,3,"hello",true]';/*数组*/
+				var person = JSON.parse(jsonObj);/*JSON --> JS对象*/					console.log(person.name);//Mary
+				var arr = JSON.parse(jsonArr);/*JSON --> JS数组*/						console.log(arr[3]);//hello
 		JS对象 --> JSON: JSON.stringify:可以将一个JS对象转换为JSON字符串，需要一个JS对象作为参数，会返回一个JSON字符串。
 			例子:
 				var jsObj = {name:"Mary",age:18,gender:"woman"};
@@ -1015,7 +1016,7 @@ JSON:JavaScript Object Notation JS对象表示法。
 						var table = tables[0];
 						table.setAttribute("bgcolor","yellow");
 						for(var i=0; i<hoopster.length; i++){//遍历hoopstar数组
-							var row = table.insertRow(i+1);//向表格中添加一行。
+							var row = table.insertRow(i+1);//向表格中添加一行。//行数和列数从0开始，因为th那行是第一行，所以这里+1
 							var pic = row.insertCell(0);//向行中加列。
 							pic.innerHTML = "<img src='"+hoopster[i].picture+"' width='121' height='140'/>";
 							var name = row.insertCell(1);
