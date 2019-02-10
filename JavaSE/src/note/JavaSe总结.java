@@ -1,5 +1,5 @@
 public static 包装类 valueOf(相应基本数据类型);
-int intValue(Integer i);
+int 包装类对象.intValue();
 static int Integer.parseInt(String);
 
 String:
@@ -43,7 +43,7 @@ void add(int index, Object obj);
 int size();
 void clear();
 boolean isEmpty();
-boolean contains();
+boolean contains(Object o);
 E get(int index);
 E set(int index, E element);
 E remove(int index);
@@ -74,15 +74,15 @@ E next();
 File:
 public static String separator;
 public boolean createNewFile() throws IOException;
-public boolean mkdir();
+public boolean mkdir()/mkdirs();//创建由此抽象路径名命名的目录。//创建由此抽象路径名命名的目录，包括任何必需但不存在的父目录。
 public boolean delete();
 public File getAbsoluteFile();
 public String getAbsolutePath();
 public String getName();
 public int compareTo(File f);
-public long length();获取文件中符号的个数
-public File[] listFiles();
-public String[] list();
+public long length();//获取文件中符号的个数,返回由此抽象路径名表示的文件的长度。
+public File[] listFiles();//返回一个抽象路径名数组，表示由该抽象路径名表示的目录中的文件。
+public String[] list();//返回一个字符串数组，命名由此抽象路径名表示的目录中的文件和目录。
 public boolean exists();
 public boolean isAbsolute();
 public boolean isDirectory();
