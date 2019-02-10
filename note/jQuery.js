@@ -34,10 +34,10 @@
 			$(":gt(index)")	挑选下标大于index的元素;//$("li:gt(0)")
 			$(":lt(index")	挑选下标小于index的元素;//$("li:lt(6)")
 		2)内容过滤选择器: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%86%85%E5%AE%B9%E8%BF%87%E6%BB%A4%E9%80%89%E6%8B%A9%E5%99%A8.html
-			:contains(text) 匹配包含给定文本的元素//
-			:empty 匹配所有不包含子元素或者文本的空元素//
-			:has(selector) 匹配含有选择器所匹配的元素的元素//
-			:parent 匹配含有子元素或者文本的元素//
+			:contains(text) 匹配包含给定文本的元素
+			:empty 匹配所有不包含子元素或者文本的空元素
+			:has(selector) 匹配含有选择器所匹配元素的元素
+			:parent 匹配含有子元素或者文本的元素
 			例子:
 				<head>
 					<meta charset="UTF-8">
@@ -47,7 +47,7 @@
 						$(function(){//$(document).ready(function(){});
 							$("div:contains('John')").css({ background: "yellow" });//:contains(text) 匹配包含给定文本的元素//第1和3行
 							console.log($("div:empty"));//:empty 匹配所有不包含子元素或者文本的空元素
-							$("div:has(p)").css({ color: "blue" });//:has(selector) 匹配含有选择器所匹配的元素的元素
+							$("div:has(p)").css({ color: "blue" });//:has(selector) 匹配含有选择器所匹配元素的元素
 							$("div:parent").css({ color: "blue" });//:parent 匹配含有子元素或者文本的元素
 						});
 					</script>
@@ -74,7 +74,9 @@
 			:enabled 匹配所有可用元素 //$("input:enabled")
 			:disabled 匹配所有不可用元素 //$("input:disabled")
 			获得复选框，单选按钮，下拉列表的选中元素节点:
-				:checked 匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)//$("input[type='checkbox']:checked'").val() //$("input:checked").attr("checked",false);
+				:checked 匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)
+					$("input[type='checkbox']:checked'").val();
+					$("input:checked:eq(1)").attr("checked",false);//匹配所有被选中元素的eq为1的元素(复选框、单选框等，不包括select中的option)
 				:selected 匹配所有选中的option元素 //console.log($("select option:selected").text());
 		6)表单选择器:	api
 			:input 匹配所有 input, textarea, select 和 button 元素 //$(":input") //$("input")是元素选择器，只能匹配input元素。
@@ -135,6 +137,9 @@
 		$(function(){
 			......
 		});
+		jQuery(document).ready(function(){
+			......
+		});
 		页面加载之后调用这个函数，作用等价于window.onload = function(){}
 	(2)读写节点:
 		读写节点的内容(双标签)
@@ -159,99 +164,111 @@
 				$("img").attr({style:"display:none;title:科比"});
 				$("img").attr("title", function() { return this.src });//this获取当前元素的html属性
 	(3)增删节点: jQuery允许通过HTML代码字符串直接创建元素节点、文本节点及属性节点。
-		$("节点标签及内容");	//$("<p>这是在创建节点</p>");
+		$("节点标签及内容");	var $li1 = $("<li id='uid4'>Number4</li>");//$("节点标签及内容");
 	(4)创建节点:
 		父节点.append(子节点) //作为最后一个子节点加进来
 		父节点.prepend(子节点) //作为第一个子节点加进来
-		同级节点.after(同级节点) //作为下一个节点加进来
+		同级节点.after(同级节点) //作为下一个节点加进来$
 		同级节点.before(同级节点) //作为上一个节点加进来
+		例子:插入节点
+			$("#uid").append($li1);//父节点.append(子节点) 作为最后一个子节点加进来
+			$("#uid").prepend($li2);//父节点.prepend(子节点) 作为第一个子节点加进来
+			$("#uid4").after($li3);//同级节点.after(同级节点) 作为下一个节点加进来
+			$("#uid4").before($li3);//同级节点.before(同级节点) 作为上一个节点加进来 //类似于节点的剪切，不能将同一个节点插入到不同的位置。
 	(5)删除节点:
 		节点.remove()  //删除节点
 		节点.remove(选择器) //删除满足该选择器的节点
 		节点.empty()  //清空节点
+		例子:删除节点
+			$("#uid").remove(); //节点.remove() 删除节点
+			$("li").remove("#uid5") //节点.remove(选择器) 删除满足该选择器的节点
+			$("#uid").empty(); //节点.empty() 清空节点,节点不删除
 	(6)遍历节点: 查找所有与它有关联的节点;有时调用的方法，得到一个节点，不能通过用选择器的方式来操作该节点周围其它的节点，所以只能调用一些遍历节点的方法。
-		children()/children(选择器) 直接子节点;	console.log($("#uid").children());//所有对象，$("#uid").children()[index]
+		children()/children(选择器) 直接子节点;	console.log($("#uid").children());//所有对象，DOM: $("#uid").children()[index];	jq: $($("#uid").children()[index]);
 		next()/next(选择器) 该节点的下一个节点;	console.log($("#uid5").next());//Number1的对象
 		prev()/prev(选择器) 该节点的上一个节点;	console.log($("#uid4").prev());//Number6的对象
 		siblings()/siblings(选择器) 同一级别的所有节点(不包含自己); console.log($("#uid5").siblings());//12364
-		find(选择器) 查找满足选择器的所欲偶后代; console.log($("#uid").find("h2"));//Number2的对象(因为Number2引用了h2标签)
+		find(选择器) 查找满足选择器的所欲偶后代; console.log($("#uid").find("h2"));console.log($("#uid:has(h2)"));//Number2的对象(因为Number2引用了h2标签)
 		parent() 找父节点; console.log($("#uid4").parent());//父元素ul对象
 	(7)基本操作例子和jQuery的表单验证: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day01/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C.html
-		$("form:first").submit(function(){//验证表达输入项是否为空
-			if($("#name").val()==""){
-				console.log("请输入用户名");
-				return false;
-			}
+		$(function(){
+			$("form:first").submit(function(){//验证表达输入项是否为空
+				if($("#name").val()==""){
+					console.log("请输入用户名");
+					return false;
+				}
+			});
 		});
 		<form >
 			<input id="name" name="username"/>
 			<input type="submit" />
 		</form>
 	(8)jq的DOM操作例子: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/jQuery%E6%93%8D%E4%BD%9CDOM.html
-		<head>
-			<meta charset="UTF-8">
-			<title></title>
-			<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
-			<script>
-				$(function(){
-					//1.读写节点
-						//1.1读写节点的内容
-					console.log($("div").html());//读	//<span>哈哈</span>
-					console.log($("div").text());//读	//哈哈
-					$("div").html("<b>加粗</b>");//写	//识别标签，会加粗文本
-					$("div").text("<b>加粗</b>");//写	<b>加粗</b>
-						//1.2读写节点的值(表单控件)
-					console.log($("#username").val());//读	//admin
-					$("#username").val("user");//写
-					console.log($("input[type='checkbox']:checked'").val());//游泳 只读取第一个。
-					console.log($("#dz").val());//沈阳,val()就是选择的选项。
-						//1.3读写属性
-					console.log($("#kb").attr("id"));//相当于getAttribute();
-					$("#kb").attr("title","科比");
-					console.log($("input[type='checkbox']").attr("checked"));//checked,若是不写checked="checked"，则输出undefined
-					console.log($("input[type='checkbox']").prop("checked"));//true
-					$("input[type='checkbox']").prop("checked",false);
-					//2.增删节点
-						//2.1创建节点
-					var $li1 = $("<li id='uid4'>Number4</li>");//$("节点标签及内容"); //$("<p>这是在创建节点</p>");
-					var $li2 = $("<li id='uid5'>Number5</li>");
-					var $li3 = $("<li>Number6</li>");
-						//2.2插入节点
-					$("#uid").append($li1);//父节点.append(子节点) 作为最后一个子节点加进来
-					$("#uid").prepend($li2);//父节点.prepend(子节点) 作为第一个子节点加进来
-					$("#uid4").after($li3);//同级节点.after(同级节点) 作为下一个节点加进来
-					$("#uid4").before($li3);//同级节点.before(同级节点) 作为上一个节点加进来 //类似于节点的剪切，不能将同一个节点插入到不同的位置。
-						//2.3删除节点
-					$("#uid").remove(); //节点.remove() 删除节点
-					$("li").remove("#uid5") //节点.remove(选择器) 删除满足该选择器的节点
-					$("#uid").empty(); //节点.empty() 清空节点,节点不删除
-					//3.遍历节点
-						//3.1
-					console.log($("#uid").children());//所有对象，$("#uid").children()[index]
-					console.log($("#uid5").next());//Number1的对象
-					console.log($("#uid4").prev());//Number6的对象
-					console.log($("#uid5").siblings());//12364
-					console.log($("#uid").find("h2"));//Number2的对象(因为Number2引用了h2标签)
-					console.log($("#uid4").parent());//父元素ul对象
-				});
-			</script>
-		</head>
-		<body>
-			<div><span>哈哈</span></div>
-			用户名:	<input id="username" value="admin"/><br />
-			爱好:	<input type="checkbox" name="hobby" value="游泳" checked="checked"/>游泳
-					<input type="checkbox" name="hobby" value="篮球" checked="checked"/>篮球
-			地址:	<select id="dz">
-						<option>大连</option>
-						<option selected="selected">沈阳</option>
-					</select><br />
-			<img id="kb" src="img/科比.jpg"/>
-			<ul id="uid">
-				<li>Number1</li>
-				<li><h2>Number2</h2></li>
-				<li>Number3</li>
-			</ul>
-		</body>
+			<head>
+				<meta charset="UTF-8">
+				<title></title>
+				<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
+				<script>
+					$(function(){
+						//1.读写节点
+							//1.1读写节点的内容
+						console.log($("div").html());//读	//<span>哈哈</span>
+						console.log($("div").text());//读	//哈哈
+						$("div").html("<b>加粗</b>");//写	//识别标签，会加粗文本
+						$("div").text("<b>加粗</b>");//写	<b>加粗</b>
+							//1.2读写节点的值(表单控件)
+						console.log($("#username").val());//读	//admin
+						$("#username").val("user");//写
+						console.log($("input[type='checkbox']:checked'").val());//游泳 只读取第一个。
+						console.log($("#dz").val());//沈阳,val()就是选择的选项。
+							//1.3读写属性
+						console.log($("#kb").attr("id"));//相当于getAttribute();
+						$("#kb").attr("title","科比");
+						console.log($("input[type='checkbox']").attr("checked"));//checked,若是不写checked="checked"，则输出undefined
+						console.log($("input[type='checkbox']").prop("checked"));//true
+						$("input[type='checkbox']").prop("checked",false);
+						//2.增删节点
+							//2.1创建节点
+						var $li1 = $("<li id='uid4'>Number4</li>");//$("节点标签及内容"); //$("<p>这是在创建节点</p>");
+						var $li2 = $("<li id='uid5'>Number5</li>");
+						var $li3 = $("<li>Number6</li>");
+							//2.2插入节点
+						$("#uid").append($li1);//父节点.append(子节点) 作为最后一个子节点加进来
+						$("#uid").prepend($li2);//父节点.prepend(子节点) 作为第一个子节点加进来
+						$("#uid4").after($li3);//同级节点.after(同级节点) 作为下一个节点加进来
+						$("#uid4").before($li3);//同级节点.before(同级节点) 作为上一个节点加进来 //类似于节点的剪切，不能将同一个节点插入到不同的位置。
+							//2.3删除节点
+						/*$("#uid").remove(); //节点.remove() 删除节点
+						$("li").remove("#uid5") //节点.remove(选择器) 删除满足该选择器的节点
+						$("#uid").empty(); //节点.empty() 清空节点,节点不删除*/
+						//3.遍历节点
+							//3.1
+						console.log($("#uid").children());//所有对象，$("#uid").children()[index]
+						console.log($("#uid5").next());//Number1的对象
+						console.log($("#uid4").prev());//Number6的对象
+						console.log($("#uid5").siblings());//12364
+						console.log($("#uid").find("h2"));//Number2的对象(因为Number2引用了h2标签)//
+						//console.log($("#uid:has(h2)"));//和上一行作用相同
+						console.log($("#uid4").parent());//父元素ul对象
+					});
+				</script>
+			</head>
+			<body>
+				<div><span>哈哈</span></div>
+				用户名:	<input id="username" value="admin"/><br />
+				爱好:	<input type="checkbox" name="hobby" value="游泳" checked="checked"/>游泳
+						<input type="checkbox" name="hobby" value="篮球" checked="checked"/>篮球
+				地址:	<select id="dz">
+							<option>大连</option>
+							<option selected="selected">沈阳</option>
+						</select><br />
+				<img id="kb" src="img/科比.jpg"/>
+				<ul id="uid">
+					<li>Number1</li>
+					<li><h2>Number2</h2></li>
+					<li>Number3</li>
+				</ul>
+			</body>
 6.样式操作: https://github.com/ZichengQu/Java/blob/jQuery/Others/jQuery_day02/%E6%A0%B7%E5%BC%8F%E6%93%8D%E4%BD%9C.html
 	attr("class","样式") 获取和设置 	//$("div").attr("class","apple"); //attr对同一个属性进行多次设置修改，后者覆盖前者。
 	addClass("样式") 追加样式 	//$("div").addClass("apple"); //addClass给class属性追加属性值，可以叠加，不会覆盖前者。
@@ -464,7 +481,7 @@
 			<script type="text/javascript" src="js/jquery-1.7.1.min.js" ></script>
 			<script>
 				function f1(){
-					$("div").hide(2000,f2);//隐藏显示的元素
+					$("div").hide(2000,f2);//隐藏显示的元素,高度和宽度同时向左上角缩小。
 				}
 				function f2(){
 					//显示
