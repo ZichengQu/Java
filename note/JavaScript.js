@@ -528,7 +528,7 @@ js对象
 					b.创建弹出表格，每一行有一个按钮、编号和姓名;按钮上有一个事件，把当前的编号和姓名赋值到第一个页面相应的两个输入项中;
 						window.opener;//需要跨页面操作，opener 返回对创建此窗口的窗口的引用。 
 					c.例子:
-						<head>
+						<head><!-- 页面1 -->
 							<meta charset="UTF-8">
 							<title>我在标题栏上滚动显示</title>
 							<script>
@@ -555,7 +555,7 @@ js对象
 							<input type="button" value="选择" onclick="open1();" />
 						</body>
 						//////////
-						<head>
+						<head><!-- 页面2 -->
 							<meta charset="UTF-8">
 							<title></title>
 							<script>
