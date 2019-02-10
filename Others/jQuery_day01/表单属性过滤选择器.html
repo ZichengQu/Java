@@ -8,7 +8,7 @@
 			$(function(){
 				$("input:enabled").css({background:"yellow"}); //匹配所有可用元素
 				$("input:disabled").css({background:"blue"}); //匹配所有不可用元素
-				$("input:checked").attr("checked",false); //匹配所有选中的被选中元素(复选框、单选框等，不包括select中的option)
+				$("input:checked:eq(1)").attr("checked",false); //匹配所有被选中元素(复选框、单选框等，不包括select中的option)
 				console.log($("select option:selected").text()); //匹配所有选中的option元素
 			});
 		</script>
