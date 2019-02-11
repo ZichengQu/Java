@@ -10,7 +10,7 @@
 	<h1>用户名: ${username }</h1>
 	<%
 		Cookie cookie = new Cookie("JSESSIONID",session.getId());//手动创建一个存储JSESSIONID的Cookie
-		cookie.setMaxAge(60*10);
+		cookie.setMaxAge(60*30);//session的默认保留时间也是30min
 		response.addCookie(cookie);
 	%>
 	ID: <%=session.getId() %>
