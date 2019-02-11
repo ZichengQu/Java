@@ -356,7 +356,7 @@ JSP: Java Server Pages/Java服务器页面
 					<h1>用户名: ${username }</h1>
 					<%
 						Cookie cookie = new Cookie("JSESSIONID",session.getId());//手动创建一个存储JSESSIONID的Cookie
-						cookie.setMaxAge(60*10);
+						cookie.setMaxAge(60*30);//session的默认保留时间也是30min
 						response.addCookie(cookie);
 					%>
 					ID: <%=session.getId() %>
@@ -365,7 +365,7 @@ JSP: Java Server Pages/Java服务器页面
 			URLEncoder.encode(name, "utf-8"); // 设置Cookie时先对中文参数编码
 			URLDecoder.decode(cookies[i].getName(),"utf-8") // 读取Cookie时对中文参数解码
 		7)小总结: 
-			Cookie的生命周期是浏览器关闭即消失;
+			Cookie的默认生命周期是浏览器关闭即消失;setMaxAge(秒)浏览器将Cookie存储在磁盘上;
 			jsessionid会自动存放到Cookie数组中，但若要长久保留jsessionid，只能单独创建一个cookie并设置有效时间;
 			在关闭浏览器之后，session不会消失，通过jsessionid可将其找到;
 			每次session的生成都会从Cookie数组中查找jsessionid，若是存在，则将通过其jsessionid的值找到session的存储区域;若是不存在jsessionid则重新创建一个新的session和新的jsessionid。
