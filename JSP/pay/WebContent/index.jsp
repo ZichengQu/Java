@@ -14,18 +14,43 @@
 	<title></title>
 	<script type="text/javascript">
 		$(function(){
-			$("#product_1").click(function(){
-				$("#product").val($("#pname_1").val());
-				$("#order2").val($("#order1").val());
-				$("#price").val($("#pprice_1").val());
+			/* $("#product_1").click(function(){
+				$("[name='pname']:first").val($("#pname_1").val());
+				$("[name='pcode']:first").val(new Date().getTime());//订单号用当前毫秒值
+				$("[name='pprice']").val($("#pprice_1").val());
 			});
 			$("#product_2").click(function(){
 				$("#product").val($("#pname_2").val());
 				$("#order2").val($("#order1").val());
 				$("#price").val($("#pprice_2").val());
+			}); */
+			$("[id^='product_']").click(function(){
+				var id = this.id.split("_")[1];//获取其id
+				var pname = $("[id='pname_"+id+"']").val()//商品名称,属性选择器
+				var pcode = new Date().getTime();//订单号用当前毫秒值
+				var pprice = $("#pprice_"+id+"").val();//id选择器
+				var product = $(this).val();//商品编号，这里和“this.id.split("_")[1];//获取其id”的作用一样。
+				$("[name='pname']:first").val(pname);
+				$("[name='pcode']:first").val(pcode);
+				$("[name='pprice']").val(pprice);
+				$("[name='product']:first").val(product);
 			});
-			$("#btnSub").click(function(){
+			$("#pay_product_form_btn").click(function(){
 				$("#pay_product_form").submit();
+			});
+			$("#pay_product_form").submit(function(){
+				if($("[name='pname']:first").val() == ""){
+					alert("请选择商品名称");
+					return false;
+				}
+				if($("[name='pcode']:first").val() == ""){
+					alert("请选择订单编号");
+					return false;
+				}
+				if($("[name='pprice']:first").val() == ""){
+					alert("请选择价格");
+					return false;
+				}
 			});
 		});
 	</script>
@@ -46,7 +71,7 @@
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-barcode"></span>
 			</div> 
-			<input type="text" class="form-control" name = "pname" id="product" > 
+			<input type="text" class="form-control" name = "pname" id="product" disabled="disabled"> 
 			<!-- 商品编号 -->
 			<input type = "hidden" name = "product" />
 		</div>
@@ -55,9 +80,9 @@
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-barcode"></span>
 			</div> 
-			<input type="text" id="order2" class="form-control" name = "pcode" > 
+			<input type="text" class="form-control" name = "pcode" disabled="disabled"> 
 			<!-- token令牌 -->
-			<input type = "hidden" id="order1"  name = "token" value = '<%=""+System.currentTimeMillis() %>'/>
+			<input type = "hidden" name = "token" value = '<%=""+System.currentTimeMillis() %>'/>
 			
 		</div>
 		<!-- 商品价格 -->
@@ -65,7 +90,7 @@
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-yen"></span>
 			</div> 
-			<input type="text" class="form-control" id="price" name = "pprice" > 
+			<input type="text" class="form-control" id="price" name = "pprice" disabled="disabled"> 
 		</div>
 		<a href="javaScript:void(0);" id = "pay_product_form_btn"><button id="btnSub" type="button" class="btn btn-success">提交订单</button></a>
 		<a href = "order.jsp"><button type="button" class="btn btn-success" style = "position: relative;left:300px;">查询订单</button></a>

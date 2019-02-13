@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -48,49 +49,77 @@ public class PayServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 		String servletPath = request.getServletPath();
 		if("/login.do".equals(servletPath)) {
-			selectAdminByAP(request, response);
+			selectAdminByCode(request, response);
 		}else if("/addOrder.do".equals(servletPath)) {
 			addOrder(request, response);
 		}else if("/QueryServlet.do".equals(servletPath)) {
 			QueryServlet(request, response);
+		}else if("/deleteOrder.do".equals(servletPath)) {
+			deleteOrder(request, response);
+		}else {
+			throw new RuntimeException("路径错误......");
 		}
 	}
 
-	private void selectAdminByAP(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	private void selectAdminByCode(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String adminCode = request.getParameter("adminCode");
 		String password = request.getParameter("password");
-		Admin admin = aService.selectAdminByAP(adminCode, password);
-		if(admin!=null) {
+		Admin admin = aService.selectAdminByCode(adminCode);
+		
+		if(admin==null) {
+			request.setAttribute("msg", "账号错误");
+			request.getRequestDispatcher("log.jsp").forward(request, response);
+		}else if(!admin.getPassword().equals(password)){
+			request.setAttribute("msg", "密码错误");
+			request.getRequestDispatcher("log.jsp").forward(request, response);
+		}else if(admin.getPassword().equals(password)) {
 			request.getSession().setAttribute("admin", admin);
 			response.sendRedirect("index.jsp");
-		}else {
-			request.getSession().setAttribute("msg", "密码错误");
-			request.getRequestDispatcher("log.jsp").forward(request, response);
-		}
+		} 
 		
 	}
 	private void addOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("pcode")!=null&&!"".equals(request.getParameter("pcode"))) {
-			Long order_id = Long.parseLong(request.getParameter("pcode")); 
-			Integer product_id = 1; String product_name = request.getParameter("pname"); 
-			Double product_price = Double.parseDouble(request.getParameter("pprice")); 
-			Admin admin = (Admin)request.getSession().getAttribute("admin"); 
-			Integer admin_id = admin.getAdminId(); 
-			oService.addOrder(order_id, product_id, product_name, product_price, admin_id); 
-			response.sendRedirect("order.jsp");
+		PrintWriter writer = response.getWriter();
+		Long order_id = Long.parseLong(request.getParameter("pcode")); 
+		Integer product_id = Integer.parseInt(request.getParameter("product")); 
+		String product_name = request.getParameter("pname"); 
+		Double product_price = Double.parseDouble(request.getParameter("pprice")); 
+		Admin admin = (Admin)request.getSession().getAttribute("admin"); 
+		Integer admin_id = admin.getAdminId(); 
+		Order order = new Order(order_id, product_id, product_name, product_price, admin_id);
+		if(oService.addOrder(order)) {
+			writer.print("<script>alert('添加成功');</script>");
 		}else {
-			response.sendRedirect("index.jsp");
+			writer.print("<script>alert('添加失败');</script>");
 		}
+		writer.print("<script>location.href='order.jsp';</script>");//response.sendRedirect("order.jsp");
 		
 	}
 	private void QueryServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String condition = request.getParameter("condition");
 		String value = request.getParameter("value");
-		List<Order> list = oService.selectOrder(condition, value);
+		List<Order> list = oService.selectOrderByCondition(condition, value);
 		request.getSession().setAttribute("list", list);
-		System.out.println(list);
-		System.out.println("test");
+		request.getSession().setAttribute("condition", condition);
+		request.getSession().setAttribute("value", value);
 		response.sendRedirect("order.jsp");
+	}
+	private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
+		String order_id = request.getParameter("order_id");
+		Boolean flag = oService.deleteOrder(order_id);
+		
+		//order.jsp的Ajax中的$("#search_form").submit()可替换下面四行;否则就算页面重新加载window.location.reload(true)，list数据也不会刷新。
+		String condition = (String) request.getSession().getAttribute("condition");
+		String value = (String) request.getSession().getAttribute("value");
+		List<Order> list = oService.selectOrderByCondition(condition, value);
+		request.getSession().setAttribute("list", list);
+		
+		if(flag) {
+			writer.print("true");
+		}else{
+			writer.print("false");
+		}
 	}
 
 }

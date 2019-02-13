@@ -10,12 +10,11 @@ import util.DBUtil;
 
 public class AdminDaoImpl implements AdminDao {
 	@Override
-	public Admin selectAdminByAP(String admin_code, String password) throws Exception {
+	public Admin selectAdminByCode(String admin_code) throws Exception {
 		Connection conn = DBUtil.getConnection();
-		String sql = "select * from admin_info where admin_code=? and password=?";
+		String sql = "select * from admin_info where admin_code=?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, admin_code);
-		ps.setString(2, password);
 		ResultSet rs = ps.executeQuery();
 		Admin admin = null;
 		if(rs.next()) {

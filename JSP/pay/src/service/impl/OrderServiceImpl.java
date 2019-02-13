@@ -10,24 +10,36 @@ import service.OrderService;
 public class OrderServiceImpl implements OrderService {
 	OrderDao oDao = new OrderDaoImpl();
 	@Override
-	public void addOrder(Long order_id, Integer product_id, String product_name, Double product_price, Integer admin_id) {
+	public Boolean addOrder(Order order) {
+		Boolean flag = false;
 		try {
-			oDao.addOrder(order_id, product_id, product_name, product_price, admin_id);
+			flag = oDao.addOrder(order);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
+		return flag;
 	}
 
 	@Override
-	public List<Order> selectOrder(String condition, String value) {
+	public List<Order> selectOrderByCondition(String condition, String value) {
 		List<Order> list = null;
 		try {
-			list = oDao.selectOrder(condition, value);
+			list = oDao.selectOrderByCondition(condition, value);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	@Override
+	public Boolean deleteOrder(String orderId) {
+		Boolean flag = false;
+		try {
+			flag = oDao.deleteOrder(orderId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return flag;
 	}
 
 }
