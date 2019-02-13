@@ -272,6 +272,7 @@ JSP: Java Server Pages/Java服务器页面
 					<input type="submit"/>
 				</form>
 				<!-- el可以进行自动的类型转换 -->
+				param相当于request.getParameter(),不等于requestScope; requestScope相当于request.getAttribute()
 				score: ${param.score +1 }//101	//进行自动非空判断 //<%=request.getParameter("score")==null?"":request.getParameter("score") %>
 				score: <%=request.getParameter("score")+1 %>//1001，字符串拼接
 			</body>
@@ -437,5 +438,67 @@ JSP: Java Server Pages/Java服务器页面
 			}
 			System.out.println(user);
 		}
-19.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
-
+19.jstl:
+	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	<tbody>
+		<c:forEach var="order" items="${sessionScope.list }" >
+		<tr>
+			<td>${pageScope.order.order_id }</td><!-- 不加域对象名称的话就会从全域里查找 -->
+			<td>${product_id }</td>
+			<td>${order.product_name }</td>
+			<td>${order.product_price }</td>
+		</tr>
+		</c:forEach>
+	</tbody>
+20.jsp中的资源路径的使用: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/LoginAndRegisterByAjax
+	(1)在jsp中资源路径可以使用相对路径完成跳转，但是:
+		问题一: 资源的位置不可以随意改变;
+		问题二: 需要使用	../	跳出当前文件夹，跳出多个文件夹的时候使用比较麻烦;
+	(2)在jsp中使用绝对路径:	/项目名/项目资源路径;
+		例如: 
+			1)	<a href="/LoginAndRegisterByAjax/register.jsp">register.jsp</a>
+			2)	String path = request.getContextPath(); //获取web项目的根目录，/LoginAndRegisterByAjax
+				<a href="<%=path %>/register.jsp">register.jsp</a>
+			3)	<a href="${pageContext.request.contextPath }/register.jsp">register.jsp</a> //${pageContext.request.contextPath} 获取上下文路径
+		注意: 在jsp中资源的第一个/表示的是服务器根目录，相当于localhost:8080
+21.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
+22.Filter(过滤器): 基本功能是对Servlet容器调用Servlet的过程进行拦截，从而在Servlet进行相应处理的前后实现一些特殊的功能;
+	(1)实现流程: Filter是实现了Filter接口的java类，过滤器需要在web.xml中进行配置;
+	(2)init方法: 
+		1)类似于Servlet的init方法，在创建Filter对象后(Filter在Servlet容器加载当前Web应用时即被创建)，立即调用init方法，并且只被调用一次。
+		2)该方法用来对当前的Filter进行初始化操作。
+		3)Filter是单实例的。
+		4)FilterConfig类似于ServletConfig，可以在web.xml配置当前Filter的初始化参数;配置方式和Servlet类似。//String encode = filterConfig.getInitParameter("encode");
+	(3)doFilter方法:
+		1)真正Filter的逻辑代码需要写在该方法中，每次拦截都会调用该方法的FilterChain做放行操作	chain.doFilter(request, response);
+		2)Filter链: 多个Filter可以构成一个Filter链;
+		3)doFilter(request, response): 把请求传给Filter链中的下一个Filter;若当前Filter是最后Filter链的最后一个Filter，则将request和response发送给目标Servlet或jsp;
+		4)多个Filter拦截的顺序和filter-mapping配置的顺序有关，靠前的先被调用。
+		5)doFilter的request和response的类型是ServletRequest和ServletResponse，若需要使用Http的需强转。
+			HttpServletResponse res = (HttpServletResponse)response;res.sendRedirect("index.jsp");
+	(4)destory方法:
+		释放当前Filter所占用的资源的方法，在Filter被销毁之前调用，且只被调用一次。
+	例子: Filter：https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/Filter
+		<!-- 注册Filter -->
+		  <filter>
+			<filter-name>FirstFilter</filter-name>
+			<filter-class>com.filter.FirstFilter</filter-class>
+			<init-param>
+				<param-name>encode</param-name>
+				<param-value>UTF-8</param-value>
+			</init-param>
+		  </filter>
+		  <filter-mapping>
+			<filter-name>FirstFilter</filter-name>
+			<!-- 指定该Filter可以拦截哪些资源，即可以通过哪些url访问到该Filter -->
+			<url-pattern>/main.jsp</url-pattern>
+		  </filter-mapping>
+		  <!-- Filter的分界线.................................................. -->
+		  <filter>
+			<filter-name>SecondFilter</filter-name>
+			<filter-class>com.filter.SecondFilter</filter-class>
+		  </filter>
+		  <filter-mapping>
+			<filter-name>SecondFilter</filter-name>
+			<url-pattern>/main.jsp</url-pattern>
+		  </filter-mapping>
