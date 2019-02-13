@@ -193,8 +193,9 @@ JSP
 12.StudentManagement(分页查询/添加/修改): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/StudentManage  
 13.EmpManageByServlet(查询/模糊查询/删除/添加/定时跳转，数据库与servlet和jsp的交互): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByServlet  
 14.注解的属性: https://github.com/ZichengQu/Java/blob/JavaWeb/note/%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%B1%9E%E6%80%A7.png  
-15.Ajax(局部刷新，检测用户名是否存在): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/LoginAndRegisterByAjax  
-16.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay  
+15.Ajax(局部刷新，检测用户名是否存在;相对路径和绝对路径): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/LoginAndRegisterByAjax  
+16.Filter(init,doFilter,destory方法,获取初始化参数,拦截): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/Filter  
+17.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay  
   
   
 **********************************************************************************************************************************************  
