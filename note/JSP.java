@@ -438,18 +438,54 @@ JSP: Java Server Pages/Java服务器页面
 			}
 			System.out.println(user);
 		}
-19.jstl:
-	<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-	<tbody>
-		<c:forEach var="order" items="${sessionScope.list }" >
-		<tr>
-			<td>${pageScope.order.order_id }</td><!-- 不加域对象名称的话就会从全域里查找 -->
-			<td>${product_id }</td>
-			<td>${order.product_name }</td>
-			<td>${order.product_price }</td>
-		</tr>
-		</c:forEach>
-	</tbody>
+19.jstl: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/ServletByAnnotation/WebContent/jstl.jsp
+	(1)导入jstl.jar和standard.jar;
+	(2)添加标签库: <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	(3)表达式操作:
+		<c:out>: 主要用来显示数据的内容，就像<%=表达式%>一样;可以对特殊字符进行转换;
+		<c:set>: 主要用来将变量存储至jsp对象中或JavaBean的属性中;target,value属性都支持EL表达式。
+		<c:remove>: 移除指定域对象中的指定属性值;
+		例子:
+			<%
+				request.setAttribute("book", "<<java>>");
+				User user = new User();
+				request.setAttribute("user", user);
+				session.setAttribute("book", "book_value");
+			%>
+			<%-- c:out标签: 用来显示数据的内容，就像<%=表达式%>一样 --%>
+			name_1: <c:out value="value_1"></c:out>	<br/>
+			<!-- c:out标签: 可以对特殊字符进行转换 -->
+			book: ${requestScope.book }	<br/>	 <!-- 	<>	 -->
+			book: <c:out value="${requestScope.book }" default="python"></c:out>	<br/>	 <!-- <<java>> -->	<%-- 当${requestScope.book }不存在的时候显示python --%>
+			<!-- 这是一行华丽的分割线............................................. -->
+			<!-- c:set标签: 用来将变量存储至jsp对象中 -->
+			<c:set var="name_2" value="value_2" scope="request"></c:set>
+			name_2: ${requestScope.name_2 }	<br/>
+			<!-- c:set标签: 用来将变量存储至JavaBean的属性中 -->
+			<c:set target="${requestScope.user }" property="name" value="${requestScope.name_2 }"></c:set>
+			userName: ${requestScope.user.name }	<br/>
+			<!-- 这是一行华丽的分割线............................................. -->
+			<!-- c:remove标签: 移除指定域对象中的指定属性值 -->
+			book: ${sessionScope.book } <br/>
+			<c:remove var="book" scope="session"></c:remove>
+			book: ${sessionScope.book } <br/>
+	(4)<c:if>: 没有else，但是可以把判断结果存储起来
+		例子:
+			<!-- http://localhost:8080/ServletByAnnotation/?age=20 -->
+			<c:if test="${param.age>18 }" var="flag" scope="request">成年</c:if>
+			request: ${requestScope.flag }
+	(5)forEach的例子:
+		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+		<tbody>
+			<c:forEach var="order" items="${sessionScope.list }" >
+			<tr>
+				<td>${pageScope.order.order_id }</td><!-- 不加域对象名称的话就会从全域里查找 -->
+				<td>${product_id }</td>
+				<td>${order.product_name }</td>
+				<td>${order.product_price }</td>
+			</tr>
+			</c:forEach>
+		</tbody>
 20.jsp中的资源路径的使用: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/LoginAndRegisterByAjax
 	(1)在jsp中资源路径可以使用相对路径完成跳转，但是:
 		问题一: 资源的位置不可以随意改变;
@@ -461,8 +497,7 @@ JSP: Java Server Pages/Java服务器页面
 				<a href="<%=path %>/register.jsp">register.jsp</a>
 			3)	<a href="${pageContext.request.contextPath }/register.jsp">register.jsp</a> //${pageContext.request.contextPath} 获取上下文路径
 		注意: 在jsp中资源的第一个/表示的是服务器根目录，相当于localhost:8080
-21.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
-22.Filter(过滤器): 基本功能是对Servlet容器调用Servlet的过程进行拦截，从而在Servlet进行相应处理的前后实现一些特殊的功能;
+21.Filter(过滤器): 基本功能是对Servlet容器调用Servlet的过程进行拦截，从而在Servlet进行相应处理的前后实现一些特殊的功能;
 	(1)实现流程: Filter是实现了Filter接口的java类，过滤器需要在web.xml中进行配置;
 	(2)init方法: 
 		1)类似于Servlet的init方法，在创建Filter对象后(Filter在Servlet容器加载当前Web应用时即被创建)，立即调用init方法，并且只被调用一次。
@@ -502,3 +537,22 @@ JSP: Java Server Pages/Java服务器页面
 			<filter-name>SecondFilter</filter-name>
 			<url-pattern>/main.jsp</url-pattern>
 		  </filter-mapping>
+22.注解: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/ServletByAnnotation/src/com/servlet/FirstAnnotationDemo.java
+	name：String 指定servlet的name属性，等价于<Servlet-name>.如果没有指定，则该servlet的取值即为类的全限定名。
+	value: String[] 等价于urlPatterns，二者不能共存。
+	urlPatterns: String[] 指定一组servlet的url的匹配模式，等价于<url-pattern>标签。
+	loadOnStartup: int 指定servlet的加载顺序，等价于<load-on-startup>标签。
+	initParams: WebInitParam[] 指定一组初始化参数，等价于<init-param>标签。
+	asyncSupport: boolean 申明serlvet是否支持异步操作模式，等价于<async-supported>标签。
+	displayName: String servlet的显示名，等价于<display-name>标签。
+	description: String servlet的描述信息，等价于<description>标签。
+	例子:
+		@WebServlet(name = "/FirstAnnotationDemo", /* name:默认是当前类的全限定名 */
+				urlPatterns= {"/first","/second"},
+				loadOnStartup = 1,
+				initParams = { /* 当前Servlet的初始化参数(局部初始化参数)，用this.getServletConfig().getInitParameter("name_1")获取参数的value值 */
+							@WebInitParam(name="name_1",value="value_1"),
+							@WebInitParam(name="name_2",value="value_2")
+					}
+			)
+23.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
