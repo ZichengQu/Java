@@ -383,6 +383,7 @@ JSP: Java Server Pages/Java服务器页面
 		  url: "test.js",		//发送请求的地址
 		  data:	发送到服务器的数据,
 		  dataType: "script",	//预期服务器返回的数据类型。
+		  async:false,//JS等ajax执行完毕后再继续执行后续函数,默认为true
 		  success: 请求成功后的回调函数 //ajax的success必须通过流返回参数，流的参数不会打印在页面上，只会当作参数返回;
 		});
 	(3)dataType:
