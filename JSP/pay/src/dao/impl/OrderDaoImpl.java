@@ -51,7 +51,7 @@ public class OrderDaoImpl implements OrderDao {
 		}
 		if(list!=null) {
 			System.out.println(list);
-			System.out.println("test: "+list.size());
+			System.out.println("OrderDaoImpl的selectOrderByCondition里的list的size: "+list.size());
 		}
 		DBUtil.close(conn, ps, rs);
 		return list;
@@ -66,5 +66,24 @@ public class OrderDaoImpl implements OrderDao {
 		Boolean flag = ps.executeUpdate()!=0?true:false;
 		DBUtil.close(conn, ps, null);
 		return flag;
+	}
+
+	@Override
+	public Order selectOrderById(Long order_id) throws Exception {
+		Connection conn = DBUtil.getConnection();
+		String sql = "select * from order_info where order_id = ?";
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setLong(1, order_id);
+		ResultSet rs = ps.executeQuery();
+		Order order = null;
+		while (rs.next()) {
+			order = new Order(	rs.getLong("order_id"), 
+							rs.getInt("product_id"), 
+							rs.getString("product_name"),
+							rs.getDouble("product_price"),
+							rs.getInt("admin_id"));
+		}
+		DBUtil.close(conn, ps, rs);
+		return order;
 	}
 }

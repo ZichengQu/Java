@@ -18,7 +18,7 @@ import entity.Admin;
  */
 @WebFilter("/*")
 public class LoginFilter implements Filter {
-
+	private String[] noLoginFilter = {"/login.do","/log.jsp"};
     /**
      * Default constructor. 
      */
@@ -41,10 +41,17 @@ public class LoginFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		Admin admin = (Admin)req.getSession().getAttribute("admin");
 		String servletPath = req.getServletPath();
-		if(admin!=null||"/login.do".equals(servletPath)||"/log.jsp".equals(servletPath)) {
+		for(String login: noLoginFilter) {
+			if(login.equals(servletPath)) {
+				chain.doFilter(request, response);
+				return;
+			}
+		}
+		if(admin!=null) {
 			chain.doFilter(request, response);
 		}else {
 			HttpServletResponse res = (HttpServletResponse)response;
+			req.getSession().setAttribute("msg", "Äú»¹Ã»ÓÐµÇÂ¼");
 			res.sendRedirect("log.jsp");
 		}
 	}

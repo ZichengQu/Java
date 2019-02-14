@@ -42,4 +42,15 @@ public class OrderServiceImpl implements OrderService {
 		return flag;
 	}
 
+	@Override
+	public Order selectOrderById(Long order_id) {
+		Order order = null;
+		try {
+			order = oDao.selectOrderById(order_id);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return order;
+	}
+
 }

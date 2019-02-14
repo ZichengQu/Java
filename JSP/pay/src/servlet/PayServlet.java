@@ -56,7 +56,10 @@ public class PayServlet extends HttpServlet {
 			QueryServlet(request, response);
 		}else if("/deleteOrder.do".equals(servletPath)) {
 			deleteOrder(request, response);
-		}else {
+		}else if ("/existOrder.do".equals(servletPath)) {
+			existOrder(request, response);
+		}
+		else {
 			throw new RuntimeException("路径错误......");
 		}
 	}
@@ -67,10 +70,10 @@ public class PayServlet extends HttpServlet {
 		Admin admin = aService.selectAdminByCode(adminCode);
 		
 		if(admin==null) {
-			request.setAttribute("msg", "账号错误");
+			request.getSession().setAttribute("msg", "账号错误");//在LoginFilter的拦截里是session中存的，因此这里也存在session里了。
 			request.getRequestDispatcher("log.jsp").forward(request, response);
 		}else if(!admin.getPassword().equals(password)){
-			request.setAttribute("msg", "密码错误");
+			request.getSession().setAttribute("msg", "密码错误");
 			request.getRequestDispatcher("log.jsp").forward(request, response);
 		}else if(admin.getPassword().equals(password)) {
 			request.getSession().setAttribute("admin", admin);
@@ -80,8 +83,8 @@ public class PayServlet extends HttpServlet {
 	}
 	private void addOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
-		Long order_id = Long.parseLong(request.getParameter("pcode")); 
-		Integer product_id = Integer.parseInt(request.getParameter("product")); 
+		Long order_id = Long.parseLong(request.getParameter("pcode"));
+		Integer product_id = Integer.parseInt(request.getParameter("product"));
 		String product_name = request.getParameter("pname"); 
 		Double product_price = Double.parseDouble(request.getParameter("pprice")); 
 		Admin admin = (Admin)request.getSession().getAttribute("admin"); 
@@ -93,21 +96,23 @@ public class PayServlet extends HttpServlet {
 			writer.print("<script>alert('添加失败');</script>");
 		}
 		writer.print("<script>location.href='order.jsp';</script>");//response.sendRedirect("order.jsp");
-		
 	}
 	private void QueryServlet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String condition = request.getParameter("condition");
 		String value = request.getParameter("value");
 		List<Order> list = oService.selectOrderByCondition(condition, value);
 		request.getSession().setAttribute("list", list);
+		//request.setAttribute("list", list);
 		request.getSession().setAttribute("condition", condition);
 		request.getSession().setAttribute("value", value);
 		response.sendRedirect("order.jsp");
+		//request.getRequestDispatcher("order.jsp").forward(request, response);
 	}
 	private void deleteOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter writer = response.getWriter();
 		String order_id = request.getParameter("order_id");
-		Boolean flag = oService.deleteOrder(order_id);
+		System.out.println("order_id="+order_id);
+		boolean flag = oService.deleteOrder(order_id);
 		
 		//order.jsp的Ajax中的$("#search_form").submit()可替换下面四行;否则就算页面重新加载window.location.reload(true)，list数据也不会刷新。
 		String condition = (String) request.getSession().getAttribute("condition");
@@ -116,8 +121,18 @@ public class PayServlet extends HttpServlet {
 		request.getSession().setAttribute("list", list);
 		
 		if(flag) {
-			writer.print("true");
+			writer.print("删除成功");
 		}else{
+			writer.print("删除失败");
+		}
+	}
+	private void existOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		PrintWriter writer = response.getWriter();
+		Long order_id = Long.parseLong(request.getParameter("order_id")); 
+		Order orderExist = oService.selectOrderById(order_id);
+		if(orderExist==null) {//如果当前订单不存在，则执行如下方法。
+			writer.print("true");
+		}else {
 			writer.print("false");
 		}
 	}

@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript">
 	$(function(){
+		//账号格式判断
 		var flag1 = false;
 		var flag2 = false;
 		var reg1 = /^\w{6,10}$/;//	/^[0-9a-zA-Z_]{6,10}$/
@@ -27,7 +28,7 @@
 				flag1 = true;
 			}
 		});
-		
+		//密码格式判断
 		var reg2 = /^[0-9a-zA-Z_]{6,10}$/;
 		$("#Password1").blur(function(){
 			if($("#Password1").val()==null||!reg2.test($("#Password1").val())){
@@ -40,13 +41,16 @@
 				flag2 = true;
 			}
 		});
-		
+		//账号密码格式不正确的时候，阻止表单提交。
 		$("form:first").submit(function(){
 			if(flag1&&flag2){
 				return true;
 			}else{
 				return false;
 			}
+		});
+		$("#register").click(function(){
+			location.href='register.jsp';
 		});
 	});
 </script>
@@ -70,7 +74,8 @@
                     </div>
                     <span   id="pwd_msg">6-10位数字字母下划线</span>
                     <button style="submit" class="login_btn">登 录</button>
-                    <span class="required" id="span_msg">${requestScope.msg }</span>
+                    <!-- <input id="register" type="button" value="注册" class="btn btn-danger btn btn-default btn-xs"/> -->
+                    <span class="required" id="span_msg">${sessionScope.msg }</span>
                </form>
         </div><!--row end-->
     </div><!--container end-->

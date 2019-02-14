@@ -30,13 +30,28 @@
 				var pcode = new Date().getTime();//订单号用当前毫秒值
 				var pprice = $("#pprice_"+id+"").val();//id选择器
 				var product = $(this).val();//商品编号，这里和“this.id.split("_")[1];//获取其id”的作用一样。
+				
 				$("[name='pname']:first").val(pname);
 				$("[name='pcode']:first").val(pcode);
 				$("[name='pprice']").val(pprice);
 				$("[name='product']:first").val(product);
 			});
 			$("#pay_product_form_btn").click(function(){
-				$("#pay_product_form").submit();
+				$.ajax({
+					url:"existOrder.do",
+					type:"post",
+					data:"order_id="+$("[name='pcode']:first").val(),
+					dataType:"text",
+					async:false,//JS等ajax执行完毕后再继续执行后续函数,默认为true
+					success:function(data){
+						if(data=="true"){
+							$("#pay_product_form").submit();
+						}else{
+							alert("当前订单已存在，请勿重复添加");
+							location.href='index.jsp';
+						}
+					}
+				});
 			});
 			$("#pay_product_form").submit(function(){
 				if($("[name='pname']:first").val() == ""){
@@ -71,7 +86,7 @@
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-barcode"></span>
 			</div> 
-			<input type="text" class="form-control" name = "pname" id="product" disabled="disabled"> 
+			<input type="text" class="form-control" name = "pname" id="product" readonly="readonly"> 
 			<!-- 商品编号 -->
 			<input type = "hidden" name = "product" />
 		</div>
@@ -80,7 +95,7 @@
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-barcode"></span>
 			</div> 
-			<input type="text" class="form-control" name = "pcode" disabled="disabled"> 
+			<input type="text" class="form-control" name = "pcode" readonly="readonly"> 
 			<!-- token令牌 -->
 			<input type = "hidden" name = "token" value = '<%=""+System.currentTimeMillis() %>'/>
 			
@@ -90,7 +105,7 @@
 			<div class="input-group-addon">
 				<span class="glyphicon glyphicon-yen"></span>
 			</div> 
-			<input type="text" class="form-control" id="price" name = "pprice" disabled="disabled"> 
+			<input type="text" class="form-control" id="price" name = "pprice" readonly="readonly"> 
 		</div>
 		<a href="javaScript:void(0);" id = "pay_product_form_btn"><button id="btnSub" type="button" class="btn btn-success">提交订单</button></a>
 		<a href = "order.jsp"><button type="button" class="btn btn-success" style = "position: relative;left:300px;">查询订单</button></a>

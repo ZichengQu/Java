@@ -6,7 +6,7 @@
     pageEncoding="utf-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-	List<Order> list = (List<Order>)session.getAttribute("list");
+	//List<Order> list = (List<Order>)session.getAttribute("list");//用EL表达式可直接从session里获取数据
 	String condition = (String)session.getAttribute("condition");
 	String value = (String)session.getAttribute("value");
 %>
@@ -27,20 +27,23 @@
 			$("#search_btn").click(function(){
 				$("#search_form").submit();
 			});
-			$("[name='delete']").click(function(){
-				var order_id = $(this).attr("order_id");
+			$("[id^='del_']").click(function(){
+				//var order_id = $(this).attr("order_id");
+				var order_id = this.id.split("_")[1];
 				$.ajax({
 					url:"deleteOrder.do",
 					type:"post",
 					data:"order_id="+order_id,
 					dataType:"text",
 					success:function(data){
+						alert();
 						console.log(data);
-						if(data=="true"){
+						if(data=="删除成功"){
+							alert(111);
 							//$("#search_form").submit();
 							window.location.reload(true);
 						}else{
-							alert("fail");
+							alert("删除失败");
 						}
 					}
 				});
@@ -66,7 +69,7 @@
 		</select>	
 		<input type="text" class="form-control" name="value" placeholder="搜索内容" value="${sessionScope.value }">
 		<button type="button" class="btn btn-primary" id = "search_btn">搜索</button>
-		<span>&nbsp;&nbsp;共有 <b><%=list==null?0:list.size() %></b> 条订单</span>
+		<span>&nbsp;&nbsp;共有 <b>${list==null?0:list.size()}</b> 条订单</span>
 	</form>
 	<table class="table table-striped table-hover zf-table">
 	<thead>
@@ -80,13 +83,13 @@
 	</thead>
 	<!-- 提交个表单偷点懒  -->
 		<tbody>
-			<c:forEach var="order" items="${sessionScope.list }">
+			<c:forEach var="order" items="${list }">
 			<tr>
 				<td>${pageScope.order.order_id }</td><!-- 不加域对象名称的话就会从全域里查找 -->
 				<td>${product_id }</td>
 				<td>${order.product_name }</td>
 				<td>${order.product_price }</td>
-				<td><input name="delete" type="button" value="删除" order_id="${pageScope.order.order_id }" class="btn btn-danger btn btn-default btn-xs"/></td>
+				<td><input id="del_${order.order_id }" type="button" value="删除" order_id="${pageScope.order.order_id }" class="btn btn-danger btn btn-default btn-xs"/></td>
 			</tr>
 			</c:forEach>
 		</tbody>
