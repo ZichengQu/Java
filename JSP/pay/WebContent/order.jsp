@@ -36,10 +36,8 @@
 					data:"order_id="+order_id,
 					dataType:"text",
 					success:function(data){
-						alert();
 						console.log(data);
 						if(data=="删除成功"){
-							alert(111);
 							//$("#search_form").submit();
 							window.location.reload(true);
 						}else{

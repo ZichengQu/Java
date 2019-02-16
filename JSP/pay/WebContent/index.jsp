@@ -42,13 +42,13 @@
 					type:"post",
 					data:"order_id="+$("[name='pcode']:first").val(),
 					dataType:"text",
-					async:false,//JS等ajax执行完毕后再继续执行后续函数,默认为true
+					async:false,//false: JS等ajax执行完毕后再继续执行后续函数;默认为true
 					success:function(data){
 						if(data=="true"){
 							$("#pay_product_form").submit();
 						}else{
 							alert("当前订单已存在，请勿重复添加");
-							location.href='index.jsp';
+							window.location.reload(true);//location.href='index.jsp';
 						}
 					}
 				});

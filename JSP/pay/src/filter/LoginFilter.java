@@ -44,7 +44,7 @@ public class LoginFilter implements Filter {
 		for(String login: noLoginFilter) {
 			if(login.equals(servletPath)) {
 				chain.doFilter(request, response);
-				return;
+				return;//必须要return，否则会报错。
 			}
 		}
 		if(admin!=null) {
