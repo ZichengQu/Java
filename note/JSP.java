@@ -383,7 +383,7 @@ JSP: Java Server Pages/Java服务器页面
 		  url: "test.js",		//发送请求的地址
 		  data:	发送到服务器的数据,
 		  dataType: "script",	//预期服务器返回的数据类型。
-		  async:false,//JS等ajax执行完毕后再继续执行后续函数,默认为true
+		  async:false,//JS等ajax执行完毕后再继续执行后续函数;默认为true
 		  success: 请求成功后的回调函数 //ajax的success必须通过流返回参数，流的参数不会打印在页面上，只会当作参数返回;
 		});
 	(3)dataType:
@@ -557,3 +557,20 @@ JSP: Java Server Pages/Java服务器页面
 					}
 			)
 23.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
+24.EmpManageByMysql: 
+	public static Connection getConnection(){//使用JDBC连接mysql数据库
+		Connection conn = null;
+		try {
+			//加载驱动
+			Class.forName("com.mysql.jdbc.Driver");
+			String url = "jdbc:mysql://localhost:3306/empdb";//指定连接的数据库名称为empdb
+			String user = "root";
+			String password = "root";
+			//获取连接对象
+			conn = DriverManager.getConnection(url, user, password);
+			System.out.println("使用DBUtil连接Oracle成功!");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return conn;
+	}
