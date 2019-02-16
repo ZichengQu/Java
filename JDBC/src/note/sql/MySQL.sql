@@ -174,7 +174,7 @@ SQL(结构化查询语言),此笔记主要针对于MySQL version 5.5;
 	limit子句(方言): 用来限定查询结果的起始行以及总行数。
 		分页查询:limit 起始行,页大小; 起始行=(页的索引-1)*页大小; 页大小=页大小;
 		例如：select * from emp limit 4,3;--查询起始行为第5行，一共查询3行记录。
-9.EmpManageByMysql: 
+9.EmpManageByMysql: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByMysql
 	public static Connection getConnection(){//使用JDBC连接mysql数据库
 		Connection conn = null;
 		try {
