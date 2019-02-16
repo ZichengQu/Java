@@ -43,7 +43,8 @@ JavaSe汽车租赁：https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/no
 SQL%%JDBC  
 ..............................................................................................................................................  
 note/sql:  
-1.SQLNote.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLNote.sql  
+1.SQLNote.sql(sql笔记)：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLNote.sql  
+1.MySQL.sql(mysql笔记): https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/MySQL.sql  
 2.SQL.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQL.sql  
 3.SQLPractice.sql：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/SQLPractice.sql  
 4.Oracle原始笔记.txt：https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/Oracle%E5%8E%9F%E5%A7%8B%E7%AC%94%E8%AE%B0.txt  
@@ -198,6 +199,7 @@ JSP
 17.jstl: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/ServletByAnnotation/WebContent/jstl.jsp  
 18.注解: https://github.com/ZichengQu/Java/blob/JavaWeb/JSP/ServletByAnnotation/src/com/servlet/FirstAnnotationDemo.java  
 19.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay  
+20.EmpManageByMysql: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByMysql  
   
   
 **********************************************************************************************************************************************  
