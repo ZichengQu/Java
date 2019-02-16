@@ -557,7 +557,7 @@ JSP: Java Server Pages/Java服务器页面
 					}
 			)
 23.Pay(综合练习): https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/pay
-24.EmpManageByMysql: 
+24.EmpManageByMysql: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByMysql
 	public static Connection getConnection(){//使用JDBC连接mysql数据库
 		Connection conn = null;
 		try {
