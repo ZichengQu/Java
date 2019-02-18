@@ -60,6 +60,7 @@ note/JDBC_day01&&02:
 ..............................................................................................................................................  
 7.JDBC_day01: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/JDBC_day01  
 8.JDBC_day02: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/JDBC_day02  
+9.MySQL多表查询练习: https://github.com/ZichengQu/Java/blob/SQL%26%26JDBC/JDBC/src/note/sql/MySQL%20%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2%E7%BB%83%E4%B9%A0.docx  
 ..............................................................................................................................................  
 project:  
 9.EmpManage_JDBC: https://github.com/ZichengQu/Java/tree/SQL%26%26JDBC/JDBC/src/project/EmpManage_JDBC  
