@@ -477,7 +477,7 @@ JSP: Java Server Pages/Java服务器页面
 			request: ${requestScope.flag }
 	(5)forEach的例子:
 		<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-		<tbody>
+		<tbody> //forEach的例子1
 			<c:forEach var="order" items="${sessionScope.list }" >
 			<tr>
 				<td>${pageScope.order.order_id }</td><!-- 不加域对象名称的话就会从全域里查找 -->
@@ -487,6 +487,12 @@ JSP: Java Server Pages/Java服务器页面
 			</tr>
 			</c:forEach>
 		</tbody>
+		<select id="page_select"> //forEach的例子2
+			<option value="${sessionScope.pageBean.pageIndex }" >当前页为: ${sessionScope.pageBean.pageIndex }</option>
+			<c:forEach var="i" begin="1" end="${sessionScope.pageBean.totalPages }" step="1" >
+				<option value=${pageScope.i } >跳转到第${pageScope.i }页</option>
+			</c:forEach>
+		</select>
 20.jsp中的资源路径的使用: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/LoginAndRegisterByAjax
 	(1)在jsp中资源路径可以使用相对路径完成跳转，但是:
 		问题一: 资源的位置不可以随意改变;
