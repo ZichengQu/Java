@@ -171,26 +171,204 @@ SQL(结构化查询语言),此笔记主要针对于MySQL version 5.5;
 			在所有的字段之后使用 unique key(字段列表[,字段列表,...])
 			在创建完表后也可以增加唯一键;	alter table 表名 add unique key(字段列表[,字段列表,...]);
 8.数据查询:
-	limit子句(方言): 用来限定查询结果的起始行以及总行数。
+	(1)简单查询:
+		查询所有列: select * from 表名;
+		查询指定列: select 字段1, 字段2 from 表名;
+		去重: select distinct 字段 from 表名;
+		在查询列表中可以使用算术表达式: select empno as "员工编号", ename '员工姓名', sal*12 年薪 from emp;--起别名时: as可以使用，也可以不使用;别名可以使用单双引号，甚至可以不用引号;
+	(2)条件查询: select 字段列表 from 表名 [where 查询条件];
+		1)使用=作为查询条件或使用<>和!=作为查询条件或使用<,<=,>,>=作为查询条件，适用于数据库的三种主要类型(数值型,字符串类型,日期型);注意:在使用字符串类型和日期类型的数据时，必须要使用''或"";
+			select * from emp where sal = 800;--查询工资是800的员工信息;
+			select * from emp where ename = '武松';--查询员工姓名是"武松"的员工信息;
+			select * from emp where hiredate != "1981-02-22";--查询雇佣日期不是"1981-02-22"的员工信息;
+			select * from emp where sal <> 800;--查询工资不是800的员工信息;
+			补充:
+				mysql在window平台上面默认不区分大小写,linux平台上区分大小写;--数据库里的名字是"SMITH";
+				select ename from emp where binary ename="smith";--我们可以使用binary让mysql在window平台上也严格区分大小写;
+				select * from emp where binary lower(ename)="smith";--在数据库严格区分大小写的情况下，忽略字符串大小写;
+		2)使用between and 作为查询条件，在特定范围之内:
+			select * from emp where sal between 1600 and 3000;--包括1600和3000;
+			select * from emp where hiredate between "1981-02-22" and "1981-05-01";
+		3)使用is null或is not null作为查询条件,对于null的判断不能使用=和!=和<>,而是要使用 is null进行判断;
+		4)使用and作为查询条件,and也可以使用&&来代替;
+			select * from emp where sal>1200 && deptno=20;--查询工资大于1200并且部门号为20的员工的信息;
+		5)使用or作为查询条件,or也可以使用||来代替;
+		6)and的优先级比or高:
+			select * from emp where sal>1200&&(deptno=20||30);--查询工资大于1200并且部门编号为20或30的员工;
+		7)使用in作为查询条件,in表示包含的意思:
+			select * from emp where job in("推销员","分析师");
+		8)使用not作为查询条件:
+			select * from emp where sal!=1600 and sal!=3000;
+			select * from emp where sal not in(1600,3000);
+			select * from emp where sal not(sal=1600 or sal=3000);
+		9)使用like执行模糊查询: %表示0~多个任意的字符,	_表示一个任意的字符;
+			select * from emp where ename like "李%";--查询名字以"李"开头的员工信息;
+		10)使用order by子句给查询结果排序: 可以按照单个字段排序,也可以按照多个字段排序;
+			select * from emp order by sal desc;--asc升序(默认升序,可不写),desc降序;
+			按照多个字段排序,每个字段可以指定不同的排序规则
+			select * from emp where sal>1200 order by deptno [asc], sal desc;--查询工资大于1200的员工信息,并按照deptno升序(默认升序,可不写)和sal降序排列;
+	(3)数据库函数: 
+		单行函数: 
+			1)lower(str): 把字符型数据转换为小写的字符;
+			2)upper(str): 把字符型数据转换为大写的字符;
+			3)substr(被截取字符串的名字,起始下标,截取长度): 截取字符串;
+				select substr(ename,2,1) from emp;--从员工名字的第二个字符开始截取,截取一个字符长度;
+			4)length(str): 返回字符串占用的字节数;gbk一个汉字占两个字节,utf8是三个字节;
+			5)char_length(str): 返回字符串中有多少个字符;
+				select ename, length(ename)/3 from emp;--查询员工的名字以及名字的长度;
+				select ename, char_length(ename) from emp;
+			6)trim(): 去除字符串型数据的前后空格;
+				select trim(" 1 2 3 ");--1 2 3,oracle中必须写某一个表,mysql中不写的话,默认从系统表中查询;
+			7)round(): 对数值型数据进行四舍五入操作;
+				select round(176.56);--默认精确到个位;
+				select round(176.56,1);--精确到小数点后1位;
+				select round(176.56,-1);--精确到小数点前1位;
+			8)ifnull(): 空值处理函数,null表示没有数据;在算术中如果出现null,结果肯定是null;
+				select (sal+ifnull(comm,0))*12 "年薪" from emp;
+			9)case when函数: 执行分支语句的函数;
+				--匹配工作岗位,当为经理时,薪水上调10%,当为分析师时,薪水上调50%,其它岗位不变;
+				select empno,ename,job,sal as '原来的薪水', (case job when '经理' then sal*1.1 when '分析师' then sal*1.5 else sal end) as '新的薪水' from emp;
+			10)str_to_date(str,format): 把字符串转换为日期的函数
+				select * from emp where hiredate = "1981-02-22";
+				--mysql会自动的调用str_to_date(str,format)函数,把字符型数据转换为日期型的数据,然后再去和hiredate进行比较;
+				--mysql默认的日期格式是"年-月-日";上面语句的实际执行过程如下:
+				select * from emp where hiredate = str_to_date("1981-02-22","%Y-%m-%d");--注意: 使用str_to_date(str,format)的时候,日期字符串需与format字符串的格式一致,转换才能成功;
+				--在mysql中提供了一个now()函数,可以获得当前时间点的日期对象(年月日);
+				update emp set hiredate=now() where empno=7521;
+			11)date_format(date,format): 把日期型的数据转换为特定格式的字符串
+				select ename, hiredate from emp;
+				--mysql会自动的调用date_format(date,format)函数,把日期型数据转换为字符串型的数据;实际执行过程如下:
+				select ename,date_format(hiredate,"%Y-%m-%d") from emp;--只要指定一个日期模板就可以把日期型的数据转换为任意格式的字符串;
+		多行函数(聚合函数,分组函数): 
+			注意事项:
+				1)多行函数会自动忽略空值(null),不需要手动用where排除空值;
+				2)多行函数不能出现在where子句中;
+				3)多行函数不能嵌套;
+			常用多行函数:
+				1)sum(): 求总和;
+					--查询emp表的月收入总和:
+					select sum(sal+comm) from emp;--错误的,将sal+comm的结果不为null的求和了;
+					select sum(sal+ifnull(comm,0)) from emp;--正确的;
+					select sum(sal)+sum(comm) from emp;--正确的;
+				2)count(): 查询数据总和;
+					count(*): 查询所有的 记录总数;
+					count(字段): 查询指定字段不为null的数据总数;
+				3)avg(): 查询平均值; select avg(sal) from emp;
+				4)max(): 查询最大值; select max(sal),max(hiredate) from emp;
+				5)min(): 查询最小值; select min(sal),min(hiredate) from emp;
+	(4)分组查询: 分组查询需要使用group by子句;把数据按照特定的条件划分为多组,然后分别使用组函数进行查询;把数据划分为多少组,最终就会得到多少条结果;
+		语法: select 查询列表 from 表名 group by 分组字段;
+		规则: 出现在查询列表中的字段,要么出现在组函数中,要么出现在group by中;或者分组字段仅仅出现在group by子句中;
+		例子:
+		1)按照单个字段进行分组:
+			select deptno,max(sal) from emp group by deptno;--把所有的员工按照部门编号分组,查询最高工资;
+			按照部门编号分组,查询最高工资以及最高工资的员工姓名
+			select ename,max(sal),deptno from emp group by deptno;--错误的,出现在查询列表中的ename即没有出现在组函数中,也没有出现在group by子句中,这是不符合规则的;这样的语句在Oracle中无法执行,mysql中能够执行,但结果不符合预期需求;
+		2)按照多个字段进行分组:
+			select deptno,job,max(sal) from emp group by deptno,job;--按照部门编号和职位进行分组,查询最高工资;
+		3)对分组之后的数据进行过滤,需要使用having子句:
+			select deptno,avg(sal) as '平均工资' from emp group by deptno having avg(sal)>2000;--按照部门编号分组,查询平均工资,并且显示平均工资大于2000的记录;
+			select deptno,avg(sal) avgsal from emp group by deptno having avgsal>2000;--与上一条等效;
+			select deptno,avg(sal) from emp where comm is null group by deptno having avg(sal)>2000 order by avg(sal);--把津贴为null的员工按照部门编号分组查询平均工资,并且显示平均工资大于2000的数据,然后按照平均工资排序(升序);
+		4)查询句式及顺序:
+			select 查询列表
+			from 表名
+			where 查询条件
+			group by 分组条件
+			having 查询条件
+			order by 排序条件
+			from,where,group by,having,select,order by;
+	(5)limit子句(方言): 用来限定查询结果的起始行以及总行数。
 		分页查询:limit 起始行,页大小; 起始行=(页的索引-1)*页大小; 页大小=页大小;
 		例如：select * from emp limit 4,3;--查询起始行为第5行，一共查询3行记录。
-9.EmpManageByMysql: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByMysql
-	public static Connection getConnection(){//使用JDBC连接mysql数据库
-		Connection conn = null;
-		try {
-			//加载驱动
-			Class.forName("com.mysql.jdbc.Driver");
-			String url = "jdbc:mysql://localhost:3306/empdb";//指定连接的数据库名称为empdb
-			String user = "root";
-			String password = "root";
-			//获取连接对象
-			conn = DriverManager.getConnection(url, user, password);
-			System.out.println("使用DBUtil连接Oracle成功!");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return conn;
-	}
+		例子:EmpManageByMysql: https://github.com/ZichengQu/Java/tree/JavaWeb/JSP/EmpManageByMysql
+				public static Connection getConnection(){//使用JDBC连接mysql数据库
+					Connection conn = null;
+					try {
+						//加载驱动
+						Class.forName("com.mysql.jdbc.Driver");
+						String url = "jdbc:mysql://localhost:3306/empdb";//指定连接的数据库名称为empdb
+						String user = "root";
+						String password = "root";
+						//获取连接对象
+						conn = DriverManager.getConnection(url, user, password);
+						System.out.println("使用DBUtil连接Oracle成功!");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					return conn;
+				}
+	(6)多表查询:
+		按照连接的方式:
+			1)内连接: 可以查询满足一一对应关系的数据: 例如这个员工有所属的部门,这个部门有所属的员工,这样的数据满足一一对应的关系,可以使用内连接查询出来;
+				内连接分类:
+					等值连接: 建立在父子表关系上,用等号来连接两个表;
+						select ename,sal,job,e.deptno,dname from emp e, dept where e.deptno=dept.deptno and e.deptno=20;--查询员工表及其部门信息;
+						select ename,sal,job,e.deptno,dname from emp e inner join dept on e.deptno=dept.deptno and e.deptno=20;--可以使用and或where在其后追加条件;
+					非等值连接: 两个表之间没有父子关系,用非等号来连接两个表;
+						select e.empno, e.ename, e.sal, s.grade from emp e, salgrade s where e.sal between s.losal and s.hisal;--CREATE TABLE salgrade(grade INT PRIMARY KEY, losal INT, hisal INT);插入数据;
+						select e.empno, e.ename, e.sal, s.grade from emp e INNER JOIN salgrade s on e.sal between s.losal and s.hisal;--与上一条等效;
+					自连接: 使用别名将一个表虚拟成两个表(父子表),然后再这两个表上作等值连接;
+						select e.empno "员工编号",e.ename "员工姓名",m.empno "经理编号", m.ename "经理姓名" from emp e,emp m where e.mgr=m.empno;--查询员工的信息及其直接领导的信息
+			2)外连接: 可以查询不满足一一对应关系的数据: 例如有的员工没有所属部门,有的部门没有员工,这样的数据不满足一一对应的关系,可以使用外连接查询出来;
+				外连接分类:
+					左外连接(left outer join): 可以把左表中不满足对应关系的数据查询出来;
+						select * from emp left join dept on emp.deptno=dept.deptno;
+					右外连接(right outer join): 可以把右表中不满足对应关系的数据查询出来;
+						select * from emp right join dept on emp.deptno=dept.deptno;
+					全外连接(full outer join)(不支持): 可以把左右两个表中不满足对应关系的数据查询出来;
+						select * from emp full join dept on emp.deptno=dept.deptno;--mysql不支持全外连接,因此此查询语句会报错;
+	(7)子查询: 用来给主查询提供查询条件或查询数据而首先执行的一个查询;主查询使用子查询的结果;子查询必须要放在()里面;
+		子查询分类:
+			1)出现在where中的子查询,用来给主查询提供查询条件;
+				select * from emp where sal<(select avg(sal) from emp);--查询工资比平均工资低的员工信息;
+			2)出现在from后面的子查询,用来给主查询提供数据的;
+			3)出现在查询列表中的子查询,功能类似于外连接的效果(了解);
+				select e.empno,e.ename,e.job,e.sal,e.deptno,(select dname from dept d where e.deptno=d.deptno) dname from emp e;
+	(8)union: 使用union把两个结果合并成一个结果
+		union(会合并相同的数据), union all(不会合并相同的数据);
+		注意: 合并两个查询结果的时候,要求两个查询结果的结果必须要一致(查询字段的个数,字段的类型,字段的顺序必须要一致);
+		select * from emp where sal>1500 union select * from emp where deptno=20;
+9.数据库事务处理:
+	1)把多个相关的操作捆绑成一个整体,要么都成功,要么都失败;
+	2)只有DML(数据操作语言)语句才会引起一个事务;
+	3)事务的四个特性：
+		原子性(Atomicity):
+　	　		原子性是指事务包含的所有操作要么全部成功全部应用，要么全部失败回滚。因此事务的操作如果成功就必须要完全应用到数据库，如果操作失败则不能对数据库有任何影响。
+		一致性(Consistency):
+			一致性是指一个事务执行之前和执行之后都必须处于一致性状态。拿转账来说，假设用户A和用户B两者的钱加起来一共是5000，那么不管A和B之间如何转账，转几次账，事务结束后两个用户的钱相加起来应该还得是5000，这就是事务的一致性。
+		隔离性(Isolation):
+　　		隔离性是指多个并发事务之间要相互隔离。当多个用户并发访问数据库时，比如操作同一张表时，数据库为每一个用户开启的事务，不能被其他事务的操作所干扰。
+		持久性(Durability):
+　　		持久性是指一个事务一旦被提交了，那么对数据库中的数据的改变就是永久性的，即便是在数据库系统遇到故障的情况下也不会丢失提交事务的操作。
+	4)mysql管理事务的默认方式是: 自动提交;
+		start transaction: 关闭本次自动提交事务;
+		关闭自动提交之后执行的第一个DML语句会引起一个事务;在事务开启之后,只要事务没有结束,执行的所有DML操作都是隶属于同一个事务的;事务中对数据的修改被保存在内存中;只有当前事务可以查询到这些修改;
+			insert into dept values(50,"","");
+			insert into dept values(60,"","");
+			update dept set dname="研发部",loc="沈阳" where deptno>40;
+			select * from dept;
+		关闭事务
+			commit: 提交结束事务的时候,事务中对数据库的修改被永久的保存到数据库中,所有的会话可以查询到这些修改;
+			rollback: 回滚结束事务的时候,事务中对数据库的修改被全部放弃,数据库恢复到事务开始之前的状态;
+	5)事务的隔离级别:
+		并发事务问题:
+			脏读: 读到另一个事务的未提交更新数据,即读到了脏数据;
+			不可重复读: 对同一记录的两次读取不一致,因为另一个事务对该记录进行了修改;
+			幻读(虚读): 对同一张表的两次查询不一致,因为另一个事务插入了一条记录;
+		四大隔离级别:
+			串行化: serializable;
+				不会出现任何并发问题,因为它对同一数据的访问是串行的(非并发访问),性能最差;
+			可重复读: repeatable read --mysql默认的隔离级别
+				可防止脏读和不可重复读,性能比serializable好;
+			读取已提交: read committed --oracle默认的隔离级别
+				防止脏读,性能比repeatable read好;
+			读取未提交的数据: read uncommitted --会脏读
+				可能出现任何事务并发问题;性能最好;
+		mysql的隔离级别:
+			mysql的默认隔离级别为repeatable read,可以通过 select @@tx_isoliation 查看;
+			也可以通过 set transaction isolationlevel [4选1] 来设置当前连接的隔离级别;
 			
-				
+			
+			
 			
