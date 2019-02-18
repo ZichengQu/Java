@@ -11,13 +11,13 @@
 $(function(){
 	var pageIndex = ${sessionScope.pageBean.pageIndex};
 	var totalPages = ${sessionScope.pageBean.totalPages};
-	$("#first,#prev").click( function () { 
+	$("#first,#prev").click( function () { //用c标签的if语句了，这里可以不写。
 		if(pageIndex<=1){
 			alert("已经是首页");
 			return false;
 		}
 	});
-	$("#next,#last").click( function () { 
+	$("#next,#last").click( function () { //用c标签的if语句了，这里可以不写。
 		if(pageIndex>=totalPages){
 			alert("已经是尾页");
 			return false;
@@ -57,16 +57,20 @@ $(function(){
 				</tr>
 			</c:forEach>
 		</table>
-		<a id="first" href="showEmpByPage.do?pageIndex=1">首页</a> 
-		<a id="prev" href="showEmpByPage.do?pageIndex=${sessionScope.pageBean.prev }">上一页</a>
+		<c:if test="${sessionScope.pageBean.pageIndex gt 1 }">
+			<a id="first" href="showEmpByPage.do?pageIndex=1">首页</a> 
+			<a id="prev" href="showEmpByPage.do?pageIndex=${sessionScope.pageBean.prev }">上一页</a>
+		</c:if>
 		<select id="page_select">
 			<option value="${sessionScope.pageBean.pageIndex }" >当前页为: ${sessionScope.pageBean.pageIndex }</option>
 			<c:forEach var="i" begin="1" end="${sessionScope.pageBean.totalPages }" step="1" >
 				<option value=${pageScope.i } >跳转到第${pageScope.i }页</option>
 			</c:forEach>
 		</select>
-		<a id="next" href="showEmpByPage.do?pageIndex=${sessionScope.pageBean.next }">下一页</a>
-		<a id="last" href="showEmpByPage.do?pageIndex=${sessionScope.pageBean.totalPages }">尾页</a>
+		<c:if test="${sessionScope.pageBean.pageIndex lt sessionScope.pageBean.totalPages }">
+			<a id="next" href="showEmpByPage.do?pageIndex=${sessionScope.pageBean.next }">下一页</a>
+			<a id="last" href="showEmpByPage.do?pageIndex=${sessionScope.pageBean.totalPages }">尾页</a>
+		</c:if>
 	</form>
 </body>
 </html>

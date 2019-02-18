@@ -52,15 +52,12 @@ public class EmpManageServlet extends HttpServlet {
 	}
 
 	private void showEmpByPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String pageIndex = request.getParameter("pageIndex");
-		
+		String currentPage = request.getParameter("pageIndex");
+		int pageIndex = currentPage==null?1:Integer.parseInt(currentPage);
+		int pageSize = 3;
 		PageBean pageBean = new PageBean();
-		if(pageIndex!=null) {
-			pageBean.setPageIndex(Integer.parseInt(pageIndex));
-		}else {
-			pageBean.setPageIndex(1);
-		}
-		pageBean.setPageSize(3);
+		pageBean.setPageIndex(pageIndex);
+		pageBean.setPageSize(pageSize);
 		int totalPages = (int) Math.ceil(empService.selAllEmp().size()/(double)pageBean.getPageSize());
 		pageBean.setTotalPages(totalPages);
 		
