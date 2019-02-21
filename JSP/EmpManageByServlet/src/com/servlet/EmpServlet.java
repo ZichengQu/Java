@@ -44,7 +44,7 @@ public class EmpServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text.html,charset=UTF-8");//设置响应的字符编码
+		response.setContentType("text/html;charset=UTF-8");//设置响应的字符编码
 		request.setCharacterEncoding("UTF-8");//设置请求的字符编码
 		String servletPath = request.getServletPath();// /delEmp.do等
 		if("/delEmp.do".equals(servletPath)) {

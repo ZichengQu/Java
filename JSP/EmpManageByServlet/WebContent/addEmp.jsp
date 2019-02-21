@@ -97,7 +97,7 @@
 						<%if(!deptList.isEmpty()){
 							for(Dept dept:deptList){
 						%>
-						<option value="<%=dept.getDeptno()%>"><%=dept.getDeptno() %></option>
+						<option value="<%=dept.getDeptno()%>"><%=dept.getDeptno()+" "+dept.getDname() %></option>
 						<%
 							}
 						}
