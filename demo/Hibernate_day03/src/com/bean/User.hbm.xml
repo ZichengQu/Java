@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bean.User" table="t_user">
+		<id name="uid">
+			<generator class="native"></generator>
+		</id>
+		<property name="username" column="username"></property>
+		<property name="password"></property>
+		<!-- 在用户里面表示所有的角色，使用set标签 :name:角色的set集合的名称;table:第三张表的名称; -->
+		<set name="roleSet" table="user_role" cascade="save-update,delete">
+			<!-- key标签里面配置当前的User的映射文件在第三张表中外键名称; -->
+			<key column="userId"></key>
+			<!-- class属性值：角色实体类的全路径; column:角色在第三张表中外键的名称 -->
+			<many-to-many class="com.bean.Role" column="roleId"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<!-- 映射实体类与表的关系:
+			name属性:实体类的全路径;
+			table:数据库要映射的表名;
+	 -->
+	<class name="com.pojo.Student" table="t_student">
+		<!-- 映射主键属性名与主键列的对应关系
+			name属性:实体类id属性名称;
+			column属性:表中主键的列名;
+			name和column的值可以不一样,只要与自己的对应就可以;当name和column的值一样时,column可以不写;
+		 -->
+		<id name="sid" column="sid">
+			<!-- 主键生成策略
+				native:生成表的id值就是主键自动递增,支持主键自动的递增的数据库(mysql)才能用,Oracle不能用;
+			-->
+			<generator class="native"></generator>
+		</id>
+		<!-- 映射其它属性和表字段的对应关系
+			name属性:实体类属性名称;
+			column属性:表中字段的名称;
+			name和column的值可以不一样,只要与自己的对应就可以;当name和column的值一样时,column可以不写;
+		 -->
+		<property name="sname" column="sname"></property>
+		<property name="project" column="project"></property>
+		<property name="score" column="score"></property>
+	</class>
+</hibernate-mapping>
+
+

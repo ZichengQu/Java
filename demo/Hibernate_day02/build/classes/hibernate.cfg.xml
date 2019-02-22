@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+	"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- 第一部分:配置数据库信息 -->
+		<property name="connection.url">jdbc:mysql://localhost:3306/test</property>
+		<property name="connection.username">root</property>
+		<property name="connection.password">root</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<!-- 第二部分:配置hibernate信息(可选的) -->
+			<!-- 在控制台上输出sql语句 -->
+		<property name="hibernate.show_sql">true</property>
+			<!-- 格式化sql语句 -->
+		<property name="hibernate.format_sql">true</property>
+			<!-- 自动生成数据库表,update:如果已经有表,更行;如果没有,创建 -->
+		<property name="hibernate.hbm2ddl.auto">update</property>
+			<!-- 配置数据库方言 -->
+		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+		<!-- 配置 Session 绑定本地线程 -->
+		<property name="hibernate.current_session_context_class">thread</property>
+		<!-- 第三部分:把映射文件引入此核心配置文件中 -->
+		<mapping resource="com/pojo/Student.hbm.xml"/>
+	</session-factory>
+</hibernate-configuration>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bean.Customer" table="t_customer">
+		<id name="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="custName" column="custName"></property>
+		<property name="custLevel"></property>
+		<property name="custSource"></property>
+		<property name="custPhone"></property>
+		<property name="custMobile"></property>
+		<!-- 在客户的映射文件中,使用set标签表示所有的联系人; name属性值：在客户实体类里面表示联系人的set集合的名称;
+			cascade:级联保存修改/删除;inverse:默认值false(不放弃关系维护),true(放弃关系维护) 
+			fetch: 决定加载策略，使用什么类型的sql语句加载集合数据；默认值select：表示发送普通的select语句查询关联对象；join
+			lazy：决定是否延迟加载；true(默认值，延迟加载)，false(立即加载)，extra(极其懒惰，要什么值给什么值)
+			batch-size: 可以批量加载实体类，数值越大，发送的语句越少
+		-->
+		<set name="setLinkMan" cascade="save-update,delete" inverse="true" fetch="select" lazy="true" batch-size="5">
+			<!-- 一对多建表,有外键;hibernate机制：双向维护外键; column: 外键的名称(可以随意起名)-->
+			<key column="clid"></key>
+			<!-- 表示客户的所有联系人,class属性值：联系人实体类的全路径 -->
+			<one-to-many class="com.bean.LinkMan"/>
+		</set>
+	</class>
+</hibernate-mapping>

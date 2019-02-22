@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.bean.LinkMan" table="t_linkMan">
+		<id name="lkm_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="lkm_name" column="lkm_name"></property>
+		<property name="lkm_gender"></property>
+		<property name="lkm_phone"></property>
+		<!-- 表示联系人所属客户;
+			name: 因为在联系人实体类使用Customer对象表示，写对象名;
+			class: Customer类的全路径;
+			column: 外键名称(需要与<key column="clid"></key>一样);
+		 -->
+		<many-to-one name="customer" class="com.bean.Customer" column="clid"></many-to-one>
+	</class>
+</hibernate-mapping>
