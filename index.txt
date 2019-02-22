@@ -206,3 +206,14 @@ JSP
 **********************************************************************************************************************************************  
   
   
+Hibernate  
+..............................................................................................................................................  
+1.Hibernate笔记: https://github.com/ZichengQu/Java/blob/Hibernate/note/Hibernate%E7%AC%94%E8%AE%B0.docx  
+2.Hibernate参考笔记: https://github.com/ZichengQu/Java/blob/Hibernate/note/Hibernate(tutor).docx  
+3.Hibernate映射/核心配置文件及static的SessionFactory: https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day01  
+4.save/delete/update/get/一级缓存/Query对象/Criteria对象/SQLQuery对象/Dao层和Service层交互: https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day02  
+5.一对多(映射配置/级联保存/级联删除/inverse属性)和多对多(映射配置/级联保存/级联删除/维护第三张表的关系): https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day03  
+6.对象导航查询/OID查询/HQL查询/QBC查询/本地SQL查询/HQL多表查询/Hibernate检测策略/批量抓取: https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day04  
+  
+  
+**********************************************************************************************************************************************  
