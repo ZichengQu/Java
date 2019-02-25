@@ -1,0 +1,42 @@
+.zf-header {
+	background-color: #f8f8f8;
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 1000;
+	height: 50px;
+	margin-bottom: 20px;
+	border-width: 0 0 1px;
+	border: 1px solid #e7e7e7;
+}
+.zf-title{
+	float: left;
+    font-size: 18px;
+    line-height: 50px;
+    color: #777;
+}
+.zf-form{
+	width: 60%;
+	margin:70px auto 0px;
+	min-height: 200px;
+	border: 1px solid #337ab7;
+	border-radius: 4px; 
+}
+.input-group{
+	margin:25px 25px 0px;
+}
+.btn.btn-success{
+	margin: 25px;
+}
+.zf-lists{
+	padding-top: 40px;
+}
+.zf-table{
+	margin-top: 20px;
+
+}
+table{
+	border-top:2px solid #ddd;
+	border-bottom:2px solid #ddd;
+}

@@ -1,0 +1,105 @@
+body {
+	color: #fff;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+
+.wrap1 {
+	width: 35%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	overflow: hidden;
+} /*把整个屏幕真正撑开--而且能自己实现居中*/
+.wrap1 img {
+	margin: 0 auto;
+	display: block
+}
+
+.yonghu {
+	width: 32px;
+	height: 32px;
+	display: block;
+	position: absolute;
+	top: 9px;
+	left: 3px;
+	background: url(../images/yonghu.png);
+	background-size: 90%;
+}
+
+.pass {
+	width: 32px;
+	height: 32px;
+	display: block;
+	position: absolute;
+	top: 9px;
+	left: 3px;
+	background: url(../images/pass.png);
+	background-size: 90%;
+}
+
+.main_content {
+	background: url(../images/main_bg.png) repeat;
+	margin-top: 15px;
+	padding: 10px 20px 20px 20px;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+	float: none;
+	border-radius: 8px;
+}
+
+.form-group {
+	position: relative;
+}
+
+.login_btn {
+	display: block;
+	background: #3872f6;
+	color: #fff;
+	font-size: 15px;
+	width: 100%;
+	line-height: 50px;
+	border-radius: 5px;
+	border: none;
+	margin-top: 20px;
+}
+
+.login_input {
+	width: 91%;
+	border: 1px solid #3872f6;
+	outline: none;
+	border-radius: 5px;
+	line-height: 40px;
+	padding: 2px 5px 2px 35px;
+	background: none;
+	color: #ffffff;
+}
+
+.icon_font {
+	position: absolute;
+	bottom: 15px;
+	left: 10px;
+	font-size: 18px;
+	color: #3872f6;
+}
+
+.font20 {
+	font-size: 20px;
+	text-align: center;
+}
+
+.mg-t20 {
+	margin-top: 20px;
+}
+
+.error {
+	color: red;
+}
+
+.ok {
+	color: green;
+}
