@@ -46,8 +46,9 @@
 			});
 			selected();//获取搜索订单里选中内容的状态，否则提交表单后会重新刷新页面。
 			function selected(){
-				var condition = "<%=condition%>";
-				if(condition!= "null"){<%-- 假如condition(java)为null,那么var condition = "<%=condition%>"，则condition(js)则是"null". --%>
+				var condition = "<%=condition%>";//必须写双引号，否则不能将el表达式或java表达式转换成字符串赋值给condition
+				//var condition = "${condition}";//若是用el的话，则判断条件应为：if(condition!= "")
+				if(condition!= ""){<%-- 假如condition(java)为null,那么var condition = "<%=condition%>"，则condition(js)则是"null". --%>
 					$("[name = 'condition']").val(condition);
 				}
 			}
