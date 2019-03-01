@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="demo1" extends="struts-default" namespace="/">
+		<!-- 全局结果页面只限于本package,对于其它package无效 -->
+		<!-- <global-results>
+			<result name="success">/success.jsp</result>
+		</global-results> -->
+		<action name="book" class="com.action.BookAction">
+		<!-- <result name="success" type="redirect">/ok.jsp</result> -->
+			<result name="success" type="redirectAction">order.action</result> <!-- 重定向: 这里写order或order.action都可以 -->
+		</action>
+		<action name="order" class="com.action.OrderAction">
+			<result name="success" type="dispatcher">/success.jsp</result>
+		</action>
+	</package>
+	<package name="demo2" extends="struts-default" namespace="/">
+		<action name="form" class="com.action.FormAction" method="execute4">
+			<result name="success">/main.jsp</result>
+		</action>
+	</package>
+	<package name="demo3" extends="struts-default" namespace="/">
+		<action name="data" class="com.action.DataAction" method="execute"></action>
+		<action name="list" class="com.action.ListAction" method="execute"></action>
+		<action name="map" class="com.action.MapAction" method="execute"></action>
+	</package>
+</struts>

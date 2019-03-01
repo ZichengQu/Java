@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 访问对象的静态方法：默认不能使用，需先修改常量开启 -->
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"></constant>
+	<package name="default" extends="struts-default" namespace="/">
+		<global-results>
+			<result name="success">/valuestack.jsp</result>
+		</global-results>
+		<action name="ValueStackDemo1" class="com.action.ValueStackAction" method="execute2"></action>
+		<action name="ObjectActionDemo" class="com.action.ObjectAction" method="execute"></action>
+		<action name="ListActionDemo" class="com.action.ListAction" method="execute"></action>
+		<action name="ContextActionDemo" class="com.action.ContextAction" method="execute"></action>
+	</package>
+</struts>

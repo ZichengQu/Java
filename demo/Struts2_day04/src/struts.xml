@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" extends="struts-default" namespace="/">
+		<!-- 声明拦截器 -->
+		<interceptors>
+			<!-- name随意起,class是拦截器的限定名 -->
+			<interceptor name="loginInterceptor" class="com.interceptor.LoginInterceptor"></interceptor>
+		</interceptors>
+		<action name="user_*" class="com.action.UserAction" method="{1}">
+			<!-- 使用自定义拦截器 -->
+			<interceptor-ref name="loginInterceptor">
+				<param name="excludeMethods">login</param> <!-- 对login方法不进行拦截,如果对多个方法不进行拦截，则在login之后写",方法名" -->
+			</interceptor-ref>
+			<!-- 把默认拦截器手动执行一次,在核心包下的/struts-default.xml的313行 -->
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<result name="success">/main.jsp</result>
+			<result name="input">/login.jsp</result>
+			<result name="login">/login.jsp</result>
+		</action>
+	</package>
+</struts>
