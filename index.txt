@@ -214,6 +214,20 @@ Hibernate
 4.save/delete/update/get/一级缓存/Query对象/Criteria对象/SQLQuery对象/Dao层和Service层交互: https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day02  
 5.一对多(映射配置/级联保存/级联删除/inverse属性)和多对多(映射配置/级联保存/级联删除/维护第三张表的关系): https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day03  
 6.对象导航查询/OID查询/HQL查询/QBC查询/本地SQL查询/HQL多表查询/Hibernate检测策略/批量抓取: https://github.com/ZichengQu/Java/tree/Hibernate/demo/Hibernate_day04  
+7.pay_hibernate: https://github.com/ZichengQu/Java/tree/Hibernate/demo/pay_hibernate  
+  
+  
+**********************************************************************************************************************************************  
+  
+  
+Struts2
+..............................................................................................................................................  
+1.Struts2笔记: https://github.com/ZichengQu/Java/blob/Struts2/note/Struts2%E7%AC%94%E8%AE%B0.docx  
+2.Struts2的执行过程/配置(package,action，result)/常量设置/分模块开发/Action的三种方式编写/Action的三种访问方法: https://github.com/ZichengQu/Java/tree/Struts2/demo/Struts2_day01  
+3.全局/局部结果页面,action获取表单数据及操作域对象,封装数据到实体类/集合: https://github.com/ZichengQu/Java/tree/Struts2/demo/Struts2_day02  
+4.OGNL,值栈及其内部结构,使用set/push/get向值栈中存取数据,EL表达式获取值栈数据,OGNL的#/%的使用: https://github.com/ZichengQu/Java/tree/Struts2/demo/Struts2_day03  
+5.自定义登陆拦截器/Struts2标签库: https://github.com/ZichengQu/Java/tree/Struts2/demo/Struts2_day04  
+6.SH小整合: https://github.com/ZichengQu/Java/tree/Struts2/demo/Customer_SH  
   
   
 **********************************************************************************************************************************************  
