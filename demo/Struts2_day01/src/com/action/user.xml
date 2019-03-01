@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- Action配置:
+		package: 类似于代码包，作用是区别不同的action，要配置action，必须首先写package标签，在package里面才能action。 
+			name: 属性值跟功能本身没有关系，在一个配置文件中可以写多个package标签，但package的name属性值不能重复。
+			extends: 属性值是固定的，extends="struts-default"，写了这个属性之后在package里面配置的类才具有action功能。
+			namespace: 命名空间，struts属性值和action标签里面的name属性值构成访问路径。
+				(1)若namespace="/",则访问路径为http://localhost:8080/Struts2_day01/hello.action
+				(2)若namespace="/demo",则访问路径为http://localhost:8080/Struts2_day01/demo/hello.action
+		action: 配置action的访问路径
+			name: namespace的属性值和action标签里面的name的属性值构成访问路径
+			class: action的全路径
+			method: 指定调用action中的哪个方法来处理;在action里面默认执行execute方法,因此若要执行execute方法，method属性可以不写。
+		result: 根据action里面方法的返回值，跳转到指定页面。
+			name: 和方法的返回值一样,作用是与action类中的method方法的返回值进行匹配，来确定跳转路径。
+			type: 配置如何到路径中(转发/重定向      到      页面/action)。默认是转发。
+		struts2默认常量的位置: default.properties(struts2-core-2.3.24.jar/org/apache/struts2/default.properties)
+		修改struts2默认常量: 1.常用方式: 在struts.xml中进行配置;2.在src下创建struts.properties进行修改;3.在web.xml中进行配置;
+		常量加载顺序: struts.xml,struts.properties,web.xml;同一常量，后加载的会覆盖先加载的。
+		分模块开发: 单独写配置文件，然后把配置文件引入到核心配置文件中。在struts.xml中写: <include file="com/action/user.xml"></include>
+	 -->
+	 <!-- 如果在action中获得表单，通过post方式提交中文，中文乱码帮解决了，不需要自己处理; -->
+	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<!-- 指定访问action的后缀名，此时user-defined/action/不加后缀 均好使 -->
+	<constant name="struts.action.extension" value="user-defined,action,,"></constant>
+	<!--开启动态方法模式,默认值为false不开启-->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true"></constant>
+	<package name="default" extends="struts-default" namespace="/">
+		<!-- 第一种访问action的方法:使用action标签里的method属性，在这个属性里面写执行action的方法。 -->
+		<action name="hello" class="com.action.HelloAction" method="execute">
+			<result name="ok">/success.jsp</result>
+		</action>
+		<action name="update" class="com.action.HelloAction" method="update">
+			<result name="ok">/success.jsp</result>
+		</action>
+		<action name="user" class="com.action.UserAction"></action>
+		<!-- <action name="ActionSupportDemo" class="com.action.ActionSupportDemo" method="add"></action>
+		<action name="ActionSupportDemo" class="com.action.ActionSupportDemo" method="update"></action> -->
+		<!-- 第二种访问action的方法:使用通配符方式实现
+			1.执行action里面的add方法,访问ActionSupportDemo_add,使用ActionSupportDemo_*可以匹配到;
+			2.执行action里面的update方法,访问ActionSupportDemo_update,使用ActionSupportDemo_*也可以匹配到;
+			上面两个路径使用ActionSupportDemo_*,都可以匹配到;{n}表示第n个*;
+		 -->
+		<action name="ActionSupportDemo_*" class="com.action.ActionSupportDemo" method="{1}"></action>
+		<!-- 第三种访问action的方法:动态访问:先开启动态访问权限,访问方法: <a href="${pageContext.request.contextPath}/ActionSupportDemo!add">添加用户～</a> -->
+		<action name="ActionSupportDemo" class="com.action.ActionSupportDemo"></action>
+	</package>
+</struts>

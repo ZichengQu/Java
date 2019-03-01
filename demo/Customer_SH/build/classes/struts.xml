@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<package name="default" extends="struts-default" namespace="/">
+		<action name="add" class="com.action.CustomerAction" method="add">
+			<result name="success" type="redirectAction">query</result>
+		</action>
+		<action name="query" class="com.action.CustomerAction" method="query">
+			<result name="success">/customer.jsp</result>
+		</action>
+		<action name="deleteCustomer" class="com.action.CustomerAction" method="deleteCustomer"></action>
+	</package>
+</struts>
