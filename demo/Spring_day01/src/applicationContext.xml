@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- spring入门配置 -->
+    <!-- <bean id="user" class="com.bean.User"></bean> -->  
+    <!-- 使用静态工厂创建对象 -->
+    <!--  <bean id="user1" class="com.factory.BeanFactory" factory-method="getUser1"></bean> -->
+	<!-- 使用实例工厂创建对象 -->
+	<bean id="beanFactory" class="com.factory.BeanFactory"></bean>
+	<bean id="user2" factory-bean="beanFactory" factory-method="getUser2" scope="prototype"></bean>
+	<!-- 使用有参构造注入属性 -->
+	<bean id="proterty" class="com.bean.Proterty">
+		<!-- 使用有参构造注入 -->
+		<constructor-arg name="username" value="马冬梅"></constructor-arg>
+	</bean>
+	<!-- 使用set方法注入属性 -->
+	<bean id="book" class="com.bean.Book">
+		<property name="bookName" value="乾坤大挪移"></property>
+	</bean>
+	<!-- 注入对象类型的属性 -->
+	<!-- 1.配置Service和Dao的对象 -->
+	<bean id="userDao" class="com.dao.UserDao"></bean>
+	<bean id="userService" class="com.service.UserService">
+		<!-- 
+			注入dao的对象
+			name属性：Service里面的属性名称
+			ref属性：dao配置bean标签的id值
+		 -->
+		<property name="uDao" ref="userDao"></property>
+	</bean>
+	<!-- p名称空间注入 -->
+	<!-- <bean id="person" class="com.bean.Person" p:pname="张三丰"></bean> -->
+	<!-- 注入复杂类型的属性值 -->
+	<bean id="person" class="com.bean.Person">
+		<!-- 注入普通数据 -->
+		<property name="pname" value="pname_value"></property>
+		<!-- 数组 -->
+		<property name="array">
+			<list>
+				<value>张三</value>
+				<value>李四</value>
+				<value>王五</value>
+			</list>
+		</property>
+		<!-- List集合 -->
+		<property name="list">
+			<list>
+				<value>科比</value>
+				<value>詹姆斯</value>
+				<value>奥尼尔</value>
+			</list>
+		</property>
+		<!-- Map集合 -->
+		<property name="map">
+			<map>
+				<entry key="呼保义" value="宋江"></entry>
+				<entry key="玉麒麟" value="卢俊义"></entry>
+				<entry key="智多星" value="吴用"></entry>
+			</map>
+		</property>
+		<!-- Properties类型 -->
+		<property name="properties">
+			<props>
+				<prop key="driverClass">com.mysql.jdbc.Driver</prop>
+				<prop key="username">root</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	
+</beans>

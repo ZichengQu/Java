@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop" xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd 
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 
+    	开启注解扫描
+       	 （1）到包里面扫描类、方法、属性上面是否有注解
+     -->   
+    <context:component-scan base-package="com"></context:component-scan>
+    <!-- 配置创建对象 -->
+    <bean id="bookDao" class="com.dao.BookDao"></bean>
+    <bean id="ordersDao" class="com.dao.OrdersDao"></bean>
+    <bean id="bookService" class="com.service.BookService"></bean>
+    <!-- 1.配置目标对象 -->
+    <bean id="book" class="com.aop.Book"></bean>
+    <!-- 2.配置通知对象 -->
+    <bean id="bookAdvice" class="com.aop.BookAdvice"></bean>
+    <!-- 3.配置AOP操作 -->
+    <aop:config>
+    	<!-- 3.1配置切入点 -->
+    	<aop:pointcut expression="execution(* com.aop.Book.*(..))" id="pointcut1"/>
+    	<!-- 3.2配置切面 -->
+    	<aop:aspect ref="bookAdvice">
+    		<!-- 
+    			配置增强的类型
+    			method属性：增强类里面使用哪个方法作为增强
+    		 -->
+    		<aop:before method="before" pointcut-ref="pointcut1"/>
+    		<aop:after-returning method="after" pointcut-ref="pointcut1"/>
+    		<aop:around method="around" pointcut-ref="pointcut1"/>
+    	</aop:aspect>
+    </aop:config>
+    
+    
+    
+    
+</beans>
