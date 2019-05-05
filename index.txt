@@ -1,4 +1,4 @@
-JavaSE:  
+﻿JavaSE:  
 ..............................................................................................................................................  
 JavaSE：https://github.com/ZichengQu/Java/tree/JavaSE  
 JavaSe.docx: https://github.com/ZichengQu/Java/blob/JavaSE/JavaSE/src/note/JavaSe.docx  
@@ -237,13 +237,14 @@ Spring
 ..............................................................................................................................................  
 1.Spring笔记: https://github.com/ZichengQu/Java/blob/Spring/note/Spring.docx  
 2.文件上传笔记: https://github.com/ZichengQu/Java/blob/Spring/note/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0.docx  
-3.文件上传代码: https://github.com/ZichengQu/Java/tree/Spring/demo/FileUpload  
-4.Spring的配置/bean的创建及属性注入: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day01  
-5.Spring注解创建bean/AOP操作/监听器: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day02  
-6.Spring整合Web项目演示: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day02_web  
-7.Spring的AOP注解方式: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day03_aop  
-8.Spring的jdbcTemplate操作/连接池/XML配置事务/注解配置事务: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day03_jdbcTemplate  
-9.SSH整合/Spring的HibernateTemplate常用的方法: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day04_ssh1  
+3.邮件发送代码: https://github.com/ZichengQu/Java/blob/Spring/demo/MailUtils.java  
+4.文件上传代码: https://github.com/ZichengQu/Java/tree/Spring/demo/FileUpload  
+5.Spring的配置/bean的创建及属性注入: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day01  
+6.Spring注解创建bean/AOP操作/监听器: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day02  
+7.Spring整合Web项目演示: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day02_web  
+8.Spring的AOP注解方式: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day03_aop  
+9.Spring的jdbcTemplate操作/连接池/XML配置事务/注解配置事务: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day03_jdbcTemplate  
+10.SSH整合/Spring的HibernateTemplate常用的方法: https://github.com/ZichengQu/Java/tree/Spring/demo/Spring_day04_ssh1  
 
    
 **********************************************************************************************************************************************  
