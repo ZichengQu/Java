@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/mvc 
+		http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd">
+	
+	<!-- 配置创建 spring 容器要扫描的包 -->
+	<context:component-scan base-package="com"></context:component-scan>
+	<!-- 配置视图解析器 -->
+	<bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/pages/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+	<!-- 配置自定义转换器，默认的并没有失效，只是多加了一个自定义的转换器 -->
+	<bean id="conversionServiceFactoryBean" class="org.springframework.context.support.ConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="com.utils.StringToDateConverter"></bean>
+			</set>
+		</property>
+	</bean>
+	<!-- 开启SpringMVC框架注解的支持,此语句会默认使用最新的处理器和适配器；自定义类型转换需手动配置，不会默认生效；SpringMVC三大组件： 处理器、适配器和视图解析器-->
+	<mvc:annotation-driven conversion-service="conversionServiceFactoryBean"/>
+</beans>
