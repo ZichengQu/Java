@@ -252,7 +252,7 @@ Spring
   
 SpringMVC  
 ..............................................................................................................................................  
-1.SpringMVC笔记: 
+1.SpringMVC笔记: https://github.com/ZichengQu/Java/blob/SpringMVC/SpringMVC.docx  
 2.SpringMVC的配置: https://github.com/ZichengQu/Java/tree/SpringMVC/Demo/SpringMVC_day01  
 3.RequestMapping注解: https://github.com/ZichengQu/Java/blob/SpringMVC/Demo/SpringMVC_day01/src/com/controller/HelloController.java  
 4.请求参数的绑定: https://github.com/ZichengQu/Java/blob/SpringMVC/Demo/SpringMVC_day01/src/com/controller/ParamController.java  
